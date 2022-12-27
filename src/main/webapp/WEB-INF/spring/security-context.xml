@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.8.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+		
+	<bean id="customAccessDenied" class="org.kabart.security.CustomAccessDeniedHandler" />
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<bean id="customUserDetailsService" class="org.kabart.security.CustomUserDetailsService" />
+		
+	<!-- spring security 시작 지정 -->
+	<security:http>
+		<security:intercept-url pattern="/kabart/all" access="permitAll" />
+		<security:intercept-url pattern="/kabart/member" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/kabart/admin" access="hasRole('ROLE_ADMIN')" />
+
+		<security:access-denied-handler ref="customAccessDenied" />
+		<security:form-login login-page="/kabart/login" />
+
+		<security:logout logout-url="/kabart/logout" invalidate-session="true" />
+		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
+		<security:logout logout-url="/kabart/logout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" />
+	</security:http>
+		
+	<!-- authentication manager 사용 선언 -->
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="customUserDetailsService">
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>
