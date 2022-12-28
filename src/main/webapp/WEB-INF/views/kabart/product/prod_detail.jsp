@@ -9,7 +9,6 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<%@include file="/WEB-INF/views/style.jsp"%>
 <title>Product detail</title>
 </head>
 <body>
@@ -18,7 +17,7 @@
 		<div id="__layout">
 			<div tabindex="0" class="wrap win_os md" data-v-3007c576="">
 				<!---->
-				<jsp:include page="includes/header.jsp"></jsp:include>
+				<jsp:include page="../includes/header.jsp"></jsp:include>
 				<div data-v-cf786f84="" data-v-3007c576=""
 					class="container detail md">
 					<div data-v-cf786f84="" class="content">
@@ -531,7 +530,7 @@
 						</div>
 					</div>
 				</div>
-				<%@include file="includes/footer.jsp"%>
+				<%@include file="../includes/footer.jsp"%>
 			</div>
 		</div>
 </body>

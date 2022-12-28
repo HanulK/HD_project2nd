@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko" data-n-head="%7B%22lang%22:%7B%22ssr%22:%22ko%22%7D%7D">
+<html lang="ko">
 <head>
 <title>KREAM | 한정판 거래의 FLEX</title>
 <meta data-n-head="ssr" charset="utf-8">
-<link rel="stylesheet" href="../resources/css/9240ced.css">
-<link rel="stylesheet" href="../resources/css/6c311e9.css">
-<link rel="stylesheet" href="../resources/css/4688896.css">
-<link rel="stylesheet" href="../resources/css/24dfaf3.css">
-<link rel="stylesheet" href="../resources/css/174c879.css">
-<link rel="stylesheet" href="../resources/css/7f27f3c.css">
 </head>
 <body>
 	<div id="__nuxt">
@@ -18,7 +12,7 @@
 		<div id="__layout">
 			<div tabindex="0" class="wrap win_os" data-v-39b2348a="">
 				<!---->
-				<div data-v-39b2348a="" class="wrap_inner"></div>
+					<jsp:include page="../includes/header.jsp"></jsp:include>
 				<!---->
 				<div class="container my lg" data-v-39b2348a="">
 					<div data-v-39b2348a="">
@@ -303,34 +297,9 @@
 						</div>
 					</div>
 				</div>
-				<div data-v-39b2348a=""></div>
-				<!---->
-				<div data-v-39b2348a="">
-					<!---->
-					<div id="toast" class="toast lg" data-v-66ae1b7c="">
-						<div class="wrap" data-v-66ae1b7c="">
-							<svg xmlns="http://www.w3.org/2000/svg"
-								class="icon sprite-icons toast-icon toast-success"
-								data-v-66ae1b7c="">
-								<use
-									href="../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-toast-success"
-									xlink:href="../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-toast-success"
-									data-v-66ae1b7c=""></use></svg>
-							<div class="toast-content" data-v-66ae1b7c="">
-								<p data-v-66ae1b7c="">내용</p>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
-
-
-	<link href="../resources/css/7f27f3c.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/4688896.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/24dfaf3.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/174c879.css" rel="stylesheet" type="text/css">
-	<link href="../resources/css/6c311e9.css" rel="stylesheet" type="text/css">
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -5,43 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>KREAM | 한정판 거래의 FLEX</title>
-<link rel="stylesheet" href="../resources/css/9240ced.css">
-<link rel="stylesheet" href="../resources/css/734fa9a.css">
-<link rel="stylesheet" href="../resources/css/4688896.css">
-<link rel="stylesheet" href="../resources/css/174c879.css">
-<link rel="stylesheet" href="../resources/css/7800e03.css">
-<link rel="stylesheet" href="../resources/css/9c84e6e.css">
-<link rel="stylesheet" href="../resources/css/235e2a9.css">
-<link href="../resources/css/4688896.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/235e2a9.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/9c84e6e.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/174c879.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/7800e03.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/734fa9a.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/4ad8835.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/1e20f03.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/ed8e821.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/30e2c3c.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/24dfaf3.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/6c311e9.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/c3e0280.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/97ccca4.css" rel="stylesheet"
-	type="text/css">
-<link href="../resources/css/0c0bd8f.css" rel="stylesheet"
-	type="text/css">
 </head>
 <body data-v-39b2348a="" tabindex="0" class="wrap win_os">
 

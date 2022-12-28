@@ -3,18 +3,6 @@
 <html lang="ko">
 <head>
 <title>KREAM | 한정판 거래의 FLEX</title>
-<meta data-n-head="ssr" charset="utf-8">
-<link rel="stylesheet" href="../resources/css/9240ced.css">
-<link rel="stylesheet" href="../resources/css/6c311e9.css">
-<link rel="stylesheet" href="../resources/css/4688896.css">
-<link rel="stylesheet" href="../resources/css/24dfaf3.css">
-<link rel="stylesheet" href="../resources/css/174c879.css">
-<link rel="stylesheet" href="../resources/css/c3e0280.css">
-<link rel="stylesheet" href="../resources/css/1e20f03.css">
-<link rel="stylesheet" href="../resources/css/30e2c3c.css">
-<link rel="stylesheet" href="../resources/css/ed8e821.css">
-<link rel="preload" as="style" href="../resources/css/97ccca4.css">
-<link rel="preload" as="style" href="../resources/css/0d0d927.css">
 </head>
 <body>
 	<div id="__nuxt">

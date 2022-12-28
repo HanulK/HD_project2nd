@@ -9,7 +9,6 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<%@include file="/WEB-INF/views/style.jsp"%>
 <title>Product List</title>
 </head>
 <body>
@@ -17,7 +16,7 @@
 		<!---->
 		<div id="__layout">
 			<div tabindex="0" class="wrap win_os md" data-v-3007c576="">
-				<jsp:include page="includes/header.jsp"></jsp:include>
+				<jsp:include page="../includes/header.jsp"></jsp:include>
 				<!---->
 				<div container-index="1" class="shortcut_collection">
 					<!---->
@@ -355,7 +354,7 @@
 					</div>
 					<!-- /상품 그루핑 -->
 				</div>
-				<%@include file="includes/footer.jsp"%>
+				<%@include file="../includes/footer.jsp"%>
 				<!---->
 				<!---->
 				<!---->

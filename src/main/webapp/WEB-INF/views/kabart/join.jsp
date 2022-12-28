@@ -4,15 +4,9 @@
 <html>
 <head>
 <title>KREAM | 한정판 거래의 FLEX</title>
-<link rel="stylesheet" href="../resources/css/9240ced.css">
-<link rel="stylesheet" href="../resources/css/734fa9a.css">
-<link rel="stylesheet" href="../resources/css/4688896.css">
-<link rel="stylesheet" href="../resources/css/174c879.css">
-<link rel="stylesheet" href="../resources/css/7800e03.css">
-<link rel="stylesheet" href="../resources/css/ac866cc.css">
 </head>
 <body tableindex="0" class="wrap win_os lg" data-v-3007c576>
-	<jsp:include page="../includes/header.jsp"></jsp:include>
+	<jsp:include page="includes/header.jsp"></jsp:include>
 	<div class="container join" data-v-429a8655="" data-v-3007c576="">
 		<div class="content lg" data-v-429a8655="">
 			<div class="join_area" data-v-429a8655="">
@@ -239,6 +233,6 @@
 					}).open();
 		}
 	</script>
-	<jsp:include page="../includes/footer.jsp"></jsp:include>
+	<jsp:include page="includes/footer.jsp"></jsp:include>
 </body>
 </html>
