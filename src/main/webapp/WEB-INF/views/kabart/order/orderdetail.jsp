@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html lang="ko">
 
 
 
 <head>
+<<<<<<< Updated upstream
 <title>결재완료</title>
 <meta data-n-head="ssr" charset="utf-8">
 <meta data-n-head="ssr" data-hid="viewport" name="viewport"
@@ -1392,6 +1394,21 @@
 <script charset="utf-8" src="/_nuxt/66c8bae.js"></script>
 <link rel="preload" as="style" href="/_nuxt/css/80f1d1f.css">
 <script charset="utf-8" src="/_nuxt/cae07cb.js"></script>
+=======
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>주문서</title>
+
+
+<style>
+.topodtop {
+height : 75px;
+}
+</style>
+
+
+>>>>>>> Stashed changes
 </head>
 
 <body style="">
@@ -1399,6 +1416,7 @@
 		<!---->
 		<div id="__layout">
 			<div data-v-34b11929="" tabindex="0" class="wrap lg win_os">
+<<<<<<< Updated upstream
 				<div data-v-34b11929="">
 					<!---->
 					<div data-v-19e1c5dc="" data-v-34b11929="" class="header">
@@ -1425,8 +1443,21 @@
 						<div data-v-19e1c5dc="" class="vue-portal-target"></div>
 					</div>
 				</div>
+=======
+			
+				<jsp:include page="../includes/header.jsp"></jsp:include>
+>>>>>>> Stashed changes
 				<!---->
+				
+				
 				<div data-v-2f436c59="" data-v-34b11929="" class="container buy lg">
+				
+				
+				<div class ="topodtop">
+				</div>
+				
+				
+				
 					<div data-v-2f436c59="" class="content">
 						<div data-v-2f436c59="" class="buy_before">
 							<div data-v-2f436c59="" class="buy_before_check">
