@@ -1,0 +1,52 @@
+.goodsView__bottom.js__goods-detail {
+	position: relative;
+	margin-top: 60px;
+}
+
+.bottom__floating.js__floating {
+	height: 72px;
+}
+
+nav#dvMenuTab {
+	position: relative;
+	z-index: 2;
+	width: auto;
+	padding-top: 20px;
+	background: #FFF;
+	font-size: 0;
+}
+
+button#dvBtnItemmain {
+	display: inline-block;
+	position: relative;
+	width: calc(50% + 1px);
+	height: 53px;
+	margin-left: -1px;
+	border: 1px solid #D2D2D2;
+	outline: 0;
+	font-size: 14px;
+	text-align: center;
+	vertical-align: top;
+	font-weight: bold;
+}
+
+button#dvBtnFbmain {
+	display: inline-block;
+	position: relative;
+	width: calc(50% + 1px);
+	height: 53px;
+	margin-left: -1px;
+	border: 1px solid #D2D2D2;
+	outline: 0;
+	font-size: 14px;
+	text-align: center;
+	vertical-align: top;
+	font-weight: bold;
+}
+
+.bottom__tab.js__floating__tab>button:active {
+	border-bottom: 1px solid transparent;
+	border-top: 2px solid #000000;
+	font-size: 15px;
+	font-weight: 600;
+}

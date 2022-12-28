@@ -1,0 +1,126 @@
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background-color: #fff
+}
+
+.header.lg {
+	box-shadow: 0 0 0 0 transparent;
+	min-height: 68px;
+}
+
+.header.no_line {
+	box-shadow: 0 0 0 0 transparent !important
+}
+
+.header.is_scroll {
+	box-shadow: 0 1px 0 0 rgba(0, 0, 0, .1)
+}
+
+.notice+.header {
+	top: 32px
+}
+
+.header .header_top {
+	box-shadow: 0 1px 0 0 rgba(0, 0, 0, .1)
+}
+
+.header .top_inner {
+	display: flex;
+	padding: 8px 40px
+}
+
+.header .top_list {
+	display: flex;
+	align-items: center;
+	margin-left: auto
+}
+
+.header .top_item+.top_item {
+	margin-left: 24px
+}
+
+.header .top_item {
+	display: flex;
+	align-items: center;
+	font-size: 12px;
+	letter-spacing: -.06px;
+	color: rgba(34, 34, 34, .8)
+}
+
+.header .top_item [class*=ico-] {
+	margin-right: 4px;
+	width: 16px;
+	height: 16px
+}
+
+.header .main_inner {
+	display: flex;
+	padding: 0 40px;
+	height: 68px;
+	min-width: 320px;
+	align-items: center;
+	box-shadow: 0 1px 0 0 rgb(0 0 0/ 10%);
+}
+
+.header .logo {
+	display: flex;
+	width: 120px;
+	height: 24px
+}
+
+.header .logo>.logo-kream {
+	width: 100%
+}
+
+.header .gnb_area {
+	margin-left: auto
+}
+
+.header .gnb_area, .header .gnb_list {
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center
+}
+
+.header .gnb_item {
+	margin-right: 40px;
+	display: flex;
+}
+
+.header .gnb_item.gnb_on .gnb_link {
+	font-weight: 700
+}
+
+.header .gnb_item.gnb_on .gnb_link:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -3px;
+	background-color: #222;
+	height: 2px
+}
+
+.header .gnb_link {
+	position: relative;
+	font-size: 15px;
+	letter-spacing: -.15px
+}
+
+.header .gnb_link, .header .search_btn_box {
+	display: flex
+}
+
+.header .btn_search {
+	display: inherit;
+	border: none !important;
+	align-items: center;
+}
+
+.wrap.disable .header {
+	top: 36px
+}

@@ -1,0 +1,222 @@
+footer.new_guud {
+	padding-bottom: 40px;
+	padding-top: 40px;
+}
+
+footer.new_guud .footer_link {
+	width: 100%;
+	margin-bottom: 5px;
+	padding-inline-start: 40px;
+}
+
+footer.new_guud .footer_link a {
+	display: block;
+	width: 123px;
+	height: 19px;
+}
+
+footer.new_guud .footer_left {
+	float: left;
+	width: calc(100% - 400px);
+	overflow: hidden;
+	margin-left: 40px;
+}
+
+footer.new_guud .footer_left .footer_menu li {
+	float: left;
+	margin-left: 29px;
+	display: flex;
+}
+
+footer.new_guud .footer_left .footer_menu li a {
+	color: #000;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+}
+
+footer.new_guud .footer_left .footer_menu li.privacy a {
+	color: #ff3e2f;
+}
+
+footer.new_guud .footer_left .footer_menu li:first-child {
+	margin-left: 0;
+}
+
+footer.new_guud .footer_left .footer_menu:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+footer.new_guud .footer_left .footer_info {
+	width: 720px;
+	margin: 18px 0 0 -24px;
+	overflow: hidden;
+}
+
+footer.new_guud .footer_left .footer_info li {
+	position: relative;
+	float: left;
+	margin-left: 11px;
+	padding-left: 14px;
+	color: #a9a9a9;
+	font-size: 13px;
+	line-height: 24px;
+	display: flex;
+}
+
+footer.new_guud .footer_left .footer_info li a {
+	color: #a9a9a9;
+}
+
+footer.new_guud .footer_left .footer_info li address {
+	display: inline-block;
+	font-style: normal;
+}
+
+footer.new_guud .footer_left .footer_info li.f_bold {
+	font-weight: bold;
+}
+
+footer.new_guud .footer_left .footer_info li:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 1px;
+	height: 9px;
+	margin-top: -5px;
+	background: #eee;
+}
+
+footer.new_guud .footer_left .copyright {
+	margin-top: 34px;
+	color: #a9a9a9;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+footer.new_guud .footer_right {
+	float: right;
+	min-width: 280px;
+	margin-right: 40px;
+}
+
+footer.new_guud .footer_right .footer_custom ul {
+	overflow: hidden;
+}
+
+footer.new_guud .footer_right .footer_custom ul li {
+	float: left;
+	display: flex;
+}
+
+footer.new_guud .footer_right .footer_custom ul li span {
+	display: block;
+	padding-left: 4px;
+	color: #999;
+	font-size: 13px;
+}
+
+footer.new_guud .footer_right .footer_custom ul li strong {
+	display: block;
+	margin: 20px 0 0 -112px;
+	font-size: 23px;
+}
+
+footer.new_guud .footer_right .footer_custom ul li:last-child {
+	float: right;
+}
+
+footer.new_guud .footer_right .footer_product:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+footer.new_guud .footer_right .footer_product p {
+	float: left;
+	margin-top: 10px;
+	color: #999;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+footer.new_guud .footer_right .footer_product .as_link {
+	float: right;
+	display: inline-block;
+	margin-top: 10px;
+	color: #000;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+	padding-right: 16px;
+	background: url("/resources/img/icon_guide_arrow.png") right 50%
+		no-repeat;
+}
+
+footer.new_guud .guide_link {
+	display: inline-block;
+	margin-top: 14px;
+	color: #000;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: bold;
+	padding-right: 16px;
+	background: url("/resources/img/icon_guide_arrow.png") right 50%
+		no-repeat;
+}
+
+footer.new_guud .footer_sns {
+	overflow: hidden;
+	margin-top: 21px;
+}
+
+footer.new_guud .footer_sns li {
+	float: left;
+	margin-left: 28px;
+	display: flex;
+}
+
+footer.new_guud .footer_sns li a {
+	display: block;
+	width: 24px;
+	height: 24px;
+	font-size: 0;
+	line-height: 0;
+}
+
+footer.new_guud .footer_sns li a.youtube {
+	background: url("/resources/img/icon_sns.png") 0 0 no-repeat;
+}
+
+footer.new_guud .footer_sns li a.insta {
+	background: url("/resources/img/icon_sns.png") -25px 0 no-repeat;
+}
+
+footer.new_guud .footer_sns li a.kakao {
+	background: url("/resources/img/icon_sns.png") -49px 0 no-repeat;
+}
+
+footer.new_guud .footer_sns li a.facebook {
+	background: url("/resources/img/icon_sns.png") -73px 0 no-repeat;
+}
+
+footer.new_guud .footer_sns li:first-child {
+	margin-left: 0;
+}
+
+footer.new_guud:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+span {
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	box-sizing: initial;
+}
