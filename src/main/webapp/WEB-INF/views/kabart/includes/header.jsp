@@ -4,10 +4,7 @@
 <c:set var="contextPath" value="${PageContext.request.contextPath}" />
 <!-- Header -->
 <header>
-<<<<<<< Updated upstream
-=======
-	<jsp:include page="./style.jsp"></jsp:include>
->>>>>>> Stashed changes
+	<jsp:include page="style.jsp"></jsp:include>
 	<div class="header lg">
 		<div class="header_main">
 			<div class="main_inner">

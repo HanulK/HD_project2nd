@@ -11,6 +11,7 @@
 	<properties>
 		<java-version>11</java-version>
 		<security-version>5.8.1</security-version>
+		<ojdbc-version>21.5.0.0</ojdbc-version>
 		<org.springframework-version>5.3.24</org.springframework-version>
 		<org.aspectj-version>1.9.9.1</org.aspectj-version>
 		<org.slf4j-version>2.0.5</org.slf4j-version>
@@ -76,7 +77,32 @@
 			<version>${security-version}</version>
 		</dependency>
 
+      <!-- Ojdbc 11 -->
+      <dependency>
+         <groupId>com.oracle.database.jdbc</groupId>
+         <artifactId>ojdbc11</artifactId>
+         <version>${ojdbc-version}</version>
+      </dependency>
 
+
+      <!-- Oracle Cloud -->
+      <dependency>
+         <groupId>com.oracle.database.security</groupId>
+         <artifactId>oraclepki</artifactId>
+         <version>${ojdbc-version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>com.oracle.database.security</groupId>
+         <artifactId>osdt_cert</artifactId>
+         <version>${ojdbc-version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>com.oracle.database.security</groupId>
+         <artifactId>osdt_core</artifactId>
+         <version>${ojdbc-version}</version>
+      </dependency>
 
 
 		<!-- AspectJ -->
