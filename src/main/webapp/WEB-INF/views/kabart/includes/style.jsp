@@ -49,6 +49,7 @@
 <link href="/resources/css/cfe0307.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/e72cabe.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/ed8e821.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/used_prod_sell.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">

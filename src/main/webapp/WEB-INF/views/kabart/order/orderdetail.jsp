@@ -13,6 +13,7 @@
 		<!---->
 		<div id="__layout">
 			<div data-v-34b11929="" tabindex="0" class="wrap lg win_os">
+				
 				<jsp:include page="../includes/header.jsp"></jsp:include>
 				<!---->
 				<div data-v-2f436c59="" data-v-34b11929="" class="container buy lg">

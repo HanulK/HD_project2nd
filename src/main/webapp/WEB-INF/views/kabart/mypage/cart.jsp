@@ -9,10 +9,13 @@
   <meta data-n-head="ssr" charset="utf-8">
 </head>
 
+
 <body style="">
+
   <div id="__nuxt"><!---->
     <div id="__layout">
       <div data-v-39b2348a="" tabindex="0" class="wrap win_os"><!---->
+        <jsp:include page="../includes/header.jsp"></jsp:include>
         <div data-v-39b2348a="" class="wrap_inner"></div><!---->
         <div data-v-39b2348a="" class="container my lg">
           <div data-v-39b2348a="">
