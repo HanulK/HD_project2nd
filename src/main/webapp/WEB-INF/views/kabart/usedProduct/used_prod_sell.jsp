@@ -25,7 +25,7 @@
 					<div data-v-b36cb8c4="" class="content">
 						<div data-v-877ed62a="" data-v-b36cb8c4="" class="buy_immediate">
 							<div data-v-19e1c5dc="" class="center">
-								<h2 data-v-34b11929="" data-v-19e1c5dc="" class="title">
+								<h2 data-v-34b11929="" data-v-19e1c5dc="" class="title1">
 									<span data-v-34b11929="" data-v-19e1c5dc="" class="title_txt">판매하기</span>
 								</h2>
 							</div>

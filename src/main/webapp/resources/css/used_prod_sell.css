@@ -319,6 +319,10 @@ address, em {
 	background-color: #FFF;
 }
 
-h2.title {
+h2.title1 {
 	padding-top: 40px;
+}
+
+span.title_txt {
+    font-size: 20px;
 }
