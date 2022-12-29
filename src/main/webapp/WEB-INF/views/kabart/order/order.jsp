@@ -262,7 +262,7 @@
 
 									<div data-v-14995178="" class="btn_confirm">
 										<a data-v-6e799857="" data-v-14995178="" disabled="disabled"
-											href="#" class="btn full solid false disabled"> 결제하기 </a>
+											href="http://localhost/kabart/order/orderdetail" class="btn full solid false disabled"> 결제하기 </a>
 									</div>
 								</div>
 							</section>

@@ -90,8 +90,12 @@
 
                     <div data-v-4faab390="" class="wish_buy">
                       <div data-v-4faab390="">
-                        <div data-v-23bbaa82="" data-v-4faab390="" class="division_btn_box lg"><a data-v-23bbaa82=""
-                            href="#" class="btn_division buy"><strong data-v-23bbaa82="" class="title">구매</strong>
+                        <div data-v-23bbaa82="" data-v-4faab390="" class="division_btn_box lg">
+                        <a data-v-23bbaa82=""
+                            href="http://localhost/kabart/order/order" class="btn_division buy" >
+                            <strong data-v-23bbaa82="" class="title">
+                            구매
+                            </strong>
                             <div data-v-23bbaa82="" class="price"><span data-v-23bbaa82="" class="amount"><em
                                   data-v-23bbaa82="" class="num">316,000</em><span data-v-23bbaa82=""
                                   class="won">원</span></span><span data-v-23bbaa82="" class="desc">즉시 구매가</span></div>
