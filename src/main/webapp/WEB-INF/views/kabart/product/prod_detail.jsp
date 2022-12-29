@@ -68,7 +68,7 @@
 												class="division_btn_box md">
 												<div data-v-f40660fa="" data-v-77d20f30=""
 													class="detail_stock_btn">
-													<a data-v-6e799857="" data-v-f40660fa="" href="#"
+													<a data-v-6e799857="" data-v-f40660fa="" href="http://localhost/kabart/mypage/cart"
 														class="btn solid full buy1 large"> 장바구니 </a>
 												</div>
 												<div data-v-f40660fa="" data-v-77d20f30=""
