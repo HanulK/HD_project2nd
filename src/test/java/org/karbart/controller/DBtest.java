@@ -35,6 +35,10 @@ public class DBtest {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "차민수");
 			
+//			System.out.println("asdfasdf");
+//			System.out.println("asdfasdf");
+			
+			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				System.out.println(rs.getString(2));
