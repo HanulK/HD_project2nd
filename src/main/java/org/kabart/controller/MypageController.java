@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("*/mypage")
 public class MypageController {
 	
-	@GetMapping("/*")
-	public void test() {
+
+	
+	@GetMapping("/cart")
+	public void carts(){
 		
 	}
+	
+	
+	
 }
