@@ -9,13 +9,13 @@
 		<div class="header_main">
 			<div class="main_inner">
 				<div class="header__logo">
-					<a href="/home/"><img src="/resources/img/casamia_logo.png"
+					<a href="/kabart/home"><img src="/resources/img/casamia_logo.png"
 						alt="" /></a>
 				</div>
 				<div class="gnb_area">
 					<nav class="gnb">
 						<ul class="gnb_list">
-							<li class="gnb_item">로그인</li>
+							<li class="gnb_item"><a href="/kabart/login">로그인</a></li>
 							<li class="gnb_item">마이페이지</li>
 							<li class="gnb_item">장바구니</li>
 						</ul>
