@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>KREAM | 한정판 거래의 FLEX</title>
 </head>
@@ -42,11 +43,6 @@
 										<li data-v-4d11470e="" class="menu_item"><a
 											data-v-4d11470e="" href="/my/profile" class="menu_link">
 												프로필 정보 </a></li>
-
-
-
-
-
 									</ul>
 								</div>
 							</nav>
@@ -87,23 +83,12 @@
 								</div>
 							</div>
 							<div class="period_search">
-								<div class="period_month">
-									<ul class="month_list">
-										<li class="month_item"></li>
-										<li class="month_item"></li>
-										<li class="month_item"></li>
-										<li class="month_item custom"><a
-											href="https://kream.co.kr/my/buying#" class="month_link">기간조회</a></li>
-									</ul>
-									<!---->
-								</div>
-								<div class="period_calendar_wrapper"
-									today="Tue Dec 27 2022 16:10:58 GMT+0900 (한국 표준시)">
+								<div class="period_calendar_wrapper">
 									<div class="period_calendar">
 										<div class="calendar_wrap">
 											<span><div class="calendar">
-													<input disabled="disabled" class="cal_input"><span
-														class="cal_btn"></span>
+													<input type="date" name="dateStart" id="dateStart"
+														class="cal_input" title="시작일">
 												</div>
 												<div data-v-4cb7b681="" class="vc-popover-content-wrapper">
 													<!---->
@@ -112,7 +97,8 @@
 										<span class="swung_dash">~</span>
 										<div class="calendar_wrap">
 											<span><div class="calendar">
-													<input class="cal_input"><span class="cal_btn"></span>
+													<input type="date" name="dateEnd" id="dateEnd"
+														class="cal_input" title="종료일">
 												</div>
 												<div data-v-4cb7b681="" class="vc-popover-content-wrapper">
 													<!---->
@@ -120,13 +106,13 @@
 										</div>
 									</div>
 									<div class="period_btn_box">
-										<button class="btn_search is_active">조회</button>
+										<button type="button" class="btn_search is_active"
+											id="search_period">조회</button>
 									</div>
 								</div>
 							</div>
 
 							<div data-v-50c8b1d2="" class="purchase_list finished bid">
-
 								<div data-v-50c8b1d2="">
 									<div data-v-2f988574="" data-v-50c8b1d2="">
 										<div data-v-2f988574="" class="purchase_list_display_item"
@@ -140,13 +126,6 @@
 													<!---->
 												</div>
 												<div data-v-2f988574="" class="list_item_title_wrap">
-													<div data-v-65eb4d64="" data-v-2f988574=""
-														class="display_tag_item has_logo"
-														style="background-color: rgb(242, 249, 246); color: rgb(49, 180, 110);">
-														<img data-v-65eb4d64=""
-															src="../resources/css/a_82699e0f38f24003897bcfc6ee5c84eb.png"
-															class="icon"> 빠른배송
-													</div>
 													<p data-v-2f988574="" class="list_item_title">(W) Nike
 														Dunk Low Light Smoke Grey</p>
 													<p data-v-2f988574="" class="list_item_description">235</p>
@@ -223,6 +202,73 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+                  $(function(){
+                	 $('#dateEnd').val(new Date().toISOString().slice(0, 7));
+                	 $('#dateStart').val(new Date().toISOString().slice(0, 7));
+                	  function date_add(sDate, nDays) {
+                		  var yy = parseInt(sDate.substr(0, 4), 10);
+                		    var mm = parseInt(sDate.substr(5, 2), 10);
+                		    var dd = parseInt(sDate.substr(8), 10);
+                		    d = new Date(yy, mm - 1, dd + nDays);
+                		    yy = (d.getFullYear()+"").substr(2,4);
+                		    mm = d.getMonth() + 1; mm = (mm < 10) ? '0' + mm : mm;
+                		    dd = d.getDate(); dd = (dd < 10) ? '0' + dd : dd;
+                		    return '' + yy + '/' +  mm  + '/' + dd;
+                		}
+                     $("#search_period").click(function(){
+                        const start_date =date_add($("#dateStart").val(),0);
+                        const end_date = date_add($("#dateEnd").val(),1);
+                		console.log(start_date);
+                		console.log(end_date);
+                        var txt = '주문날짜';
+                        if(start_date>=end_date){
+                           alert("종료일이 시작일보다 앞일 수 없습니다.");
+                           return ;
+                        }
+                        $.ajax({
+                            url:'/search/buying',
+                            data :{mem_id : "test",
+                               start_date : start_date,
+                                      end_date : end_date,
+                                      is_used : 0
+                            },
+                            contentType:"application/json",
+                            success : function(result){
+                               console.log(result);
+                               if(result.length==0){
+                            	   var row = "<div data-v-e2f6767a='' data-v-0d2f7c95='' class='empty_area'><p data-v-e2f6767a='' class='desc'>거래 내역이 없습니다.</p></div>";
+                               }else {
+                                  var row ="";
+                               for (var i = 0; i < result.length; i++) {
+                                  let price = [i].pro_price.toLocaleString('ko-KR');
+                                  var d_val = obj[i].cancle_date;
+                                  var status = '주문취소';
+                                  if(!obj[i].cancle_date){
+                                 	 d_val = obj[i].order_date;
+                                 	 status = '주문완료'
+                                  }
+                                  row += `<div class='row'><div class='inner'><div class='cell-pd-wrap'><div class='inner-row'><div class='info-row'><div class='cell-pd'><div class='item-img' godno='GM0122062466107'>
+                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'> <img src='${contextPath}/\${obj[i].img_url}'></a></div><div class='item-info'><div class='item-brand'>
+                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'>\${obj[i].brand_name} </a></div><div class=item-name clear-ellipsis>
+                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'>\${obj[i].pro_name}</a></div><div class='item-opt'>
+                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'><span>\${obj[i].product_option}</span> <span>수량 : \${obj[i].order_amount} </a></div><div class="item-btn"></div>
+                                                 </div></div><div class='cell-price'><div class='cell-inner'><div class='price'><span><span class='num'>\${price}</span> 원</span>
+                                                   </div></div></div><div class='cell-status'><div class='cell-inner'><div class='status'>\${txt}<br> <span class='txt-cmt pcolor'>\${obj[i].order_date}</br>\${status}</span></div></div></div></div></div></div></div></div></div></div>`;
+                               }
+                               }
+                               $(".purchase_list").html(row);
+                               
+                            },
+                            error : function(e){
+                               alert('조회 실패');
+                            }
+                         })
+                        
+                        
+                     });
+                  })
+               </script>
 
 
 

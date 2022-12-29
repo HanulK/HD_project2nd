@@ -16,8 +16,11 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/kabart/*")
 public class KabartController {
+
 	@GetMapping("/home")
-	public void home() {}
+	public void home() {
+		
+	}
 	/*
 	 * @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_MEMBER')")
 	 * @GetMapping("/member") public void doMember() { log.info("logined member"); }
