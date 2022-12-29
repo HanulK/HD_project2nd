@@ -1,16 +1,13 @@
 package org.kabart.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@AllArgsConstructor
 @Data
-public class ProductVO {
+public class ProductListVO {
 	private int prod_id;
 	private String prod_name;
 	private int prod_price;
-	private int prod_width;
-	private int prod_height;
-	private int prod_depth;
 	private String prod_category;
+	private String img_srcs;
+	private String img_tag;
 }
