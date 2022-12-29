@@ -108,7 +108,6 @@ input {
 <script>
 $(document).ready(function(){
 	$("#btn-next").on("click", function(e) {
-		alert("눌렸어?");
 		e.preventDefault();
 		$("form").submit();
 	});

@@ -29,9 +29,9 @@
  	
  	<!-- definition of user define function -->
  	<select id="read" resultMap="memberMap">
-<!--  		SELECT mem.userid, userpw, username, enabled, regdate, updatedate, auths.auth
-		FROM MEMBER mem, MEMBER_AUTH auths
-		WHERE mem.userid = auths.userid AND mem.userid = #{userid} -->
+ 		SELECT mem.mem_id, mem_pw, mem_name, join_date, auths.authority
+		FROM members mem, authorities auths
+		WHERE mem.mem_id = auths.username AND mem.mem_id = #{mem_id}
  	</select>
  	
  	<insert id="insertMember">
