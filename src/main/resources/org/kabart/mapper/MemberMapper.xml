@@ -33,4 +33,15 @@
 		FROM MEMBER mem, MEMBER_AUTH auths
 		WHERE mem.userid = auths.userid AND mem.userid = #{userid} -->
  	</select>
+ 	
+ 	<insert id="insertMember">
+ 		INSERT INTO members(mem_id, mem_pw, mem_name, birth, address, address_detail, gender, phone, family_num)
+		VALUES (#{mem_id}, #{mem_pw}, #{mem_name}, #{birth}, #{address}, #{address_detail}, #{gender}, #{phone}, #{family_num})
+ 	</insert>
+ 	
+ 	<insert id="setAuth">
+ 		INSERT INTO authorities(username, authority) VALUES(#{mem_id}, 'ROLE_MEMBER')
+ 	</insert>
+ 	
+ 	
  </mapper>
