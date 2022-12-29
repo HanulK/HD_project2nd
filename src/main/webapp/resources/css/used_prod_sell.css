@@ -149,7 +149,7 @@ body, button, input, select, table, textarea {
 	border-radius: 12px;
 }
 
-input[type=text] {
+input[type=texttext] {
 	font-size: 12px;
 	letter-spacing: -.16px;
 	text-align: left;
@@ -157,7 +157,6 @@ input[type=text] {
 	width: 600px;
 	background-color: #fafafa;
 }
-
 
 .buy_total_confirm[data-v-14995178] {
 	padding: 0 32px 32px;

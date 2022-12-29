@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>KREAM | 한정판 거래의 FLEX</title>
+<title>KABART</title>
 </head>
 <body tableindex="0" class="wrap win_os lg" data-v-3007c576>
 	<jsp:include page="includes/header.jsp"></jsp:include>
