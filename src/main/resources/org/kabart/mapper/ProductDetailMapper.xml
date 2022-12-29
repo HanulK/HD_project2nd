@@ -4,5 +4,26 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kabart.mapper.ProductDetailMapper">
 
+	<select id="getItemDetail"
+		resultType="org.kabart.domain.ProductDetailVO">
+		select prod_id, prod_name, prod_price, grade, discount_rate
+		,prod_width, prod_height, prod_depth, up_id
+		from v_used_products
+		where prod_id = #{prod_id}
+	</select>
+	
+	<select id="getShopName"
+		resultType="org.kabart.domain.ShopVO">
+		select distinct shop_name, shop address
+		from v_products
+		where prod_id = #{prod_id}
+	</select>
+
+	<select id="getImgs" resultType="org.kabart.domain.ImgVO">
+		select distinct img_srcs, img_tag
+		from v_products
+		where prod_id = #{prod_id}
+	</select>
+	
 </mapper>
    
