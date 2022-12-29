@@ -23,7 +23,7 @@
  	
  	<!-- authMap declare and definition -->
  	<resultMap type="org.kabart.domain.AuthVO" id="authMap">
- 		<result property="mem_id" column="mem_id" />
+ 		<result property="mem_id" column="username" />
  		<result property="auth" column="auth" />
  	</resultMap>
  	

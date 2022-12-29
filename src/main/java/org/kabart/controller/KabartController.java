@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.Setter;
@@ -31,9 +32,12 @@ public class KabartController {
 		log.warn("###### Error : " + error);
 		log.warn("###### Logout : " + logout);
 		
+		// 아이디 없는 error : InternalAuthenticationServiceException
+		
 		// handling account error
 		if(error != null) {
 			model.addAttribute("error", "LOGIN ERROR check your account!");
+			System.out.println("비밀번호 틀림");
 		}
 		
 		// handing logout
@@ -42,10 +46,10 @@ public class KabartController {
 		}
 	}
 	
-//	@PostMapping("/login")
-//	public void loginPost() {
-//		
-//	}
+	@PostMapping("/login")
+	public void loginGet(@RequestParam("error") String error) {
+		log.warn("###### login with error : "+error);
+	}
 	
 	@GetMapping("/logout")
 	public String logoutGet() {
