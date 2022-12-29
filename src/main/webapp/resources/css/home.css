@@ -75,13 +75,13 @@ body {
 	border-radius: 9px;
 }
 
-.shortcut_item_wraps {
+.shortcut_item_wrap {
 	margin: 0 auto;
 	padding-left: 16px;
 	padding-right: 16px;
 	max-width: 1280px;
 	display: grid;
-	grid-template-columns: repeat(5, minmax(0, 1fr));
+	grid-template-columns: repeat(10, minmax(0, 1fr));
 	grid-column-gap: 16px;
 }
 

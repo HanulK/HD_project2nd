@@ -169,6 +169,7 @@ input[type=text] {
 	-webkit-box-pack: justify;
 	justify-content: space-between;
 	padding-bottom: 10px;
+	padding-top: 10px;
 	border-bottom: 2px solid #ebebeb;
 }
 
@@ -312,7 +313,7 @@ address, em {
 	background-color: #41b979;
 }
 
-.center {
+.buy_immediate .center {
 	-webkit-box-align: center;
 	text-align: center;
 	margin: 40px 20px;
@@ -321,8 +322,9 @@ address, em {
 
 h2.title1 {
 	padding-top: 40px;
+	padding-left: 10px;
 }
 
-span.title_txt {
-    font-size: 20px;
+.title1 span.title_txt {
+	font-size: 20px;
 }
