@@ -14,7 +14,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/kabart/*")
+@RequestMapping("/kabart")
 public class KabartController {
 	@GetMapping("/home")
 	public void home() {}
