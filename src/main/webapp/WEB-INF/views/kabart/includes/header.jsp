@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${PageContext.request.contextPath}" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
@@ -20,7 +21,12 @@
 				<div class="gnb_area">
 					<nav class="gnb">
 						<ul class="gnb_list">
+						<sec:authorize access="isAnonymous()" >
 							<li class="gnb_item"><a href="/kabart/login">로그인</a></li>
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+							<li class="gnb_item"><a href="/kabart/logout">로그아웃</a></li>
+						</sec:authorize>
 							<li class="gnb_item">마이페이지</li>
 							<li class="gnb_item">장바구니</li>
 						</ul>

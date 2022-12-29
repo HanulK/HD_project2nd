@@ -44,7 +44,7 @@ input {
 </head>
 <body>
 
-	<div tableindex="0" class="wrap win_os lg" data-v-3007c576>
+	<div tableindex="0" class="wrap win_os" data-v-3007c576>
 		<jsp:include page="includes/header.jsp"></jsp:include>
 		<div class="container login" data-v-464f7370="" data-v-3007c576="">
 			<div class="content lg" data-v-464f7370="">
@@ -58,28 +58,17 @@ input {
 						data-v-464f7370="">
 						<h3 class="input_title" data-v-1c44afeb="" data-v-464f7370="">아이디</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<input type="password" 
+							<input type="text" name="username"
 								autocomplete="off" class="input_txt" data-v-1c44afeb="">
-							<!-- <button type="button" class="btn input_delete"
-								style="display: none;" data-v-6e799857="" data-v-464f7370=""
-								data-v-1c44afeb="">
-								<svg xmlns="http://www.w3.org/2000/svg"
-									class="ico-delete-circle icon sprite-icons" data-v-464f7370="">
-								<use
-										href="../../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-circle"
-										xlink:href="../../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-delete-circle"
-										data-v-464f7370=""></use></svg>
-							</button> -->
 						</div>
-						<p class="input_error" data-v-1c44afeb="" data-v-464f7370="">이메일
-							주소를 정확히 입력해주세요.</p>
+						<p class="input_error" data-v-1c44afeb="" data-v-464f7370="">아이디를 정확히 입력해주세요.</p>
 					</div>
 					<div class="input_box has_button" data-v-1c44afeb=""
 						data-v-464f7370="">
 						<h3 class="input_title" data-v-1c44afeb="" data-v-464f7370="">비밀번호</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<input type="password" placeholder="" autocomplete="off"
-								class="input_txt" data-v-1c44afeb="">
+							<input class="input_txt" type="password" name="password" placeholder="" autocomplete="off"
+								data-v-1c44afeb="">
 						</div>
 						<p class="input_error" data-v-1c44afeb="" data-v-464f7370="">
 							영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)</p>
@@ -88,11 +77,11 @@ input {
 						<label> <input name="remember-me" type="checkbox">remember me</label>
 					</div>
 					<div class="login_btn_box" data-v-464f7370="">
-						<a disabled="disabled" href="#" class="btn full solid disabled"
+						<a disabled="disabled" href="/kabart/login" class="btn full solid disabled" id="btn-next"
 							data-v-6e799857="" data-v-464f7370=""> 로그인 </a>
 					</div>
 					<ul class="look_box" data-v-464f7370="">
-						<li class="look_list" data-v-464f7370=""><a href="/join"
+						<li class="look_list" data-v-464f7370=""><a href="/kabart/join"
 							class="look_link" data-v-464f7370="">회원 가입</a></li>
 						<li class="look_list" data-v-464f7370=""><a
 							href="/login/find_email" class="look_link" data-v-464f7370="">
@@ -103,6 +92,7 @@ input {
 					</ul>
 					<div class="social_login" data-v-464f7370=""></div>
 					</fieldset>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					</form>
 				</div>
 			</div>
@@ -114,3 +104,14 @@ input {
 	</div>
 </body>
 </html>
+
+<script>
+$(document).ready(function(){
+	$("#btn-next").on("click", function(e) {
+		alert("눌렸어?");
+		e.preventDefault();
+		$("form").submit();
+	});
+});
+
+</script>
