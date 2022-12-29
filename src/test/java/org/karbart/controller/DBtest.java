@@ -29,15 +29,15 @@ public class DBtest {
 	
 	@Test
 	public void test() {
-		String sql = "select * from members where name = ?";
+		String sql = "select * from products where prod_id = ?";
 		try {
 			Connection con = ds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "차민수");
+			pstmt.setInt(1, 45925);
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				System.out.println(rs.getString(2));
+				System.out.println(rs.getString(1));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
