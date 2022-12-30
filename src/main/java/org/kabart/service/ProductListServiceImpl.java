@@ -2,6 +2,7 @@ package org.kabart.service;
 
 import java.util.List;
 
+import org.kabart.domain.CategoryDTO;
 import org.kabart.domain.Criteria;
 import org.kabart.domain.ProductListVO;
 import org.kabart.mapper.ProductListMapper;
@@ -14,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
 public class ProductListServiceImpl implements ProductListService{
-	
+
 	private ProductListMapper mapper;
 
 	@Override
@@ -33,6 +34,11 @@ public class ProductListServiceImpl implements ProductListService{
 	public int getTotal(Criteria cri) {
 		log.info("get total count");
 		return mapper.getTotalCount(cri);
+	}
+	
+	@Override
+	public CategoryDTO getListPage(Criteria cri, String prod_category) {
+		return new CategoryDTO(mapper.getTotalCountCategory(prod_category), mapper.getCategoyProductList(prod_category, cri));
 	}
 	
 }

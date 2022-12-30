@@ -1,17 +1,13 @@
 package org.kabart.controller;
 
-import java.util.List;
-
+import org.kabart.domain.CategoryDTO;
 import org.kabart.domain.Criteria;
-import org.kabart.domain.ImgVO;
 import org.kabart.domain.PageDTO;
-import org.kabart.domain.ProductDetailVO;
-import org.kabart.domain.ProductListVO;
-import org.kabart.domain.ShopVO;
 import org.kabart.service.ProductDetailService;
 import org.kabart.service.ProductListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -49,18 +44,16 @@ public class ProductController {
 
 	}
 	
-	@GetMapping(value="/prod_list/{prod_category}")
+	@GetMapping(value="/prod_list/{prod_category}/{page}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public ResponseEntity<List<ProductListVO>> getProductCategory(@PathVariable("prod_category") String prod_category, Criteria cri, Model model) {
+	public ResponseEntity<CategoryDTO> getProductCategory(@PathVariable("prod_category") String prod_category, @PathVariable("page") int page) {
 		
-//		int total = productListService.getTotal(cri);
+		Criteria cri = new Criteria(page, 8);
 		
 		log.info("getProductCategory in Controller");
 		log.info("prod_category : " + prod_category);
 		
-//		model.addAttribute("productCategoryList", productListService.getProductList(prod_category));
-//		model.addAttribute("pageMaker", new PageDTO(cri, total));
-		return new ResponseEntity<List<ProductListVO>>(productListService.categoryProductList(prod_category, cri),HttpStatus.OK);
+		return new ResponseEntity<>(productListService.getListPage(cri, prod_category), HttpStatus.OK);
 	}
 	
 	@GetMapping( "/prod_detail")

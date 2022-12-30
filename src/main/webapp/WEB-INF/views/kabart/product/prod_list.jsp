@@ -27,22 +27,24 @@
 	});
 	function getCate(e) {
 		let title = "KABART " + e.innerText;
+    console.log(e.innerText);
 		let text = e.innerText.toLowerCase();
 		let realText = text.replace(" ","")
 		let main_title = $(".main_title_change")[0];
-		main_title.innerText = realText;
+		main_title.innerText = e.innerText;
 		console.log(realText);
 		$.ajax({
-			url : 'prod_list/' + realText,
+			url : 'prod_list/' + realText + "/" + 1,
 			contentType : "application/json",
 			success : function(result) {
 				var str= "";
-				console.log(result.length);
-				for(var i = 0; i<result.length;i++){
-					str += "<div class='product_card exhibition_product' data-v-19fda891='' data-v-81b68464=''><a href='/kabart/product/prod_detail?prod_id='"+result[i].prod_id+" class='item_inner' data-v-19fda891=''>"
-				    +"<div class='product' style='background-color: #f4f4f4;' data-v-09fbcf09=''><picture data-v-321fc3b6='' data-v-09fbcf09='' class='picture product_img'> <img alt='' src='"+result[i].img_srcs+"' style='overflow: auto;'></picture>"
-				    +"</div><div class='product_info_area' data-v-c90cb1da=''><div class='title' data-v-c90cb1da=''><p class='product_info_brand brand' data-v-878934fe='' data-v-c90cb1da=''>"+result[i].prod_name+"</p>"
-				      +"</div></div><div class='price price_area' data-v-ef71e3ac='' data-v-7dab533a=''><p class='amount' data-v-ef71e3ac=''>"+result[i].prod_price+"</p></div></a></div>";
+				console.log(result.list.length);
+				console.log(result);
+				for(var i = 0; i<result.list.length;i++){
+					str += "<div class='product_card exhibition_product' data-v-19fda891='' data-v-81b68464=''><a href='/kabart/product/prod_detail?prod_id='"+result.list[i].prod_id+" class='item_inner' data-v-19fda891=''>"
+				    +"<div class='product' style='background-color: #f4f4f4;' data-v-09fbcf09=''><picture data-v-321fc3b6='' data-v-09fbcf09='' class='picture product_img'> <img alt='' src='"+result.list[i].img_srcs+"' style='overflow: auto;'></picture>"
+				    +"</div><div class='product_info_area' data-v-c90cb1da=''><div class='title' data-v-c90cb1da=''><p class='product_info_brand brand' data-v-878934fe='' data-v-c90cb1da=''>"+result.list[i].prod_name+"</p>"
+				      +"</div></div><div class='price price_area' data-v-ef71e3ac='' data-v-7dab533a=''><p class='amount' data-v-ef71e3ac=''>"+result.list[i].prod_price+"</p></div></a></div>";
 				}
 				console.log(str);
 				$("#cha").html(str);
@@ -195,8 +197,7 @@
 											data-v-7dab533a="">
 											<p class="amount" data-v-ef71e3ac="">
 												<!---->
-												<fmt:formatNumber value="${products.prod_price}"
-													pattern="#,###" />
+												<c:out value="${products.prod_price}" />
 											</p>
 										</div>
 									</a>
