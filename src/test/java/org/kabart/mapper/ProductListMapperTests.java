@@ -25,24 +25,25 @@ public class ProductListMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private ProductListMapper mapper;
 	
-//	@Test
-//	public void testProductGetList() {
-//		mapper.getProductList().forEach(productList -> log.info(productList));
-//	}
-	
-//	@Test
-//	public void testGetProductCategory() {
-//		mapper.getProductList("BED").forEach(productCategory -> log.info(productCategory));
-//	}
-	
 	@Test
-	public void testPaging() {
+	public void testProductGetList() {
 		Criteria cri = new Criteria();
-		cri.setPageNum(3);
+		cri.setPageNum(1);
 		cri.setAmount(8);
-		List<ProductListVO> list = mapper.getListWithPaging(cri);
-		
-		list.forEach(productList -> log.info(productList));
+		String prod_category = "bed";
+		List<ProductListVO> list = mapper.getCategoyProductList(prod_category, cri);
+		list.forEach(category -> log.info(category));
 	}
+	
+	
+//	@Test
+//	public void testPaging() {
+//		Criteria cri = new Criteria();
+//		cri.setPageNum(3);
+//		cri.setAmount(8);
+//		List<ProductListVO> list = mapper.getListWithPaging(cri);
+//		
+//		list.forEach(productList -> log.info(productList));
+//	}
 		
 }
