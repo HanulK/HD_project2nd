@@ -1,5 +1,7 @@
 package org.kabart.controller;
 
+import java.util.List;
+
 import org.kabart.domain.ProductListVO;
 import org.kabart.service.ProductListService;
 import org.springframework.http.HttpStatus;
@@ -9,9 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -33,12 +34,15 @@ public class ProductController {
 	}
 	
 	
-	@GetMapping(value="/prod_list/{prod_category}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public void getProductCategory(@PathVariable("prod_category") String prod_category, Model model) {
+	@GetMapping(value="/prod_list/{prod_category}")
+	@ResponseBody
+	public ResponseEntity<List<ProductListVO>> getProductCategory(@PathVariable("prod_category") String prod_category, Model model	) {
+		
 		log.info("getProductCategory in Controller");
 		log.info("prod_category : " + prod_category);
 		
 		model.addAttribute("productList", productListService.getProductList(prod_category));
+		return new ResponseEntity<List<ProductListVO>>(productListService.getProductList(prod_category),HttpStatus.OK);
 	}
 	
 }

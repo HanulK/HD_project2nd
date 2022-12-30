@@ -10,7 +10,7 @@
 		from products p join imgs i on p.prod_id = i.prod_id
 		<where>
 			<if test="prod_category != null">
-				prod_category = #{prod_category}
+				lower(prod_category) = lower(#{prod_category})
 			</if>
 			<trim prefix="and">
 				img_tag = 'thumNail'

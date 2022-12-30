@@ -11,7 +11,8 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
+"file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 @Log4j
 
 public class ProductListMapperTests {
@@ -26,7 +27,7 @@ public class ProductListMapperTests {
 	
 	@Test
 	public void testGetProductCategory() {
-		mapper.getProductList("bed").forEach(productCategory -> log.info(productCategory));
+		mapper.getProductList("BED").forEach(productCategory -> log.info(productCategory));
 	}
 		
 }
