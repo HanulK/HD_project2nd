@@ -32,12 +32,12 @@ public class KabartController {
 		log.warn("###### Error : " + error);
 		log.warn("###### Logout : " + logout);
 		
-		// ���̵� ���� error : InternalAuthenticationServiceException
+		// 아이디 없음 error : InternalAuthenticationServiceException
 		
 		// handling account error
 		if(error != null) {
-			model.addAttribute("error", "LOGIN ERROR check your account!");
-			System.out.println("��й�ȣ Ʋ��");
+			model.addAttribute("error", "비밀번호를 정확히 입력해주세요.");
+			System.out.println("비밀번호 틀림");
 		}
 		
 		// handing logout
@@ -52,14 +52,8 @@ public class KabartController {
 	}
 	
 	@GetMapping("/logout")
-	public String logoutGet() {
+	public void logoutGet() {
 		log.warn("###### Logout");
-		return "redirect:/kabart/home";
-	}
-	
-	@PostMapping("/logout")
-	public void logoutPost() {
-		log.warn("###### POST kabart Logout");
 	}
 	
 	@GetMapping("/join")

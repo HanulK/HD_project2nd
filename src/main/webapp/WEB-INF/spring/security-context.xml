@@ -18,9 +18,9 @@
 		<security:access-denied-handler ref="customAccessDenied" />
 		<security:form-login login-page="/kabart/login" />
 
-		<security:logout logout-url="/kabart/logout" invalidate-session="true" />
+		<security:logout logout-url="/kabart/logout" invalidate-session="true" logout-success-url="/kabart/home"/>
 		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
-		<security:logout logout-url="/kabart/logout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" />
+		<security:logout logout-url="/kabart/logout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" logout-success-url="/kabart/home"/>
 	</security:http>
 		
 	<!-- authentication manager 사용 선언 -->

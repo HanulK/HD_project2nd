@@ -24,7 +24,7 @@
  	<!-- authMap declare and definition -->
  	<resultMap type="org.kabart.domain.AuthVO" id="authMap">
  		<result property="mem_id" column="username" />
- 		<result property="auth" column="auth" />
+ 		<result property="auth" column="authority" />
  	</resultMap>
  	
  	<!-- definition of user define function -->
