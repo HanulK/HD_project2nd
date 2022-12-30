@@ -16,7 +16,9 @@ public class MemberVO {
 	private char gender;
 	private String phone;
 	
+	
 	private boolean enabled;
+	
 	
 	private Date join_date;
 	private Date expire_date;

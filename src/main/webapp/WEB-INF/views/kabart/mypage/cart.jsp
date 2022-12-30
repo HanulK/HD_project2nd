@@ -78,7 +78,7 @@
 
 
                       <div data-v-4faab390="" class="product_detail">
-                        <div data-v-4faab390=""><a data-v-4faab390="" href="#" class="brand-text"> Apple </a><!---->
+                        <div data-v-4faab390=""><a data-v-4faab390="" href="#" class="brand-text">  </a><!---->
                         </div>
 
                         <p data-v-4faab390="" class="name">Apple AirPods Pro 2nd Gen (Korean Ver.)</p><span

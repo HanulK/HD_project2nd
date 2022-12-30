@@ -2,11 +2,15 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="org.kabart.mapper.CartsMapper" >
- 	<!-- definition of user define function -->
- 	<select id="getList" resultMap="org.kabart.domain.CartsVO">
-	<![CDATA[	
-		select * from Carts
-		]]>
- 	</select>
- </mapper>
+<mapper namespace="org.kabart.mapper.CartsMapper">
+	<!-- definition of user define function -->
+	
+	
+	<select id="getList" resultType="org.kabart.domain.CartsVO">
+	
+		select  prod_category, prod_name, prod_price, prod_width, prod_height, prod_depth,quantity 
+from carts c join products p on c.prod_id = p. prod_id join members m on m.mem_id= c.mem_id
+where c.mem_id = 'test'
+	
+	</select>
+</mapper>
