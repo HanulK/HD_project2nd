@@ -3,6 +3,7 @@ package org.kabart.controller;
 import java.util.List;
 
 import org.kabart.domain.ProductListVO;
+import org.kabart.service.ProductDetailService;
 import org.kabart.service.ProductListService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +26,7 @@ import lombok.extern.log4j.Log4j;
 public class ProductController {
 	
 	private ProductListService productListService;
+	private ProductDetailService productDetailService;
 	
 	@GetMapping("/prod_list")
 	public void productGetList(Model model) {
@@ -44,5 +46,6 @@ public class ProductController {
 		model.addAttribute("productList", productListService.getProductList(prod_category));
 		return new ResponseEntity<List<ProductListVO>>(productListService.getProductList(prod_category),HttpStatus.OK);
 	}
+	
 	
 }
