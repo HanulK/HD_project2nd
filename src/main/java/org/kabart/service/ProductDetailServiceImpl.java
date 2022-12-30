@@ -22,19 +22,17 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 	@Override
 	public ProductDetailVO getProdDetail(int prod_id) {
 		log.info("productDetail.........");
-		return mapper.getProdDetail(prod_id);
+		return mapper.get(prod_id);
 	}
 
-	@Override
-	public List<ImgVO> getImgs(int prod_id) {
-		log.info("productDetail Img.........");
-		return mapper.getImgs(prod_id);
-	}
+	/*
+	 * @Override public List<ImgVO> getImgs(int prod_id) {
+	 * log.info("productDetail Img........."); return mapper.getImgs(prod_id); }
+	 */
 
-	@Override
-	public List<ShopVO> getShop(int prod_id) {
-		log.info("productDetail Shop.........");
-		return mapper.getShop(prod_id);
-	}
+	/*
+	 * @Override public List<ShopVO> getShop(int prod_id) {
+	 * log.info("productDetail Shop........."); return mapper.getShop(prod_id); }
+	 */
   
   }

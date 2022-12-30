@@ -7,8 +7,6 @@ import org.kabart.domain.ProductDetailVO;
 import org.kabart.domain.Criteria;
 import org.kabart.domain.PageDTO;
 import org.kabart.domain.ProductListVO;
-import org.kabart.domain.SearchOrderVO;
-import org.kabart.domain.SearchVO;
 import org.kabart.domain.ShopVO;
 import org.kabart.service.ProductDetailService;
 import org.kabart.service.ProductListService;
@@ -17,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,16 +57,17 @@ public class ProductController {
 		log.info("prod_detail Controller");
 		log.info("prod_id : " + prod_id);
 		
-		List<ImgVO> imgs =  productDetailService.getImgs(prod_id);
-		ProductDetailVO detail =  productDetailService.getProdDetail(prod_id);
-		List<ShopVO> shops =  productDetailService.getShop(prod_id);
-		
-		detail.setImgs(imgs);
-		detail.setShops(shops);
-		
-		log.info(detail);
-		
 		model.addAttribute("detail", productDetailService.getProdDetail(prod_id));
+		
+		/* List<ImgVO> imgs = productDetailService.getImgs(prod_id); */
+		/* ProductDetailVO detail = productDetailService.getProdDetail(prod_id); */
+		
+		/*
+		 * detail.setImg_detail(imgs);
+		 * 
+		 * log.info(detail);
+		 */
+		
 	}
 	
 }

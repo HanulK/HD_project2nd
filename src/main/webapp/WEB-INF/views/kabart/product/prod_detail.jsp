@@ -20,6 +20,7 @@
 				<jsp:include page="../includes/header.jsp"></jsp:include>
 				<div data-v-cf786f84="" data-v-3007c576=""
 					class="container detail md">
+					<%-- <c:forEach items="${detail}" var="detail"> --%>
 					<div data-v-cf786f84="" class="content">
 						<h2 data-v-cf786f84="" class="blind">상품 상세</h2>
 						<div data-v-cf786f84="" class="column_bind">

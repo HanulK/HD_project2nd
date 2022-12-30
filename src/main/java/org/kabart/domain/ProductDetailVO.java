@@ -14,12 +14,13 @@ public class ProductDetailVO {
 	private int prod_id;
 	private String prod_name;
 	private int prod_price;
-	private String grade;
-	private int discount_rate;
 	private int prod_width;
 	private int prod_height;
 	private int prod_depth;
-	private int up_id;
+
+//	private int up_id;
+//	private String grade;
+//	private int discount_rate;
 
 	private List<ImgVO> imgs;
 	private List<ShopVO> shops;
