@@ -12,19 +12,23 @@
         <title>Product List</title>
         <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script>
-          $(document).ready(function () {
-            /* 		$(".shortcut_item").click(function() {
-          	
-             }); */
-
-          });
           function getCate(e) {
             let title = "KABART " + e.innerText;
-            /* $("#main_title_change").innerText = title; */
+            let text = e.innerText.toLowerCase();
             let main_title = $(".main_title_change")[0];
             main_title.innerText = title;
-            /* main_title = title; */
-            console.log(e.innerText)
+            console.log(text);
+            $.ajax({
+              url : 'prod_list/' + text,
+              contentType : "application/json",
+              success : function(result) {
+                  console.log(result);
+                  
+              },
+              error :function(e){
+            	  alert(e);
+              }
+            })
             
           } 
         </script>
@@ -129,7 +133,7 @@
                     data-v-4f87b95c="">
                     <div class="product_header_wrapper" data-v-6e9267c1="">
                       <h2 class="title main_title_change" data-v-6e9267c1="">KABART
-                        전체보기</h2>
+                        ALL</h2>
                       <p class="description" data-v-6e9267c1="">KABART 에서 자신 있게
                         선보이는 상품</p>
                     </div>
