@@ -107,15 +107,13 @@ input {
 <script>
 $(document).ready(function(){
 	var error = '${error_msg}';
-	alert(error);
-/* 	var error = '${error}';
 	checkID(error);
 	
 	function checkID(error) {
 		if(error !== '') {
 			alert(error);
 		}
-	} */
+	}
 	
 	
 	$("#btn-next").on("click", function(e) {

@@ -13,10 +13,7 @@
 	<!-- spring security 시작 지정 -->
 	<security:http auto-config="true" use-expressions="true">
 		<security:access-denied-handler ref="customAccessDenied" />
-		<security:form-login 
-			login-page="/kabart/login"
-			authentication-failure-handler-ref="loginFailureHandler" />
-		
+		<security:form-login  login-page="/kabart/login" authentication-failure-handler-ref="loginFailureHandler" />
 
 		<security:logout logout-url="/kabart/logout" invalidate-session="true" logout-success-url="/kabart/home"/>
 		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
