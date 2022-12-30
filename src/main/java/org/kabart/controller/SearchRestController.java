@@ -2,6 +2,7 @@ package org.kabart.controller;
 
 import java.util.List;
 
+import org.kabart.domain.SearchOrderUsedVO;
 import org.kabart.domain.SearchOrderVO;
 import org.kabart.domain.SearchVO;
 import org.kabart.service.SearchOrederService;
@@ -24,19 +25,32 @@ public class SearchRestController {
 	@Setter(onMethod_=@Autowired)
 	private SearchOrederService service;
 	
-	@GetMapping(value="/buying",consumes = MediaType.APPLICATION_JSON_VALUE, produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value="/newbuying",consumes = MediaType.APPLICATION_JSON_VALUE, produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<SearchOrderVO>> getBuyList(
 			@RequestParam("mem_id") String mem_id,
 			@RequestParam("start_date") String start_date,
-			@RequestParam("end_date") String end_date,
-			@RequestParam("is_used") Integer is_used){
-		SearchVO sVO = new SearchVO(mem_id,start_date,end_date,is_used);
+			@RequestParam("end_date") String end_date){
+		SearchVO sVO = new SearchVO(mem_id,start_date,end_date);
 		System.out.println(sVO);
-		List<SearchOrderVO> result = service.getSearchList(mem_id,start_date,end_date,is_used);
+		List<SearchOrderVO> result = service.getSearchNewList(mem_id,start_date,end_date);
 		System.out.println("/search/buying");
 		result.forEach(od -> System.out.println(od));
 		System.out.println(result);
 		return new ResponseEntity<List<SearchOrderVO>>(result,HttpStatus.OK);
+	}
+	
+	@GetMapping(value="/usedbuying",consumes = MediaType.APPLICATION_JSON_VALUE, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<List<SearchOrderUsedVO>> getUsedList(
+			@RequestParam("mem_id") String mem_id,
+			@RequestParam("start_date") String start_date,
+			@RequestParam("end_date") String end_date){
+		SearchVO sVO = new SearchVO(mem_id,start_date,end_date);
+		System.out.println(sVO);
+		List<SearchOrderUsedVO> result = service.getSearchUsedList(mem_id,start_date,end_date);
+		System.out.println("/search/buying");
+		result.forEach(od -> System.out.println(od));
+		System.out.println(result);
+		return new ResponseEntity<List<SearchOrderUsedVO>>(result,HttpStatus.OK);
 	}
 	
 }

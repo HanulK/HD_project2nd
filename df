@@ -1,0 +1,105 @@
+*   [33m736b17f[m[33m ([m[1;36mHEAD -> [m[1;32mrelease[m[33m, [m[1;31morigin/release[m[33m)[m Merge branch 'nam_user' into release
+[31m|[m[32m\[m  
+[31m|[m * [33m7afd3c0[m[33m ([m[1;31morigin/nam_user[m[33m, [m[1;32mnam_user[m[33m)[m 주문내역 ajax 처리 중
+* [32m|[m   [33mb1b2302[m Merge branch 'release' of https://github.com/HanulK/HD_project2nd into release
+[33m|[m[34m\[m [32m\[m  
+[33m|[m * [32m|[m [33mf1b380b[m[33m ([m[1;31morigin/kim_login[m[33m)[m change authType
+[33m|[m * [32m|[m [33mb88d4e1[m tmp save
+[33m|[m [32m|[m[32m/[m  
+* [32m|[m   [33ma48bfcc[m  충돌 수정
+[32m|[m[36m\[m [32m\[m  
+[32m|[m [36m|[m[32m/[m  
+[32m|[m[32m/[m[36m|[m   
+[32m|[m * [33m3e65ffc[m[33m ([m[1;31morigin/park_cart[m[33m)[m cartVO 수정, mapper 쿼리문 수정
+* [36m|[m   [33m4f3fb76[m 충돌 수정
+[1;31m|[m[1;32m\[m [36m\[m  
+[1;31m|[m * [36m\[m   [33m7fd8416[m Merge branch 'lee_product' into release
+[1;31m|[m [1;33m|[m[1;34m\[m [36m\[m  
+[1;31m|[m [1;33m|[m * [36m|[m [33mb24a6d9[m[33m ([m[1;31morigin/lee_product[m[33m)[m detail xml
+* [1;33m|[m [1;34m|[m [36m|[m   [33m953446c[m Merge branch 'cha_product' into release
+[1;33m|[m[1;36m\[m [1;33m\[m [1;34m\[m [36m\[m  
+[1;33m|[m [1;36m|[m[1;33m/[m [1;34m/[m [36m/[m  
+[1;33m|[m[1;33m/[m[1;36m|[m [1;34m|[m [36m|[m   
+[1;33m|[m * [1;34m|[m [36m|[m [33mb77e7be[m 상품 리스트 완료 및 카테로기 구현 중
+* [1;36m|[m [1;34m|[m [36m|[m   [33me5d203e[m kim: 충돌 수정
+[31m|[m[32m\[m [1;36m\[m [1;34m\[m [36m\[m  
+[31m|[m * [1;36m|[m [1;34m|[m [36m|[m [33me40c71e[m 회원 가입 기능 구현
+[31m|[m [1;34m|[m [1;36m|[m[1;34m/[m [36m/[m  
+[31m|[m [1;34m|[m[1;34m/[m[1;36m|[m [36m|[m   
+* [1;34m|[m [1;36m|[m [36m|[m   [33m11323b3[m 충돌 수정
+[33m|[m[34m\[m [1;34m\[m [1;36m\[m [36m\[m  
+[33m|[m * [1;34m|[m [1;36m|[m [36m|[m [33m74bdc04[m 주문내역 조회 기능 구현 중
+* [34m|[m [1;34m|[m [1;36m|[m [36m|[m   [33m21d953c[m Merge branch 'park_cart' into release
+[1;34m|[m[36m\[m [34m\[m [1;34m\[m [1;36m\[m [36m\[m  
+[1;34m|[m [36m|[m[1;34m_[m[34m|[m[1;34m/[m [1;36m/[m [36m/[m  
+[1;34m|[m[1;34m/[m[36m|[m [34m|[m [1;36m|[m [36m/[m   
+[1;34m|[m [36m|[m [34m|[m[36m_[m[1;36m|[m[36m/[m    
+[1;34m|[m [36m|[m[36m/[m[34m|[m [1;36m|[m     
+[1;34m|[m * [34m|[m [1;36m|[m [33m87ed542[m test and controller modify
+* [36m|[m [34m|[m [1;36m|[m   [33m9de60b5[m Merge branch 'lee_product' into release
+[1;36m|[m[1;32m\[m [36m\[m [34m\[m [1;36m\[m  
+[1;36m|[m [1;32m|[m[1;36m_[m[36m|[m[1;36m_[m[34m|[m[1;36m/[m  
+[1;36m|[m[1;36m/[m[1;32m|[m [36m|[m [34m|[m   
+[1;36m|[m * [36m|[m [34m|[m [33m19b1ee3[m product detail mapper 만들기만 함
+* [1;32m|[m [36m|[m [34m|[m   [33m8741ba8[m Merge branch 'cha_product' into release
+[36m|[m[1;34m\[m [1;32m\[m [36m\[m [34m\[m  
+[36m|[m [1;34m|[m[36m_[m[1;32m|[m[36m/[m [34m/[m  
+[36m|[m[36m/[m[1;34m|[m [1;32m|[m [34m|[m   
+[36m|[m * [1;32m|[m [34m|[m [33m49e440e[m 상품 VO 수정 및 테스트
+[36m|[m [1;32m|[m[1;32m/[m [34m/[m  
+* [1;32m|[m [34m|[m   [33m03cce96[m Merge branch 'kim_login' into release
+[1;32m|[m[1;36m\[m [1;32m\[m [34m\[m  
+[1;32m|[m [1;36m|[m[1;32m/[m [34m/[m  
+[1;32m|[m[1;32m/[m[1;36m|[m [34m|[m   
+[1;32m|[m * [34m|[m [33m6d4c2e9[m change css : input.type=text -> texttext & home -> login
+* [1;36m|[m [34m|[m [33m16a32f8[m Merge branch 'release' into cha_product
+[31m|[m[1;36m\[m[1;36m|[m [34m|[m 
+[31m|[m * [34m|[m   [33m1dd6038[m Merge branch 'park_cart' into release
+[31m|[m [34m|[m[34m\[m [34m\[m  
+[31m|[m [34m|[m [34m|[m[34m/[m  
+[31m|[m [34m|[m[34m/[m[34m|[m   
+[31m|[m [34m|[m * [33m0335083[m main modifiy
+[31m|[m [34m|[m * [33m23ae93d[m nameModify
+* [34m|[m [34m|[m [33mbb2e23d[m 상품VO, 이미지VO 생성
+[34m|[m[34m/[m [34m/[m  
+* [34m|[m   [33mf9046d4[m Merge branch 'release' into lee_product
+[35m|[m[36m\[m [34m\[m  
+[35m|[m * [34m|[m [33m189e895[m change: join.jsp
+* [36m|[m [34m|[m [33me9a9bc3[m home css
+[36m|[m[36m/[m [34m/[m  
+* [34m|[m   [33m55e593d[m 카트 충돌 수정
+[1;31m|[m[1;32m\[m [34m\[m  
+[1;31m|[m * [34m|[m [33m00811f1[m cart, orderdetail 푸터 추가
+* [1;32m|[m [34m|[m   [33mcd5f724[m CSS 고고
+[1;32m|[m[34m\[m [1;32m\[m [34m\[m  
+[1;32m|[m [34m|[m[1;32m/[m [34m/[m  
+[1;32m|[m[1;32m/[m[34m|[m [34m/[m   
+[1;32m|[m [34m|[m[34m/[m    
+[1;32m|[m *   [33m9fd4490[m Merge branch 'park_cart' into release
+[1;32m|[m [1;35m|[m[1;36m\[m  
+[1;32m|[m [1;35m|[m *   [33med30211[m 정훈 수정
+[1;32m|[m [1;35m|[m [31m|[m[32m\[m  
+[1;32m|[m [1;35m|[m * [32m|[m [33md1342f9[m tmp save
+[1;32m|[m * [32m|[m [32m|[m [33m1603ce0[m additional main front change
+[1;32m|[m * [32m|[m [32m|[m   [33mb5502c9[m Merge branch 'release' into lee_product ;wq the commit.
+[1;32m|[m [33m|[m[32m\[m [32m\[m [32m\[m  
+[1;32m|[m [33m|[m [32m|[m [32m|[m[32m/[m  
+[1;32m|[m [33m|[m [32m|[m[32m/[m[32m|[m   
+[1;32m|[m * [32m|[m [32m|[m [33mc759ca5[m 부중서 주문페이지
+* [34m|[m [32m|[m [32m|[m   [33m6201024[m Merge branch 'release' of https://github.com/HanulK/HD_project2nd into release
+[35m|[m[32m\[m [34m\[m [32m\[m [32m\[m  
+[35m|[m [32m|[m [34m|[m[32m/[m [32m/[m  
+[35m|[m [32m|[m[32m/[m[34m|[m [32m|[m   
+[35m|[m * [34m|[m [32m|[m [33m3fdc35d[m change pom.xml
+[35m|[m * [34m|[m [32m|[m [33me09ef45[m set oracle wallet driver
+[35m|[m [34m|[m[34m/[m [32m/[m  
+* [34m/[m [32m/[m [33m7f1f3ca[m CSS 적용
+[34m|[m[34m/[m [32m/[m  
+* [32m|[m [33m63a1a51[m CSS 경로 설정
+* [32m|[m [33m161155d[m  회원페이지
+[32m|[m[32m/[m  
+* [33m3fabc8e[m 1
+* [33m2ef23c7[m product front
+* [33m50172d5[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m add manual
+* [33mcebf480[m set initialize
+* [33m2222a0d[m Initial commit

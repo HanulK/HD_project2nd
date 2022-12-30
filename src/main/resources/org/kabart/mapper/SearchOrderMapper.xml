@@ -3,14 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kabart.mapper.SearchOrderMapper">
-	<select id="getSearchList"
+	<select id="getSearchNewList"
 		resultType="org.kabart.domain.SearchOrderVO">
  		<![CDATA[
  			SELECT * 
 			FROM order_total 
 			WHERE mem_id=#{user_id} 
 			and (#{start_date}<=order_date  and order_date <=#{end_date})
-			and prod_isused = #{is_used}
+			and prod_isused = 0
+ 		]]>
+	</select>
+
+	<select id="getSearchUsedList"
+		resultType="org.kabart.domain.SearchOrderUsedVO">
+ 		<![CDATA[
+ 			SELECT pd.prod_name, pd.prod_price, up.grade,gd.discount_rate,up.up_regdate,up.sale_date, im.img_srcs 
+			FROM products pd JOIN used_products up on pd.prod_id = up.prod_id JOIN grades gd on up.grade = gd.grade JOIN imgs im on pd.prod_id = im.prod_id
+			WHERE im.img_tag = 'thumNail' AND  
+			up.purchase_id = #{user_id} AND 
+			(#{start_date}<=sale_date  and sale_date <=#{end_date})
+ 			
  		]]>
 	</select>
 </mapper>

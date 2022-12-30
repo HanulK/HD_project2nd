@@ -11,5 +11,4 @@ public class SearchVO {
 	private String mem_id;
 	private String start_date;
 	private String end_date;
-	private int is_used;
 }

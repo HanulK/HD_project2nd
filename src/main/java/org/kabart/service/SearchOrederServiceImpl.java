@@ -3,6 +3,7 @@ package org.kabart.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.kabart.domain.SearchOrderUsedVO;
 import org.kabart.domain.SearchOrderVO;
 import org.kabart.mapper.SearchOrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,24 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class SearchOrederServiceImpl implements SearchOrederService {
 
+
+
 	@Setter(onMethod_ = { @Autowired })
 	private SearchOrderMapper sMapper;
 
 	@Override
-	public List<SearchOrderVO> getSearchList(String mem_id, String start_date, String end_date,int is_used) {
+	public List<SearchOrderVO> getSearchNewList(String mem_id, String start_date, String end_date) {
 		List<SearchOrderVO> list = new ArrayList<>();
-		list = sMapper.getSearchList(mem_id, start_date, end_date,is_used);
-		log.info("getSearchList");
+		list = sMapper.getSearchNewList(mem_id, start_date, end_date);
+		log.info("getSearchNewList");
+		return list;
+	}
+	
+	@Override
+	public List<SearchOrderUsedVO> getSearchUsedList(String mem_id, String start_date, String end_date) {
+		List<SearchOrderUsedVO> list = new ArrayList<>();
+		list = sMapper.getSearchUsedList(mem_id, start_date, end_date);
+		log.info("getSearchOldList");
 		return list;
 	}
 }
