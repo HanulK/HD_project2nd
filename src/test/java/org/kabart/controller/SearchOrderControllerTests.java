@@ -24,7 +24,8 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
-		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
+		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
+		"file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 @Log4j
 public class SearchOrderControllerTests {
 	@Setter(onMethod_ = {@Autowired})
@@ -38,11 +39,23 @@ public class SearchOrderControllerTests {
 	}
 	
 	@Test
-	public void testConvert() throws Exception {
+	public void testNew() throws Exception {
 		SearchVO vo =  new SearchVO();
 		String jsonStr = new Gson().toJson(vo);
 		log.info(jsonStr);
-		mockMvc.perform(MockMvcRequestBuilders.post("/kabart/mypage/buying")
+		mockMvc.perform(MockMvcRequestBuilders.get("/search/newbuying")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(jsonStr))
+				.andExpect(status().is(200));
+		
+	}
+	
+	@Test
+	public void testUsed() throws Exception {
+		SearchVO vo =  new SearchVO();
+		String jsonStr = new Gson().toJson(vo);
+		log.info(jsonStr);
+		mockMvc.perform(MockMvcRequestBuilders.get("/search/usedbuying")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(jsonStr))
 				.andExpect(status().is(200));

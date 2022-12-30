@@ -23,7 +23,14 @@ public class SearchOrderServiceTests {
 		String id = "test";
 		String sd = "22/12/01";
 		String ed = "22/12/30";
-		int isUsed = 0;
-		service.getSearchList(id, sd, ed, isUsed).forEach(item -> log.info(item));
+		service.getSearchNewList(id, sd, ed).forEach(item -> log.info(item));
+	}
+	
+	@Test
+	public void testSearchUsedOrder() {
+		String id = "anna";
+		String sd = "22/12/01";
+		String ed = "22/12/31";
+		service.getSearchUsedList(id, sd, ed).forEach(item -> log.info(item));
 	}
 }

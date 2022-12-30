@@ -31,5 +31,9 @@ public class MypageController {
 	public void buying() {
 
 	}
+	@GetMapping("/selling")
+	public void selling() {
+		
+	}
 
 }

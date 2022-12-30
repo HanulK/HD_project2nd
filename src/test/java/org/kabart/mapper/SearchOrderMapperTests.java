@@ -10,11 +10,12 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 /*
- * 남승현 작성 
+ * 남승현 작성 +
  * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+		"file:src/main/webapp/WEB-INF/spring/security-context.xml" })
 @Log4j
 public class SearchOrderMapperTests {
 
@@ -22,7 +23,12 @@ public class SearchOrderMapperTests {
 	private SearchOrderMapper mapper;
 
 	@Test
-	public void getSearchTest() {
-		mapper.getSearchList("test", "22/12/27", "22/12/30",0).forEach(orderItem -> log.info(orderItem));
+	public void getSearchNewTest() {
+		mapper.getSearchNewList("test", "22/12/27", "22/12/30").forEach(orderItem -> log.info(orderItem));
+	}
+
+	@Test
+	public void getSearcUsedTest() {
+		mapper.getSearchUsedList("anna", "22/12/27", "22/12/31").forEach(test -> log.info(test));
 	}
 }

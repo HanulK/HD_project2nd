@@ -17,10 +17,9 @@ public abstract class CartsServicelmple implements CartsService {
 		
 		log.info("carts-------------" + carts);
 		
-		mapper.insertSelectKey(carts);
+//		mapper.insertSelectKey(carts);
 	}
 
 	@Setter(onMethod_ = @Autowired)
 	private CartsMapper mapper;
-0
 }
