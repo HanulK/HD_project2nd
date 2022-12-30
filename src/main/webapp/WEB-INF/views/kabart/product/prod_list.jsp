@@ -9,28 +9,39 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <title>Product List</title>
         <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script>
-          function getCate(e) {
-            let title = "KABART " + e.innerText;
-            let text = e.innerText.toLowerCase();
-            let main_title = $(".main_title_change")[0];
-            main_title.innerText = title;
-            console.log(text);
-            $.ajax({
-              url : 'prod_list/' + text,
-              contentType : "application/json",
-              success : function(result) {
+        <script type="text/javascript">
+          $(document).ready(function() {
+            function getCate(e) {
+              let title = "KABART " + e.innerText;
+              let text = e.innerText.toLowerCase();
+              let main_title = $(".main_title_change")[0];
+              main_title.innerText = title;
+              console.log(text);
+              $.ajax({
+                url: 'prod_list/' + text,
+                contentType: "application/json",
+                success: function (result) {
                   console.log(result);
-                  
-              },
-              error :function(e){
-            	  alert(e);
-              }
-            })
-            
-          } 
+  
+                },
+                error: function (e) {
+                  alert(e);
+                }
+              })
+            }
+
+            let actionForm = $("#actionForm");
+            $(".paginate_button a").on("click", function(e) {
+              e.preventDefault();
+              console.log('click');
+              actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+              actionForm.submit();
+            });
+          });
+          
         </script>
       </head>
 
@@ -172,6 +183,27 @@
 
                   </div>
                 </div>
+                <div class='pull-right'>
+                  <ul class="pagination">
+                    <c:if test="${pageMaker.prev}">
+                      <li class="paginate_button previous"><a href="#">이전</a>
+                      </li>
+                    </c:if>
+
+                    <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                      <li class="paginate_button ${pageMaker.cri.pageNum == num ? "active" : ""}"><a href="${num}">${num}</a></li>
+                    </c:forEach>
+
+                    <c:if test="${pageMaker.next}">
+                      <li class="paginate_button" next><a href="${pageMaker.endPage + 1}">다음</a></li>
+                    </c:if>
+                  </ul>
+                </div>
+                <!-- 페이징 처리 끝-->
+                <form id='actionForm' action="/kabart/product/prod_list" method="get">
+                  <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+                  <input type="hidden" name="pageNum" value="${pageMaker.cri.amount}">
+                </form>
                 <!-- /상품 그루핑 -->
               </div>
               <%@include file="../includes/footer.jsp" %>
@@ -183,6 +215,7 @@
             </div>
           </div>
         </div>
+
       </body>
 
       </html>

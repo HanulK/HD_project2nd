@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.kabart.domain.ImgVO;
 import org.kabart.domain.ProductDetailVO;
+import org.kabart.domain.Criteria;
+import org.kabart.domain.PageDTO;
 import org.kabart.domain.ProductListVO;
 import org.kabart.domain.SearchOrderVO;
 import org.kabart.domain.SearchVO;
@@ -11,7 +13,6 @@ import org.kabart.domain.ShopVO;
 import org.kabart.service.ProductDetailService;
 import org.kabart.service.ProductListService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,9 +36,10 @@ public class ProductController {
 	private ProductDetailService productDetailService;
 	
 	@GetMapping("/prod_list")
-	public void productGetList(Model model) {
-		log.info("productGetList in Controller");
-		model.addAttribute("productList", productListService.getProductList());
+	public void productGetList(Criteria cri,Model model) {
+		log.info("productGetList in Controller" + cri);
+		model.addAttribute("productList", productListService.getProductList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 
 	}
 	
