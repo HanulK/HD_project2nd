@@ -20,7 +20,6 @@
 				<jsp:include page="../includes/header.jsp"></jsp:include>
 				<div data-v-cf786f84="" data-v-3007c576=""
 					class="container detail md">
-					<%-- <c:forEach items="${detail}" var="detail"> --%>
 					<div data-v-cf786f84="" class="content">
 						<h2 data-v-cf786f84="" class="blind">상품 상세</h2>
 						<div data-v-cf786f84="" class="column_bind">
@@ -34,7 +33,7 @@
 												data-v-e4caeaf8="">
 												<picture data-v-321fc3b6="" data-v-09fbcf09=""
 													class="picture product_img"> <img alt=""
-													src="/resources/img/prod1.png" style="overflow: auto;"></picture>
+													src="${detail.imgs[0].img_srcs}" style="overflow: auto;"></picture>
 											</div>
 										</div>
 									</div>
@@ -46,8 +45,9 @@
 										<div data-v-6e865099="" data-v-3900a1a2=""
 											class="detail_main_title md">
 											<div data-v-6e865099="" class="main_title_box">
-												<p data-v-6e865099="" class="title">Arc'teryx Heliad 15
-													Backpack Black</p>
+												<p data-v-6e865099="" class="title">
+													<c:out value="${detail.prod_name}" />
+												</p>
 											</div>
 										</div>
 										<div data-v-3900a1a2="" class="product_figure_wrap md">
@@ -58,7 +58,8 @@
 												</div>
 												<div data-v-679b6792="" class="price">
 													<div data-v-679b6792="" class="amount">
-														<span data-v-679b6792="" class="num">167,000</span><span
+														<span data-v-679b6792="" class="num"><fmt:formatNumber
+																value="${detail.prod_price}" pattern="#,###" /></span><span
 															data-v-679b6792="" class="won">원</span>
 													</div>
 												</div>
@@ -69,7 +70,8 @@
 												class="division_btn_box md">
 												<div data-v-f40660fa="" data-v-77d20f30=""
 													class="detail_stock_btn">
-													<a data-v-6e799857="" data-v-f40660fa="" href="http://localhost/kabart/mypage/cart"
+													<a data-v-6e799857="" data-v-f40660fa=""
+														href="http://localhost/kabart/mypage/cart"
 														class="btn solid full buy1 large"> 장바구니 </a>
 												</div>
 												<div data-v-f40660fa="" data-v-77d20f30=""
@@ -92,20 +94,29 @@
 											class="detail_product_wrap">
 											<dl data-v-b809b0a6="" class="detail_product">
 												<div data-v-b809b0a6="" class="detail_box model_num">
-													<dt data-v-b809b0a6="" class="product_title">모델번호</dt>
-													<dd data-v-b809b0a6="" class="product_info">28412</dd>
+													<dt data-v-b809b0a6="" class="product_title">너비</dt>
+													<dd data-v-b809b0a6="" class="product_info">
+														<c:out value="${detail.prod_width}" />
+													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
-													<dt data-v-b809b0a6="" class="product_title">출시일</dt>
-													<dd data-v-b809b0a6="" class="product_info">-</dd>
+													<dt data-v-b809b0a6="" class="product_title">높이</dt>
+													<dd data-v-b809b0a6="" class="product_info">
+														<c:out value="${detail.prod_height}" />
+													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
-													<dt data-v-b809b0a6="" class="product_title">컬러</dt>
-													<dd data-v-b809b0a6="" class="product_info">BLACK</dd>
+													<dt data-v-b809b0a6="" class="product_title">깊이</dt>
+													<dd data-v-b809b0a6="" class="product_info">
+														<c:out value="${detail.prod_depth}" />
+													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
 													<dt data-v-b809b0a6="" class="product_title">발매가</dt>
-													<dd data-v-b809b0a6="" class="product_info">99,000원</dd>
+													<dd data-v-b809b0a6="" class="product_info">
+														<fmt:formatNumber value="${detail.prod_price}"
+															pattern="#,###" />
+													</dd>
 												</div>
 											</dl>
 										</div>
@@ -137,62 +148,7 @@
 
 									<!---->
 									<!---->
-									<div data-v-07cd4e36="" data-v-3900a1a2=""
-										class="floating_price md">
-										<div data-v-07cd4e36="" class="inner_box">
-											<div data-v-07cd4e36="" class="product_area">
-												<div data-v-07cd4e36="" class="product_thumb"
-													style="background-color: rgb(244, 244, 244);">
-													<picture data-v-321fc3b6="" data-v-07cd4e36=""
-														class="picture product_img">
-													<source data-v-321fc3b6="" type="image/webp"
-														srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNCAg/MDAxNjY3NTQ5NTMxOTEy.JlB57X8V4dW-USJKQP4WGs11affhWlpfRFMazM5M1vog.DCmVYaFAczaJUCsi88dwE8-Dc6cK-zlahxxq8ORpvLgg.JPEG/a_f99dc88c86324cf3a5021abe50473e2f.jpg?type=m_webp">
-													<source data-v-321fc3b6=""
-														srcset="https://kream-phinf.pstatic.net/MjAyMjExMDRfNCAg/MDAxNjY3NTQ5NTMxOTEy.JlB57X8V4dW-USJKQP4WGs11affhWlpfRFMazM5M1vog.DCmVYaFAczaJUCsi88dwE8-Dc6cK-zlahxxq8ORpvLgg.JPEG/a_f99dc88c86324cf3a5021abe50473e2f.jpg?type=m">
-													<img data-v-321fc3b6="" alt="상품 이미지"
-														src="https://kream-phinf.pstatic.net/MjAyMjExMDRfNCAg/MDAxNjY3NTQ5NTMxOTEy.JlB57X8V4dW-USJKQP4WGs11affhWlpfRFMazM5M1vog.DCmVYaFAczaJUCsi88dwE8-Dc6cK-zlahxxq8ORpvLgg.JPEG/a_f99dc88c86324cf3a5021abe50473e2f.jpg?type=m"
-														loading="lazy" class="image"></picture>
-												</div>
-												<div data-v-07cd4e36="" class="product_info">
-													<p data-v-07cd4e36="" class="name">Arc'teryx Heliad 15
-														Backpack Black</p>
-													<p data-v-07cd4e36="" class="translated_name">아크테릭스
-														헬리아드 15 백팩 블랙</p>
-													<!---->
-												</div>
-											</div>
-											<div data-v-07cd4e36="" class="btn_area">
-												<a data-v-6e799857="" data-v-2d0ab5c1="" data-v-07cd4e36=""
-													href="#"
-													class="btn outlinegrey large btn_wish btn_wish_simple"
-													aria-label="관심상품"><svg data-v-2d0ab5c1=""
-														xmlns="http://www.w3.org/2000/svg"
-														class="icon sprite-icons ico-wish-off">
-														<use data-v-2d0ab5c1=""
-															href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-off"
-															xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-wish-off"></use></svg>
-													<!----> <span data-v-2d0ab5c1="" class="wish_count_num">715</span></a>
-												<div data-v-23bbaa82="" data-v-07cd4e36=""
-													class="division_btn_box md">
-													<a data-v-23bbaa82="" href="#" class="btn_division buy"><strong
-														data-v-23bbaa82="" class="title">구매</strong>
-														<div data-v-23bbaa82="" class="price">
-															<span data-v-23bbaa82="" class="amount"><em
-																data-v-23bbaa82="" class="num">169,000</em><span
-																data-v-23bbaa82="" class="won">원</span></span><span
-																data-v-23bbaa82="" class="desc">즉시 구매가</span>
-														</div></a><a data-v-23bbaa82="" href="#" class="btn_division sell"><strong
-														data-v-23bbaa82="" class="title">판매</strong>
-														<div data-v-23bbaa82="" class="price">
-															<span data-v-23bbaa82="" class="amount"><em
-																data-v-23bbaa82="" class="num">140,000</em><span
-																data-v-23bbaa82="" class="won">원</span></span><span
-																data-v-23bbaa82="" class="desc">즉시 판매가</span>
-														</div></a>
-												</div>
-											</div>
-										</div>
-									</div>
+
 								</div>
 								<!---->
 								<!---->
@@ -222,7 +178,7 @@
 											style="background-color: rgb(242, 242, 242);">
 											<picture data-v-321fc3b6="" data-v-09fbcf09=""
 												class="picture product_img"> <img alt=""
-												src="/resources/img/prod1.png" style="overflow: auto;"></picture>
+												src="${detail.imgs[0].img_srcs}" style="overflow: auto;"></picture>
 											<!---->
 											<!---->
 											<em data-v-09fbcf09="" class="stocked_status_mark"> A </em>
@@ -233,242 +189,18 @@
 									<div data-v-4b0fda50="" class="product_info">
 										<div data-v-4b0fda50="" class="product_detail">
 											<p data-v-4b0fda50="" class="size">275</p>
-											<p data-v-4b0fda50="" class="name">Nike Dunk Low Retro
-												Black</p>
-
-										</div>
-										<div data-v-4b0fda50="" class="product_price">
-											<!---->
-											<p data-v-4b0fda50="" class="discount_price">
-												<!---->
-												<span data-v-4b0fda50="" class="amount">210,000</span> <span
-													data-v-4b0fda50="" class="won">원</span>
+											<p data-v-4b0fda50="" class="name">
+												<c:out value="${detail.prod_name}" />
 											</p>
-											<p data-v-4b0fda50="" class="price_desc">구매가</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<!-- /.stock item 단일-->
-							<!-- stock item 단일-->
-							<div data-v-4b0fda50="" data-v-3e0ff210=""
-								class="stock_list_item">
-								<a data-v-4b0fda50="" href="/products/stock/1258804"
-									class="item_inner">
-									<div data-v-4b0fda50="" class="product_thumb">
-										<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
-											style="background-color: rgb(242, 242, 242);">
-											<picture data-v-321fc3b6="" data-v-09fbcf09=""
-												class="picture product_img"> <img alt=""
-												src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-											<!---->
-											<!---->
-											<em data-v-09fbcf09="" class="stocked_status_mark"> B </em>
-											<!---->
-										</div>
-										<!---->
-									</div>
-									<div data-v-4b0fda50="" class="product_info">
-										<div data-v-4b0fda50="" class="product_detail">
-											<p data-v-4b0fda50="" class="size">275</p>
-											<p data-v-4b0fda50="" class="name">Nike Dunk Low Retro
-												Black</p>
-
 										</div>
 										<div data-v-4b0fda50="" class="product_price">
-											<!---->
-											<p data-v-4b0fda50="" class="discount_price">
-												<!---->
-												<span data-v-4b0fda50="" class="amount">210,000</span> <span
-													data-v-4b0fda50="" class="won">원</span>
+											<p data-v-4b0fda50="" class="origin_price">
+												<fmt:formatNumber value="${detail.prod_price}"
+													pattern="#,###" />
 											</p>
-											<p data-v-4b0fda50="" class="price_desc">구매가</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<!-- /.stock item 단일-->
-							<!-- stock item 단일-->
-							<div data-v-4b0fda50="" data-v-3e0ff210=""
-								class="stock_list_item">
-								<a data-v-4b0fda50="" href="/products/stock/1258804"
-									class="item_inner">
-									<div data-v-4b0fda50="" class="product_thumb">
-										<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
-											style="background-color: rgb(242, 242, 242);">
-											<picture data-v-321fc3b6="" data-v-09fbcf09=""
-												class="picture product_img"> <img alt=""
-												src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-											<!---->
-											<!---->
-											<em data-v-09fbcf09="" class="stocked_status_mark"> A </em>
-											<!---->
-										</div>
-										<!---->
-									</div>
-									<div data-v-4b0fda50="" class="product_info">
-										<div data-v-4b0fda50="" class="product_detail">
-											<p data-v-4b0fda50="" class="size">275</p>
-											<p data-v-4b0fda50="" class="name">Nike Dunk Low Retro
-												Black</p>
-										</div>
-										<div data-v-4b0fda50="" class="product_price">
-											<p data-v-4b0fda50="" class="origin_price">399,000</p>
 											<p data-v-4b0fda50="" class="discount_price">
 												<em data-v-4b0fda50="" class="discount_per">18%</em><span
 													data-v-4b0fda50="" class="amount">330,000</span><span
-													data-v-4b0fda50="" class="won">원</span>
-											</p>
-											<p data-v-4b0fda50="" class="price_desc">구매가</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<!-- /.stock item 단일-->
-							<!-- stock item 단일-->
-							<div data-v-4b0fda50="" data-v-3e0ff210=""
-								class="stock_list_item">
-								<a data-v-4b0fda50="" href="/products/stock/1258804"
-									class="item_inner">
-									<div data-v-4b0fda50="" class="product_thumb">
-										<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
-											style="background-color: rgb(242, 242, 242);">
-											<picture data-v-321fc3b6="" data-v-09fbcf09=""
-												class="picture product_img"> <img alt=""
-												src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-											<!---->
-											<!---->
-											<em data-v-09fbcf09="" class="stocked_status_mark"> A </em>
-											<!---->
-										</div>
-										<!---->
-									</div>
-									<div data-v-4b0fda50="" class="product_info">
-										<div data-v-4b0fda50="" class="product_detail">
-											<p data-v-4b0fda50="" class="size">275</p>
-											<p data-v-4b0fda50="" class="name">Nike Dunk Low Retro
-												Black</p>
-
-										</div>
-										<div data-v-4b0fda50="" class="product_price">
-											<!---->
-											<p data-v-4b0fda50="" class="discount_price">
-												<!---->
-												<span data-v-4b0fda50="" class="amount">210,000</span> <span
-													data-v-4b0fda50="" class="won">원</span>
-											</p>
-											<p data-v-4b0fda50="" class="price_desc">구매가</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<!-- /.stock item 단일-->
-							<!-- stock item 단일-->
-							<div data-v-4b0fda50="" data-v-3e0ff210=""
-								class="stock_list_item">
-								<a data-v-4b0fda50="" href="/products/stock/1258804"
-									class="item_inner">
-									<div data-v-4b0fda50="" class="product_thumb">
-										<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
-											style="background-color: rgb(242, 242, 242);">
-											<picture data-v-321fc3b6="" data-v-09fbcf09=""
-												class="picture product_img"> <img alt=""
-												src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-											<!---->
-											<!---->
-											<em data-v-09fbcf09="" class="stocked_status_mark"> B </em>
-											<!---->
-										</div>
-										<!---->
-									</div>
-									<div data-v-4b0fda50="" class="product_info">
-										<div data-v-4b0fda50="" class="product_detail">
-											<p data-v-4b0fda50="" class="size">275</p>
-											<p data-v-4b0fda50="" class="name">Nike Dunk Low Retro
-												Black</p>
-
-										</div>
-										<div data-v-4b0fda50="" class="product_price">
-											<!---->
-											<p data-v-4b0fda50="" class="discount_price">
-												<!---->
-												<span data-v-4b0fda50="" class="amount">210,000</span> <span
-													data-v-4b0fda50="" class="won">원</span>
-											</p>
-											<p data-v-4b0fda50="" class="price_desc">구매가</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<!-- /.stock item 단일-->
-							<!-- stock item 단일-->
-							<div data-v-4b0fda50="" data-v-3e0ff210=""
-								class="stock_list_item">
-								<a data-v-4b0fda50="" href="/products/stock/1258804"
-									class="item_inner">
-									<div data-v-4b0fda50="" class="product_thumb">
-										<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
-											style="background-color: rgb(242, 242, 242);">
-											<picture data-v-321fc3b6="" data-v-09fbcf09=""
-												class="picture product_img"> <img alt=""
-												src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-											<!---->
-											<!---->
-											<em data-v-09fbcf09="" class="stocked_status_mark"> C </em>
-											<!---->
-										</div>
-										<!---->
-									</div>
-									<div data-v-4b0fda50="" class="product_info">
-										<div data-v-4b0fda50="" class="product_detail">
-											<p data-v-4b0fda50="" class="size">275</p>
-											<p data-v-4b0fda50="" class="name">Nike Dunk Low Retro
-												Black</p>
-
-										</div>
-										<div data-v-4b0fda50="" class="product_price">
-											<!---->
-											<p data-v-4b0fda50="" class="discount_price">
-												<!---->
-												<span data-v-4b0fda50="" class="amount">210,000</span> <span
-													data-v-4b0fda50="" class="won">원</span>
-											</p>
-											<p data-v-4b0fda50="" class="price_desc">구매가</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<!-- /.stock item 단일-->
-							<!-- stock item 단일-->
-							<div data-v-4b0fda50="" data-v-3e0ff210=""
-								class="stock_list_item">
-								<a data-v-4b0fda50="" href="/products/stock/1258804"
-									class="item_inner">
-									<div data-v-4b0fda50="" class="product_thumb">
-										<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
-											style="background-color: rgb(242, 242, 242);">
-											<picture data-v-321fc3b6="" data-v-09fbcf09=""
-												class="picture product_img"> <img alt=""
-												src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-											<!---->
-											<!---->
-											<em data-v-09fbcf09="" class="stocked_status_mark"> B </em>
-											<!---->
-										</div>
-										<!---->
-									</div>
-									<div data-v-4b0fda50="" class="product_info">
-										<div data-v-4b0fda50="" class="product_detail">
-											<p data-v-4b0fda50="" class="size">275</p>
-											<p data-v-4b0fda50="" class="name">Nike Dunk Low Retro
-												Black</p>
-
-										</div>
-										<div data-v-4b0fda50="" class="product_price">
-											<!---->
-											<p data-v-4b0fda50="" class="discount_price">
-												<!---->
-												<span data-v-4b0fda50="" class="amount">210,000</span> <span
 													data-v-4b0fda50="" class="won">원</span>
 											</p>
 											<p data-v-4b0fda50="" class="price_desc">구매가</p>
@@ -508,16 +240,8 @@
 														width="760">
 														<tbody>
 															<tr>
-																<td style="text-align: center;"><img
-																	src="http://patte.speedgabia.com/top/top.jpg"></td>
-															</tr>
-															<tr>
-																<td style="text-align: center;"><img
-																	src="http://patte.speedgabia.com/main/beauty-rose-bed.jpg"></td>
-															</tr>
-															<tr>
-																<td style="text-align: center;"><img
-																	src="http://patte.speedgabia.com/top/CS_70000.jpg"></td>
+																<td style="text-align: center;">
+																		<img src="${detail.imgs[5].img_srcs}" ></td>
 															</tr>
 														</tbody>
 													</table>

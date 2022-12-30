@@ -17,31 +17,34 @@ import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration // Test for Controller
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
-	"file:src/main/webapp/WEB-INF/spring/security-context.xml",
-	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+		"file:src/main/webapp/WEB-INF/spring/security-context.xml",
+		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml" })
 @Log4j
 
 public class ProductControllerTests {
-	
+
 	@Setter(onMethod_ = @Autowired)
 	private WebApplicationContext ctx;
-	
+
 	private MockMvc mockMvc;
-	
+
 	@Before
 	public void setUp() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
-	
+
 	@Test
 	public void testProductGetList() throws Exception {
-		log.info(
-				mockMvc.perform(MockMvcRequestBuilders.get("/kabart/product/prod_list")
-				.param("pageNum", "2")
-				.param("amount", "50"))
-				.andReturn()
-				.getModelAndView()
-				.getModelMap());
+		log.info(mockMvc.perform(
+				MockMvcRequestBuilders.get("/kabart/product/prod_list").param("pageNum", "2").param("amount", "50"))
+				.andReturn().getModelAndView().getModelMap());
 	}
+
+	@Test
+	public void testProductDetail() throws Exception {
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/product/prod_detail").param("prod_id", "146812"))
+				.andReturn().getModelAndView().getModelMap());
+	}
+
 }
