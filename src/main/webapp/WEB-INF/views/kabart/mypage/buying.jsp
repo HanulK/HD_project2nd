@@ -111,51 +111,13 @@
 									</div>
 								</div>
 							</div>
-
-							<div data-v-50c8b1d2="" class="purchase_list finished bid">
-								<div data-v-50c8b1d2="">
-									<div data-v-2f988574="" data-v-50c8b1d2="">
-										<div data-v-2f988574="" class="purchase_list_display_item"
-											style="background-color: rgb(255, 255, 255);">
-											<div data-v-2f988574="" class="purchase_list_product">
-												<div data-v-2f988574="" class="list_item_img_wrap">
-													<img data-v-2f988574="" alt="product_image"
-														src="../resources/css/a_2d1ea4b3145d46b5b93ae6c77bc144c8.png"
-														class="list_item_img"
-														style="background-color: rgb(235, 240, 245);">
-													<!---->
-												</div>
-												<div data-v-2f988574="" class="list_item_title_wrap">
-													<p data-v-2f988574="" class="list_item_title">(W) Nike
-														Dunk Low Light Smoke Grey</p>
-													<p data-v-2f988574="" class="list_item_description">235</p>
-												</div>
-											</div>
-											<div data-v-2f988574="" class="list_item_status">
-												<div data-v-2f988574=""
-													class="list_item_column column_secondary">
-													<p data-v-5f36ea36="" data-v-2f988574=""
-														class="secondary_title display_paragraph"
-														style="color: rgba(34, 34, 34, 0.5);">2022/11/01</p>
-												</div>
-												<div data-v-2f988574="" class="list_item_column column_last">
-													<p data-v-5f36ea36="" data-v-2f988574=""
-														class="last_title display_paragraph"
-														style="color: rgb(34, 34, 34);">배송완료</p>
-													<p data-v-5f36ea36="" data-v-2f988574=""
-														class="last_description display_paragraph"></p>
-												</div>
-											</div>
-										</div>
-										<!---->
-									</div>
+							<div class="purchase_list bidding bid" data-v-0d2f7c95="">
+								<div data-v-e2f6767a='' data-v-0d2f7c95='' class='empty_area'>
+									<p data-v-e2f6767a='' class='desc'>거래 내역이 없습니다.</p>
 								</div>
-								<!---->
-								<!---->
-								<!---->
-								<!---->
-								<!---->
+
 							</div>
+
 							<div data-v-4857d0b8="" class="pagination">
 								<div data-v-4857d0b8="" class="pagination_box first last">
 									<div data-v-4857d0b8="" class="prev_btn_box">
@@ -241,20 +203,15 @@
                                }else {
                                   var row ="";
                                for (var i = 0; i < result.length; i++) {
-                                  let price = [i].pro_price.toLocaleString('ko-KR');
-                                  var d_val = obj[i].cancle_date;
+                                  let price = result[i].prod_price.toLocaleString('ko-KR');
+                                  console.log(result[i].imgs_src);
+                                  var d_val = result[i].cancle_date;
                                   var status = '주문취소';
-                                  if(!obj[i].cancle_date){
-                                 	 d_val = obj[i].order_date;
-                                 	 status = '주문완료'
+                                  if(!result[i].cancle_date){
+                                 	 status = '주문완료';
                                   }
-                                  row += `<div class='row'><div class='inner'><div class='cell-pd-wrap'><div class='inner-row'><div class='info-row'><div class='cell-pd'><div class='item-img' godno='GM0122062466107'>
-                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'> <img src='${contextPath}/\${obj[i].img_url}'></a></div><div class='item-info'><div class='item-brand'>
-                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'>\${obj[i].brand_name} </a></div><div class=item-name clear-ellipsis>
-                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'>\${obj[i].pro_name}</a></div><div class='item-opt'>
-                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'><span>\${obj[i].product_option}</span> <span>수량 : \${obj[i].order_amount} </a></div><div class="item-btn"></div>
-                                                 </div></div><div class='cell-price'><div class='cell-inner'><div class='price'><span><span class='num'>\${price}</span> 원</span>
-                                                   </div></div></div><div class='cell-status'><div class='cell-inner'><div class='status'>\${txt}<br> <span class='txt-cmt pcolor'>\${obj[i].order_date}</br>\${status}</span></div></div></div></div></div></div></div></div></div></div>`;
+                                  row+="<div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
+                                      +"<div data-v-2f988574='' class='purchase_list_product'><div data-v-2f988574='' class='list_item_img_wrap'><img data-v-2f988574='' alt='product_image' src='"+result[i].imgs_src+"' class='list_item_img' style='background-color: rgb(235, 240, 245);'>"
                                }
                                }
                                $(".purchase_list").html(row);

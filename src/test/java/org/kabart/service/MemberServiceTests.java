@@ -38,9 +38,9 @@ public class MemberServiceTests {
 	@Test
 	public void testSignUpMember() {
 		MemberVO mem = new MemberVO();
-		mem.setMem_id("anna");
-		mem.setMem_pw("anna");
-		mem.setMem_name("김한울");
+		mem.setMem_id("banana");
+		mem.setMem_pw("banana");
+		mem.setMem_name("미니언즈");
 		mem.setAddress("수정로 119번길 6-1");
 		mem.setAddress_detail("802");
 		mem.setBirth("19940427");

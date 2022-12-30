@@ -22,4 +22,5 @@ public class SearchOrderVO {
 	private Date order_date;
 	private String prod_name;
 	private int prod_price;
+	private String imgs_src;
 }
