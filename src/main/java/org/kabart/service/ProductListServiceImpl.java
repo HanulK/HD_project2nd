@@ -2,6 +2,7 @@ package org.kabart.service;
 
 import java.util.List;
 
+import org.kabart.domain.Criteria;
 import org.kabart.domain.ProductListVO;
 import org.kabart.mapper.ProductListMapper;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,9 @@ public class ProductListServiceImpl implements ProductListService{
 	private ProductListMapper mapper;
 
 	@Override
-	public List<ProductListVO> getProductList() {
-		log.info("productGetList.........");
-		return mapper.getProductList();
+	public List<ProductListVO> getProductList(Criteria cri) {
+		log.info("productGetList......... With criteria" + cri);
+		return mapper.getListWithPaging(cri);
 	}
 
 	@Override
