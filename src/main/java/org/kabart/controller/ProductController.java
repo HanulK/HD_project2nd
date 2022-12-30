@@ -2,10 +2,10 @@ package org.kabart.controller;
 
 import java.util.List;
 
-import org.kabart.domain.ImgVO;
-import org.kabart.domain.ProductDetailVO;
 import org.kabart.domain.Criteria;
+import org.kabart.domain.ImgVO;
 import org.kabart.domain.PageDTO;
+import org.kabart.domain.ProductDetailVO;
 import org.kabart.domain.ProductListVO;
 import org.kabart.domain.ShopVO;
 import org.kabart.service.ProductDetailService;
@@ -34,21 +34,29 @@ public class ProductController {
 	
 	@GetMapping("/prod_list")
 	public void productGetList(Criteria cri,Model model) {
+		
+		int total = productListService.getTotal(cri);
+		
+		log.info("total : " + total);
 		log.info("productGetList in Controller" + cri);
+		
 		model.addAttribute("productList", productListService.getProductList(cri));
-		model.addAttribute("pageMaker", new PageDTO(cri, 123));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 
 	}
 	
 	@GetMapping(value="/prod_list/{prod_category}")
 	@ResponseBody
-	public ResponseEntity<List<ProductListVO>> getProductCategory(@PathVariable("prod_category") String prod_category, Model model	) {
+	public ResponseEntity<List<ProductListVO>> getProductCategory(@PathVariable("prod_category") String prod_category, Criteria cri, Model model) {
+		
+//		int total = productListService.getTotal(cri);
 		
 		log.info("getProductCategory in Controller");
 		log.info("prod_category : " + prod_category);
 		
-		model.addAttribute("productList", productListService.getProductList(prod_category));
-		return new ResponseEntity<List<ProductListVO>>(productListService.getProductList(prod_category),HttpStatus.OK);
+//		model.addAttribute("productCategoryList", productListService.getProductList(prod_category));
+//		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		return new ResponseEntity<List<ProductListVO>>(productListService.categoryProductList(prod_category, cri),HttpStatus.OK);
 	}
 	
 	@GetMapping( "/prod_detail")

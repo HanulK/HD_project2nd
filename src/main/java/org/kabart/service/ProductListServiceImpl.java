@@ -24,9 +24,15 @@ public class ProductListServiceImpl implements ProductListService{
 	}
 
 	@Override
-	public List<ProductListVO> getProductList(String prod_category) {
+	public List<ProductListVO> categoryProductList(String prod_category, Criteria cri) {
 		log.info("productGetList" + prod_category);
-		return mapper.getProductList(prod_category);
+		return mapper.getCategoyProductList(prod_category, cri);
+	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+		log.info("get total count");
+		return mapper.getTotalCount(cri);
 	}
 	
 }

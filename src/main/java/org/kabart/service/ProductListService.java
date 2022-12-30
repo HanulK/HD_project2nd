@@ -10,5 +10,7 @@ public interface ProductListService {
 
 	public List<ProductListVO> getProductList(Criteria cri);
 	
-	public List<ProductListVO> getProductList(@Param("prod_category") String prod_category);
+	public List<ProductListVO> categoryProductList(@Param("prod_category") String prod_category, @Param("cri") Criteria cri);
+	
+	public int getTotal(Criteria cri);
 }
