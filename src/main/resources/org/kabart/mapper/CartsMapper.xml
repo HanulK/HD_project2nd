@@ -5,12 +5,7 @@
 <mapper namespace="org.kabart.mapper.CartsMapper">
 	<!-- definition of user define function -->
 
-
-
-
-
 	<insert id="insert">
-
 		insert into carts(mem_id, prod_id, quantity) values(#{mem_id},#{prod_id},#{quantity})
 		
 		<!-- 장바구니 버튼 누르면 실행되는 쿼리문 -->
