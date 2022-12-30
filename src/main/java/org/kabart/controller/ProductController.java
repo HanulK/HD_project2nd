@@ -10,6 +10,7 @@ import org.kabart.domain.ProductListVO;
 import org.kabart.domain.ShopVO;
 import org.kabart.service.ProductDetailService;
 import org.kabart.service.ProductListService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,15 +22,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/kabart/product/")
 @Log4j
-@AllArgsConstructor
 public class ProductController {
 	
+	@Setter (onMethod_ = {@Autowired})
 	private ProductListService productListService;
+	
+	@Setter (onMethod_ = {@Autowired})
 	private ProductDetailService productDetailService;
 	
 	@GetMapping("/prod_list")

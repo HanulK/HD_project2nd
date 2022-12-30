@@ -2,6 +2,7 @@ package org.kabart.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.kabart.domain.CartsVO;
 
 
@@ -11,8 +12,10 @@ public interface CartsMapper {
 	
 	public List<CartsVO> getList();
 	
+	//public List<CartsVO> insertcart();
 	
-	public List<CartsVO> g11111();
+	//public void insertSelectKey(CartsVO carts);
 	
-//	public CartsVO read(String mem_id,int quentity, int prod_id);
+	public void insert(@Param("mem_id") String mem_id ,@Param("prod_id") int prod_id,@Param("quantity") int quantity);
+
 }

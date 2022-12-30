@@ -1,10 +1,15 @@
 package org.kabart.service;
 
-import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
+import java.security.PublicKey;
+import java.util.List;
+
 import org.kabart.domain.CartsVO;
 
 public interface CartsService {
 
-	public void cartsadd(CartsVO carts);
-	 
+//	public void cartsadd(CartsVO carts);
+	
+	public void getList(CartsVO carts);
+	
+
 }

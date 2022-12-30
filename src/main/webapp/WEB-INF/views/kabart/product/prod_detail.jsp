@@ -70,10 +70,13 @@
 												class="division_btn_box md">
 												<div data-v-f40660fa="" data-v-77d20f30=""
 													class="detail_stock_btn">
-													<a data-v-6e799857="" data-v-f40660fa=""
-														href="http://localhost/kabart/mypage/cart"
-														class="btn solid full buy1 large"> 장바구니 </a>
+
+													<a id="cart" data-v-6e799857="" data-v-f40660fa=""
+														href="/kabart/mypage/cart"
+														class="btn solid full buy1 large"> </a>
+
 												</div>
+
 												<div data-v-f40660fa="" data-v-77d20f30=""
 													class="detail_stock_btn">
 													<a data-v-6e799857="" data-v-f40660fa="" href="#"
@@ -258,5 +261,35 @@
 				<%@include file="../includes/footer.jsp"%>
 			</div>
 		</div>
+		<script>
+		$("#cart").on("click", function(e) {
+		e.preventDeaulf(); //원래 이번트 막음 / 원하는 이벤트 
+
+		  // ajax 
+		  $.ajax({
+		      type : "POST",            // HTTP method type(GET, POST) 형식
+		      url : "/kabart/mypage/cart",      // 컨트롤러에서 대기중인 URL 주소
+		      data : params,            // Json 형식의 데이터
+		      success : function(respone){ // 비동기통신-> 성공 success콜백// 'respone'는 응답받은 데이터
+			
+		    	  alert("장바구니에 등록되었습니다");
+		       		location.href ="/kabart/mypage/cart"
+		      },
+		      
+		      
+		      error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+		          alert("장바구니 등록에 실패하였습니다")
+		      }
+		  });
+		
+		
+		});
+	 } else {
+         alert("취소되었습니다");
+       }
+	 }
+	
+		
+		</script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package org.kabart.controller;
 
+import java.security.PublicKey;
 import java.util.List;
 
 import org.kabart.domain.SearchOrderVO;
@@ -19,17 +20,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+
 @Controller
 @RequestMapping("/kabart/mypage")
 @Log4j
 public class MypageController {
 
-	@GetMapping("/cart")
+	
+	@ResponseBody
+	@PostMapping("/cart")
 	public void carts(){
+		
 	}
+	
+	
+	
 	@GetMapping("/buying")
 	public void buying() {
 
 	}
-
+	
+	
+	
 }

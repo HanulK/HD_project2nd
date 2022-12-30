@@ -12,15 +12,13 @@ import lombok.extern.log4j.Log4j;
 @Service
 public abstract class CartsServicelmple implements CartsService {
 
-	@Override
-	public void cartsadd(CartsVO carts) {
-		
+	
+	public void cart(CartsVO carts) {
 		log.info("carts-------------" + carts);
-		
-//		mapper.insertSelectKey(carts);
 	}
 
 	@Setter(onMethod_ = @Autowired)
 	private CartsMapper mapper;
+
 
 }
