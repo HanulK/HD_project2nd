@@ -9,7 +9,7 @@
 		<result property="prod_id" column="prod_id" />
 		<result property="prod_name" column="prod_name" />
 		<result property="prod_price" column="prod_price" />
-		<result property="prod_grade" column="prod_grade" />
+		<result property="grade" column="grade" />
 		<result property="discount_rate" column="discount_rate" />
 		<result property="prod_width" column="prod_width" />
 		<result property="prod_height" column="prod_height" />
@@ -23,14 +23,17 @@
 		<result property="img_srcs" column="img_srcs" />
 		<result property="img_tag" column="img_tag" />
 	</resultMap>
-	<select id="getImgs" resultType="imgMap">
-		select distinct img_srcs, img_tag from v_products where prod_id = #{prod_id}
-	</select>
-
-	<select id="getShop" resultType="ShopMap"> select
-		distinct shop_name, shop_address from v_products where prod_id = #{prod_id}
+	
+	<resultMap type="org.kabart.domain.ShopVO" id="shopMap">
+		<result property="shop_name" column="shop_name" />
+	</resultMap>
+	
+	<select id="get" resultMap="getProdDetail">
+	select a.prod_id, a.prod_name, a.prod_price, a.grade, a.discount_rate
+		,a.prod_width, a.prod_height, a.prod_depth, a.up_id, b.img_srcs, b.img_tag, b.shop_name
+		from v_used_products a inner join v_products b on a.prod_id = b.prod_id
+		where a.prod_id = #{prod_id}
 	</select> -->
-		
 		
 	<select id="getProdDetail" resultType="org.kabart.domain.ProductDetailVO">
 		select prod_id, prod_name, prod_price, grade, discount_rate

@@ -7,24 +7,34 @@ import org.kabart.domain.ImgVO;
 import org.kabart.domain.ProductDetailVO;
 import org.kabart.domain.ShopVO;
 import org.kabart.mapper.ProductDetailMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-
+@AllArgsConstructor
 @Service
 public class ProductDetailServiceImpl implements ProductDetailService {
 
-	@Setter(onMethod_ = @Autowired)
 	private ProductDetailMapper mapper;
 
-	@Transactional
-	@Override public void getProdDetail(ProductDetailVO prod_id) {
-		/* mapper.getProdDetail(); */
+	@Override
+	public ProductDetailVO getProdDetail(int prod_id) {
+		log.info("productDetail.........");
+		return mapper.getProdDetail(prod_id);
+	}
+
+	@Override
+	public List<ImgVO> getImgs(int prod_id) {
+		log.info("productDetail Img.........");
+		return mapper.getImgs(prod_id);
+	}
+
+	@Override
+	public List<ShopVO> getShop(int prod_id) {
+		log.info("productDetail Shop.........");
+		return mapper.getShop(prod_id);
 	}
   
   }
