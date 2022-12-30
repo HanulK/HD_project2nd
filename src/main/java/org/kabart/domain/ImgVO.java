@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class ImgVO {
-	private String imgSrcs;
-	private String imgTag;
-	private int prodID;
+	private String img_srcs;
+	private String img_tag;
 }
