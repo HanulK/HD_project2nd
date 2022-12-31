@@ -10,10 +10,9 @@ import org.kabart.domain.ShopVO;
 public interface ProductDetailService {
 
 	public ProductDetailVO getProdDetail(int prod_id);
-	
-	/* public List<ImgVO> getImgs(@Param("prod_id") int prod_id); */
-	
+
+	public List<ImgVO> getdetailImgs(@Param("prod_id") int prod_id);
+
 	/* public List<ShopVO> getShop(@Param("prod_id") int prod_id); */
-	
 
 }

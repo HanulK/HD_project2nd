@@ -17,12 +17,9 @@ public class ProductDetailVO {
 	private int prod_width;
 	private int prod_height;
 	private int prod_depth;
+	private String img_srcs;
 
-//	private int up_id;
-//	private String grade;
-//	private int discount_rate;
-
-	private List<ImgVO> imgs;
 	private List<ShopVO> shops;
+	private List<ImgVO> Imgs;
 
 }

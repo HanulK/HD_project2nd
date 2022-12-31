@@ -29,57 +29,58 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/kabart/product/")
 @Log4j
 public class ProductController {
-	
-	@Setter (onMethod_ = {@Autowired})
+
+	@Setter(onMethod_ = { @Autowired })
 	private ProductListService productListService;
-	
-	@Setter (onMethod_ = {@Autowired})
+
+	@Setter(onMethod_ = { @Autowired })
 	private ProductDetailService productDetailService;
-	
+
 	@GetMapping("/prod_list")
-	public void productGetList(Criteria cri,Model model) {
-		
+	public void productGetList(Criteria cri, Model model) {
+
 		int total = productListService.getTotal(cri);
-		
+
 		log.info("total : " + total);
 		log.info("productGetList in Controller" + cri);
-		
+
 		model.addAttribute("productList", productListService.getProductList(cri));
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 
 	}
-	
-	@GetMapping(value="/prod_list/{prod_category}")
+
+	@GetMapping(value = "/prod_list/{prod_category}")
 	@ResponseBody
-	public ResponseEntity<List<ProductListVO>> getProductCategory(@PathVariable("prod_category") String prod_category, Criteria cri, Model model) {
-		
+	public ResponseEntity<List<ProductListVO>> getProductCategory(@PathVariable("prod_category") String prod_category,
+			Criteria cri, Model model) {
+
 //		int total = productListService.getTotal(cri);
-		
+
 		log.info("getProductCategory in Controller");
 		log.info("prod_category : " + prod_category);
-		
+
 //		model.addAttribute("productCategoryList", productListService.getProductList(prod_category));
 //		model.addAttribute("pageMaker", new PageDTO(cri, total));
-		return new ResponseEntity<List<ProductListVO>>(productListService.categoryProductList(prod_category, cri),HttpStatus.OK);
+		return new ResponseEntity<List<ProductListVO>>(productListService.categoryProductList(prod_category, cri),
+				HttpStatus.OK);
 	}
-	
-	@GetMapping( "/prod_detail")
+
+	@GetMapping("/prod_detail")
 	public void prod_detail(@RequestParam("prod_id") int prod_id, Model model) {
 
 		log.info("prod_detail Controller");
 		log.info("prod_id : " + prod_id);
+
 		
-		model.addAttribute("detail", productDetailService.getProdDetail(prod_id));
+
+		List<ImgVO> imgs = productDetailService.getdetailImgs(prod_id);
+		ProductDetailVO detail = productDetailService.getProdDetail(prod_id);
+
 		
-		/* List<ImgVO> imgs = productDetailService.getImgs(prod_id); */
-		/* ProductDetailVO detail = productDetailService.getProdDetail(prod_id); */
+		detail.setImgs(imgs);
 		
-		/*
-		 * detail.setImg_detail(imgs);
-		 * 
-		 * log.info(detail);
-		 */
-		
+		log.info(detail);
+		model.addAttribute("detail", detail);
 	}
-	
+
 }

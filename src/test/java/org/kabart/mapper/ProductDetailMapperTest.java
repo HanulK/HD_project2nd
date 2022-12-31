@@ -28,8 +28,12 @@ public class ProductDetailMapperTest {
 		ProductDetailVO detail = mapper.get(146812);
 		log.info(detail);
 		
-		detail.getImgs().forEach(detailImg -> log.info(detailImg));
 		detail.getShops().forEach(shop -> log.info(shop));
+	}
+	
+	@Test
+	public void testGetImgs() {
+		mapper.getdetailImgs(146812).forEach(imgs -> log.info(imgs));
 	}
 
 	/*
@@ -39,8 +43,6 @@ public class ProductDetailMapperTest {
 	 * }
 	 */
 
-	/*
-	 * @Test public void testGetImgs() { mapper.getImgs(146812).forEach(imgs ->
-	 * log.info(imgs)); }
-	 */
+	
+	 
 }

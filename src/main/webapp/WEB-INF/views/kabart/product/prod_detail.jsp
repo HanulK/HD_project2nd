@@ -33,7 +33,7 @@
 												data-v-e4caeaf8="">
 												<picture data-v-321fc3b6="" data-v-09fbcf09=""
 													class="picture product_img"> <img alt=""
-													src="${detail.imgs[0].img_srcs}" style="overflow: auto;"></picture>
+													src="${detail.img_srcs}" style="overflow: auto;"></picture>
 											</div>
 										</div>
 									</div>
@@ -181,7 +181,7 @@
 											style="background-color: rgb(242, 242, 242);">
 											<picture data-v-321fc3b6="" data-v-09fbcf09=""
 												class="picture product_img"> <img alt=""
-												src="${detail.imgs[0].img_srcs}" style="overflow: auto;"></picture>
+												src="${detail.img_srcs}" style="overflow: auto;"></picture>
 											<!---->
 											<!---->
 											<em data-v-09fbcf09="" class="stocked_status_mark"> A </em>
@@ -242,10 +242,12 @@
 													<table border="0" cellpadding="0" cellspacing="0"
 														width="760">
 														<tbody>
+															<c:forEach items="${detail.imgs}" var="dtimg">
 															<tr>
 																<td style="text-align: center;">
-																		<img src="${detail.imgs[5].img_srcs}" ></td>
+																		<img src="${dtimg.img_srcs}" ></td>
 															</tr>
+															</c:forEach>
 														</tbody>
 													</table>
 												</center>
