@@ -46,7 +46,7 @@ public class ProductController {
 	
 	@GetMapping(value="/prod_list/{prod_category}/{page}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public ResponseEntity<CategoryDTO> getProductCategory(@PathVariable("prod_category") String prod_category, @PathVariable("page") int page) {
+	public ResponseEntity<CategoryDTO> getProductCategory(@PathVariable("page") int page, @PathVariable("prod_category") String prod_category) {
 		
 		Criteria cri = new Criteria(page, 8);
 		
