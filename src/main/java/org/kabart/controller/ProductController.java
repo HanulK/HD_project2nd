@@ -7,11 +7,13 @@ import org.kabart.domain.ImgVO;
 import org.kabart.domain.PageDTO;
 import org.kabart.domain.ProductDetailVO;
 import org.kabart.domain.ProductListVO;
-import org.kabart.domain.ShopVO;
+import org.kabart.domain.ReviewVO;
 import org.kabart.service.ProductDetailService;
 import org.kabart.service.ProductListService;
+import org.kabart.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +37,9 @@ public class ProductController {
 
 	@Setter(onMethod_ = { @Autowired })
 	private ProductDetailService productDetailService;
+	
+	@Setter(onMethod_ = { @Autowired })
+	private ReviewService reviewservice;
 
 	@GetMapping("/prod_list")
 	public void productGetList(Criteria cri, Model model) {
@@ -71,16 +76,27 @@ public class ProductController {
 		log.info("prod_detail Controller");
 		log.info("prod_id : " + prod_id);
 
-		
-
 		List<ImgVO> imgs = productDetailService.getdetailImgs(prod_id);
-		ProductDetailVO detail = productDetailService.getProdDetail(prod_id);
-
+		List<ReviewVO> rvs = reviewservice.get(prod_id);
 		
+		ProductDetailVO detail = productDetailService.getProdDetail(prod_id);
+	
 		detail.setImgs(imgs);
 		
 		log.info(detail);
+		log.info(rvs);
+		
 		model.addAttribute("detail", detail);
+		model.addAttribute("review", rvs);
 	}
+	
+	/* 댓글 조회 작업 테스트
+	 * @GetMapping(value = "/prod_detail", produces = {
+	 * MediaType.APPLICATION_JSON_VALUE }) public ResponseEntity<List<ReviewVO>>
+	 * getList(@RequestParam("prod_id") int prod_id) {
+	 * 
+	 * log.info("getList........."); return new
+	 * ResponseEntity<>(reviewservice.get(prod_id), HttpStatus.OK); }
+	 */
 
 }
