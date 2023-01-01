@@ -21,5 +21,6 @@ public class ProductDetailVO {
 
 	private List<ShopVO> shops;
 	private List<ImgVO> Imgs;
+	private List<UsedProductVO> useds;
 
 }

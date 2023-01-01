@@ -6,6 +6,7 @@ import java.util.List;
 import org.kabart.domain.ImgVO;
 import org.kabart.domain.ProductDetailVO;
 import org.kabart.domain.ShopVO;
+import org.kabart.domain.UsedProductVO;
 import org.kabart.mapper.ProductDetailMapper;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,12 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 	public List<ImgVO> getdetailImgs(int prod_id) {
 		log.info("productDetail Img........."); 
 		return mapper.getdetailImgs(prod_id);
+	}
+
+	@Override
+	public List<UsedProductVO> getused(int prod_id) {
+		log.info("productDetail usedproduct........."); 
+		return mapper.getused(prod_id);
 	}
 
 	/*

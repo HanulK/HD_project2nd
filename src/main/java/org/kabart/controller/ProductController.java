@@ -8,6 +8,7 @@ import org.kabart.domain.PageDTO;
 import org.kabart.domain.ProductDetailVO;
 import org.kabart.domain.ProductListVO;
 import org.kabart.domain.ReviewVO;
+import org.kabart.domain.UsedProductVO;
 import org.kabart.service.ProductDetailService;
 import org.kabart.service.ProductListService;
 import org.kabart.service.ReviewService;
@@ -77,11 +78,13 @@ public class ProductController {
 		log.info("prod_id : " + prod_id);
 
 		List<ImgVO> imgs = productDetailService.getdetailImgs(prod_id);
+		List<UsedProductVO> useds = productDetailService.getused(prod_id);
 		List<ReviewVO> rvs = reviewservice.get(prod_id);
 		
 		ProductDetailVO detail = productDetailService.getProdDetail(prod_id);
 	
 		detail.setImgs(imgs);
+		detail.setUseds(useds);
 		
 		log.info(detail);
 		log.info(rvs);

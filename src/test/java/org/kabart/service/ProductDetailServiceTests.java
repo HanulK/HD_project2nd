@@ -32,6 +32,13 @@ public class ProductDetailServiceTests {
 		service.getdetailImgs(prod_id).forEach(d -> log.info(d));
 	}
 	
+	@Test
+	public void productDetailuseds() {
+		log.info("product detail used test");
+		int prod_id = 146812;
+		service.getused(prod_id).forEach(d -> log.info(d));
+	}
+	
 	/*
 	 * @Test public void shopname() { log.info("product detail shop test"); int
 	 * prod_id = 146812; service.getShop(prod_id).forEach(d -> log.info(d)); }

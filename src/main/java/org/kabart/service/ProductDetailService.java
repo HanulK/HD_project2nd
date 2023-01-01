@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.kabart.domain.ImgVO;
 import org.kabart.domain.ProductDetailVO;
 import org.kabart.domain.ShopVO;
+import org.kabart.domain.UsedProductVO;
 
 public interface ProductDetailService {
 
@@ -13,6 +14,6 @@ public interface ProductDetailService {
 
 	public List<ImgVO> getdetailImgs(@Param("prod_id") int prod_id);
 
-	/* public List<ShopVO> getShop(@Param("prod_id") int prod_id); */
+	public List<UsedProductVO> getused(@Param("prod_id") int prod_id);
 
 }

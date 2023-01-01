@@ -35,6 +35,11 @@ public class ProductDetailMapperTest {
 	public void testGetImgs() {
 		mapper.getdetailImgs(146812).forEach(imgs -> log.info(imgs));
 	}
+	
+	@Test
+	public void testGetUsed() {
+		mapper.getused(146812).forEach(use -> log.info(use));
+	}
 
 	/*
 	 * @Test public void testGetShop() { mapper.getShop(146812).forEach(shop ->
