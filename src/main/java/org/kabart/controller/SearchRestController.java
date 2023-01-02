@@ -38,12 +38,20 @@ public class SearchRestController {
 			@RequestParam("start_date") String start_date,
 			@RequestParam("end_date") String end_date){
 		SearchVO sVO = new SearchVO(mem_id,start_date,end_date);
-		System.out.println(sVO);
 		List<SearchOrderUsedVO> result = service.getSearchUsedList(mem_id,start_date,end_date);
-		System.out.println("/search/buying");
-		result.forEach(od -> System.out.println(od));
-		System.out.println(result);
 		return new ResponseEntity<List<SearchOrderUsedVO>>(result,HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/selling",consumes = {MediaType.APPLICATION_JSON_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<List<SearchOrderUsedVO>> getSellingList(@RequestBody SearchVO sVO){
+		log.info("/selling"+sVO);
+		return new ResponseEntity<List<SearchOrderUsedVO>>(service.getSellingList(sVO.getMem_id(),sVO.getStart_date(),sVO.getEnd_date()),HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/selled",consumes = {MediaType.APPLICATION_JSON_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<List<SearchOrderUsedVO>> getSelledList(@RequestBody SearchVO sVO){
+		log.info("/selled"+sVO);
+		return new ResponseEntity<List<SearchOrderUsedVO>>(service.getSelledList(sVO.getMem_id(),sVO.getStart_date(),sVO.getEnd_date()),HttpStatus.OK);
 	}
 	
 }

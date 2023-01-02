@@ -17,4 +17,19 @@ public interface SearchOrderMapper {
 			@Param("start_date")String start_date, 
 			@Param("end_date")String end_date);
 	
+	public List<SearchOrderUsedVO> getSellingList(
+			@Param("user_id")String user_id, 
+			@Param("start_date")String start_date, 
+			@Param("end_date")String end_date
+			);
+	public List<SearchOrderUsedVO> getSelledList(
+			@Param("user_id")String user_id, 
+			@Param("start_date")String start_date, 
+			@Param("end_date")String end_date
+			);
+	
+	
+			
+	
+	
 }

@@ -33,4 +33,20 @@ public class SearchOrderServiceTests {
 		String ed = "22/12/31";
 		service.getSearchUsedList(id, sd, ed).forEach(item -> log.info(item));
 	}
+	
+	@Test
+	public void testSeacrhSelling() {
+		String id = "anna";
+		String sd = "22/12/01";
+		String ed = "23/01/30";
+		service.getSellingList(id, sd, ed).forEach(item -> log.info(item));
+	}
+	
+	@Test
+	public void testSelledList() {
+		String id = "test";
+		String sd = "22/12/01";
+		String ed = "22/12/31";
+		service.getSelledList(id, sd, ed).forEach(item -> log.info(item));
+	}
 }

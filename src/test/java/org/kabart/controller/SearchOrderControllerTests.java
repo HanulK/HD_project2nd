@@ -61,4 +61,25 @@ public class SearchOrderControllerTests {
 				.andExpect(status().is(200));
 		
 	}
+	
+	@Test
+	public void testSelling() throws Exception{
+		SearchVO vo = new SearchVO("anna","22/12/01","23/01/30");
+		String jsonStr = new Gson().toJson(vo);
+		log.info(jsonStr);
+		mockMvc.perform(MockMvcRequestBuilders.post("/search/selling")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(jsonStr))
+				.andExpect(status().is(200));
+	}
+	@Test
+	public void testSelled() throws Exception{
+		SearchVO vo = new SearchVO("test","22/12/01","23/01/30");
+		String jsonStr = new Gson().toJson(vo);
+		log.info(jsonStr);
+		mockMvc.perform(MockMvcRequestBuilders.post("/search/selled")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(jsonStr))
+		.andExpect(status().is(200));
+	}
 }
