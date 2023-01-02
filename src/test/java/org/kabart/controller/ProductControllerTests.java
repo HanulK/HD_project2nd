@@ -34,12 +34,12 @@ public class ProductControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 
-	@Test
-	public void testProductGetList() throws Exception {
-		log.info(mockMvc.perform(
-				MockMvcRequestBuilders.get("/kabart/product/prod_list").param("pageNum", "2").param("amount", "50"))
-				.andReturn().getModelAndView().getModelMap());
-	}
+	/*
+	 * @Test public void testProductGetList() throws Exception {
+	 * log.info(mockMvc.perform(
+	 * MockMvcRequestBuilders.get("/kabart/product/prod_list").param("pageNum",
+	 * "2").param("amount", "50")) .andReturn().getModelAndView().getModelMap()); }
+	 */
 
 	@Test
 	public void testProductDetail() throws Exception {

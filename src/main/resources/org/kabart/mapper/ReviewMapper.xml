@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kabart.mapper.ReviewMapper">
+
+	<insert id="insert">
+		
+		insert into reviews (order_id, mem_id, prod_id, rv_text, rv_date)
+		values (#{order_id}, #{mem_id}, #{prod_id}, #{rv_text}, #{rv_date})
+		
+	</insert>
+	
+	<select id="get" resultType="org.kabart.domain.ReviewVO">
+		select * from reviews where prod_id = ${prod_id}
+	</select>
+	
+</mapper>

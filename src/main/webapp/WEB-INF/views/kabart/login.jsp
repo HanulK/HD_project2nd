@@ -61,7 +61,6 @@ input {
 							<input type="text" name="username"
 								autocomplete="off" class="input_txt" data-v-1c44afeb="">
 						</div>
-						<p class="input_error" data-v-1c44afeb="" data-v-464f7370="">아이디를 정확히 입력해주세요.</p>
 					</div>
 					<div class="input_box has_button" data-v-1c44afeb=""
 						data-v-464f7370="">
@@ -107,6 +106,18 @@ input {
 
 <script>
 $(document).ready(function(){
+	var error = '${error_msg}';
+	alert(error);
+/* 	var error = '${error}';
+	checkID(error);
+	
+	function checkID(error) {
+		if(error !== '') {
+			alert(error);
+		}
+	} */
+	
+	
 	$("#btn-next").on("click", function(e) {
 		e.preventDefault();
 		$("form").submit();

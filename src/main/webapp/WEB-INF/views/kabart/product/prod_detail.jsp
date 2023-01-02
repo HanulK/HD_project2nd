@@ -10,7 +10,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Product detail</title>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="/resources/js/review.js" defer></script>
 </head>
+
 <body>
 	<div id="__nuxt">
 		<!---->
@@ -33,7 +36,7 @@
 												data-v-e4caeaf8="">
 												<picture data-v-321fc3b6="" data-v-09fbcf09=""
 													class="picture product_img"> <img alt=""
-													src="${detail.imgs[0].img_srcs}" style="overflow: auto;"></picture>
+													src="${detail.img_srcs}" style="overflow: auto;"></picture>
 											</div>
 										</div>
 									</div>
@@ -67,13 +70,13 @@
 										</div>
 										<div data-v-3900a1a2="" class="btn_wrap">
 											<div data-v-23bbaa82="" data-v-3900a1a2=""
-												class="division_btn_box md">
+												class="division_btn_box1 md">
 												<div data-v-f40660fa="" data-v-77d20f30=""
 													class="detail_stock_btn">
 
 													<a id="cart" data-v-6e799857="" data-v-f40660fa=""
 														href="/kabart/mypage/cart"
-														class="btn solid full buy1 large"> </a>
+														class="btn solid full buy1 large"> 장바구니 </a>
 
 												</div>
 
@@ -164,104 +167,107 @@
 					</div>
 					<!--content-->
 					<!-- 부중서 -->
-					<div data-v-3e0ff210="" data-v-cf786f84="" class="other_stock">
-						<div data-v-3e0ff210="" class="title">
-							<h3 data-v-3e0ff210="" class="title_text">
-								<em>Kabart</em> 추천 상품
-							</h3>
-						</div>
-						<div data-v-3e0ff210="" class="other_stock_list">
-							<!-- stock item 단일-->
-							<div data-v-4b0fda50="" data-v-3e0ff210=""
-								class="stock_list_item">
-								<a data-v-4b0fda50="" href="/products/stock/1258804"
-									class="item_inner">
-									<div data-v-4b0fda50="" class="product_thumb">
-										<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
-											style="background-color: rgb(242, 242, 242);">
-											<picture data-v-321fc3b6="" data-v-09fbcf09=""
-												class="picture product_img"> <img alt=""
-												src="${detail.imgs[0].img_srcs}" style="overflow: auto;"></picture>
-											<!---->
-											<!---->
-											<em data-v-09fbcf09="" class="stocked_status_mark"> A </em>
-											<!---->
-										</div>
-										<!---->
-									</div>
-									<div data-v-4b0fda50="" class="product_info">
-										<div data-v-4b0fda50="" class="product_detail">
-											<p data-v-4b0fda50="" class="size">275</p>
-											<p data-v-4b0fda50="" class="name">
-												<c:out value="${detail.prod_name}" />
-											</p>
-										</div>
-										<div data-v-4b0fda50="" class="product_price">
-											<p data-v-4b0fda50="" class="origin_price">
-												<fmt:formatNumber value="${detail.prod_price}"
-													pattern="#,###" />
-											</p>
-											<p data-v-4b0fda50="" class="discount_price">
-												<em data-v-4b0fda50="" class="discount_per">18%</em><span
-													data-v-4b0fda50="" class="amount">330,000</span><span
-													data-v-4b0fda50="" class="won">원</span>
-											</p>
-											<p data-v-4b0fda50="" class="price_desc">구매가</p>
-										</div>
-									</div>
-								</a>
+					<div class="used_stock">
+						<div data-v-3e0ff210="" data-v-cf786f84="" class="other_stock">
+							<div data-v-3e0ff210="" class="title">
+								<h3 data-v-3e0ff210="" class="title_text">
+									<em>Kabart</em> 추천 상품
+								</h3>
 							</div>
-							<!-- /.stock item 단일-->
-
-							<!---->
-						</div>
-						<!-- 부중서 끝 -->
-						<div data-v-12376b79="" data-v-cf786f84="" class="feed_area">
-							<div class="goodsView__bottom js__goods-detail">
-								<div class="inner-align-module">
-									<div class="bottom__floating js__floating">
-										<nav id="dvMenuTab" class="bottom__tab js__floating__tab">
-											<button type="button" id="dvBtnItemmain" name="dvBtnItemmain"
-												class="bottom__tab__btn">상품정보</button>
-											<button type="button" id="dvBtnFbmain" name="dvBtnFbmain"
-												class="bottom__tab__btn">
-												상품리뷰(<span id="feedbackCnt">0</span>)
-											</button>
-										</nav>
-									</div>
-									<a id="tabLocaton"></a>
-									<div class="goodsView__tabcont wrap-tab-content">
-										<div class="goods-detail-area goodsView__cont">
-
-											<section class="goodsView__sec moreInfo"
-												style="padding-top: 30px;">
+							<div data-v-3e0ff210="" class="other_stock_list">
+								<!-- stock item 단일-->
+								<c:forEach items="${detail.useds}" var="useditems">
+									<div data-v-4b0fda50="" data-v-3e0ff210=""
+										class="stock_list_item">
+										<a data-v-4b0fda50="" class="item_inner">
+											<div data-v-4b0fda50="" class="product_thumb">
+												<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
+													style="background-color: rgb(242, 242, 242);">
+													<picture data-v-321fc3b6="" data-v-09fbcf09=""
+														class="picture product_img"> <img alt=""
+														src="${detail.img_srcs}" style="overflow: auto;"></picture>
+													<!---->
+													<!---->
+													<em data-v-09fbcf09="" class="stocked_status_mark">
+														${useditems.grade}</em>
+													<!---->
+												</div>
 												<!---->
-
-												<p>
-												<center>
-													<table border="0" cellpadding="0" cellspacing="0"
-														width="760">
-														<tbody>
-															<tr>
-																<td style="text-align: center;">
-																		<img src="${detail.imgs[5].img_srcs}" ></td>
-															</tr>
-														</tbody>
-													</table>
-												</center>
-												</p>
-											</section>
-										</div>
+											</div>
+											<div data-v-4b0fda50="" class="product_info">
+												<div data-v-4b0fda50="" class="product_detail">
+													<p data-v-4b0fda50="" class="name">
+														<c:out value="${detail.prod_name}" />
+													</p>
+												</div>
+												<div data-v-4b0fda50="" class="product_price">
+													<p data-v-4b0fda50="" class="origin_price">
+														<fmt:formatNumber value="${detail.prod_price}"
+															pattern="#,###" />
+													</p>
+													<p data-v-4b0fda50="" class="discount_price">
+														<em data-v-4b0fda50="" class="discount_per">${useditems.discount_rate}%</em><span
+															data-v-4b0fda50="" class="amount">/*가격 방법*/</span><span
+															data-v-4b0fda50="" class="won">원</span>
+													</p>
+													<p data-v-4b0fda50="" class="price_desc">구매가</p>
+												</div>
+											</div>
+										</a>
+									</div>
+								</c:forEach>
+							</div>
+						</div>
+						<!-- /.stock item 단일-->
+					</div>
+					<!-- 부중서 끝 -->
+					<div data-v-12376b79="" data-v-cf786f84="" class="feed_area">
+						<div class="goodsView__bottom js__goods-detail">
+							<div class="inner-align-module">
+								<!-- 상세정보 / 후기 버튼 -->
+								<ul class="infoTabs">
+									<li class="prod__info infoTab active">상품정보</li>
+									<li class="prod__review infoTab">상품후기</li>
+								</ul>
+								<!-- 버튼 -->
+								<a id="tabLocaton"></a>
+								<!-- 상세정보 -->
+								<div class="item__info">
+									<center>
+										<table border="0" cellpadding="0" cellspacing="0" width="760">
+											<tbody>
+												<c:forEach items="${detail.imgs}" var="dtimg">
+													<tr>
+														<td style="text-align: center;"><img
+															src="${dtimg.img_srcs}"></td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</center>
+								</div>
+								<!-- 상세정보 fin -->
+								<!-- 후기 -->
+								<div class="item__review">
+									<div class='reviews'>
+										<c:forEach var="rv" items="${review}">
+											<div class='review__wrap'>
+												<div class='wrap__top'>
+													<div class='reivew__title'>${rv.rv_text}</div>
+													<span class='review__nick'>${rv.mem_id}</span> | <span
+														class='review__date'>${rv.rv_date}</span>
+												</div>
+											</div>
+										</c:forEach>
 									</div>
 								</div>
+								<!-- 후기 fin -->
 							</div>
 						</div>
 					</div>
+					<%@include file="../includes/footer.jsp"%>
 				</div>
-				<%@include file="../includes/footer.jsp"%>
-			</div>
-		</div>
-		<script>
+				<script>
 		$("#cart").on("click", function(e) {
 		e.preventDeaulf(); //원래 이번트 막음 / 원하는 이벤트 
 
@@ -288,8 +294,7 @@
          alert("취소되었습니다");
        }
 	 }
-	
 		
-		</script>
+</script>
 </body>
 </html>

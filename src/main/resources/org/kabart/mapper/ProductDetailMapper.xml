@@ -12,38 +12,43 @@
 		<result property="prod_width" column="prod_width" />
 		<result property="prod_height" column="prod_height" />
 		<result property="prod_depth" column="prod_depth" />
+		<result property="img_srcs" column="img_srcs" />		
 		<collection property="shops" resultMap="shopMap" />
-		<collection property="imgs" resultMap="imgMap" />
+<!-- 		<collection property="used" resultMap="usedMap" /> -->
 	</resultMap>
-	
+
 	<resultMap type="org.kabart.domain.ShopVO" id="shopMap">
 		<result property="prod_id" column="prod_id" />
 		<result property="shop_name" column="shop_name" />
 		<result property="shop_address" column="shop_address" />
 	</resultMap>
-
-	<resultMap type="org.kabart.domain.ImgVO" id="imgMap">
+	
+<!-- 	<resultMap type="org.kabart.domain.UsedProductVO" id="usedMap">
 		<result property="prod_id" column="prod_id" />
-		<result property="img_srcs" column="img_srcs" />
-		<result property="img_tag" column="img_tag" />
-	</resultMap>
+		<result property="grade" column="grade" />
+		<result property="discount_rate" column="discount_rate" />
+		<result property="reg_date" column="reg_date" />		
+	</resultMap> -->
 
 	<select id="get" resultMap="getProdDetail">
 		select prod_id, prod_name, prod_price, prod_width,
 		prod_height, prod_depth, img_srcs, img_tag, shop_name, shop_address
-		from
-		v_products
-		where prod_id = #{prod_id}
-		order by img_tag DESC
+		from v_products
+		where prod_id = #{prod_id} and img_tag='thumNail'
 	</select>
 
 
-	<!-- <select id="getImgs" resultType="org.kabart.domain.ImgVO"> select distinct 
-		img_srcs, img_tag from v_products where prod_id = #{prod_id} and img_tag='detail' 
-		</select> -->
-	<!-- <select id="getShop" resultType="org.kabart.domain.ShopVO"> select 
-		distinct shop_name, shop_address from v_products where prod_id = #{prod_id} 
-		</select> -->
+	<select id="getdetailImgs" resultType="org.kabart.domain.ImgVO">
+		select distinct img_srcs, prod_id, img_tag from v_products 
+		where prod_id = #{prod_id} and img_tag='detail'
+		<!-- order by uid -->
+	</select>
 
+	<select id="getused" resultType="org.kabart.domain.UsedProductVO">
+		select prod_id, grade, discount_rate
+		from v_used_products
+		where prod_id = #{prod_id} 
+		order by grade DESC
+	</select>
 </mapper>
    
