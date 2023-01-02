@@ -10,7 +10,7 @@
 				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-				<title>Product List</title>
+				<title>NEW PRODUCTS</title>
 				<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 				<script type="text/javascript">
 					$(document).ready(function () {
@@ -38,11 +38,13 @@
 								<!---->
 								<div class="shortcut_item_wrap">
 									<div class="shortcut_item">
+									<a href="/kabart/usedProduct/used_prod_list?prod_category=all">
 										<div class="shortcut_item_img_wrap">
 											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic1.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">USED PRODUCTS</p>
+									</a>
 									</div>
 									<div class="shortcut_item">
 										<a href="/kabart/product/prod_list?prod_category=bed">
