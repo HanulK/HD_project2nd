@@ -26,4 +26,11 @@ public class MemberMaperTests {
 		MemberVO member = mapper.read(member_id);
 		log.info(member);
 	}
+	
+	@Test
+	public void idCheckTest() {
+		String new_id = "asdf";
+		int result = mapper.idCheck(new_id);
+		log.warn("ID 중복 체크 : " + result);
+	}
 }

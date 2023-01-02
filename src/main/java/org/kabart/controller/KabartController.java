@@ -3,6 +3,7 @@ package org.kabart.controller;
 import org.springframework.web.bind.annotation.*;
 
 import org.kabart.domain.MemberVO;
+import org.kabart.mapper.MemberMapper;
 import org.kabart.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,7 +22,10 @@ public class KabartController {
 	@GetMapping("/home")
 	public void home() { }
 	
-	@Setter (onMethod_ = @Autowired)
+	@Setter (onMethod_ = {@Autowired})
+	private MemberMapper mapper;
+	
+	@Setter (onMethod_ = {@Autowired})
 	private MemberService service;
 
 	
@@ -62,5 +66,12 @@ public class KabartController {
 	public String joinPost(MemberVO member, RedirectAttributes rttr) {
 		service.signUp(member);
 		return "redirect:/kabart/home";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/idCheck.do")
+	public int idCheck(String new_id) {
+		int result = mapper.idCheck(new_id);
+		return result;
 	}
 }

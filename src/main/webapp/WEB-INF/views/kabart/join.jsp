@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<c:set var="contextPath" value="${PageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +8,17 @@
 <script type="text/javascript">
 function checkedInput() {
 	let mem_id = $("input[name=mem_id]").val();
-	let mem_pw = $("input[name=mem_pw]").val();
+	let mem_pw = $("input[name=mem_pw2]").val();
 	let mem_name = $("input[name=mem_name]").val();
 	let birth = $("input[name=birth]").val();
 	let family_num = $("input[name=family_num]").val();
 	let phone = $("input[name=phone]").val();
 	let address = $("input[name=address]").val();
 	let address_detail = $("input[name=address_detail]").val();
+	
+	if(birth.length < 7){
+		return;
+	}
 	
 	if (mem_id != "" && mem_pw != "" && mem_name != "" && birth != "" 
 			&& family_num != "" && phone != "" && address != "" && address_detail != "") {
@@ -47,6 +52,7 @@ function checkedInput() {
 										autocomplete="off" value="" class="input_txt"
 										data-v-1c44afeb="" required onkeypress="checkedInput()">
 								</div>
+								<p class="input_error" id="feedback" data-v-1c44afeb="" data-v-429a8655=""></p>
 							</div>
 						</div>
 					</div>
@@ -67,6 +73,7 @@ function checkedInput() {
 								class="input_txt" data-v-1c44afeb="" required
 								onkeypress="checkedInput()">
 						</div>
+						<p class="input_error_msg" data-v-1c44afeb="" data-v-429a8655=""></p>
 					</div>
 					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
 						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">이름</h3>
@@ -79,7 +86,11 @@ function checkedInput() {
 					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
 						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">생년월일</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<input name="birth" placeholder="예) 19980120" autocomplete="off"
+<!-- 							<input name="birth" type="text" pattern="^[0-9]+$" minlength="8" maxlength="8" oninput="maxLengthCheck(this)" placeholder="예) 19980120" autocomplete="off"
+								value="" class="input_txt" data-v-1c44afeb="" required
+								onkeypress="checkedInput()"> -->
+								
+								<input name="birth" type="number" maxlength="8" oninput="maxLengthCheck(this)" placeholder="예) 19980120" autocomplete="off"
 								value="" class="input_txt" data-v-1c44afeb="" required
 								onkeypress="checkedInput()">
 						</div>
@@ -186,8 +197,64 @@ function checkedInput() {
 	});
 	
 	function valid_id_check() {
+		let mem_id = $("input[name=mem_id]").val();
+		console.log(mem_id);
+		
+		if (mem_id == ""){
+			$("#feedback").html("사용 불가능한 ID 입니다.");
+			$("#feedback").attr("style", "display:block; color:red");
+			return;
+		}
+		
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfToeknValue = "${_csrf.token}";
+		
+		$.ajax({
+			url : "${contextPath}/kabart/idCheck.do",
+			type : "POST",
+			data : {
+				new_id : mem_id
+			},
+			dataType : "json",
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfToeknValue);
+			},
+			success : function(result) {
+				if (result == 1){
+					$("#feedback").html("이미 사용중인 ID 입니다.");
+					$("#feedback").attr("style", "display:block; color:red");
+				} else {
+					$("#feedback").html("사용 가능한 ID 입니다.");
+					$("#feedback").attr("style", "display:block;");
+				}
+			},
+			error : function() {
+				alert("서버 요청 실패");
+			}
+		}); // end ajax
 		
 	}
+	
+	function maxLengthCheck(birth) {
+		if (birth.value.length > birth.maxLength) {
+			birth.value = birth.value.slice(0, birth.maxLength);
+		}
+	}
+	
+	$(document).ready(function(){
+		$("input[name=mem_pw2]").on("keyup", function() {
+			$(".input_error_msg").html("비밀번호가 일치 하지 않습니다.");
+			$(".input_error_msg").attr("style", "display:block; color:red");
+			
+			let pw1 = $("input[name=mem_pw1]").val();
+			let pw2 = $("input[name=mem_pw2]").val();
+			
+			if (pw1 === pw2) {
+				$(".input_error_msg").html("비밀번호가 일치합니다.");
+				$(".input_error_msg").attr("style", "display:block;");
+			}
+		})
+	});
 	</script>
 
 

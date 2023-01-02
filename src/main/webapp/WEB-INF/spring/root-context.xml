@@ -24,9 +24,11 @@
 			value="jdbc:log4jdbc:oracle:thin:@edudb_high?TNS_ADMIN=C:\\dev64\\oracleWallet"></property>
 		<property name="username" value="kabart" />
 		<property name="password" value="Ygcha09365283" />
+		<property name="maximumPoolSize" value="250" />
 		<property name="idleTimeout" value="10000" />
 		<property name="maxLifetime" value="30000" />
 		<property name="autoCommit" value="true" />
+		<property name="leakDetectionThreshold" value="2000" />
 	</bean>
 
 	<!-- HikariCP configuration -->
