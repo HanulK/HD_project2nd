@@ -2,8 +2,24 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.kabart.mapper.UsedProductDetaillMapper">
-	<select id = "getinfo" resultMap="UsedProductDetailVO">
-		select 
+<mapper namespace="org.kabart.mapper.UsedProductDetailMapper">
+
+	<select id="read" resultMap="UsedProductDetailVO">
+		select prod_id, prod_name,
+		prod_price, prod_width, prod_height, prod_depth,
+		up_id, up_regdate, up_comment, grade, sale_date, discount_rate, img_srcs,
+		img_tag
+		from v_used_product
+		where img_tag = 'thumNail' and up_id=#{up_id}
 	</select>
+	
+	<delete id="delete">
+		delete from used_products where up_id=#{up_id}
+	</delete>
+	
+	<update id="update">
+		update used_products
+		set up_comment=#{up_comment}
+		where up_id=#{up_id}
+	</update>
 </mapper>

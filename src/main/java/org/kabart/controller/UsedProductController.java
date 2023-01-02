@@ -1,8 +1,11 @@
 package org.kabart.controller;
 
 import org.springframework.web.bind.annotation.*;
-
+import org.kabart.domain.*;
+import org.kabart.service.UsedProductDetailService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
 import lombok.extern.log4j.Log4j;
 
@@ -10,11 +13,16 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/kabart/usedProduct/")
 @Log4j
 public class UsedProductController {
+	
+	private UsedProductDetailService service;
 
 	@GetMapping("/detail")
-	public void used_prod_detail(@RequestParam("prod_id") int prod_id, @RequestParam("up_id") int up_id) {
+	public void used_prod_detail(@RequestParam("up_id") int up_id, Model model) {
 		log.info("used item detail controller....");
-
+		
+		UsedProductDetailVO read = service.read(up_id);
+		
+		model.addAttribute("read", read);
 	}
 
 	@GetMapping("/used_prod_list")
@@ -22,7 +30,8 @@ public class UsedProductController {
 		log.info("used prod list ,,,,");
 	}
 
-	@GetMapping("/used_prod_sell")
+	@RequestMapping("/used_prod_sell")
+	// @PreAuthorize("isAuthenticated()")
 	public void used_prod_sell() {
 		log.info("used prod sell....");
 	}
