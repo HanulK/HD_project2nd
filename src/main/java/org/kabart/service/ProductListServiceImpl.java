@@ -2,7 +2,6 @@ package org.kabart.service;
 
 import java.util.List;
 
-import org.kabart.domain.CategoryDTO;
 import org.kabart.domain.Criteria;
 import org.kabart.domain.ProductListVO;
 import org.kabart.mapper.ProductListMapper;
@@ -19,26 +18,22 @@ public class ProductListServiceImpl implements ProductListService{
 	private ProductListMapper mapper;
 
 	@Override
-	public List<ProductListVO> getProductList(Criteria cri) {
-		log.info("productGetList......... With criteria" + cri);
-		return mapper.getListWithPaging(cri);
-	}
-
-	@Override
-	public List<ProductListVO> categoryProductList(String prod_category, Criteria cri) {
+	public List<ProductListVO> getListWithPaging(String prod_category, Criteria cri) {
 		log.info("productGetList" + prod_category);
-		return mapper.getCategoyProductList(prod_category, cri);
+		if (prod_category.equals("all")) {
+			prod_category = "";
+		}
+		return mapper.getListWithPaging(prod_category, cri);
 	}
 
 	@Override
 	public int getTotal(Criteria cri) {
 		log.info("get total count");
+		if (cri.getProd_category().equals("all")) {
+			cri.setProd_category("");
+		}
 		return mapper.getTotalCount(cri);
 	}
 	
-	@Override
-	public CategoryDTO getListPage(Criteria cri, String prod_category) {
-		return new CategoryDTO(mapper.getTotalCountCategory(prod_category), mapper.getCategoyProductList(prod_category, cri));
-	}
 	
 }

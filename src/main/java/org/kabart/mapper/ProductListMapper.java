@@ -9,12 +9,9 @@ import org.kabart.domain.ProductListVO;
 
 public interface ProductListMapper {
 	
-	public List<ProductListVO> getListWithPaging(Criteria cri);
+	public List<ProductListVO> getListWithPaging(@Param("prod_category") String prod_category, @Param("cri") Criteria cri);
 	
 	public int getTotalCount(Criteria cri); 
-	
-	public List<ProductListVO> getCategoyProductList(@Param("prod_category") String prod_category, @Param("cri") Criteria cri);
-	
-	public int getTotalCountCategory(String prod_category);
+
 	
 }

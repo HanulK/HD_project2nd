@@ -31,19 +31,8 @@ public class ProductListMapperTests {
 		cri.setPageNum(1);
 		cri.setAmount(8);
 		String prod_category = "bed";
-		List<ProductListVO> list = mapper.getCategoyProductList(prod_category, cri);
+		List<ProductListVO> list = mapper.getListWithPaging(prod_category, cri);
 		list.forEach(category -> log.info(category));
 	}
-	
-	
-//	@Test
-//	public void testPaging() {
-//		Criteria cri = new Criteria();
-//		cri.setPageNum(3);
-//		cri.setAmount(8);
-//		List<ProductListVO> list = mapper.getListWithPaging(cri);
-//		
-//		list.forEach(productList -> log.info(productList));
-//	}
 		
 }
