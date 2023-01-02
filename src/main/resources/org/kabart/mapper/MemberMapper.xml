@@ -47,5 +47,8 @@
  		SELECT count(*) FROM members WHERE mem_id = #{mem_id}
  	</select>
  	
+ 	<select id="findId" resultType="String">
+ 		SELECT mem_id FROM members WHERE phone=#{phone}
+ 	</select>
  	
  </mapper>

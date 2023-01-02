@@ -2,11 +2,16 @@ package org.kabart.controller;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import org.kabart.domain.MemberVO;
+import org.kabart.domain.SearchOrderUsedVO;
 import org.kabart.mapper.MemberMapper;
 import org.kabart.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -33,8 +38,6 @@ public class KabartController {
 	public void login(String error, String logout, Model model) {
 		log.warn("###### Error : " + error);
 		log.warn("###### Logout : " + logout);
-		
-		// 아이디 없음 error : InternalAuthenticationServiceException
 		
 		// handling account error
 		if(error != null) {
@@ -73,5 +76,17 @@ public class KabartController {
 	public int idCheck(String new_id) {
 		int result = mapper.idCheck(new_id);
 		return result;
+	}
+	
+	@GetMapping("/find_id")
+	public void findId() {}
+	
+	@GetMapping("/find_pw")
+	public void findPw() {}
+	
+	@ResponseBody
+	@RequestMapping("/findId.do")
+	public String findID(String phone) {
+		return mapper.findId(phone);
 	}
 }

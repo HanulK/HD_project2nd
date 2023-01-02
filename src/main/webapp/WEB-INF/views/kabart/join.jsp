@@ -8,7 +8,7 @@
 <script type="text/javascript">
 function checkedInput() {
 	let mem_id = $("input[name=mem_id]").val();
-	let mem_pw = $("input[name=mem_pw2]").val();
+	let mem_pw = $("input[name=mem_pw]").val();
 	let mem_name = $("input[name=mem_name]").val();
 	let birth = $("input[name=birth]").val();
 	let family_num = $("input[name=family_num]").val();
@@ -16,14 +16,12 @@ function checkedInput() {
 	let address = $("input[name=address]").val();
 	let address_detail = $("input[name=address_detail]").val();
 	
-	if(birth.length < 7){
-		return;
-	}
-	
-	if (mem_id != "" && mem_pw != "" && mem_name != "" && birth != "" 
-			&& family_num != "" && phone != "" && address != "" && address_detail != "") {
+ 	if (mem_id != "" && mem_pw != "" && mem_name != "" && birth.length == 8 
+			&& family_num > 0 && phone.length > 9 && address != "" && address_detail != "") {
 		console.log("check!");
 		$("#btn-next").attr("class", "btn full solid");		
+	} else {
+		$("#btn-next").attr("class", "btn btn_join full solid disabled");
 	}
 }
 </script>
@@ -50,7 +48,7 @@ function checkedInput() {
 								<div>
 									<input name="mem_id" placeholder="예) kabart24"
 										autocomplete="off" value="" class="input_txt"
-										data-v-1c44afeb="" required onkeypress="checkedInput()">
+										data-v-1c44afeb="" required onkeyup="checkedInput()">
 								</div>
 								<p class="input_error" id="feedback" data-v-1c44afeb="" data-v-429a8655=""></p>
 							</div>
@@ -60,7 +58,7 @@ function checkedInput() {
 						data-v-429a8655="">
 						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">비밀번호</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<input type="password" name="mem_pw1" autocomplete="off" value=""
+							<input type="password" name="mem_pw0" autocomplete="off" value=""
 								class="input_txt" data-v-1c44afeb="" required>
 						</div>
 					</div>
@@ -69,9 +67,9 @@ function checkedInput() {
 						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">비밀번호
 							확인</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<input type="password" name="mem_pw2" autocomplete="off" value=""
+							<input type="password" name="mem_pw" autocomplete="off" value=""
 								class="input_txt" data-v-1c44afeb="" required
-								onkeypress="checkedInput()">
+								onkeyup="checkedInput()">
 						</div>
 						<p class="input_error_msg" data-v-1c44afeb="" data-v-429a8655=""></p>
 					</div>
@@ -80,19 +78,15 @@ function checkedInput() {
 						<div class="input_item" data-v-1c44afeb="">
 							<input type="text" placeholder="예) 카바트" name="mem_name"
 								autocomplete="off" value="" class="input_txt" data-v-1c44afeb=""
-								required onkeypress="checkedInput()">
+								required onkeyup="checkedInput()">
 						</div>
 					</div>
 					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
 						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">생년월일</h3>
 						<div class="input_item" data-v-1c44afeb="">
-<!-- 							<input name="birth" type="text" pattern="^[0-9]+$" minlength="8" maxlength="8" oninput="maxLengthCheck(this)" placeholder="예) 19980120" autocomplete="off"
-								value="" class="input_txt" data-v-1c44afeb="" required
-								onkeypress="checkedInput()"> -->
-								
 								<input name="birth" type="number" maxlength="8" oninput="maxLengthCheck(this)" placeholder="예) 19980120" autocomplete="off"
 								value="" class="input_txt" data-v-1c44afeb="" required
-								onkeypress="checkedInput()">
+								 onkeyup="checkedInput()">
 						</div>
 						<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
 					</div>
@@ -111,9 +105,9 @@ function checkedInput() {
 						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">가구원
 							수</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<input name="family_num" placeholder="예) 4" autocomplete="off"
+							<input name="family_num" type="number" placeholder="예) 4" autocomplete="off"
 								value="" class="input_txt" data-v-1c44afeb="" required
-								onkeypress="checkedInput()">
+								onkeyup="checkedInput()">
 						</div>
 						<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
 					</div>
@@ -121,9 +115,9 @@ function checkedInput() {
 						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">휴대폰
 							번호</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<input name="phone" placeholder="예) 01012345678"
+							<input name="phone" type="number" maxlength="11" oninput="maxLengthCheck(this)" placeholder="예) 01012345678"
 								autocomplete="off" value="" class="input_txt" data-v-1c44afeb=""
-								required onkeypress="checkedInput()">
+								required onkeyup="checkedInput()">
 						</div>
 						<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
 					</div>
@@ -149,7 +143,7 @@ function checkedInput() {
 										<input name="address" autocomplete="off" value=""
 											class="input_txt" data-v-1c44afeb="" id="sample6_address"
 											placeholder="주소" readonly="readonly" required
-											onkeypress="checkedInput()">
+											onkeyup="checkedInput()">
 									</div>
 
 								</div>
@@ -158,7 +152,7 @@ function checkedInput() {
 										<input name="address_detail" autocomplete="off" value=""
 											class="input_txt" data-v-1c44afeb=""
 											id="sample6_detailAddress" placeholder="상세주소" required
-											onkeypress="checkedInput()">
+											onkeyup="checkedInput()">
 									</div>
 
 								</div>
@@ -169,7 +163,6 @@ function checkedInput() {
 							</div>
 						</div>
 					</div>
-					<!-- 				<button type="submit" class="btn btn_join full solid disabled" data-v-6e799857="" data-v-429a8655=""> 가입하기 </button> -->
 					<a disabled="disabled" href="#" id="btn-next"
 						class="btn btn_join full solid disabled" data-v-6e799857=""
 						data-v-429a8655=""> 가입하기 </a>
@@ -242,12 +235,12 @@ function checkedInput() {
 	}
 	
 	$(document).ready(function(){
-		$("input[name=mem_pw2]").on("keyup", function() {
+		$("input[name=mem_pw]").on("keyup", function() {
 			$(".input_error_msg").html("비밀번호가 일치 하지 않습니다.");
 			$(".input_error_msg").attr("style", "display:block; color:red");
 			
-			let pw1 = $("input[name=mem_pw1]").val();
-			let pw2 = $("input[name=mem_pw2]").val();
+			let pw1 = $("input[name=mem_pw0]").val();
+			let pw2 = $("input[name=mem_pw]").val();
 			
 			if (pw1 === pw2) {
 				$(".input_error_msg").html("비밀번호가 일치합니다.");

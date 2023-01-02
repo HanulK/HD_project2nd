@@ -33,4 +33,11 @@ public class MemberMaperTests {
 		int result = mapper.idCheck(new_id);
 		log.warn("ID 중복 체크 : " + result);
 	}
+	
+	@Test
+	public void findIdTest() {
+		String phone = "01051523372";
+		String mem_id = mapper.findId(phone);
+		log.info(mem_id);
+	}
 }

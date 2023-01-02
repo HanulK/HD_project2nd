@@ -45,7 +45,7 @@ function checkedInput() {
 						</div>
 					</div>
 					<div class="checkbox">
-						<label> <input name="remember-me" type="checkbox">remember me</label>
+						<label> <input name="remember-me" type="checkbox"> 자동 로그인</label>
 					</div>
 					<div class="login_btn_box" data-v-464f7370="">
 						<a disabled="disabled" href="#" class="btn full solid disabled" id="btn-next"
@@ -55,10 +55,10 @@ function checkedInput() {
 						<li class="look_list" data-v-464f7370=""><a href="/kabart/join"
 							class="look_link" data-v-464f7370="">회원 가입</a></li>
 						<li class="look_list" data-v-464f7370=""><a
-							href="/login/find_email" class="look_link" data-v-464f7370="">
+							href="/kabart/find_id" class="look_link" data-v-464f7370="">
 								아이디 찾기 </a></li>
 						<li class="look_list" data-v-464f7370=""><a
-							href="/login/find_password" class="look_link" data-v-464f7370="">
+							href="/kabart/find_pw" class="look_link" data-v-464f7370="">
 								비밀번호 찾기 </a></li>
 					</ul>
 					<div class="social_login" data-v-464f7370=""></div>
