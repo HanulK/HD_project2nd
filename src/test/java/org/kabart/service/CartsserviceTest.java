@@ -1,4 +1,4 @@
-package org.kabart.ServiceTest;
+package org.kabart.service;
 
 import static org.junit.Assert.assertNotNull;
 

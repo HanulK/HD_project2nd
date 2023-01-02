@@ -850,3 +850,23 @@ input#addr_button {
     font-weight: 700;
     margin-left: 280px;
 }
+
+input#id_check_button {
+    display: inline-flex;
+    cursor: pointer;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #5656568f;
+    width: 80px;
+    font-size: 12px;
+    letter-spacing: -.16px;
+    height: 28px;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 700;
+    margin-left: 280px;
+}

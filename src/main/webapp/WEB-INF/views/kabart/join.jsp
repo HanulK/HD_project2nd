@@ -4,6 +4,24 @@
 <html>
 <head>
 <title>KABART</title>
+<script type="text/javascript">
+function checkedInput() {
+	let mem_id = $("input[name=mem_id]").val();
+	let mem_pw = $("input[name=mem_pw]").val();
+	let mem_name = $("input[name=mem_name]").val();
+	let birth = $("input[name=birth]").val();
+	let family_num = $("input[name=family_num]").val();
+	let phone = $("input[name=phone]").val();
+	let address = $("input[name=address]").val();
+	let address_detail = $("input[name=address_detail]").val();
+	
+	if (mem_id != "" && mem_pw != "" && mem_name != "" && birth != "" 
+			&& family_num != "" && phone != "" && address != "" && address_detail != "") {
+		console.log("check!");
+		$("#btn-next").attr("class", "btn full solid");		
+	}
+}
+</script>
 </head>
 <body tableindex="0" class="wrap win_os" data-v-3007c576>
 	<jsp:include page="includes/header.jsp"></jsp:include>
@@ -11,112 +29,140 @@
 		<div class="content lg" data-v-429a8655="">
 			<div class="join_area" data-v-429a8655="">
 				<h2 class="join_title" data-v-429a8655="">회원가입</h2>
-				<form class="signUp-form" method="post" action="/kabart/join" name="signupForm">
-				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
-				<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
-					<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">아이디</h3>
-					<div class="input_item" data-v-1c44afeb="">
-						<input name="mem_id" placeholder="예) kabart24" autocomplete="off" value="" class="input_txt" data-v-1c44afeb="" required>
-					</div>
-				</div>
-				<div class="input_box has_button" data-v-1c44afeb=""
-					data-v-429a8655="">
-					<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">비밀번호</h3>
-					<div class="input_item" data-v-1c44afeb="">
-						<input type="password" name="mem_pw"
-							placeholder="영문, 숫자, 특수문자 조합 8-16자" autocomplete="off" value=""
-							class="input_txt" data-v-1c44afeb="" required>
-					</div>
-					<p class="input_error" data-v-1c44afeb="" data-v-429a8655="">
-						영문, 숫자, 특수문자를 조합하여 입력해주세요. (8-16자)</p>
-				</div>
-				<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
-					<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">이름</h3>
-					<div class="input_item" data-v-1c44afeb="">
-						<input type="text" placeholder="예) 카바트" name="mem_name"
-							autocomplete="off" value="" class="input_txt" data-v-1c44afeb="" required>
-					</div>
-				</div>
-				<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
-					<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">생년월일</h3>
-					<div class="input_item" data-v-1c44afeb="">
-						<input name="birth" placeholder="예) 19980120" autocomplete="off"
-							value="" class="input_txt" data-v-1c44afeb="" required>
-					</div>
-					<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
-				</div>
-				<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
-					<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">성별</h3>
-					<div class="input_item" data-v-1c44afeb="">
-						<select name="gender" class="input_txt">
-							<option value="M">남성</option>
-							<option value="W">여성</option>
-						</select>
-					</div>
-					<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
-				</div>
+				<form class="signUp-form" method="post" action="/kabart/join"
+					name="signupForm">
+					<input type="hidden" name="${_csrf.parameterName }"
+						value="${_csrf.token }" />
 
-				<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
-					<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">가구원
-						수</h3>
-					<div class="input_item" data-v-1c44afeb="">
-						<input name="family_num" placeholder="예) 4" autocomplete="off"
-							value="" class="input_txt" data-v-1c44afeb="" required>
-					</div>
-					<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
-				</div>
-				<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
-					<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">휴대폰
-						번호</h3>
-					<div class="input_item" data-v-1c44afeb="">
-						<input name="phone" placeholder="예) 01012345678"
-							autocomplete="off" value="" class="input_txt" data-v-1c44afeb="" required>
-					</div>
-					<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
-				</div>
-				<div>
 					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
 						<span>
-						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">주소</h3> 
-							<input type="button" id="addr_button" onclick="sample6_execDaumPostcode()" value="주소 찾기"><br>
-							</span>
+							<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">아이디</h3>
+							<input type="button" id="id_check_button" onclick="valid_id_check()"
+							value="ID 중복 확인"><br>
+						</span>
 						<div>
 							<div class="input_item" data-v-1c44afeb="">
 								<div>
-									<input name="user_address_num" autocomplete="off" value=""
-										class="input_txt" data-v-1c44afeb="" id="sample6_postcode"
-										placeholder="우편번호" readonly="readonly" required>
+									<input name="mem_id" placeholder="예) kabart24"
+										autocomplete="off" value="" class="input_txt"
+										data-v-1c44afeb="" required onkeypress="checkedInput()">
 								</div>
-
-							</div>
-							<div class="input_item" data-v-1c44afeb="">
-								<div>
-									<input name="address" autocomplete="off" value=""
-										class="input_txt" data-v-1c44afeb="" id="sample6_address"
-										placeholder="주소" readonly="readonly" required>
-								</div>
-
-							</div>
-							<div class="input_item" data-v-1c44afeb="">
-								<div>
-									<input name="address_detail" autocomplete="off" value=""
-										class="input_txt" data-v-1c44afeb=""
-										id="sample6_detailAddress" placeholder="상세주소" required>
-								</div>
-
-							</div>
-							<div class="input-box">
-								<input type="hidden" id="sample6_extraAddress"
-									placeholder="참고항목">
 							</div>
 						</div>
 					</div>
-				</div>
-				<button type="submit" class="btn btn_join full solid disabled" data-v-6e799857="" data-v-429a8655=""> 가입하기 </button>
-<!-- 				<a disabled="disabled" href="#"
-					class="btn btn_join full solid disabled" data-v-6e799857=""
-					data-v-429a8655=""> 가입하기 </a> -->
-					</form>
+					<div class="input_box has_button" data-v-1c44afeb=""
+						data-v-429a8655="">
+						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">비밀번호</h3>
+						<div class="input_item" data-v-1c44afeb="">
+							<input type="password" name="mem_pw1" autocomplete="off" value=""
+								class="input_txt" data-v-1c44afeb="" required>
+						</div>
+					</div>
+					<div class="input_box has_button" data-v-1c44afeb=""
+						data-v-429a8655="">
+						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">비밀번호
+							확인</h3>
+						<div class="input_item" data-v-1c44afeb="">
+							<input type="password" name="mem_pw2" autocomplete="off" value=""
+								class="input_txt" data-v-1c44afeb="" required
+								onkeypress="checkedInput()">
+						</div>
+					</div>
+					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
+						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">이름</h3>
+						<div class="input_item" data-v-1c44afeb="">
+							<input type="text" placeholder="예) 카바트" name="mem_name"
+								autocomplete="off" value="" class="input_txt" data-v-1c44afeb=""
+								required onkeypress="checkedInput()">
+						</div>
+					</div>
+					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
+						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">생년월일</h3>
+						<div class="input_item" data-v-1c44afeb="">
+							<input name="birth" placeholder="예) 19980120" autocomplete="off"
+								value="" class="input_txt" data-v-1c44afeb="" required
+								onkeypress="checkedInput()">
+						</div>
+						<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
+					</div>
+					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
+						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">성별</h3>
+						<div class="input_item" data-v-1c44afeb="">
+							<select name="gender" class="input_txt">
+								<option value="M">남성</option>
+								<option value="W">여성</option>
+							</select>
+						</div>
+						<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
+					</div>
+
+					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
+						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">가구원
+							수</h3>
+						<div class="input_item" data-v-1c44afeb="">
+							<input name="family_num" placeholder="예) 4" autocomplete="off"
+								value="" class="input_txt" data-v-1c44afeb="" required
+								onkeypress="checkedInput()">
+						</div>
+						<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
+					</div>
+					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
+						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">휴대폰
+							번호</h3>
+						<div class="input_item" data-v-1c44afeb="">
+							<input name="phone" placeholder="예) 01012345678"
+								autocomplete="off" value="" class="input_txt" data-v-1c44afeb=""
+								required onkeypress="checkedInput()">
+						</div>
+						<p class="input_error" data-v-1c44afeb="" data-v-429a8655=""></p>
+					</div>
+					<div>
+						<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
+							<span>
+								<h3 class="input_title ess" data-v-1c44afeb=""
+									data-v-429a8655="">주소</h3> <input type="button"
+								id="addr_button" onclick="sample6_execDaumPostcode()"
+								value="주소 찾기"><br>
+							</span>
+							<div>
+								<div class="input_item" data-v-1c44afeb="">
+									<div>
+										<input name="user_address_num" autocomplete="off" value=""
+											class="input_txt" data-v-1c44afeb="" id="sample6_postcode"
+											placeholder="우편번호" readonly="readonly" required>
+									</div>
+
+								</div>
+								<div class="input_item" data-v-1c44afeb="">
+									<div>
+										<input name="address" autocomplete="off" value=""
+											class="input_txt" data-v-1c44afeb="" id="sample6_address"
+											placeholder="주소" readonly="readonly" required
+											onkeypress="checkedInput()">
+									</div>
+
+								</div>
+								<div class="input_item" data-v-1c44afeb="">
+									<div>
+										<input name="address_detail" autocomplete="off" value=""
+											class="input_txt" data-v-1c44afeb=""
+											id="sample6_detailAddress" placeholder="상세주소" required
+											onkeypress="checkedInput()">
+									</div>
+
+								</div>
+								<div class="input-box">
+									<input type="hidden" id="sample6_extraAddress"
+										placeholder="참고항목">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 				<button type="submit" class="btn btn_join full solid disabled" data-v-6e799857="" data-v-429a8655=""> 가입하기 </button> -->
+					<a disabled="disabled" href="#" id="btn-next"
+						class="btn btn_join full solid disabled" data-v-6e799857=""
+						data-v-429a8655=""> 가입하기 </a>
+				</form>
 			</div>
 		</div>
 		<div class="banner_bottom lg" data-v-11ddc032="" data-v-429a8655="">
@@ -127,6 +173,22 @@
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<script type="text/javascript">
+	$("#btn-next").on("click", function(e) {
+		e.preventDefault();
+		let class_name = $("#btn-next").attr("class");
+		
+		if (class_name === "btn full solid") {
+			$("#btn-next").attr("href", "/kabart/join");
+			$("form").submit();			
+		}
+	});
+	
+	function valid_id_check() {
+		
+	}
+	</script>
 
 
 	<script>
