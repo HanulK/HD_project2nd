@@ -5,42 +5,16 @@
 <html>
 <head>
 <title>KABART</title>
-<style type="text/css"> /*# sourceMappingURL=contenteditable.vue.map */
-input[type="checkbox" i] {
-    background-color: initial;
-    cursor: default;
-    appearance: auto;
-    box-sizing: border-box;
-    margin: 5px 5px 5px 5px;
-    padding: initial;
-    border: initial;
+<script type="text/javascript">
+function checkedInput() {
+	let name = $("#username").val();
+	let pwd = $("#password").val();
+	
+	if (name != "" && pwd != "") {
+		$("#btn-next").attr("class", "btn full solid");		
+	}
 }
-user agent stylesheet
-input {
-    writing-mode: horizontal-tb !important;
-    font-style: ;
-    font-variant-ligatures: ;
-    font-variant-caps: ;
-    font-variant-numeric: ;
-    font-variant-east-asian: ;
-    font-weight: ;
-    font-stretch: ;
-    font-size: ;
-    font-family: ;
-    text-rendering: auto;
-    color: fieldtext;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    -webkit-rtl-ordering: logical;
-}
-</style>
-
+</script>
 </head>
 <body>
 
@@ -58,16 +32,16 @@ input {
 						data-v-464f7370="">
 						<h3 class="input_title" data-v-1c44afeb="" data-v-464f7370="">아이디</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<input type="text" name="username"
-								autocomplete="off" class="input_txt" data-v-1c44afeb="">
+							<input type="text" name="username" id="username"
+								autocomplete="off" class="input_txt" data-v-1c44afeb="" required onkeypress="checkedInput()">
 						</div>
 					</div>
 					<div class="input_box has_button" data-v-1c44afeb=""
 						data-v-464f7370="">
 						<h3 class="input_title" data-v-1c44afeb="" data-v-464f7370="">비밀번호</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<input class="input_txt" type="password" name="password" placeholder="" autocomplete="off"
-								data-v-1c44afeb="">
+							<input class="input_txt" type="password" name="password" id="password" placeholder="" autocomplete="off"
+								data-v-1c44afeb="" required onkeypress="checkedInput()">
 						</div>
 						<p class="input_error" data-v-1c44afeb="" data-v-464f7370="">
 							영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)</p>
@@ -76,7 +50,7 @@ input {
 						<label> <input name="remember-me" type="checkbox">remember me</label>
 					</div>
 					<div class="login_btn_box" data-v-464f7370="">
-						<a disabled="disabled" href="/kabart/login" class="btn full solid disabled" id="btn-next"
+						<a disabled="disabled" href="#" class="btn full solid disabled" id="btn-next"
 							data-v-6e799857="" data-v-464f7370=""> 로그인 </a>
 					</div>
 					<ul class="look_box" data-v-464f7370="">
@@ -115,10 +89,14 @@ $(document).ready(function(){
 		}
 	}
 	
-	
 	$("#btn-next").on("click", function(e) {
 		e.preventDefault();
-		$("form").submit();
+		let class_name = $("#btn-next").attr("class");
+		
+		if (class_name === "btn full solid") {
+			$("#btn-next").attr("href", "/kabart/login");
+			$("form").submit();			
+		}
 	});
 });
 
