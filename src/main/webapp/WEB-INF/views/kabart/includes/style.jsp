@@ -14,6 +14,7 @@
 <link href="/resources/css/235e2a9.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/24dfaf3.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/2bffad8.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/2ee49b5.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/30e2c3c.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/325de86.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/359f65d.css" rel="stylesheet" type="text/css">
@@ -50,6 +51,7 @@
 <link href="/resources/css/e72cabe.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/ed8e821.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/used_prod_sell.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/review.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">

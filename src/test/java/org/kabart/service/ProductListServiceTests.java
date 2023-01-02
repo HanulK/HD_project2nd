@@ -29,9 +29,18 @@ public class ProductListServiceTests {
 		assertNotNull(service);
 	}
 	
+//	@Test
+//	public void productGetList() {
+//		log.info("productGetList ..........");
+//		service.getProductList(new Criteria(2, 10)).forEach(productList -> log.info(productList));
+//	}
+	
 	@Test
-	public void productGetList() {
-		log.info("productGetList ..........");
-		service.getProductList(new Criteria(2, 10)).forEach(productList -> log.info(productList));
+	public void categoryProductList() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(1);
+		cri.setAmount(8);
+		log.info("categoryProductList............");
+		service.categoryProductList("bed", cri);
 	}
 }

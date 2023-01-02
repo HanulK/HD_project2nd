@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.kabart.domain.Criteria;
-import org.kabart.domain.ProductListVO;
+import org.kabart.domain.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,30 +19,22 @@ import lombok.extern.log4j.Log4j;
 	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
 @Log4j
 @WebAppConfiguration
-public class ProductListMapperTests {
+public class ReviewMapperTests {
 	
 	@Setter(onMethod_ = @Autowired)
-	private ProductListMapper mapper;
+	private ReviewMapper mapper;
 	
 	@Test
-	public void testProductGetList() {
-		Criteria cri = new Criteria();
-		cri.setPageNum(1);
-		cri.setAmount(8);
-		String prod_category = "bed";
-		List<ProductListVO> list = mapper.getCategoyProductList(prod_category, cri);
-		list.forEach(category -> log.info(category));
+	public void testMapper() {
+		
+		log.info(mapper);
 	}
 	
-	
-//	@Test
-//	public void testPaging() {
-//		Criteria cri = new Criteria();
-//		cri.setPageNum(3);
-//		cri.setAmount(8);
-//		List<ProductListVO> list = mapper.getListWithPaging(cri);
-//		
-//		list.forEach(productList -> log.info(productList));
-//	}
-		
+	@Test
+	public void testGet() {
+		int prod_id = 146812;
+		List<ReviewVO> rvs = mapper.get(prod_id);
+		rvs.forEach(review -> log.info(review));
+	}
+
 }

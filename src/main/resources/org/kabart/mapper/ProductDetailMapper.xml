@@ -4,56 +4,51 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kabart.mapper.ProductDetailMapper">
 
-	<!-- <resultMap type="org.kabart.domain.ProductDetailVO"
+	<resultMap type="org.kabart.domain.ProductDetailVO"
 		id="getProdDetail">
 		<result property="prod_id" column="prod_id" />
 		<result property="prod_name" column="prod_name" />
 		<result property="prod_price" column="prod_price" />
-		<result property="grade" column="grade" />
-		<result property="discount_rate" column="discount_rate" />
 		<result property="prod_width" column="prod_width" />
 		<result property="prod_height" column="prod_height" />
 		<result property="prod_depth" column="prod_depth" />
-		<result property="up_id" column="up_id" />
-		<collection property="imgs" resultMap="imgMap" />
+		<result property="img_srcs" column="img_srcs" />		
 		<collection property="shops" resultMap="shopMap" />
+<!-- 		<collection property="used" resultMap="usedMap" /> -->
 	</resultMap>
 
-	<resultMap type="org.kabart.domain.ImgVO" id="imgMap">
-		<result property="img_srcs" column="img_srcs" />
-		<result property="img_tag" column="img_tag" />
-	</resultMap>
-	
 	<resultMap type="org.kabart.domain.ShopVO" id="shopMap">
+		<result property="prod_id" column="prod_id" />
 		<result property="shop_name" column="shop_name" />
+		<result property="shop_address" column="shop_address" />
 	</resultMap>
 	
+<!-- 	<resultMap type="org.kabart.domain.UsedProductVO" id="usedMap">
+		<result property="prod_id" column="prod_id" />
+		<result property="grade" column="grade" />
+		<result property="discount_rate" column="discount_rate" />
+		<result property="reg_date" column="reg_date" />		
+	</resultMap> -->
+
 	<select id="get" resultMap="getProdDetail">
-	select a.prod_id, a.prod_name, a.prod_price, a.grade, a.discount_rate
-		,a.prod_width, a.prod_height, a.prod_depth, a.up_id, b.img_srcs, b.img_tag, b.shop_name
-		from v_used_products a inner join v_products b on a.prod_id = b.prod_id
-		where a.prod_id = #{prod_id}
-	</select> -->
-		
-	<select id="getProdDetail" resultType="org.kabart.domain.ProductDetailVO">
-		select prod_id, prod_name, prod_price, grade, discount_rate
-		,prod_width,
-		prod_height, prod_depth, up_id
-		from v_used_products
-		where prod_id = #{prod_id}
-	</select>
-	<select id="getImgs" resultType="org.kabart.domain.ImgVO">
-		select distinct img_srcs,
-		img_tag
+		select prod_id, prod_name, prod_price, prod_width,
+		prod_height, prod_depth, img_srcs, img_tag, shop_name, shop_address
 		from v_products
-		where prod_id = #{prod_id}
-	</select>
-	<select id="getShop" resultType="org.kabart.domain.ShopVO">
-		select distinct shop_name,
-		shop_address
-		from v_products
-		where prod_id = #{prod_id}
+		where prod_id = #{prod_id} and img_tag='thumNail'
 	</select>
 
+
+	<select id="getdetailImgs" resultType="org.kabart.domain.ImgVO">
+		select distinct img_srcs, prod_id, img_tag from v_products 
+		where prod_id = #{prod_id} and img_tag='detail'
+		<!-- order by uid -->
+	</select>
+
+	<select id="getused" resultType="org.kabart.domain.UsedProductVO">
+		select prod_id, grade, discount_rate
+		from v_used_products
+		where prod_id = #{prod_id} 
+		order by grade DESC
+	</select>
 </mapper>
    

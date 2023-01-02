@@ -75,12 +75,39 @@
 								</div>
 								<div data-v-824856a2="" data-v-77d20f30=""
 									class="checked_review">
-									<h3 data-v-824856a2="" class="review_title">제품 설명</h3>
-									<div data-v-824856a2="" class="review_content">
-										<div data-v-2e0c1d1d="" data-v-824856a2=""
-											class="review_section tight_text">
-											<p data-v-2e0c1d1d="" class="title">DD1391-100</p>
+									<div data-v-3900a1a2="" class="product_info_wrap">
+										<h3 data-v-52dd777b="" data-v-3900a1a2="" class="detail_title info_title md" style="
+    padding-top: 0px;
+">상품 정보</h3>
+										<div data-v-b809b0a6="" data-v-3900a1a2="" class="detail_product_wrap">
+											<dl data-v-b809b0a6="" class="detail_product">
+												<div data-v-b809b0a6="" class="detail_box model_num">
+													<dt data-v-b809b0a6="" class="product_title">너비</dt>
+													<dd data-v-b809b0a6="" class="product_info">
+														1000
+													</dd>
+												</div>
+												<div data-v-b809b0a6="" class="detail_box">
+													<dt data-v-b809b0a6="" class="product_title">높이</dt>
+													<dd data-v-b809b0a6="" class="product_info">
+														1000
+													</dd>
+												</div>
+												<div data-v-b809b0a6="" class="detail_box">
+													<dt data-v-b809b0a6="" class="product_title">깊이</dt>
+													<dd data-v-b809b0a6="" class="product_info">
+														596
+													</dd>
+												</div>
+												<div data-v-b809b0a6="" class="detail_box">
+													<dt data-v-b809b0a6="" class="product_title">발매가</dt>
+													<dd data-v-b809b0a6="" class="product_info">
+														680,000
+													</dd>
+												</div>
+											</dl>
 										</div>
+									</div>
 										<!---->
 									</div>
 									<div data-v-2e0c1d1d="" data-v-824856a2=""

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import lombok.Data;
@@ -24,9 +25,9 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		
 		String errormsg = null;
 		
-		if(exception instanceof BadCredentialsException) {
-			errormsg = "비밀번호가 맞지 않습니다. 다시 확인해주세요.";
-		} else if (exception instanceof InternalAuthenticationServiceException) {
+		if(exception instanceof BadCredentialsException || exception instanceof InternalAuthenticationServiceException) {
+			errormsg = "아이디나 비밀번호가 맞지 않습니다. 다시 확인해주세요.";
+		} else if (exception instanceof UsernameNotFoundException) {
 			errormsg = "존재하지 않는 아이디입니다.";
 		}
 		else {
