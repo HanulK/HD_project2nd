@@ -18,6 +18,7 @@ public class SearchOrederServiceImpl implements SearchOrederService {
 
 
 
+	
 	@Setter(onMethod_ = { @Autowired })
 	private SearchOrderMapper sMapper;
 
@@ -36,4 +37,17 @@ public class SearchOrederServiceImpl implements SearchOrederService {
 		log.info("getSearchOldList");
 		return list;
 	}
+	
+	@Override
+	public List<SearchOrderUsedVO> getSellingList(String mem_id, String start_date, String end_date) {
+		log.info("getSellingList");
+		return sMapper.getSellingList(mem_id, start_date, end_date);
+	}
+
+	@Override
+	public List<SearchOrderUsedVO> getSelledList(String mem_id, String start_date, String end_date) {
+		log.info("getSelledList");
+		return sMapper.getSelledList(mem_id, start_date, end_date);
+	}
+
 }

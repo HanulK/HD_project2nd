@@ -25,4 +25,34 @@
  			
  		]]>
 	</select>
+
+	<select id="getSellingList"
+		resultType="org.kabart.domain.SearchOrderUsedVO">
+		<![CDATA[
+		SELECT pd.prod_name, pd.prod_price,
+		up.grade,gd.discount_rate,up.up_regdate,up.sale_date, im.img_srcs
+		FROM products pd JOIN used_products up on pd.prod_id = up.prod_id JOIN
+		grades gd on up.grade = gd.grade JOIN imgs im on pd.prod_id =
+		im.prod_id
+		WHERE im.img_tag = 'thumNail' AND
+		up.mem_id = #{user_id} AND
+		(#{start_date}<=up_regdate and up_regdate <=#{end_date}) AND
+		sale_date IS NULL
+		]]>
+	</select>
+	<select id="getSelledList"
+		resultType="org.kabart.domain.SearchOrderUsedVO">
+		<![CDATA[
+		SELECT pd.prod_name, pd.prod_price,
+		up.grade,gd.discount_rate,up.up_regdate,up.sale_date, im.img_srcs
+		FROM products pd JOIN used_products up on pd.prod_id = up.prod_id JOIN
+		grades gd on up.grade = gd.grade JOIN imgs im on pd.prod_id =
+		im.prod_id
+		WHERE im.img_tag = 'thumNail' AND
+		up.mem_id = #{user_id} AND
+		(#{start_date}<=sale_date and sale_date <=#{end_date})
+		]]>
+	</select>
+	
+	
 </mapper>
