@@ -23,73 +23,63 @@
 					<div class="shortcut_item">
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic1.png" class="image"> </picture>
+								src="/resources/img/010.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">Second</p>
 					</div>
 					<div class="shortcut_item">
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic2.png" class="image"> </picture>
+								src="/resources/img/002.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">침대</p>
 					</div>
 					<div class="shortcut_item">
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic3.png" class="image"> </picture>
+								src="/resources/img/001.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">소파</p>
 					</div>
 					<div class="shortcut_item">
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic4.png" class="image"> </picture>
+								src="/resources/img/004.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">식탁</p>
 					</div>
 					<div class="shortcut_item">
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic5.png" class="image"> </picture>
+								src="/resources/img/005.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">의자</p>
 					</div>
 					<div class="shortcut_item">
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic6.png" class="image"> </picture>
+								src="/resources/img/006.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">옷장</p>
 					</div>
 					<div class="shortcut_item">
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic7.png" class="image"> </picture>
+								src="/resources/img/007.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">서랍장</p>
 					</div>
 					<div class="shortcut_item">
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic8.png" class="image"> </picture>
+								src="/resources/img/003.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">책상</p>
 					</div>
 					<div class="shortcut_item">
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic9.png" class="image"> </picture>
+								src="/resources/img/008.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">홈 인테리어</p>
 					</div>
 					<div class="shortcut_item">
 					<a href="/kabart/product/prod_list" >
 						<div class="shortcut_item_img_wrap">
 							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/pic10.png" class="image"> </picture>
+								src="/resources/img/009.png" class="image"> </picture>
 						</div>
-						<p class="shortcut_item_title">전체보기</p>
 						</a>
 					</div>
 				</div>

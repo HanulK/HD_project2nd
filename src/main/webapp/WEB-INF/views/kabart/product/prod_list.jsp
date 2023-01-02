@@ -170,70 +170,70 @@
 								<div class="shortcut_item_wrap">
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic1.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/010.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">USED PRODUCTS</p>
 									</div>
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic2.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/002.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">BED</p>
 									</div>
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic3.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/001.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">SOFA</p>
 									</div>
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic4.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/004.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">TABLE</p>
 									</div>
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic5.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/005.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">CHAIR</p>
 									</div>
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic6.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/006.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">CLOSET</p>
 									</div>
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic7.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/007.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">DRAWERS</p>
 									</div>
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic8.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/003.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">DESK</p>
 									</div>
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic9.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/008.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">HOME INTERIOR</p>
 									</div>
 									<div class="shortcut_item" onclick="javascript:getCate(this);">
 										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic10.png" class="image">
+											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/009.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">ALL</p>

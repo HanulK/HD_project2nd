@@ -62,7 +62,7 @@
 												<div data-v-679b6792="" class="price">
 													<div data-v-679b6792="" class="amount">
 														<span data-v-679b6792="" class="num"><fmt:formatNumber
-																value="${detail.prod_price}" pattern="#,###" /></span><span
+																value="${detail.prod_price}" pattern="#,###" /></span> <span
 															data-v-679b6792="" class="won">원</span>
 													</div>
 												</div>
@@ -82,14 +82,15 @@
 
 												<div data-v-f40660fa="" data-v-77d20f30=""
 													class="detail_stock_btn">
-													<a data-v-6e799857="" data-v-f40660fa="" href="/kabart/usedProduct/used_prod_sell"
+													<a data-v-6e799857="" data-v-f40660fa=""
+														href="/kabart/usedProduct/used_prod_sell"
 														class="btn solid full sell large"> 중고 판매 </a>
 												</div>
 											</div>
 											<div data-v-f40660fa="" data-v-77d20f30=""
 												class="detail_stock_btn">
 												<a data-v-6e799857="" data-v-f40660fa="" href="#"
-													class="btn solid full buy large"> 구매하기 </a>
+													class="btn solid full buy large"> 바로 구매 </a>
 											</div>
 										</div>
 									</div>
@@ -140,8 +141,8 @@
 												</div>
 												<div data-v-12ba7144="" class="way_desc">
 													<p data-v-12ba7144="" class="company">
-														<span data-v-12ba7144="" class="badge_title">일반배송 </span><span
-															data-v-12ba7144="" class="title">3,000원</span>
+														<span data-v-12ba7144="" class="badge_title">일반배송 </span>
+														<span data-v-12ba7144="" class="title">3,000원</span>
 														<!---->
 													</p>
 													<p data-v-12ba7144="" class="sub_text">검수 후 배송 ・ 5-7일 내
@@ -165,62 +166,64 @@
 						<!---->
 						<!---->
 					</div>
+
 					<!--content-->
 					<!-- 부중서 -->
-					<div class="used_stock">
-						<div data-v-3e0ff210="" data-v-cf786f84="" class="other_stock">
-							<div data-v-3e0ff210="" class="title">
-								<h3 data-v-3e0ff210="" class="title_text">
-									<em>Kabart</em> 추천 상품
-								</h3>
+					<c:if test="${not empty detail.useds}">
+						<div class="used_stock">
+							<div data-v-3e0ff210="" data-v-cf786f84="" class="other_stock">
+								<div data-v-3e0ff210="" class="title">
+									<h3 data-v-3e0ff210="" class="title_text">
+										<em>Kabart</em> 추천 상품
+									</h3>
+								</div>
+								<div data-v-3e0ff210="" class="other_stock_list">
+									<!-- stock item 단일-->
+									<c:forEach items="${detail.useds}" var="useditems">
+										<div data-v-4b0fda50="" data-v-3e0ff210=""
+											class="stock_list_item">
+											<a data-v-4b0fda50="" class="item_inner">
+												<div data-v-4b0fda50="" class="product_thumb">
+													<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
+														style="background-color: rgb(242, 242, 242);">
+														<picture data-v-321fc3b6="" data-v-09fbcf09=""
+															class="picture product_img"> <img alt=""
+															src="${detail.img_srcs}" style="overflow: auto;"></picture>
+														<!---->
+														<!---->
+														<em data-v-09fbcf09="" class="stocked_status_mark">
+															${useditems.grade}</em>
+														<!---->
+													</div>
+													<!---->
+												</div>
+												<div data-v-4b0fda50="" class="product_info">
+													<div data-v-4b0fda50="" class="product_detail">
+														<p data-v-4b0fda50="" class="name">
+															<c:out value="${detail.prod_name}" />
+														</p>
+													</div>
+													<div data-v-4b0fda50="" class="product_price">
+														<p data-v-4b0fda50="" class="origin_price">
+															<fmt:formatNumber value="${detail.prod_price}"
+																pattern="#,###" />
+														</p>
+														<p data-v-4b0fda50="" class="discount_price">
+															<em data-v-4b0fda50="" class="discount_per">${useditems.discount_rate}%</em>
+															<span data-v-4b0fda50="" class="amount">${useditems.used_price}원</span>
+														</p>
+														<p data-v-4b0fda50="" class="price_desc">구매가</p>
+													</div>
+												</div>
+											</a>
+										</div>
+									</c:forEach>
+								</div>
 							</div>
-							<div data-v-3e0ff210="" class="other_stock_list">
-								<!-- stock item 단일-->
-								<c:forEach items="${detail.useds}" var="useditems">
-									<div data-v-4b0fda50="" data-v-3e0ff210=""
-										class="stock_list_item">
-										<a data-v-4b0fda50="" class="item_inner">
-											<div data-v-4b0fda50="" class="product_thumb">
-												<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
-													style="background-color: rgb(242, 242, 242);">
-													<a href = "#">
-													<picture data-v-321fc3b6="" data-v-09fbcf09=""
-														class="picture product_img"> <img alt=""
-														src="${detail.img_srcs}" style="overflow: auto;"></picture></a>
-													<!---->
-													<!---->
-													<em data-v-09fbcf09="" class="stocked_status_mark">
-														${useditems.grade}</em>
-													<!---->
-												</div>
-												<!---->
-											</div>
-											<div data-v-4b0fda50="" class="product_info">
-												<div data-v-4b0fda50="" class="product_detail">
-													<p data-v-4b0fda50="" class="name">
-														<c:out value="${detail.prod_name}" />
-													</p>
-												</div>
-												<div data-v-4b0fda50="" class="product_price">
-													<p data-v-4b0fda50="" class="origin_price">
-														<fmt:formatNumber value="${detail.prod_price}"
-															pattern="#,###" />
-													</p>
-													<p data-v-4b0fda50="" class="discount_price">
-														<em data-v-4b0fda50="" class="discount_per">${useditems.discount_rate}%</em><span
-															data-v-4b0fda50="" class="amount">/*가격 방법*/</span><span
-															data-v-4b0fda50="" class="won">원</span>
-													</p>
-													<p data-v-4b0fda50="" class="price_desc">구매가</p>
-												</div>
-											</div>
-										</a>
-									</div>
-								</c:forEach>
-							</div>
+							<!-- /.stock item 단일-->
 						</div>
-						<!-- /.stock item 단일-->
-					</div>
+					</c:if>
+					
 					<!-- 부중서 끝 -->
 					<div data-v-12376b79="" data-v-cf786f84="" class="feed_area">
 						<div class="goodsView__bottom js__goods-detail">
@@ -235,7 +238,7 @@
 								<!-- 상세정보 -->
 								<div class="item__info">
 									<center>
-										<table border="0" cellpadding="0" cellspacing="0" width="760">
+										<table>
 											<tbody>
 												<c:forEach items="${detail.imgs}" var="dtimg">
 													<tr>
@@ -268,9 +271,12 @@
 					</div>
 					<%@include file="../includes/footer.jsp"%>
 				</div>
+			</div>
+		</div>
+	</div>
 </body>
-<script>
 </html>
+<script>
 		$("#cart").on("click", function(e) {
 		e.preventDeaulf(); //원래 이번트 막음 / 원하는 이벤트 
 

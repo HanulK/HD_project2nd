@@ -18,13 +18,14 @@ body, button, input, select, table, textarea {
 
 .container.sell[data-v-b36cb8c4] {
 	background-color: #fafafa;
+	height: 1500px;
 }
 
 .content[data-v-b36cb8c4] {
 	margin: 0 auto;
 	padding: 20px 40px 160px;
 	max-width: 780px;
-	max-height: 1000px;
+	max-height: 1600px;
 }
 
 .buy_immediate[data-v-877ed62a], .price_descision_box[data-v-877ed62a] {
@@ -33,8 +34,7 @@ body, button, input, select, table, textarea {
 }
 
 .product_info_area[data-v-2b95d831] {
-	padding: 32px;
-	padding-top: 0px;
+	padding: 0px 32px;
 }
 
 .product_info[data-v-2b95d831] {
@@ -63,8 +63,17 @@ body, button, input, select, table, textarea {
 	width: 100%;
 }
 
+.product_info_wrap1 {
+	padding: 0 30px;
+	padding-top: 20px;
+}
+
 .main_title_box1 {
 	padding-left: 20px;
+}
+
+h3.detail_title.info_title.md {
+	padding-top: 10px;
 }
 
 .detail_main_title .title[data-v-6e865099] {
@@ -114,7 +123,7 @@ body, button, input, select, table, textarea {
 	top: 1px;
 	left: 0;
 	width: 1px;
-	height: 40px;
+	height: 65px;
 	background-color: #ebebeb;
 }
 
@@ -127,7 +136,7 @@ body, button, input, select, table, textarea {
 }
 
 .used_info {
-	padding: 32px;
+	padding: 20px 32px;
 }
 
 .review_title[data-v-824856a2] {
@@ -138,9 +147,13 @@ body, button, input, select, table, textarea {
 	font-weight: 700;
 	text-align: center;
 	color: #fff;
-	background-color: #222;
+	background-color: #222222bd;
 	box-sizing: border-box;
 	border-radius: 12px 12px 0 0;
+}
+
+textarea.up_comment {
+	width: 600px;
 }
 
 .info_write {
@@ -316,7 +329,7 @@ address, em {
 .buy_immediate .center {
 	-webkit-box-align: center;
 	text-align: center;
-	margin: 40px 20px;
+	margin: 40px 20px 10px 20px;
 	background-color: #FFF;
 }
 
@@ -330,21 +343,42 @@ h2.title1 {
 }
 
 input#addr_button {
-    display: inline-flex;
-    cursor: pointer;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    vertical-align: middle;
-    text-align: center;
-    background-color: #5656568f;
-    width: 80px;
-    font-size: 12px;
-    letter-spacing: -.16px;
-    height: 28px;
-    border-radius: 12px;
-    color: #fff;
-    font-weight: 700;
-    margin-left: 280px;
+	display: inline-flex;
+	cursor: pointer;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	vertical-align: middle;
+	text-align: center;
+	background-color: #5656568f;
+	width: 80px;
+	font-size: 12px;
+	letter-spacing: -.16px;
+	height: 28px;
+	border-radius: 12px;
+	color: #fff;
+	font-weight: 700;
+	margin-left: 280px;
+}
+
+select#grade {
+	height: 15px;
+	font-size: 14px;
+	padding: 5px;
+	text-align: center;
+	margin: 5px;
+	border-radius: 20px;
+}
+
+div#selling_date {
+	padding-left: 20px;
+	padding-right: 490px;
+	margin: 20px;
+	font-weight: 600;
+}
+
+div#current_date {
+	float: right;
+	padding-top: 1px;
 }

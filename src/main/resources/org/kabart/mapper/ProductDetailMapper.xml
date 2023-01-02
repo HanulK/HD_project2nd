@@ -39,16 +39,16 @@
 
 
 	<select id="getdetailImgs" resultType="org.kabart.domain.ImgVO">
-		select distinct img_srcs, prod_id, img_tag from v_products 
+		select distinct img_srcs, prod_id, img_tag, rownum from v_products 
 		where prod_id = #{prod_id} and img_tag='detail'
-		<!-- order by uid -->
+		order by rownum
 	</select>
 
 	<select id="getused" resultType="org.kabart.domain.UsedProductVO">
-		select prod_id, grade, discount_rate
+		select up_id, prod_id, prod_price, grade, discount_rate, (100 - discount_rate)*0.01*prod_price as used_price 
 		from v_used_products
 		where prod_id = #{prod_id} 
-		order by grade DESC
+		order by used_price DESC
 	</select>
 </mapper>
    

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class UsedProductDetailVO {
 	
-	private int prod_id;
+	private int prod_id;  
 	private String prod_name;
 	private int prod_price;
 	private int prod_width;

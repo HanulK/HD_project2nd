@@ -1,11 +1,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	margin-left: 0px;
-<<<<<<< HEAD
     margin-right: 0px;
-=======
-    	margin-right: 0px;
->>>>>>> branch 'master' of https://github.com/leeangz/casamia_test.git
 }
 
 /* .banner{
@@ -93,6 +89,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(5, minmax(0, 1fr));
 	grid-column-gap: 16px;
+	grid-row-gap: 13px;
 }
 
 .shortcut_item_wrap2 {

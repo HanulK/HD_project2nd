@@ -29,6 +29,19 @@
 									<span data-v-34b11929="" data-v-19e1c5dc="" class="title_txt">판매하기</span>
 								</h2>
 							</div>
+							<div id="selling_date">
+								<span>판매일자 : </span>
+								<div id="current_date">
+									<script>
+										date = new Date();
+										year = date.getFullYear();
+										month = date.getMonth() + 1;
+										day = date.getDate();
+										document.getElementById("current_date").innerHTML = year
+												+ "/" + month + "/" + day;
+									</script>
+								</div>
+							</div>
 							<div data-v-2b95d831="" data-v-877ed62a=""
 								class="product_info_area">
 								<div data-v-2b95d831="" class="product_info">
@@ -50,7 +63,31 @@
 									</div>
 								</div>
 							</div>
-
+							<div data-v-3900a1a2="" class="product_info_wrap1">
+								<h3 data-v-52dd777b="" data-v-3900a1a2=""
+									class="detail_title info_title md">상품 정보</h3>
+								<div data-v-b809b0a6="" data-v-3900a1a2=""
+									class="detail_product_wrap">
+									<dl data-v-b809b0a6="" class="detail_product">
+										<div data-v-b809b0a6="" class="detail_box model_num">
+											<dt data-v-b809b0a6="" class="product_title">너비</dt>
+											<dd data-v-b809b0a6="" class="product_info">1540</dd>
+										</div>
+										<div data-v-b809b0a6="" class="detail_box">
+											<dt data-v-b809b0a6="" class="product_title">높이</dt>
+											<dd data-v-b809b0a6="" class="product_info">1540</dd>
+										</div>
+										<div data-v-b809b0a6="" class="detail_box">
+											<dt data-v-b809b0a6="" class="product_title">깊이</dt>
+											<dd data-v-b809b0a6="" class="product_info">2168</dd>
+										</div>
+										<div data-v-b809b0a6="" class="detail_box">
+											<dt data-v-b809b0a6="" class="product_title">발매가</dt>
+											<dd data-v-b809b0a6="" class="product_info">545,300</dd>
+										</div>
+									</dl>
+								</div>
+							</div>
 							<div data-v-158ed304="" data-v-877ed62a=""
 								class="price_descision_box">
 								<ul data-v-638c1354="" data-v-158ed304="" class="price_list">
@@ -59,8 +96,11 @@
 										data-v-638c1354="" class="price">752,000</span><span
 										data-v-638c1354="" class="unit">원</span></li>
 									<li data-v-638c1354="" class="list_item"><p
-											data-v-638c1354="" class="title">검수 등급</p> <span
-										data-v-315a3e4a="">A</span></li>
+											data-v-638c1354="" class="title">검수 등급</p> <select id="grade">
+											<option value="ROYAL" selected="">ROYAL</option>
+											<option value="PRIME">PRIME</option>
+											<option value="STANDARD">STANDARD</option>
+									</select>
 								</ul>
 
 							</div>
@@ -68,8 +108,13 @@
 							<div class="used_info">
 								<h3 data-v-824856a2="" class="review_title">제품 설명</h3>
 								<div class="info_write">
-
-									<input type="text">
+									<textarea class="up_comment" rows="5" name="content"></textarea>
+								</div>
+							</div>
+							<div class="used_info">
+								<h3 data-v-824856a2="" class="review_title">상세사진 첨부</h3>
+								<div class="info_write">
+									<input type="file" name='uploadFile' multiple="">
 								</div>
 							</div>
 							<div data-v-14995178="" data-v-877ed62a=""
@@ -102,7 +147,7 @@
 											<dt data-v-3a2a7b6b="" class="price_title">
 												<span data-v-3a2a7b6b="">등급 산정 가격</span>
 											</dt>
-											<dd data-v-3a2a7b6b="" class="price_text">-7,100원</dd>
+											<dd data-v-3a2a7b6b="" class="price_text">무료</dd>
 										</dl>
 										<dl data-v-3a2a7b6b="" data-v-158ed304=""
 											class="price_addition">
@@ -143,4 +188,144 @@
 		</div>
 	</div>
 </body>
+<script>
+function showUploadResult(uploadResultArr){
+	if(!uploadResultArr || uploadResultArr.length == 0){ return; }
+	var uploadUL = $(".uploadResult ul");
+	var str="";
+	
+	$(uploadResultArr).each(function(i, obj) {
+
+	// image type
+		if(obj.image){
+			var fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid +"_"+obj.fileName);
+			str += "<li data-path='"+obj.uploadPath+"'";
+			str +=" data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"
+			str +" ><div>";
+			str += "<span> "+ obj.fileName+"</span>";
+			str += "<button type='button' data-file=\'"+fileCallPath+"\' "
+			str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+			str += "<img src='/display?fileName="+fileCallPath+"'>";
+			str += "</div>";
+			str +"</li>";
+		}else{
+			var fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);			      
+		    var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
+		      
+			str += "<li "
+			str += "data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"' ><div>";
+			str += "<span> "+ obj.fileName+"</span>";
+			str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' " 
+			str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+			str += "<img src='/resources/img/attach.png'></a>";
+			str += "</div>";
+			str +"</li>";
+		}
+	});
+	uploadUL.append(str);
+}
+
+$(".uploadResult").on("click", "button", function(e){
+	console.log("파일 삭제쥑쥑");
+	
+	var targetFile = $(this).data("file");
+	var type = $(this).data("type");
+	
+	var targetLi = $(this).closest("li");
+	
+	$.ajax({
+		url: '/deleteFile',
+		data: {fileName: targetFile, type: type},
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		},
+		dataType:'text',
+		type: 'POST',
+			success: function(result){
+				alert(result);
+				targetLi.remove();
+			}
+	}); // $.ajax
+});
+
+$(document).ready(function(e) {
+	
+	var formObj = $("form[role='form']");
+	$("button[type='submit']").on("click", function(e) {
+		e.preventDefault();
+		console.log("제출 눌려졋쥑쥑");
+		var str = "";
+		
+		$(".uploadResult ul li").each(function(i, obj){
+		      
+		      var jobj = $(obj);
+		      
+		      console.dir(jobj);
+		      console.log("-------------------------");
+		      console.log(jobj.data("filename"));
+		      
+		      
+		      str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
+		      str += "<input type='hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
+		      str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
+		      str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+ jobj.data("type")+"'>";
+		      
+		    });
+		    
+		    console.log(str);
+		    
+		    formObj.append(str).submit();
+		    
+		  });
+	
+	var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+	var maxSize = 5242880;
+	
+	function checkExtension(fileName, fileSize){
+		if(fileSize >= maxSize) {
+			alert("파일 사이즈 초과");
+			return false;
+		}
+		
+		if(regex.test(fileName)){
+			alert("해당 종류의 파일은 업로드할 수 없쉽니도");
+			return false;
+		}
+		return true;
+	}
+	
+	var csrfHeaderName = "${_csrf.headerName}";
+	var csrfTokenValue = "${_csrf.token}";
+	
+	$("input[type='file']").change(function(e) {
+		var formData = new FormData();
+		var inputFile = $("input[name='uploadFile']");
+		var files = inputFile[0].files;
+		
+		for(var i=0; i<files.length; i++){
+			if(!checkExtension(files[i].name, files[i].size) ){
+				return false;
+			}
+			formData.append("uploadFile", files[i]);
+		}
+		
+		$.ajax({
+			url: '/uploadAjaxAction',
+			processData: false,
+			contentType: false,
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			}
+			data: formData,
+			type: 'POST',
+			dataType: 'json',
+			success: function(result){
+				console.log(result);
+				showUploadResult(result);
+				//$(".uploadDiv").html(cloneObj.html());
+				}
+			}); // $.ajax
+		});
+});
+</script>
 </html>
