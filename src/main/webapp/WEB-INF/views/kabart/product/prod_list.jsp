@@ -97,7 +97,7 @@
 							console.log(str2);
 							categoryPage.html(str2);
 
-							
+
 						}
 						function formCategory(category) {
 
@@ -119,7 +119,7 @@
 									console.log("list" + list);
 									str = "";
 									for (var i = 0; i < list.length; i++) {
-										str += "<div class='product_card exhibition_product' data-v-19fda891='' data-v-81b68464=''><a href='/kabart/product/prod_detail?prod_id='" + list[i].prod_id + " class='item_inner' data-v-19fda891=''>"
+										str += "<div class='product_card exhibition_product' data-v-19fda891='' data-v-81b68464=''><a href='/kabart/product/prod_detail?prod_id=" + list[i].prod_id + "' class='item_inner' data-v-19fda891=''>"
 											+ "<div class='product' style='background-color: #f4f4f4;' data-v-09fbcf09=''><picture data-v-321fc3b6='' data-v-09fbcf09='' class='picture product_img'> <img alt='' src='" + list[i].img_srcs + "' style='overflow: auto;'></picture>"
 											+ "</div><div class='product_info_area' data-v-c90cb1da=''><div class='title' data-v-c90cb1da=''><p class='product_info_brand brand' data-v-878934fe='' data-v-c90cb1da=''>" + list[i].prod_name + "</p>"
 											+ "</div></div><div class='price price_area' data-v-ef71e3ac='' data-v-7dab533a=''><p class='amount' data-v-ef71e3ac=''>" + list[i].prod_price + "</p></div></a></div>";
@@ -129,14 +129,14 @@
 								});
 
 						}
-						categoryPage.on("click", "li a", function(e) {
-								e.preventDefault();
-								console.log("page click");
-								let targetPageNum = $(this).attr("href");
-								console.log("targetPageNum : " + targetPageNum);
-								pageNum = targetPageNum;
-								showCategoryList(realText, pageNum);
-							});
+						categoryPage.on("click", "li a", function (e) {
+							e.preventDefault();
+							console.log("page click");
+							let targetPageNum = $(this).attr("href");
+							console.log("targetPageNum : " + targetPageNum);
+							pageNum = targetPageNum;
+							showCategoryList(realText, pageNum);
+						});
 						$.ajax({
 							url: 'prod_list/' + realText + "/" + 1,
 							contentType: "application/json",
