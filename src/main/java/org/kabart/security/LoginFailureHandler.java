@@ -6,8 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.aspectj.bridge.MessageUtil;
-import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
@@ -27,9 +25,9 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		
 		String errormsg = null;
 		
-		if(exception instanceof BadCredentialsException || exception instanceof InternalAuthenticationServiceException) {
+		if(exception instanceof BadCredentialsException) {
 			errormsg = "아이디나 비밀번호가 맞지 않습니다. 다시 확인해주세요.";
-		} else if (exception instanceof UsernameNotFoundException) {
+		} else if (exception instanceof InternalAuthenticationServiceException) {
 			errormsg = "존재하지 않는 아이디입니다.";
 		}
 		else {
