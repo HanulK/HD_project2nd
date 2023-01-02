@@ -5,30 +5,16 @@
 
 <mapper namespace="org.kabart.mapper.ProductListMapper">
 	
-	<select id="getCategoyProductList"
-		resultType="org.kabart.domain.ProductListVO" >
-		<![CDATA[
-		select prod_id, prod_name, prod_price, prod_category, img_srcs, img_tag
-		from
-		(
-			select rownum rn, p.prod_id as prod_id, p.prod_name as prod_name, to_char(p.prod_price, 'FM999,999,999,999') as prod_price, p.prod_category as prod_category, i.img_srcs as img_srcs, i.img_tag as img_tag
-			from products p join imgs i on p.prod_id = i.prod_id
-			where rownum <= #{cri.pageNum} * #{cri.amount} and img_tag='thumNail' and lower(prod_category) = lower(#{prod_category})
-		)
-		where rn > (#{cri.pageNum} - 1) * #{cri.amount}
-		]]>
-	</select>
-	
 	<select id="getListWithPaging" resultType="org.kabart.domain.ProductListVO" >
 		<![CDATA[
 		select prod_id, prod_name, prod_price, prod_category, img_srcs, img_tag
 		from
 		(
-			select rownum rn, p.prod_id as prod_id, p.prod_name as prod_name, to_char(p.prod_price, 'FM999,999,999,999') as prod_price, p.prod_category as prod_category, i.img_srcs as img_srcs, i.img_tag as img_tag
+			select rownum rn, p.prod_id as prod_id, p.prod_name as prod_name, p.prod_price as prod_price, p.prod_category as prod_category, i.img_srcs as img_srcs, i.img_tag as img_tag
 			from products p join imgs i on p.prod_id = i.prod_id
-			where rownum <= #{pageNum} * #{amount} and img_tag='thumNail'
+			where rownum <= #{cri.pageNum} * #{cri.amount} and img_tag='thumNail' and lower(prod_category) like lower('%'||#{prod_category}||'%')
 		)
-		where rn > (#{pageNum} - 1) * #{amount}
+		where rn > (#{cri.pageNum} - 1) * #{cri.amount}
 		]]>
 	</select>
 	
@@ -38,17 +24,8 @@
 		(
 			select rownum rn, p.prod_id as prod_id, p.prod_name as prod_name, p.prod_price as prod_price, p.prod_category as prod_category, i.img_srcs as img_srcs, i.img_tag as img_tag
 			from products p join imgs i on p.prod_id = i.prod_id
-			where img_tag = 'thumNail'
+			where img_tag = 'thumNail' and lower(prod_category) like lower('%'||#{prod_category}||'%')
 		)
 	</select>
 	
-	<select id="getTotalCountCategory" resultType="int">
-		select count(*)
-		from
-		(
-			select rownum rn, p.prod_id as prod_id, p.prod_name as prod_name, to_char(p.prod_price, 'FM999,999,999,999') as prod_price, p.prod_category as prod_category, i.img_srcs as img_srcs, i.img_tag as img_tag
-			from products p join imgs i on p.prod_id = i.prod_id
-			where img_tag='thumNail' and lower(prod_category) = lower(#{prod_category})
-		)
-	</select>
 </mapper>

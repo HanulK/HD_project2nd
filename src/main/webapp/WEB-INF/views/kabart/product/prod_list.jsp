@@ -13,148 +13,17 @@
 				<title>Product List</title>
 				<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 				<script type="text/javascript">
-					let categoryService = (function () {
-
-						function getList(param, callback, error) {
-							let prod_category = param.prod_category;
-							let page = param.page || 1;
-
-							$.getJSON("/kabart/product/prod_list/" + prod_category + "/" + page,
-								function (data) {
-									if (callback) {
-										console.log("sfdsdfsfsdfsdsdfsdfsdfd");
-										callback(data.categoryProductCnt, data.list);
-									}
-								}).fail(function (xhr, status, err) {
-									if (error) {
-										error();
-									}
-								});
-
-						}
-
-						return {
-							getList: getList
-						};
-
-					})();
-				</script>
-				<script type="text/javascript">
 					$(document).ready(function () {
-
 						let actionForm = $("#actionForm");
+						
 						$(".paginate_button a").on("click", function (e) {
 							e.preventDefault();
 							console.log('click');
+							actionForm.find("input[name='prod_category']");
 							actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 							actionForm.submit();
 						});
-
-
-
-
 					});
-					function getCate(e) {
-						let title = "KABART " + e.innerText;
-						console.log(e.innerText);
-						console.log(e);
-						let text = e.innerText.toLowerCase();
-						let realText = text.replace(" ", "")
-						let main_title = $(".main_title_change")[0];
-						main_title.innerText = e.innerText;
-						console.log(realText);
-						let pageNum = 1;
-						let categoryPage = $("#min");
-						function showCategoryPage(categoryProductCnt) {
-							let endNum = Math.ceil(pageNum / 10.0) * 10;
-							let startNum = endNum - 9;
-							let prev = startNum != 1;
-							let next = false;
-
-							if (endNum * 10 >= categoryProductCnt) {
-								endNum = Math.ceil(categoryProductCnt / 10.0);
-							}
-
-							if (endNum * 10 < categoryProductCnt) {
-								next = true;
-							}
-
-							let str2 = "";
-							let str3 = "";
-
-							if (prev) {
-								str2 += "<li class='paginate_button' style='margin: 0 5px;'><a href='" + (startNum - 1) + "'>이전</a></li>";
-							}
-
-							for (let i = startNum; i <= endNum; i++) {
-								let active = pageNum == i ? "active" : "";
-								str2 += "<li class='paginate_button " + active + " ' style='margin: 0 5px;'><a href='" + i + "'>" + i + "</a></li>";
-							}
-							if (next) {
-								str2 += "<li class='paginate_button' style='margin: 0 5px;'><a href='" + (endNum + 1) + "'>다음</a></li>";
-							}
-							str2 += "</ul></div>";
-							console.log(str2);
-							categoryPage.html(str2);
-
-
-						}
-						function formCategory(category) {
-
-							console.log(category)
-							let str3 = "";
-							str3 += "<form id='actionForm' class='soo' action='/kabart/product/prod_list/" + category + "' method='get'>";
-							str3 += "<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>"
-							str3 += "<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>"
-							console.log(str3);
-							$(".soo").html(str3);
-							console.log("good");
-						}
-
-						function showCategoryList(category, page) {
-							console.log("show list" + page);
-							categoryService.getList({ prod_category: category, page: page || 1 },
-								function (categoryProductCnt, list) {
-									console.log("categoryProductCnt" + categoryProductCnt);
-									console.log("list" + list);
-									str = "";
-									for (var i = 0; i < list.length; i++) {
-										str += "<div class='product_card exhibition_product' data-v-19fda891='' data-v-81b68464=''><a href='/kabart/product/prod_detail?prod_id=" + list[i].prod_id + "' class='item_inner' data-v-19fda891=''>"
-											+ "<div class='product' style='background-color: #f4f4f4;' data-v-09fbcf09=''><picture data-v-321fc3b6='' data-v-09fbcf09='' class='picture product_img'> <img alt='' src='" + list[i].img_srcs + "' style='overflow: auto;'></picture>"
-											+ "</div><div class='product_info_area' data-v-c90cb1da=''><div class='title' data-v-c90cb1da=''><p class='product_info_brand brand' data-v-878934fe='' data-v-c90cb1da=''>" + list[i].prod_name + "</p>"
-											+ "</div></div><div class='price price_area' data-v-ef71e3ac='' data-v-7dab533a=''><p class='amount' data-v-ef71e3ac=''>" + list[i].prod_price + "</p></div></a></div>";
-									}
-									console.log(str);
-									$("#cha").html(str);
-								});
-
-						}
-						categoryPage.on("click", "li a", function (e) {
-							e.preventDefault();
-							console.log("page click");
-							let targetPageNum = $(this).attr("href");
-							console.log("targetPageNum : " + targetPageNum);
-							pageNum = targetPageNum;
-							showCategoryList(realText, pageNum);
-						});
-						$.ajax({
-							url: 'prod_list/' + realText + "/" + 1,
-							contentType: "application/json",
-							success: function (result) {
-								console.log(result.list.length);
-								console.log(result);
-								console.log(realText);
-								let list = result.list;
-								showCategoryList(realText, 1);
-								showCategoryPage(result.categoryProductCnt);
-								formCategory(realText);
-							},
-							error: function (e) {
-								alert(e);
-							}
-						})
-					};
-
 				</script>
 			</head>
 
@@ -168,75 +37,94 @@
 							<div container-index="1" class="shortcut_collection">
 								<!---->
 								<div class="shortcut_item_wrap">
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
+									<div class="shortcut_item">
 										<div class="shortcut_item_img_wrap">
 											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic1.png" class="image">
 											</picture>
 										</div>
 										<p class="shortcut_item_title">USED PRODUCTS</p>
 									</div>
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
-										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic2.png" class="image">
-											</picture>
-										</div>
-										<p class="shortcut_item_title">BED</p>
+									<div class="shortcut_item">
+										<a href="/kabart/product/prod_list?prod_category=bed">
+											<div class="shortcut_item_img_wrap">
+												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic2.png" class="image">
+												</picture>
+											</div>
+											<p class="shortcut_item_title">BED</p>
+										</a>
 									</div>
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
-										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic3.png" class="image">
-											</picture>
-										</div>
-										<p class="shortcut_item_title">SOFA</p>
+									<div class="shortcut_item">
+										<a href="/kabart/product/prod_list?prod_category=sofa">
+											<div class="shortcut_item_img_wrap">
+												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic3.png" class="image">
+												</picture>
+											</div>
+											<p class="shortcut_item_title">SOFA</p>
+										</a>
 									</div>
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
-										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic4.png" class="image">
-											</picture>
-										</div>
-										<p class="shortcut_item_title">TABLE</p>
+									<div class="shortcut_item">
+										<a href="/kabart/product/prod_list?prod_category=table">
+											<div class="shortcut_item_img_wrap">
+												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic4.png" class="image">
+												</picture>
+											</div>
+											<p class="shortcut_item_title">TABLE</p>
+										</a>
 									</div>
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
-										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic5.png" class="image">
-											</picture>
-										</div>
-										<p class="shortcut_item_title">CHAIR</p>
+									<div class="shortcut_item">
+										<a href="/kabart/product/prod_list?prod_category=chair">
+											<div class="shortcut_item_img_wrap">
+												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic5.png" class="image">
+												</picture>
+											</div>
+											<p class="shortcut_item_title">CHAIR</p>
+										</a>
 									</div>
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
-										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic6.png" class="image">
-											</picture>
-										</div>
-										<p class="shortcut_item_title">CLOSET</p>
+									<div class="shortcut_item">
+										<a href="/kabart/product/prod_list?prod_category=closet">
+											<div class="shortcut_item_img_wrap">
+												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic6.png" class="image">
+												</picture>
+											</div>
+											<p class="shortcut_item_title">CLOSET</p>
+										</a>
 									</div>
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
-										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic7.png" class="image">
-											</picture>
-										</div>
-										<p class="shortcut_item_title">DRAWERS</p>
+									<div class="shortcut_item">
+										<a href="/kabart/product/prod_list?prod_category=drawers">
+											<div class="shortcut_item_img_wrap">
+												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic7.png" class="image">
+												</picture>
+											</div>
+											<p class="shortcut_item_title">DRAWERS</p>
+										</a>
 									</div>
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
-										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic8.png" class="image">
-											</picture>
-										</div>
-										<p class="shortcut_item_title">DESK</p>
+									<div class="shortcut_item">
+										<a href="/kabart/product/prod_list?prod_category=desk">
+											<div class="shortcut_item_img_wrap">
+												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic8.png" class="image">
+												</picture>
+											</div>
+											<p class="shortcut_item_title">DESK</p>
+										</a>
 									</div>
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
-										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic9.png" class="image">
-											</picture>
-										</div>
-										<p class="shortcut_item_title">HOME INTERIOR</p>
+									<div class="shortcut_item">
+										<a href="/kabart/product/prod_list?prod_category=homeinterior">
+											<div class="shortcut_item_img_wrap">
+												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic9.png" class="image">
+												</picture>
+											</div>
+											<p class="shortcut_item_title">HOME INTERIOR</p>
+										</a>
 									</div>
-									<div class="shortcut_item" onclick="javascript:getCate(this);">
-										<div class="shortcut_item_img_wrap">
-											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic10.png" class="image">
-											</picture>
-										</div>
-										<p class="shortcut_item_title">ALL</p>
+									<div class="shortcut_item">
+										<a href="/kabart/product/prod_list?prod_category=all">
+											<div class="shortcut_item_img_wrap">
+												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/pic10.png"
+														class="image">
+												</picture>
+											</div>
+											<p class="shortcut_item_title">ALL</p>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -256,8 +144,7 @@
 									<div class="exhibition_item_product_header exhibition_item_section" data-v-6e9267c1=""
 										data-v-4f87b95c="">
 										<div class="product_header_wrapper" data-v-6e9267c1="">
-											<h2 class="title main_title_change" data-v-6e9267c1="">KABART
-												ALL</h2>
+											<h2 class="title main_title_change" data-v-6e9267c1="" style="text-transform : uppercase;">KABART ${productList[0].prod_category}</h2>
 											<p class="description" data-v-6e9267c1="">KABART 에서 자신 있게
 												선보이는 상품</p>
 										</div>
@@ -284,12 +171,13 @@
 															<c:out value="${products.prod_name}" />
 															<!---->
 														</p>
+														
 													</div>
 												</div>
 												<div class="price price_area" data-v-ef71e3ac="" data-v-7dab533a="">
 													<p class="amount" data-v-ef71e3ac="">
 														<!---->
-														<c:out value="${products.prod_price}" />
+														<fmt:formatNumber value="${products.prod_price }" pattern="#,###" />
 													</p>
 												</div>
 												</a>
@@ -316,7 +204,8 @@
 								</div>
 								<!-- 페이징 처리 끝-->
 								<div class="soo">
-									<form id='actionForm' action="/kabart/product/prod_list" method="get">
+									<form id='actionForm' action='/kabart/product/prod_list' method="get">
+										<input type='hidden' name= "prod_category" value="${productList[0].prod_category}">
 										<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 										<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 									</form>

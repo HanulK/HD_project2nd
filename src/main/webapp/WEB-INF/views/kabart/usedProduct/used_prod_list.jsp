@@ -27,144 +27,75 @@
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic1.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">Second</p>
+							<p class="shortcut_item_title">신상품</p>
 						</div>
 						<div class="shortcut_item">
 							<div class="shortcut_item_img_wrap">
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic2.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">침대</p>
+							<p class="shortcut_item_title">중고 침대</p>
 						</div>
 						<div class="shortcut_item">
 							<div class="shortcut_item_img_wrap">
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic3.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">소파</p>
+							<p class="shortcut_item_title">중고 소파</p>
 						</div>
 						<div class="shortcut_item">
 							<div class="shortcut_item_img_wrap">
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic4.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">식탁</p>
+							<p class="shortcut_item_title">중고 식탁</p>
 						</div>
 						<div class="shortcut_item">
 							<div class="shortcut_item_img_wrap">
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic5.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">의자</p>
+							<p class="shortcut_item_title">중고 의자</p>
 						</div>
 						<div class="shortcut_item">
 							<div class="shortcut_item_img_wrap">
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic6.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">옷장</p>
+							<p class="shortcut_item_title">중고 옷장</p>
 						</div>
 						<div class="shortcut_item">
 							<div class="shortcut_item_img_wrap">
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic7.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">서랍장</p>
+							<p class="shortcut_item_title">중고 서랍장</p>
 						</div>
 						<div class="shortcut_item">
 							<div class="shortcut_item_img_wrap">
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic8.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">책상</p>
+							<p class="shortcut_item_title">중고 책상</p>
 						</div>
 						<div class="shortcut_item">
 							<div class="shortcut_item_img_wrap">
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic9.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">홈 인테리어</p>
+							<p class="shortcut_item_title">중고 홈인테리어</p>
 						</div>
 						<div class="shortcut_item">
 							<div class="shortcut_item_img_wrap">
 								<picture class="picture shortcut_item_img_bg"> <img
 									src="/resources/img/pic10.png" class="image"> </picture>
 							</div>
-							<p class="shortcut_item_title">전체보기</p>
+							<p class="shortcut_item_title">중고 전체보기</p>
 						</div>
 					</div>
 				</div>
 				<!-- /.shorcut collection -->
-				<!-- shorcut collection -->
-				<div container-index="2" class="shortcut_collection">
-					<!---->
-					<div class="shortcut_item_wrap2">
-						<div class="shortcut_item">
-							<div class="shortcut_item_img_wrap">
-								<picture class="picture shortcut_item_img_bg"> <img
-									src="/resources/img/pic1.png" class="image"> </picture>
-							</div>
-							<p class="shortcut_item_title">럭키박스</p>
-						</div>
-						<div class="shortcut_item">
-							<div class="shortcut_item_img_wrap">
-								<picture class="picture shortcut_item_img_bg"> <img
-									src="/resources/img/pic2.png" class="image"> </picture>
-							</div>
-							<p class="shortcut_item_title">남성 추천</p>
-						</div>
-						<div class="shortcut_item">
-							<div class="shortcut_item_img_wrap">
-								<picture class="picture shortcut_item_img_bg"> <img
-									src="/resources/img/pic3.png" class="image"> </picture>
-							</div>
-							<p class="shortcut_item_title">여성 추천</p>
-						</div>
-						<div class="shortcut_item">
-							<div class="shortcut_item_img_wrap">
-								<picture class="picture shortcut_item_img_bg"> <img
-									src="/resources/img/pic4.png" class="image"> </picture>
-							</div>
-							<p class="shortcut_item_title">셀럽픽</p>
-						</div>
-						<div class="shortcut_item">
-							<div class="shortcut_item_img_wrap2">
-								<picture class="picture shortcut_item_img_bg"> <img
-									src="/resources/img/pic5.png" class="image"> </picture>
-							</div>
-							<p class="shortcut_item_title">이번주 브랜드관</p>
-						</div>
-						<div class="shortcut_item">
-							<div class="shortcut_item_img_wrap">
-								<picture class="picture shortcut_item_img_bg"> <img
-									src="/resources/img/pic6.png" class="image"> </picture>
-							</div>
-							<p class="shortcut_item_title">정가 아래</p>
-						</div>
-						<div class="shortcut_item">
-							<div class="shortcut_item_img_wrap">
-								<picture class="picture shortcut_item_img_bg"> <img
-									src="/resources/img/pic7.png" class="image"> </picture>
-							</div>
-							<p class="shortcut_item_title">인기 럭셔리</p>
-						</div>
-						<div class="shortcut_item">
-							<div class="shortcut_item_img_wrap">
-								<picture class="picture shortcut_item_img_bg"> <img
-									src="/resources/img/pic8.png" class="image"> </picture>
-							</div>
-							<p class="shortcut_item_title">연말 선물</p>
-						</div>
-						<div class="shortcut_item">
-							<div class="shortcut_item_img_wrap">
-								<picture class="picture shortcut_item_img_bg"> <img
-									src="/resources/img/pic9.png" class="image"> </picture>
-							</div>
-							<p class="shortcut_item_title">겨울 코디</p>
-						</div>
-					</div>
-				</div>
-				<!-- /.shorcut collection -->
+				
 				<div class="exhibition_items" data-v-4f87b95c="" data-v-352cdc90=""
 					data-v-3007c576="">
 					<div class="exhibition_item image" data-v-4f87b95c="">

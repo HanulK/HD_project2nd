@@ -11,7 +11,7 @@ public class Criteria {
 	
 	private int pageNum;
 	private int amount;
-	
+	private String prod_category;
 	public Criteria() {
 		this(1, 8);
 	}
