@@ -34,6 +34,10 @@ public class MypageController {
 	}
 	
 	
+	@GetMapping("/profile")
+	public void profile() {
+		
+	}
 	
 	@GetMapping("/buying")
 	public void buying() {
