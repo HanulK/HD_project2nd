@@ -11,7 +11,10 @@ public interface ProductListMapper {
 	
 	public List<ProductListVO> getListWithPaging(Criteria cri);
 	
+	public int getTotalCount(Criteria cri); 
+	
 	public List<ProductListVO> getCategoyProductList(@Param("prod_category") String prod_category, @Param("cri") Criteria cri);
 	
-	public int getTotalCount(Criteria cri); 
+	public int getTotalCountCategory(String prod_category);
+	
 }
