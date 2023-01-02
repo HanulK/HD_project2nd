@@ -1,8 +1,8 @@
 package org.kabart.controller;
 
+import org.springframework.web.bind.annotation.*;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.log4j.Log4j;
 
@@ -15,5 +15,10 @@ public class UsedProductController {
 	public void used_prod_detail() {
 		log.info("used item detail controller....");
 		
+	}
+	
+	@GetMapping("/used_prod_sell")
+	public void used_prod_sell() {
+		log.info("used prod sell....");
 	}
 }

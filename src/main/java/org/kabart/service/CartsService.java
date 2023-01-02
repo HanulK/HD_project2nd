@@ -1,6 +1,5 @@
 package org.kabart.service;
 
-
 import org.kabart.domain.CartsVO;
 
 public interface CartsService {

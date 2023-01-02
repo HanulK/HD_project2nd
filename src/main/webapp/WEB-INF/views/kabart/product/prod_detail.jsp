@@ -82,7 +82,7 @@
 
 												<div data-v-f40660fa="" data-v-77d20f30=""
 													class="detail_stock_btn">
-													<a data-v-6e799857="" data-v-f40660fa="" href="#"
+													<a data-v-6e799857="" data-v-f40660fa="" href="/kabart/usedProduct/used_prod_sell"
 														class="btn solid full sell large"> 중고 판매 </a>
 												</div>
 											</div>
@@ -183,9 +183,10 @@
 											<div data-v-4b0fda50="" class="product_thumb">
 												<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
 													style="background-color: rgb(242, 242, 242);">
+													<a href = "#">
 													<picture data-v-321fc3b6="" data-v-09fbcf09=""
 														class="picture product_img"> <img alt=""
-														src="${detail.img_srcs}" style="overflow: auto;"></picture>
+														src="${detail.img_srcs}" style="overflow: auto;"></picture></a>
 													<!---->
 													<!---->
 													<em data-v-09fbcf09="" class="stocked_status_mark">
@@ -267,7 +268,9 @@
 					</div>
 					<%@include file="../includes/footer.jsp"%>
 				</div>
-				<script>
+</body>
+<script>
+</html>
 		$("#cart").on("click", function(e) {
 		e.preventDeaulf(); //원래 이번트 막음 / 원하는 이벤트 
 
@@ -296,5 +299,3 @@
 	 }
 		
 </script>
-</body>
-</html>

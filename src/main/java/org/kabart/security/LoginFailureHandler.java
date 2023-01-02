@@ -27,13 +27,6 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		
 		String errormsg = null;
 		
-//		if (exception instanceof AuthenticationServiceException) {
-//			request.setAttribute("error", "존재하지 않는 사용자입니다.");
-//		
-//		} else if(exception instanceof BadCredentialsException) {
-//			request.setAttribute("error", "비밀번호가 틀립니다.");
-//		}
-		
 		if(exception instanceof BadCredentialsException || exception instanceof InternalAuthenticationServiceException) {
 			errormsg = "아이디나 비밀번호가 맞지 않습니다. 다시 확인해주세요.";
 		} else if (exception instanceof UsernameNotFoundException) {
