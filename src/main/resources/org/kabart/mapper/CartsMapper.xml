@@ -5,7 +5,7 @@
 <mapper namespace="org.kabart.mapper.CartsMapper">
 	<!-- definition of user define function -->
 
-	<insert id="insert" >
+	<insert id="insert">
 		insert into carts(mem_id, prod_id, quantity)
 		values(#{mem_id},#{prod_id},#{quantity})
 
@@ -13,14 +13,12 @@
 	</insert>
 
 
-	<select id="getList" resultType="org.kabart.domain.CartsVO">
+	<select id="getCarts" resultType="org.kabart.domain.CartsVO">
 
-		select prod_category, prod_name, prod_price, prod_width, prod_height,
-		prod_depth,quantity
-		from carts c join products p on c.prod_id = p.
-		prod_id join members m on
-		m.mem_id= c.mem_id
-		where c.mem_id = 'test'
+		SELECT pd.prod_id,c.quantity, pd.prod_name,pd.prod_price,im.img_srcs, pd.prod_category
+		FROM carts c JOIN products pd ON c.prod_id = pd.prod_id
+		JOIN imgs im ON pd.prod_id = im.prod_id AND img_tag='thumNail'
+		WHERE mem_id = #{mem_id}
 		<!-- test값 변경해야함 ${} -->
 
 		<!-- 장바구니에 정보 가려오는 쿼리문 -->
@@ -32,11 +30,11 @@
 		SELECT count(*) FROM carts WHERE
 		mem_id = #{mem_id} and prod_id = #{prod_id}
 	</select>
-	
+
 	<update id="quantityUpdate">
-		UPDATE carts set quantity = quantity + #{quantity} 
+		UPDATE carts set quantity = quantity + #{quantity}
 		WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
-		
+
 	</update>
 
 
