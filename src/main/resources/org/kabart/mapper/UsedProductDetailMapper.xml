@@ -6,4 +6,5 @@
 	<select id = "getinfo" resultMap="UsedProductDetailVO">
 		select 
 	</select>
+	
 </mapper>
