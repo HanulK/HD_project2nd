@@ -2,6 +2,8 @@
 	language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <c:set var="contextPath" value="${PageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +26,13 @@
 				<div data-v-cf786f84="" data-v-3007c576=""
 					class="container detail md">
 					<div data-v-cf786f84="" class="content">
+						<sec:authorize access="isAuthenticated()">
+							<input id="mem_id" type="hidden"
+							value='<sec:authentication property="principal.username"/>'>
+						</sec:authorize>
+						
+						
+			
 						<h2 data-v-cf786f84="" class="blind">상품 상세</h2>
 						<div data-v-cf786f84="" class="column_bind">
 							<div data-v-cf786f84="" class="column">
@@ -223,7 +232,7 @@
 							<!-- /.stock item 단일-->
 						</div>
 					</c:if>
-					
+
 					<!-- 부중서 끝 -->
 					<div data-v-12376b79="" data-v-cf786f84="" class="feed_area">
 						<div class="goodsView__bottom js__goods-detail">
@@ -277,31 +286,44 @@
 </body>
 </html>
 <script>
+		
 		$("#cart").on("click", function(e) {
-		e.preventDeaulf(); //원래 이번트 막음 / 원하는 이벤트 
-
+		e.preventDefault(); //원래 이번트 막음 / 원하는 이벤트 
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+		const mem_id = $("#mem_id").val();
 		  // ajax 
 		  $.ajax({
 		      type : "POST",            // HTTP method type(GET, POST) 형식
 		      url : "/kabart/mypage/cart",      // 컨트롤러에서 대기중인 URL 주소
-		      data : params,            // Json 형식의 데이터
-		      success : function(respone){ // 비동기통신-> 성공 success콜백// 'respone'는 응답받은 데이터
-			
-		    	  alert("장바구니에 등록되었습니다");
-		       		location.href ="/kabart/mypage/cart"
+		      data : JSON.stringify({
+		    	  mem_id : mem_id,
+		    	  prod_id : ${detail.prod_id},
+		    	  quantity : 1
+		    	  
+		      }),
+		      contentType : "application/json",
+		      beforeSend : function(xhr) {
+					xhr.setRequestHeader(csrfHeaderName,
+							csrfTokenValue);
+				},
+		      // Json 형식의 데이터
+		      success : function(result){ // 비동기통신-> 성공 success콜백// 'respone'는 응답받은 데이터
+					if(result=='success'){
+						alert("성공");
+					}else {
+						alert("실패")
+					}
+		      
 		      },
-		      
-		      
-		      error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
-		          alert("장바구니 등록에 실패하였습니다")
+		      error : function(e){
+		    	  alert(e[1]);
 		      }
+
 		  });
 		
 		
 		});
-	 } else {
-         alert("취소되었습니다");
-       }
-	 }
+	
 		
 </script>

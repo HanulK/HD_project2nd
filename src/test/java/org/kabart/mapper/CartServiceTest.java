@@ -26,4 +26,9 @@ public class CartServiceTest {
 	public void testExit() {
 		assertNotNull(service);
 	}
+	
+	@Test
+	public void testIsExist() {
+		log.info("insert or update "+service.isExist("test", 108607, 5));
+	}
 }

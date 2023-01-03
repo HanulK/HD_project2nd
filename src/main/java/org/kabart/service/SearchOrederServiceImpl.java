@@ -35,6 +35,8 @@ public class SearchOrederServiceImpl implements SearchOrederService {
 		List<SearchOrderUsedVO> list = new ArrayList<>();
 		list = sMapper.getSearchUsedList(mem_id, start_date, end_date);
 		log.info("getSearchOldList");
+		System.out.print("getSearchOldList");
+		list.forEach(item->System.out.println(item));
 		return list;
 	}
 	
