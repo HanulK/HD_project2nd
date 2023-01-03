@@ -66,113 +66,130 @@
 									</dl>
 								</div>
 								<div data-v-77d20f30="" class="btn_wrap">
-									<div data-v-f40660fa="" data-v-77d20f30=""
-										class="detail_stock_btn">
-										<a data-v-6e799857="" data-v-f40660fa="" href="#"
-											class="btn solid full buy large"> 바로 구매하기 </a>
-									</div>
+									<c:if test="${read.sale_date eq null}">
+										<div data-v-f40660fa="" data-v-77d20f30=""
+											class="detail_stock_btn">
+											<a data-v-6e799857="" data-v-f40660fa="" href="#"
+												class="btn solid full buy large"> 바로 구매하기 </a>
+										</div>
+									</c:if>
+									<c:if test="${read.sale_date ne null}">
+										<div data-v-f40660fa="" data-v-77d20f30=""
+											class="detail_stock_btn1">
+											<a data-v-6e799857="" data-v-f40660fa=""
+												class="btn solid full buy1 large"> 판매 완료 </a>
+										</div>
+									</c:if>
 								</div>
 								<div data-v-824856a2="" data-v-77d20f30=""
 									class="checked_review">
 									<div data-v-3900a1a2="" class="product_info_wrap">
-										<h3 data-v-52dd777b="" data-v-3900a1a2="" class="detail_title info_title md" style="
-    padding-top: 0px;
-">상품 정보</h3>
-										<div data-v-b809b0a6="" data-v-3900a1a2="" class="detail_product_wrap">
+										<h3 data-v-52dd777b="" data-v-3900a1a2=""
+											class="detail_title info_title md" style="padding-top: 0px;">상품
+											정보</h3>
+										<div data-v-b809b0a6="" data-v-3900a1a2=""
+											class="detail_product_wrap">
 											<dl data-v-b809b0a6="" class="detail_product">
 												<div data-v-b809b0a6="" class="detail_box model_num">
 													<dt data-v-b809b0a6="" class="product_title">너비</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														${read.prod_width}
-													</dd>
+														${read.prod_width}</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
 													<dt data-v-b809b0a6="" class="product_title">높이</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														${read.prod_height}
-													</dd>
+														${read.prod_height}</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
 													<dt data-v-b809b0a6="" class="product_title">깊이</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														${read.prod_depth}
-													</dd>
+														${read.prod_depth}</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
 													<dt data-v-b809b0a6="" class="product_title">발매가</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														${read.prod_price}
-													</dd>
+														${read.prod_price}</dd>
 												</div>
 											</dl>
 										</div>
 									</div>
-										<!---->
-									</div>
-									<div data-v-2e0c1d1d="" data-v-824856a2=""
-										class="review_section plain top">
-										<p data-v-2e0c1d1d="" class="title">검수 결과</p>
-										<div data-v-315a3e4a="" data-v-2e0c1d1d="" class="review_item">
-											<div data-v-315a3e4a="" class="title">
-												<span data-v-315a3e4a="">${read.grade}</span>
-											</div>
+									<!---->
+								</div>
+								<div data-v-2e0c1d1d="" data-v-824856a2=""
+									class="review_section plain top">
+									<p data-v-2e0c1d1d="" class="title">검수 결과</p>
+									<div data-v-315a3e4a="" data-v-2e0c1d1d="" class="review_item">
+										<div data-v-315a3e4a="" class="title">
+											<span data-v-315a3e4a="">${read.grade}</span>
 										</div>
+									</div>
+								</div>
+								<!---->
+								<div data-v-2e0c1d1d="" data-v-824856a2=""
+									class="review_section plain">
+									<p data-v-2e0c1d1d="" class="title">설명</p>
+									<div data-v-47ba7f78="" data-v-2e0c1d1d="" class="review_item">
+										<p data-v-47ba7f78="">${read.up_comment}</p>
+									</div>
+								</div>
+								<!---->
+								<!---->
+								<div data-v-2e0c1d1d="" data-v-824856a2=""
+									class="review_section plain">
+									<p data-v-2e0c1d1d="" class="title">상세 사진</p>
+									<div data-v-73da1ab5="" data-v-2e0c1d1d="" class="review_item">
+										<ul data-v-73da1ab5="" class="stock_images">
+											<li data-v-73da1ab5=""><img data-v-73da1ab5=""
+												src="https://kream-phinf.pstatic.net/MjAyMjEwMDFfMTE3/MDAxNjY0NTkzMzQxOTc4.ljgJB0IlimE8oWHG2oMZWeM1NZD-4YcTk0lXv9ofwOsg.uplNkEywWZgN9iVEw65L2BZFI8U-CKXec9rlgxdSPW4g.JPEG/a_81877b6f0f05443ba66c430382d171a5.jpeg?type=s"
+												class="stock_95_image"></li>
+											<li data-v-73da1ab5=""><img data-v-73da1ab5=""
+												src="https://kream-phinf.pstatic.net/MjAyMjEwMDFfMjg4/MDAxNjY0NTkzMzQyNDYz.T1kXXMZdbmUJ4foeEI65Hhqw8Y9vU-4wa7dQ2m6oUM0g.kY-zziGgOHJWp0Ow0i0T9uq_JqLXqoyax3TAgoRLcHcg.JPEG/a_6e6653106f6345e4a41cb8d70c9c4ccd.jpeg?type=s"
+												class="stock_95_image"></li>
+										</ul>
+									</div>
+								</div>
+								<!---->
+								<div data-v-2e0c1d1d="" data-v-824856a2=""
+									class="review_section empty_header">
+									<p data-v-2e0c1d1d="" class="title"></p>
+									<div data-v-9027bcb8="" data-v-2e0c1d1d="" class="review_item">
+										<p data-v-9027bcb8="" class="desc">촬영 환경 광선, 배경 등 외적인 요소의
+											영향으로 실물 색상과 사진이 다를 수 있습니다.</p>
 									</div>
 									<!---->
-									<div data-v-2e0c1d1d="" data-v-824856a2=""
-										class="review_section plain">
-										<p data-v-2e0c1d1d="" class="title">설명</p>
-										<div data-v-47ba7f78="" data-v-2e0c1d1d="" class="review_item">
-											<p data-v-47ba7f78="">${read.up_comment}</p>
-										</div>
+								</div>
+								<div data-v-2e0c1d1d="" data-v-824856a2=""
+									class="review_section empty_header top">
+									<p data-v-2e0c1d1d="" class="title"></p>
+									<div data-v-97275b18="" data-v-2e0c1d1d="" class="review_item">
+										<p data-v-97275b18="" class="review_date">등록일
+											${read.up_regdate}</p>
 									</div>
 									<!---->
-									<!---->
-									<div data-v-2e0c1d1d="" data-v-824856a2=""
-										class="review_section plain">
-										<p data-v-2e0c1d1d="" class="title">상세 사진</p>
-										<div data-v-73da1ab5="" data-v-2e0c1d1d="" class="review_item">
-											<ul data-v-73da1ab5="" class="stock_images">
-												<li data-v-73da1ab5=""><img data-v-73da1ab5=""
-													src="https://kream-phinf.pstatic.net/MjAyMjEwMDFfMTE3/MDAxNjY0NTkzMzQxOTc4.ljgJB0IlimE8oWHG2oMZWeM1NZD-4YcTk0lXv9ofwOsg.uplNkEywWZgN9iVEw65L2BZFI8U-CKXec9rlgxdSPW4g.JPEG/a_81877b6f0f05443ba66c430382d171a5.jpeg?type=s"
-													class="stock_95_image"></li>
-												<li data-v-73da1ab5=""><img data-v-73da1ab5=""
-													src="https://kream-phinf.pstatic.net/MjAyMjEwMDFfMjg4/MDAxNjY0NTkzMzQyNDYz.T1kXXMZdbmUJ4foeEI65Hhqw8Y9vU-4wa7dQ2m6oUM0g.kY-zziGgOHJWp0Ow0i0T9uq_JqLXqoyax3TAgoRLcHcg.JPEG/a_6e6653106f6345e4a41cb8d70c9c4ccd.jpeg?type=s"
-													class="stock_95_image"></li>
-											</ul>
-										</div>
-									</div>
-									<!---->
-									<div data-v-2e0c1d1d="" data-v-824856a2=""
-										class="review_section empty_header">
-										<p data-v-2e0c1d1d="" class="title"></p>
-										<div data-v-9027bcb8="" data-v-2e0c1d1d="" class="review_item">
-											<p data-v-9027bcb8="" class="desc">촬영 환경 광선, 배경 등 외적인 요소의
-												영향으로 실물 색상과 사진이 다를 수 있습니다.</p>
-										</div>
-										<!---->
-									</div>
-									<div data-v-2e0c1d1d="" data-v-824856a2=""
-										class="review_section empty_header top">
-										<p data-v-2e0c1d1d="" class="title"></p>
-										<div data-v-97275b18="" data-v-2e0c1d1d="" class="review_item">
-											<p data-v-97275b18="" class="review_date">등록일 ${read.up_regdate}</p>
-										</div>
-										<!---->
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!---->
-					<!---->
-					<!---->
 				</div>
-				<!--content-->
+				<!---->
+				<!---->
+				<!---->
 			</div>
+			<!--content-->
 		</div>
-		<%@include file="../includes/footer.jsp"%>
+	</div>
+	<%@include file="../includes/footer.jsp"%>
 	</div>
 	</div>
 </body>
+<!-- <script type="text/javascript">
+	function saled() {
+		let saledate = $("#sale_date").val();
+
+		if (saledate != null) {
+			$("#btn_buyused")
+					.attr("class", "btn solid full buy large disabled");
+		}
+	}
+</script> -->
 </html>

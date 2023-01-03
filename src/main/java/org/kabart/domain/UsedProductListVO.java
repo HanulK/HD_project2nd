@@ -12,6 +12,7 @@ public class UsedProductListVO {
 	private int up_id;
 	private String grade;
 	private Date up_regdate;
+	private Date sale_date;
 	private int prod_price;
 	private int discount_price;
 	private String img_srcs;

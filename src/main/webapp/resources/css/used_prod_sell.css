@@ -342,9 +342,8 @@ h2.title1 {
 	font-size: 20px;
 }
 
-input#addr_button {
-<<<<<<< HEAD
-	display: inline-flex;
+input#addr_button { <<<<<<<
+	HEAD display: inline-flex;
 	cursor: pointer;
 	-webkit-box-align: center;
 	align-items: center;
@@ -385,22 +384,53 @@ div#current_date {
 }
 
 input#addr_button {
-    display: inline-flex;
-    cursor: pointer;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    vertical-align: middle;
-    text-align: center;
-    background-color: #5656568f;
-    width: 83px;
-    font-size: 12px;
-    letter-spacing: -.16px;
-    height: 28px;
-    border-radius: 12px;
-    color: #fff;
-    font-weight: 700;
-    margin-left: 280px;
+	display: inline-flex;
+	cursor: pointer;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	vertical-align: middle;
+	text-align: center;
+	background-color: #5656568f;
+	width: 83px;
+	font-size: 12px;
+	letter-spacing: -.16px;
+	height: 28px;
+	border-radius: 12px;
+	color: #fff;
+	font-weight: 700;
+	margin-left: 280px;
 }
 
+a.btn.solid.full.buy1.large {
+	background-color: #787878;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	height: 60px;
+	line-height: normal;
+	border-radius: 10px;
+}
+
+.soldout {
+	background-color: rgb(34 34 34/ 50%);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.soldout_title {
+    position: absolute;
+    top: 44%;
+    left: 20%;
+    height: 100%;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 1px;
+}

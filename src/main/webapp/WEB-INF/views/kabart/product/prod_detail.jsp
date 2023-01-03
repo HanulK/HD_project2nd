@@ -28,11 +28,11 @@
 					<div data-v-cf786f84="" class="content">
 						<sec:authorize access="isAuthenticated()">
 							<input id="mem_id" type="hidden"
-							value='<sec:authentication property="principal.username"/>'>
+								value='<sec:authentication property="principal.username"/>'>
 						</sec:authorize>
-						
-						
-			
+
+
+
 						<h2 data-v-cf786f84="" class="blind">상품 상세</h2>
 						<div data-v-cf786f84="" class="column_bind">
 							<div data-v-cf786f84="" class="column">
@@ -191,7 +191,8 @@
 									<c:forEach items="${detail.useds}" var="useditems">
 										<div data-v-4b0fda50="" data-v-3e0ff210=""
 											class="stock_list_item">
-											<a data-v-4b0fda50="" class="item_inner">
+											<a
+												href="/kabart/usedProduct/used_prod_detail?up_id=<c:out value="${useditems.up_id}" />">
 												<div data-v-4b0fda50="" class="product_thumb">
 													<div data-v-09fbcf09="" data-v-4b0fda50="" class="product"
 														style="background-color: rgb(242, 242, 242);">
@@ -206,24 +207,25 @@
 													</div>
 													<!---->
 												</div>
-												<div data-v-4b0fda50="" class="product_info">
-													<div data-v-4b0fda50="" class="product_detail">
-														<p data-v-4b0fda50="" class="name">
-															<c:out value="${detail.prod_name}" />
-														</p>
-													</div>
-													<div data-v-4b0fda50="" class="product_price">
-														<p data-v-4b0fda50="" class="origin_price">
-															<fmt:formatNumber value="${detail.prod_price}"
-																pattern="#,###" />
-														</p>
-														<p data-v-4b0fda50="" class="discount_price">
-															<em data-v-4b0fda50="" class="discount_per">${useditems.discount_rate}%</em>
-															<span data-v-4b0fda50="" class="amount">${useditems.used_price}원</span>
-														</p>
-														<p data-v-4b0fda50="" class="price_desc">구매가</p>
-													</div>
+											</a>
+											<div data-v-4b0fda50="" class="product_info">
+												<div data-v-4b0fda50="" class="product_detail">
+													<p data-v-4b0fda50="" class="name">
+														<c:out value="${detail.prod_name}" />
+													</p>
 												</div>
+												<div data-v-4b0fda50="" class="product_price">
+													<p data-v-4b0fda50="" class="origin_price">
+														<fmt:formatNumber value="${detail.prod_price}"
+															pattern="#,###" />
+													</p>
+													<p data-v-4b0fda50="" class="discount_price">
+														<em data-v-4b0fda50="" class="discount_per">${useditems.discount_rate}%</em>
+														<span data-v-4b0fda50="" class="amount">${useditems.used_price}원</span>
+													</p>
+													<p data-v-4b0fda50="" class="price_desc">구매가</p>
+												</div>
+											</div>
 											</a>
 										</div>
 									</c:forEach>
