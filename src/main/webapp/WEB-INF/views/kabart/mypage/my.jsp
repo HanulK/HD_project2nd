@@ -59,7 +59,7 @@
 							<div data-v-5acef129="" class="info_box">
 								<strong data-v-5acef129="" class="name">skarns23</strong>
 								<p data-v-5acef129="" class="email">s******3@naver.com</p>
-								<a data-v-6e799857="" data-v-5acef129="" href="/my/profile"
+								<a data-v-6e799857="" data-v-5acef129="" href="/kabart/mypage/profile"
 									class="btn btn outlinegrey small" type="button"> 프로필 수정 </a>
 							</div>
 						</div>

@@ -1,19 +1,16 @@
 package org.kabart.controller;
 
-import org.springframework.web.bind.annotation.*;
+import java.util.*;
 
-import java.util.List;
-
+import org.apache.ibatis.javassist.expr.NewArray;
 import org.kabart.domain.MemberVO;
-import org.kabart.domain.SearchOrderUsedVO;
 import org.kabart.mapper.MemberMapper;
 import org.kabart.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.Setter;
@@ -65,11 +62,14 @@ public class KabartController {
 	public void joinGet() { }
 	
 	
-	@PostMapping(value="/join", produces = MediaType.APPLICATION_JSON_VALUE) 
-	public String joinPost(MemberVO member, RedirectAttributes rttr) {
-		service.signUp(member);
-		rttr.addAttribute("join_result", "회원 가입에 성공하였습니다.");
-		return "redirect:/kabart/home";
+	@ResponseBody
+	@PostMapping(value="/join",consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = MediaType.APPLICATION_JSON_VALUE) 
+	public ResponseEntity<Map<String,Object>> joinPost(@RequestBody MemberVO member, RedirectAttributes rttr) {
+		int result = service.signUp(member);
+		Map<String, Object> map =  new HashMap<String, Object>();
+		String ans= result == 0 ? "fail" : "success";
+		map.put("result", ans);
+		return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 	}
 	
 	@ResponseBody

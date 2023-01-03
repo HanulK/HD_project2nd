@@ -16,7 +16,7 @@ function checkedInput() {
 	let address = $("input[name=address]").val();
 	let address_detail = $("input[name=address_detail]").val();
 	
- 	if (mem_id != "" && mem_pw != "" && mem_name != "" && birth.length == 8 
+  	if (mem_id != "" && mem_pw != "" && mem_name != "" && birth.length == 8 
 			&& family_num > 0 && phone.length > 9 && address != "" && address_detail != "") {
 		console.log("check!");
 		$("#btn-next").attr("class", "btn full solid");		
@@ -93,7 +93,7 @@ function checkedInput() {
 					<div class="input_box" data-v-1c44afeb="" data-v-429a8655="">
 						<h3 class="input_title ess" data-v-1c44afeb="" data-v-429a8655="">성별</h3>
 						<div class="input_item" data-v-1c44afeb="">
-							<select name="gender" class="input_txt">
+							<select name="gender" class="input_txt" id="gender">
 								<option value="M">남성</option>
 								<option value="W">여성</option>
 							</select>
@@ -183,10 +183,37 @@ function checkedInput() {
 		e.preventDefault();
 		let class_name = $("#btn-next").attr("class");
 		
-		if (class_name === "btn full solid") {
-			$("#btn-next").attr("href", "/kabart/join");
-			$("form").submit();			
-		}
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfToeknValue = "${_csrf.token}";
+		
+ 		$.ajax({
+			url : "${contextPath}/kabart/join",
+			type : "POST",
+			data : JSON.stringify({
+				mem_id : $("input[name=mem_id]").val(),
+				mem_pw : $("input[name=mem_pw]").val(),
+				mem_name : $("input[name=mem_name]").val(),
+				birth : $("input[name=birth]").val(),
+				family_num : $("input[name=family_num]").val(),
+				phone : $("input[name=phone]").val(),
+				address : $("input[name=address]").val(),
+				address_detail : $("input[name=address_detail]").val(),
+				gender : $("#gender").val()
+			}),
+			contentType : "application/json",
+			dataType : "json",
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfToeknValue);
+			},
+			success : function(result) {
+				location.href = "/kabart/home";
+				alert("회원 가입을 완료하였습니다!");
+			},
+			error : function(e) {
+				console.log(e);
+				alert("회원 가입에 문제가 발생하였습니다.");
+			}
+		}); // end ajax 
 	});
 	
 	function valid_id_check() {

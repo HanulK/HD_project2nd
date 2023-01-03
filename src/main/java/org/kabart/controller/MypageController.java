@@ -1,11 +1,16 @@
 package org.kabart.controller;
 
+import java.security.Principal;
 import java.util.*;
 
+import org.kabart.domain.MemberVO;
+import org.kabart.mapper.MemberMapper;
 import org.kabart.service.CartsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.Setter;
@@ -19,6 +24,9 @@ public class MypageController {
 	
 	@Setter(onMethod_= {@Autowired})
 	CartsService cService;
+	
+	@Setter(onMethod_= {@Autowired})
+	MemberMapper mapper;
 	
 	@GetMapping("/my")
 	public void myMain() {
@@ -46,10 +54,12 @@ public class MypageController {
 	
 
 	
-	
 	@GetMapping("/profile")
-	public void profile() {
-		
+	public void profile(Principal principal, Model model) {
+		log.warn(principal.getName());
+		MemberVO mem = mapper.getInfo(principal.getName());
+		model.addAttribute("member", mem);
+		log.warn("========================== member : "+mem);
 	}
 	
 	@GetMapping("/buying")
