@@ -127,29 +127,36 @@
 							<h4 data-v-587be1b3="" class="group_title">개인 정보</h4>
 							<div data-v-587be1b3="" class="unit">
 								<h5 data-v-587be1b3="" class="title">이름</h5>
-								<p data-v-587be1b3="" class="desc name">쥑쥑</p>
+								<p data-v-587be1b3="" class="desc name">${member.mem_name }</p>
 							</div>
 							<div data-v-587be1b3="" class="unit">
 								<h5 data-v-587be1b3="" class="title">생년월일</h5>
-								<p data-v-587be1b3="" class="desc birth">980120</p>
+								<p data-v-587be1b3="" class="desc birth">${member.birth }</p>
 							</div>
 
 							<div data-v-587be1b3="" class="unit">
 								<h5 data-v-587be1b3="" class="title">휴대폰 번호</h5>
-								<p data-v-587be1b3="" class="desc">010-5***-*372</p>
+								<p data-v-587be1b3="" class="desc">${member.phone }</p>
 								<button data-v-6e799857="" data-v-587be1b3="" type="button"
 									class="btn btn_modify outlinegrey small">변경</button>
 							</div>
 
 							<div data-v-587be1b3="" class="unit">
 								<h5 data-v-587be1b3="" class="title">가구원수</h5>
-								<p data-v-587be1b3="" class="desc familyNum">4</p>
+								<p data-v-587be1b3="" class="desc familyNum">${member.family_num }</p>
 								<button data-v-6e799857="" data-v-587be1b3="" type="button"
 									class="btn btn_modify outlinegrey small">변경</button>
 							</div>
 							<div data-v-587be1b3="" class="unit">
 								<h5 data-v-587be1b3="" class="title">성별</h5>
-								<p data-v-587be1b3="" class="desc gender">중성</p>
+								<p data-v-587be1b3="" class="desc gender">
+<%-- 									<c:if test="${member.gender eq 'W' }">
+										${member.gender }
+									</c:if> --%>
+<%-- 									<c:if test="${member.gender =eq= 'M' }">
+										${member.gender }
+									</c:if> --%>
+								</p>
 							</div>
 						</div>
 						<!-- end dsa개인 정보 -->
@@ -160,12 +167,11 @@
 
 							<div data-v-587be1b3="" class="unit">
 								<h5 data-v-587be1b3="" class="title">주소</h5>
-								<p data-v-587be1b3="" class="desc address">혜화 어쩌구 저쩌구</p>
+								<p data-v-587be1b3="" class="desc address">${member.address }</p>
 							</div>
 							<div data-v-587be1b3="" class="unit">
 								<h5 data-v-587be1b3="" class="title">상세주소</h5>
-								<p data-v-587be1b3="" class="desc addressDetail">706호호불면은
-									구멍이 뚫리는</p>
+								<p data-v-587be1b3="" class="desc addressDetail">${member.address_detail }</p>
 							</div>
 						</div>
 						<!-- end 배송지 정보 -->

@@ -28,4 +28,9 @@ public class MemberServiceImpl implements MemberService {
 		mapper.setAuth(member.getMem_id());
 		return result;
 	}
+	
+	@Override
+	public MemberVO getInfoById(String mem_id) {
+		return mapper.getInfo(mem_id);
+	}
 }

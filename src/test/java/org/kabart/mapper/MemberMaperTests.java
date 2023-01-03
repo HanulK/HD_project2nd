@@ -40,4 +40,11 @@ public class MemberMaperTests {
 		String mem_id = mapper.findId(phone);
 		log.info(mem_id);
 	}
+	
+	@Test
+	public void getMemberInfo() {
+		String mem_id = "anna";
+		MemberVO mem = mapper.getInfo(mem_id);
+		log.info(mem);
+	}
 }
