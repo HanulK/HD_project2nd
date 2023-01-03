@@ -2,6 +2,7 @@ package org.kabart.controller;
 
 import java.util.*;
 
+import org.kabart.domain.CartsVO;
 import org.kabart.service.CartsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -26,9 +27,16 @@ public class MypageController {
 	}
 	@GetMapping("/cart")
 	public void cartsGet() {
-		
+		 	
 	}
 	
+	@PostMapping(value = "/cartlist", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<CartsVO>> getCartList(@RequestBody Map<String,Object> body){
+		log.info(body.get("mem_id"));
+		return new ResponseEntity<>(cService.getList((String)body.get("mem_id")),HttpStatus.OK);
+	
+	}
 	@PostMapping(value="/cart",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<Map<String,Object>> addCart(@RequestBody Map<String,Object> body){

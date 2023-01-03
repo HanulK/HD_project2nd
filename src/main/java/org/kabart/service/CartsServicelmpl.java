@@ -1,5 +1,7 @@
 package org.kabart.service;
 
+import java.util.List;
+
 import org.kabart.domain.CartsVO;
 import org.kabart.mapper.CartsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,11 @@ public class CartsServicelmpl implements CartsService {
 	private CartsMapper mapper;
 	
 	@Override
-	public void getList(CartsVO carts) {
+	public List<CartsVO> getList(String mem_id) {
+		log.info("getCartList");
+		
+		return mapper.getCarts(mem_id);
+	
 	}
 	
 	@Transactional

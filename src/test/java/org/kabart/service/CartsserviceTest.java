@@ -20,11 +20,17 @@ import lombok.extern.log4j.Log4j;
 public class CartsserviceTest {
 	@Setter(onMethod_ = { @Autowired })
 	private CartsService service;
-
+	
 	@Test
 	public void testExist() {
 		log.info(service);
 		assertNotNull(service);
+	}
+	
+	@Test
+	public void testGetCarts() {
+		log.info("testGetCarts");
+		service.getList("tori").forEach(item->log.info(item));
 	}
 	
 	@Test

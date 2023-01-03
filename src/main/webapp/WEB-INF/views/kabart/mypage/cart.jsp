@@ -68,7 +68,11 @@
 					<li data-v-4faab390="">
 						<div data-v-4faab390="" class="wish_item">
 							<div data-v-4faab390="" class="wish_product">
+								<input type="checkbox" class="chk">
 								<div data-v-4faab390="" class="product_box">
+									
+										
+										
 									<div data-v-09fbcf09="" data-v-4faab390="" class="product"
 										style="background-color: rgb(244, 244, 244);">
 										<picture data-v-321fc3b6="" data-v-09fbcf09=""
@@ -98,9 +102,19 @@
 
 									<p data-v-4faab390="" class="name">Apple AirPods Pro 2nd
 										Gen (Korean Ver.)</p>
-									<span data-v-4faab390="" class="size">ONE SIZE</span>
-
+									
+									<div data-v-4faab390="" class="size">
+										<span data-v-4faab390="" class="size">수량</span>
+										<span class="count" style="padding : 0px 10px;">
+											<a href="#" class="minus" style="padding:0px 3px">-</a>
+											<span data-v-4faab390="" class="size" style="padding:0px 3px">0</span>
+											<a href="#" class="plus">+</a>
+										</span>
+											
+									</div>
 								</div>
+								
+								
 
 							</div>
 
@@ -120,7 +134,7 @@
 											</div>
 										</a>
 									</div>
-									<a data-v-4faab390="" href="#" class="status_link"> 삭제 </a>
+									
 								</div>
 								<!---->
 							</div>

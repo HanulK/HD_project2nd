@@ -40,12 +40,24 @@ public class CartsControllerTests {
 	@Test
 	public void testInsertorUpdate() throws Exception {
 		Map<String, Object> map = new HashMap<>();
-		map.put("mem_id", "anna");
+		map.put("mem_id", "tori");
 		map.put("prod_id", 181266);
 		map.put("quantity", 1);
 		String jsonStr = new Gson().toJson(map);
 		log.info(jsonStr);
 		mockMvc.perform(MockMvcRequestBuilders.post("/kabart/mypage/cart")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(jsonStr))
+				.andExpect(status().is(200));
+	}
+	
+	@Test
+	public void testGetCarts() throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("mem_id", "tori");
+		String jsonStr = new Gson().toJson(map);
+		log.info(jsonStr);
+		mockMvc.perform(MockMvcRequestBuilders.post("/kabart/mypage/cartlist")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(jsonStr))
 				.andExpect(status().is(200));

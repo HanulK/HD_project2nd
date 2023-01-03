@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import oracle.ucp.common.FailoverStats.Item;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
@@ -19,14 +20,7 @@ public class CartMapperTest {
 	@Setter(onMethod_ = @Autowired)
 	private CartsMapper mapper;
 
-	@Test
-	public void testGetList() {
-
-		log.info("helloooooooo");
-		// List<CartsVO> list = mapper.getList();
-		// log.info(list.get(0));
-		mapper.getList().forEach(cartlistout -> log.info(cartlistout));
-	}
+	
 
 	/*
 	 * @Test public void testinsert() {
@@ -46,6 +40,15 @@ public class CartMapperTest {
 	@Test
 	public void testUpdate() {
 		log.info(mapper.quantityUpdate("test", 8614, 3));
+	}
+	
+	@Test
+	public void testGetCarts() {
+
+		log.info("helloooooooo");
+		// List<CartsVO> list = mapper.getList();
+		// log.info(list.get(0));
+		mapper.getCarts("tori").forEach(item -> log.info(item));
 	}
 
 }
