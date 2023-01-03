@@ -19,29 +19,16 @@ public class UsedSellMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private UsedSellMapper mapper;
 	
+	
 	@Test
 	public void testInsert() {
 		UsedSellVO used = new UsedSellVO();
 		used.setProd_id(146812);
-		used.setMem_id("anna");
+		used.setMem_id("doongdoong");
 		used.setGrade("ROYAL");
-		used.setUp_comment("sell insert 매퍼 테스트 돌리는 중");
+		used.setUp_comment("시퀀스 값 때문에 네번째 sell insert 매퍼 테스트 돌리는 중 SelectKey");
 		
-		mapper.insert(used);
-		
-		log.info(used);
-		
-	}
-	
-	@Test
-	public void testInsertSelectKey() {
-		UsedSellVO used = new UsedSellVO();
-		used.setProd_id(146812);
-		used.setMem_id("anna");
-		used.setGrade("ROYAL");
-		used.setUp_comment("sell insert 매퍼 테스트 돌리는 중 SelectKey");
-		
-		mapper.insertSelectKey(used);
+		mapper.insertUsedProduct(used);
 		
 		log.info(used);
 	}

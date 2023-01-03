@@ -190,7 +190,7 @@
 												data-v-67511fc2="" class="won">원</span>
 										</div>
 										<div data-v-67511fc2="" class="origin_amount">
-											<span data-v-67511fc2="" class="num"><fmt:formatNumber value="${products.prod_price }" pattern="#,###" /></span><span
+											<span data-v-67511fc2="" class="num" style="text-decoration: line-through;""><fmt:formatNumber value="${products.prod_price }" pattern="#,###" /></span><span
 												data-v-67511fc2="" class="won">원</span>
 										</div>
 									</dd></a>

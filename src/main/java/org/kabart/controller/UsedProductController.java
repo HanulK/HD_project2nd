@@ -1,4 +1,4 @@
-package org.kabart.controller;
+	package org.kabart.controller;
 
 
 import java.util.List;
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -17,6 +18,7 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/kabart/usedProduct/")
 @Log4j
 public class UsedProductController {
+	
 	@Setter(onMethod_ = { @Autowired })
 	private UsedProductDetailService service;
 
@@ -45,10 +47,35 @@ public class UsedProductController {
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 		
 	}
-
+	
+	@Setter(onMethod_ = { @Autowired })
+	private ProductDetailService productDetailService;
+	
+	@Setter(onMethod_ = {@Autowired})
+	private UsedSellService usedSellService;
+	
 	@RequestMapping("/used_prod_sell")
-	// @PreAuthorize("isAuthenticated()")
-	public void used_prod_sell() {
-		log.info("used prod sell....");
+	public String used_prod_sell(@RequestParam("prod_id") int prod_id, Model model, UsedSellVO usedSellVO, RedirectAttributes rttr) {
+		
+		log.info("prod_detail Controller");
+		log.info("prod_id : " + prod_id);
+
+		List<ImgVO> imgs = productDetailService.getdetailImgs(prod_id);
+		List<UsedProductVO> useds = productDetailService.getused(prod_id);
+		
+
+		ProductDetailVO detail = productDetailService.getProdDetail(prod_id);
+
+		detail.setImgs(imgs);
+		detail.setUseds(useds);
+
+		log.info(detail);
+		
+
+		model.addAttribute("detail", detail);
+
+		usedSellService.registerUsedProduct(usedSellVO);
+		rttr.addFlashAttribute("result", usedSellVO.getUp_id());
+		return "redirect:kabart/mypage/selling";
 	}
 }

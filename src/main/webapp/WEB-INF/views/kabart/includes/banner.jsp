@@ -11,17 +11,17 @@
 			<!-- 슬라이드 영역 -->
 			<li class="slideitem">
 				<a>
-					<img src="/resources/img/banner1.png">
+					<img src="https://image.guud.com/mall/DP/display/detail/F939858275044DFA9615C0E937FD06F6.jpg">
 				</a>
 			</li>
 			<li class="slideitem">
 				<a>
-					<img src="/resources/img/banner2.png">
+					<img src="https://image.guud.com/mall/DP/display/detail/41B81B1A0FB84E97B50D88A750F89F9D.jpg">
 				</a>
 			</li>
 			<li class="slideitem">
 				<a>
-					<img src="/resources/img/banner3.png">
+					<img src="https://image.guud.com/mall/DP/display/detail/7FD86E8181C94553A3A4A906D9A7561D.jpg">
 				</a>
 			</li>
 
