@@ -211,7 +211,7 @@
 						</div>
 					</div>
 					<!-- 총 가격 만들기 -->
-					<div class="price_area">
+					<div class="price_area1">
 						<div data-v-14995178="" data-v-877ed62a=""
 							class="buy_total_confirm" is-instant="true"
 							style="border-top: 0px; padding: 0px;">
