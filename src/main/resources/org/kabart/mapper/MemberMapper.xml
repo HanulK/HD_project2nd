@@ -56,4 +56,12 @@
  		SELECT mem_id FROM members WHERE phone=#{phone}
  	</select>
  	
+ 	<update id="updatePhone">
+ 		UPDATE members SET phone = #{new_data} WHERE mem_id = #{mem_id}
+ 	</update>
+ 	
+ 	<update id="updateFamilyNum">
+ 		UPDATE members SET family_num = #{new_data} WHERE mem_id = #{mem_id}
+ 	</update>
+ 	
  </mapper>

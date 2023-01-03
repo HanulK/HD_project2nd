@@ -3,6 +3,7 @@ package org.kabart.controller;
 import java.security.Principal;
 import java.util.*;
 
+import org.apache.catalina.mapper.Mapper;
 import org.kabart.domain.*;
 import org.kabart.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,12 +65,22 @@ public class MypageController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/changeInfo.do", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public int idCheck(@RequestBody Map<String,Object> body) {
-		log.warn("타입 : "+body.get("type"));
-		log.warn("새 데이터 : "+body.get("newData"));
+	@RequestMapping(value="/changeInfo.do", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void idCheck(@RequestBody Map<String,Object> body) {
+		String mem_id = (String) body.get("mem_id");
+		String type = (String) body.get("type");
 		
-		return -1;
+		log.warn("new data : "+ body.get("newData"));
+		
+		if (type.equals("phone")) {
+			// 전화 번호 변경
+			String new_data = (String) body.get("newData");
+			mService.changePhoneInfo(mem_id, new_data);
+		} else if (type.equals("new_fm")) {
+			// 가구원 수 변경
+			int new_data =  Integer.parseInt((String) body.get("newData"));
+			mService.changeFamilyNumInfo(mem_id, new_data);
+		}
 	}
 	
 

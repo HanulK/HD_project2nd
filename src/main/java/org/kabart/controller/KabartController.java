@@ -25,9 +25,6 @@ public class KabartController {
 	public void home() { }
 	
 	@Setter (onMethod_ = {@Autowired})
-	private MemberMapper mapper;
-	
-	@Setter (onMethod_ = {@Autowired})
 	private MemberService service;
 
 	
@@ -75,19 +72,15 @@ public class KabartController {
 	@ResponseBody
 	@RequestMapping("/idCheck.do")
 	public int idCheck(String new_id) {
-		int result = mapper.idCheck(new_id);
-		return result;
+		return service.idCheck(new_id);
 	}
 	
 	@GetMapping("/find_id")
 	public void findId() {}
 	
-	@GetMapping("/find_pw")
-	public void findPw() {}
-	
 	@ResponseBody
 	@RequestMapping("/findId.do")
-	public String findID(String phone) {
-		return mapper.findId(phone);
+	public String findId(String phone) {
+		return service.findId(phone);
 	}
 }

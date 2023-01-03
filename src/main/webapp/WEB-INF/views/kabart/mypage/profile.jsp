@@ -247,26 +247,28 @@
 	<script type="text/javascript">
 	var csrfHeaderName = "${_csrf.headerName}";
 	var csrfToeknValue = "${_csrf.token}";
+	const mem_id = $("#mem_id").val();
 	
 	$("#phone_submit").on("click", function() {
 		$.ajax({
 			url : "${contextPath}/kabart/mypage/changeInfo.do",
 			type : "POST",
 			data : JSON.stringify({
+				mem_id : mem_id,
 				newData : $("#new_phone").val(),
 				type : "phone"
 			}),
 			contentType : "application/json",
-			dataType : "json",
 			beforeSend: function(xhr) {
 				xhr.setRequestHeader(csrfHeaderName, csrfToeknValue);
 			},
-			success : function(result) {
-				NBlert("성공!!!!!!!");
+			success : function() {
+				console.log("핸드폰 번호를 변경하였습니다.");
+				location.href = "/kabart/mypage/profile";
 			},
 			error : function(e) {
 				console.log(e);
-				alert("문제!!!!!!!!!!!!!!!!!");
+				console.log("핸드폰 번호를 변경하지 못하였습니다.");
 			}
 		}); // end ajax 
 	})
@@ -276,20 +278,21 @@
 			url : "${contextPath}/kabart/mypage/changeInfo.do",
 			type : "POST",
 			data : JSON.stringify({
-				newData : $("#new_phone").val(),
+				mem_id : mem_id,
+				newData : $("#new_fm").val(),
 				type : "new_fm"
 			}),
 			contentType : "application/json",
-			dataType : "json",
 			beforeSend: function(xhr) {
 				xhr.setRequestHeader(csrfHeaderName, csrfToeknValue);
 			},
-			success : function(result) {
-				NBlert("성공!!!!!!!");
+			success : function() {
+				console.log("가구원 정보를 변경하였습니다.");
+				location.href = "/kabart/mypage/profile";
 			},
 			error : function(e) {
 				console.log(e);
-				alert("문제!!!!!!!!!!!!!!!!!");
+				console.log("가구원 정보를 변경하지 못하였습니다.");
 			}
 		}); // end ajax 
 	})
