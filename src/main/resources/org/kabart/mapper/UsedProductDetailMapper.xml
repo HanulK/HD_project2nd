@@ -5,8 +5,8 @@
 <mapper namespace="org.kabart.mapper.UsedProductDetailMapper">
 
 	<select id="read" resultType="org.kabart.domain.UsedProductDetailVO">
-		select prod_id, prod_name,
-		prod_price, prod_width, prod_height, prod_depth,
+		select mem_id, prod_id, prod_name,
+		prod_price, prod_category, prod_width, prod_height, prod_depth,
 		up_id, up_regdate, up_comment, grade, sale_date, discount_rate, img_srcs,
 		img_tag, (100 - discount_rate)*0.01*prod_price as used_price
 		from v_used_products

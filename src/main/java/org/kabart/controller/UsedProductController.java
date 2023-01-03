@@ -63,7 +63,6 @@ public class UsedProductController {
 		List<ImgVO> imgs = productDetailService.getdetailImgs(prod_id);
 		List<UsedProductVO> useds = productDetailService.getused(prod_id);
 		
-
 		ProductDetailVO detail = productDetailService.getProdDetail(prod_id);
 
 		detail.setImgs(imgs);
