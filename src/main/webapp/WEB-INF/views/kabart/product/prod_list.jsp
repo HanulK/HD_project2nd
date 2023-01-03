@@ -161,7 +161,7 @@
 										<!-- 단일 상품 -->
 										<c:forEach items="${productList}" var="products">
 											<div class="product_card exhibition_product" data-v-19fda891="" data-v-81b68464="">
-												<a href="/kabart/product/prod_detail?prod_id=<c:out value=" ${products.prod_id }" />"
+												<a href="/kabart/product/prod_detail?prod_id=<c:out value="${products.prod_id }" />"
 												class="item_inner" data-v-19fda891="">
 												<div class="product" style="background-color: #f4f4f4;" data-v-09fbcf09="">
 													<picture data-v-321fc3b6="" data-v-09fbcf09="" class="picture product_img"> <img alt=""
@@ -179,7 +179,7 @@
 												<div class="price price_area" data-v-ef71e3ac="" data-v-7dab533a="">
 													<p class="amount" data-v-ef71e3ac="">
 														<!---->
-														<fmt:formatNumber value="${products.prod_price }" pattern="#,###" />
+														<fmt:formatNumber value="${products.prod_price}" pattern="#,###" />
 													</p>
 												</div>
 												</a>
