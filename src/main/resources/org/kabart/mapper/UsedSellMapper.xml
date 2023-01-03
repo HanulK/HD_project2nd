@@ -5,15 +5,14 @@
   	
   	<insert id="insert">
   		insert into used_products (up_id, prod_id, mem_id, grade, up_regdate, up_comment)
-  		values (seq_upproduct.nextval, #{prod_id), #{mem_id}, #{grade}, sysdate, #{up_comment})
+  		values (seq_upproduct.nextval, #{prod_id}, #{mem_id}, #{grade}, sysdate, #{up_comment})
   	</insert>
   	
   	<insert id="insertSelectKey">
   		<selectKey keyProperty="up_id" order="BEFORE" resultType="Integer">
   			select seq_upproduct.nextval from dual
-  		</selectKey>	
-  		
+  		</selectKey>	  		
   		insert into used_products (up_id, prod_id, mem_id, grade, up_regdate, up_comment)
-  		values (seq_upproduct.nextval, #{prod_id), #{mem_id}, #{grade}, sysdate, #{up_comment})
+  		values (seq_upproduct.nextval, #{prod_id}, #{mem_id}, #{grade}, sysdate, #{up_comment})
   	</insert>
   </mapper>
