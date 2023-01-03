@@ -870,3 +870,14 @@ input#id_check_button {
     font-weight: 700;
     margin-left: 280px;
 }
+
+#notice_result {
+	display:none;
+}
+
+.notice_id {
+	padding-top: 8px;
+    font-size: 18px;
+    letter-spacing: -.09px;
+    font-weight: 700;
+}
