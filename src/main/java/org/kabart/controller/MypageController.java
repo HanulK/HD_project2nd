@@ -57,14 +57,21 @@ public class MypageController {
 		return new ResponseEntity<>(map,HttpStatus.OK);
 	}
 	
-
 	@GetMapping("/profile")
 	public void profile(Principal principal, Model model) {
-		log.warn(principal.getName());
 		MemberVO mem = mService.getInfoById(principal.getName());
 		model.addAttribute("member", mem);
-		log.warn("========================== member : "+mem);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/changeInfo.do", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public int idCheck(@RequestBody Map<String,Object> body) {
+		log.warn("타입 : "+body.get("type"));
+		log.warn("새 데이터 : "+body.get("newData"));
+		
+		return -1;
+	}
+	
 
 	@GetMapping("/buying")
 	public void buying() {

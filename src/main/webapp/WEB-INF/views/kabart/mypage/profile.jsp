@@ -1,8 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<c:set var="contextPath" value="${PageContext.request.contextPath}" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+	integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <html lang="ko">
 <head>
 <title>KABART</title>
+
+<script type="text/javascript" src="/resources/js/memberInfo.js" defer></script>
 </head>
 <body>
 	<div tabindex="0" class="wrap win_os" data-v-39b2348a="">
@@ -11,6 +22,8 @@
 		</div>
 		<input id="mem_id" type="hidden"
 			value='<sec:authentication property="principal.username"/>'>
+		<input type="hidden" name="${_csrf.parameterName }"
+						value="${_csrf.token }" />
 		<!---->
 		<div class="container my lg" data-v-39b2348a="">
 			<!-- side nav bar -->
@@ -84,10 +97,11 @@
 							<div data-v-587be1b3="" class="unit" style="" id="origin_pw">
 								<h5 data-v-587be1b3="" class="title">비밀번호</h5>
 								<p data-v-587be1b3="" class="desc password">●●●●●●●●●</p>
-								<button data-v-575aff82="" data-v-587be1b3="" type="button" id="btn_change_pw"
-									class="btn btn_modify outlinegrey small">변경</button>
+								<button data-v-575aff82="" data-v-587be1b3="" type="button"
+									id="btn_change_pw" class="btn btn_modify outlinegrey small">변경</button>
 							</div>
-							<div data-v-587be1b3="" class="modify" style="display: none;" id="change_pw">
+							<div data-v-587be1b3="" class="modify" style="display: none;"
+								id="change_pw">
 								<h5 data-v-587be1b3="" class="title">비밀번호 변경</h5>
 								<div data-v-1c44afeb="" data-v-587be1b3="" class="input_box">
 									<h6 data-v-587be1b3="" data-v-1c44afeb="" class="input_title">이전
@@ -134,33 +148,61 @@
 								<p data-v-587be1b3="" class="desc birth">${member.birth }</p>
 							</div>
 
-							<div data-v-587be1b3="" class="unit">
+							<div data-v-587be1b3="" class="unit" id="origin_phone">
 								<h5 data-v-587be1b3="" class="title">휴대폰 번호</h5>
 								<p data-v-587be1b3="" class="desc">${member.phone }</p>
-								<button data-v-6e799857="" data-v-587be1b3="" type="button"
+								<button data-v-575aff82="" data-v-587be1b3="" type="button" id="btn_change_phone"
 									class="btn btn_modify outlinegrey small">변경</button>
 							</div>
+							<div class="modify name" style="display: none;" data-v-587be1b3="" id="change_phone">
+								<div class="input_box" data-v-1c44afeb="" data-v-587be1b3="">
+									<h6 class="input_title" data-v-1c44afeb="" data-v-587be1b3="">새로운
+										휴대폰 번호</h6>
+									<div class="input_item" data-v-1c44afeb="">
+										<input type="number" autocomplete="off"
+											value="" class="input_txt" data-v-1c44afeb="" id="new_phone" onkeyup="checkBtn(this)">
+									</div>
+								</div>
+								<div class="modify_btn_box" data-v-587be1b3="">
+									<button type="button" slot="button"
+										class="btn outlinegrey medium" data-v-575aff82=""
+										data-v-587be1b3="" id="phone_cancle">취소</button>
+									<button disabled="disabled" type="button" slot="button"
+										class="btn solid medium disabled" data-v-575aff82=""
+										data-v-587be1b3="" id="phone_submit">저장</button>
+								</div>
+							</div>
 
-							<div data-v-587be1b3="" class="unit">
-								<h5 data-v-587be1b3="" class="title">가구원수</h5>
+							<div data-v-587be1b3="" class="unit" id="origin_familynum">
+								<h5 data-v-587be1b3="" class="title">가구원 수</h5>
 								<p data-v-587be1b3="" class="desc familyNum">${member.family_num }</p>
-								<button data-v-6e799857="" data-v-587be1b3="" type="button"
+								<button data-v-575aff82="" data-v-587be1b3="" type="button" id="btn_change_familynum"
 									class="btn btn_modify outlinegrey small">변경</button>
+							</div>
+							<div class="modify name" style="display: none;" data-v-587be1b3="" id="change_familynum">
+								<div class="input_box" data-v-1c44afeb="" data-v-587be1b3="">
+									<h6 class="input_title" data-v-1c44afeb="" data-v-587be1b3="">현재 가구원 수</h6>
+									<div class="input_item" data-v-1c44afeb="">
+										<input type="number" autocomplete="off"
+											value="" class="input_txt" data-v-1c44afeb="" id="new_fm" onkeyup="checkBtn(this)">
+									</div>
+								</div>
+								<div class="modify_btn_box" data-v-587be1b3="">
+									<button type="button" slot="button"
+										class="btn outlinegrey medium" data-v-575aff82=""
+										data-v-587be1b3="" id="familynum_cancle">취소</button>
+									<button disabled="disabled" type="button" slot="button"
+										class="btn solid medium disabled" data-v-575aff82=""
+										data-v-587be1b3="" id="familynum_submit">저장</button>
+								</div>
 							</div>
 							<div data-v-587be1b3="" class="unit">
 								<h5 data-v-587be1b3="" class="title">성별</h5>
-								<p data-v-587be1b3="" class="desc gender">
-<%-- 									<c:if test="${member.gender eq 'W' }">
-										${member.gender }
-									</c:if> --%>
-<%-- 									<c:if test="${member.gender =eq= 'M' }">
-										${member.gender }
-									</c:if> --%>
-								</p>
+								<p data-v-587be1b3="" class="desc gender">${member.gender}</p>
 							</div>
 						</div>
 						<!-- end dsa개인 정보 -->
-						
+
 						<!-- 배송지 정보 -->
 						<div data-v-587be1b3="" class="profile_group">
 							<h4 data-v-587be1b3="" class="group_title">배송지 정보</h4>
@@ -202,21 +244,55 @@
 		</div>
 		<jsp:include page="../includes/footer.jsp"></jsp:include>
 	</div>
-<script type="text/javascript">
-$("#btn_change_pw").on("click", function() {
-	$("#origin_pw").attr("style", "display:none");
-	$("#change_pw").attr("style", "");
-})
-
-$("#pw_cancle").on("click", function() {
-	$("#change_pw").find('input[type=password]').each(function(){
-		$(this).val('');
-		});
+	<script type="text/javascript">
+	var csrfHeaderName = "${_csrf.headerName}";
+	var csrfToeknValue = "${_csrf.token}";
 	
-	$("#origin_pw").attr("style", "");
-	$("#change_pw").attr("style", "display:none");
-})
-</script>
-
+	$("#phone_submit").on("click", function() {
+		$.ajax({
+			url : "${contextPath}/kabart/mypage/changeInfo.do",
+			type : "POST",
+			data : JSON.stringify({
+				newData : $("#new_phone").val(),
+				type : "phone"
+			}),
+			contentType : "application/json",
+			dataType : "json",
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfToeknValue);
+			},
+			success : function(result) {
+				NBlert("성공!!!!!!!");
+			},
+			error : function(e) {
+				console.log(e);
+				alert("문제!!!!!!!!!!!!!!!!!");
+			}
+		}); // end ajax 
+	})
+	
+	$("#familynum_submit").on("click", function() {
+		$.ajax({
+			url : "${contextPath}/kabart/mypage/changeInfo.do",
+			type : "POST",
+			data : JSON.stringify({
+				newData : $("#new_phone").val(),
+				type : "new_fm"
+			}),
+			contentType : "application/json",
+			dataType : "json",
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfToeknValue);
+			},
+			success : function(result) {
+				NBlert("성공!!!!!!!");
+			},
+			error : function(e) {
+				console.log(e);
+				alert("문제!!!!!!!!!!!!!!!!!");
+			}
+		}); // end ajax 
+	})
+	</script>
 </body>
 </html>
