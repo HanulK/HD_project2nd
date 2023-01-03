@@ -34,6 +34,11 @@
 		WHERE mem.mem_id = auths.username AND mem.mem_id = #{mem_id}
  	</select>
  	
+ 	<select id="getInfo" resultMap="memberMap">
+ 		SELECT mem_id, mem_name, phone, birth, family_num, gender, address, address_detail
+		FROM members WHERE mem_id = #{mem_id}
+ 	</select>
+ 	
  	<insert id="insertMember">
  		INSERT INTO members(mem_id, mem_pw, mem_name, birth, address, address_detail, gender, phone, family_num)
 		VALUES (#{mem_id}, #{mem_pw}, #{mem_name}, #{birth}, #{address}, #{address_detail}, #{gender}, #{phone}, #{family_num})
