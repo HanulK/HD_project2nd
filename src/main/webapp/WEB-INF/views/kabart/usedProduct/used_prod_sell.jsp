@@ -23,6 +23,8 @@
 					class="container sell md step-1">
 					<!---->
 					<div data-v-b36cb8c4="" class="content">
+					<form role="form" action="/kabart/product/prod_list" method="post">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<div data-v-877ed62a="" data-v-b36cb8c4="" class="buy_immediate">
 							<div data-v-19e1c5dc="" class="center">
 								<h2 data-v-34b11929="" data-v-19e1c5dc="" class="title1">
@@ -116,6 +118,11 @@
 								<div class="info_write">
 									<input type="file" name='uploadFile' multiple="">
 								</div>
+								<div class='uploadResult'>
+									<ul>
+
+									</ul>
+								</div>
 							</div>
 							<div data-v-14995178="" data-v-877ed62a=""
 								class="buy_total_confirm" is-instant="true">
@@ -171,14 +178,17 @@
 										style="display: none;"><em data-v-679d7250="">주의!
 									</em></span>
 								</div>
-								<div data-v-14995178="" class="btn_confirm">
-									<a data-v-6e799857="" data-v-14995178="" href="#"
-										class="btn full solid false"> 판매하기</a>
+								<div class="submit">
+									<div data-v-14995178="" class="btn_confirm">
+										<a data-v-6e799857="" data-v-14995178="" href="#"
+											class="btn full solid false"> 판매하기</a>
+									</div>
 								</div>
 							</div>
 						</div>
 						<!---->
 						<!---->
+					</form>
 					</div>
 					<!---->
 					<!---->
@@ -189,143 +199,143 @@
 	</div>
 </body>
 <script>
-function showUploadResult(uploadResultArr){
-	if(!uploadResultArr || uploadResultArr.length == 0){ return; }
-	var uploadUL = $(".uploadResult ul");
-	var str="";
-	
-	$(uploadResultArr).each(function(i, obj) {
-
-	// image type
-		if(obj.image){
-			var fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid +"_"+obj.fileName);
-			str += "<li data-path='"+obj.uploadPath+"'";
-			str +=" data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"
-			str +" ><div>";
-			str += "<span> "+ obj.fileName+"</span>";
-			str += "<button type='button' data-file=\'"+fileCallPath+"\' "
-			str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-			str += "<img src='/display?fileName="+fileCallPath+"'>";
-			str += "</div>";
-			str +"</li>";
-		}else{
-			var fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);			      
-		    var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
-		      
-			str += "<li "
-			str += "data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"' ><div>";
-			str += "<span> "+ obj.fileName+"</span>";
-			str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' " 
-			str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-			str += "<img src='/resources/img/attach.png'></a>";
-			str += "</div>";
-			str +"</li>";
-		}
-	});
-	uploadUL.append(str);
-}
-
-$(".uploadResult").on("click", "button", function(e){
-	console.log("파일 삭제쥑쥑");
-	
-	var targetFile = $(this).data("file");
-	var type = $(this).data("type");
-	
-	var targetLi = $(this).closest("li");
-	
-	$.ajax({
-		url: '/deleteFile',
-		data: {fileName: targetFile, type: type},
-		beforeSend: function(xhr) {
-			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-		},
-		dataType:'text',
-		type: 'POST',
-			success: function(result){
-				alert(result);
-				targetLi.remove();
-			}
-	}); // $.ajax
-});
-
-$(document).ready(function(e) {
-	
-	var formObj = $("form[role='form']");
-	$("button[type='submit']").on("click", function(e) {
-		e.preventDefault();
-		console.log("제출 눌려졋쥑쥑");
-		var str = "";
-		
-		$(".uploadResult ul li").each(function(i, obj){
-		      
-		      var jobj = $(obj);
-		      
-		      console.dir(jobj);
-		      console.log("-------------------------");
-		      console.log(jobj.data("filename"));
-		      
-		      
-		      str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
-		      str += "<input type='hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
-		      str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
-		      str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+ jobj.data("type")+"'>";
-		      
-		    });
-		    
-		    console.log(str);
-		    
-		    formObj.append(str).submit();
-		    
-		  });
-	
-	var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-	var maxSize = 5242880;
-	
-	function checkExtension(fileName, fileSize){
-		if(fileSize >= maxSize) {
-			alert("파일 사이즈 초과");
-			return false;
-		}
-		
-		if(regex.test(fileName)){
-			alert("해당 종류의 파일은 업로드할 수 없쉽니도");
-			return false;
-		}
-		return true;
-	}
-	
-	var csrfHeaderName = "${_csrf.headerName}";
-	var csrfTokenValue = "${_csrf.token}";
-	
-	$("input[type='file']").change(function(e) {
-		var formData = new FormData();
-		var inputFile = $("input[name='uploadFile']");
-		var files = inputFile[0].files;
-		
-		for(var i=0; i<files.length; i++){
-			if(!checkExtension(files[i].name, files[i].size) ){
-				return false;
-			}
-			formData.append("uploadFile", files[i]);
-		}
-		
-		$.ajax({
-			url: '/uploadAjaxAction',
-			processData: false,
-			contentType: false,
-			beforeSend: function(xhr) {
-				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-			}
-			data: formData,
-			type: 'POST',
-			dataType: 'json',
-			success: function(result){
-				console.log(result);
-				showUploadResult(result);
-				//$(".uploadDiv").html(cloneObj.html());
-				}
-			}); // $.ajax
-		});
-});
-</script>
+  function showUploadResult(uploadResultArr){
+    if(!uploadResultArr || uploadResultArr.length == 0){ return; }
+    var uploadUL = $(".uploadResult ul");
+    var str="";
+    
+    $(uploadResultArr).each(function(i, obj) {
+  
+    // image type
+      if(obj.image){
+        var fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.ufile_uid +"_"+obj.fileName);
+        str += "<li data-path='"+obj.uploadPath+"'";
+        str +=" data-file_uuid='"+obj.file_uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"
+        str +" ><div>";
+        str += "<span> "+ obj.fileName+"</span>";
+        str += "<button type='button' data-file=\'"+fileCallPath+"\' "
+        str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+        str += "<img src='/display?fileName="+fileCallPath+"'>";
+        str += "</div>";
+        str +"</li>";
+      }else{
+        var fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.file_uuid +"_"+obj.fileName);			      
+          var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
+            
+        str += "<li "
+        str += "data-path='"+obj.uploadPath+"' data-file_uuid='"+obj.file_uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"' ><div>";
+        str += "<span> "+ obj.fileName+"</span>";
+        str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' " 
+        str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+        str += "<img src='/resources/img/attach.png'></a>";
+        str += "</div>";
+        str +"</li>";
+      }
+    });
+    uploadUL.append(str);
+  }
+  
+  $(".uploadResult").on("click", "button", function(e){
+    console.log("file delete...");
+    
+    var targetFile = $(this).data("file");
+    var type = $(this).data("type");
+    
+    var targetLi = $(this).closest("li");
+    
+    $.ajax({
+      url: '/deleteFile',
+      data: {fileName: targetFile, type: type},
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+      },
+      dataType:'text',
+      type: 'POST',
+        success: function(result){
+          alert(result);
+          targetLi.remove();
+        }
+    }); // $.ajax
+  });
+  
+  $(document).ready(function(e) {
+    
+    var formObj = $("form[role='form']");
+    $("div[class='btn_confirm']").on("click", function(e) {
+      e.preventDefault();
+      console.log("submit clicked...");
+      var str = "";
+      
+      $(".uploadResult ul li").each(function(i, obj){
+            
+            var jobj = $(obj);
+            
+            console.dir(jobj);
+            console.log("-------------------------");
+            console.log(jobj.data("filename"));
+            
+            
+            str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
+            str += "<input type='hidden' name='attachList["+i+"].file_uuid' value='"+jobj.data("file_uuid")+"'>";
+            str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
+            str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+ jobj.data("type")+"'>";
+            
+          });
+          
+          console.log(str);
+          
+          formObj.append(str).submit();
+          
+        });
+    
+    var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+    var maxSize = 5242880;
+    
+    function checkExtension(fileName, fileSize){
+      if(fileSize >= maxSize) {
+        alert("파일 사이즈 초과");
+        return false;
+      }
+      
+      if(regex.test(fileName)){
+        alert("해당 종류의 파일은 업로드할 수 없습니다.");
+        return false;
+      }
+      return true;
+    }
+    
+    var csrfHeaderName = "${_csrf.headerName}";
+    var csrfTokenValue = "${_csrf.token}";
+    
+    $("input[type='file']").change(function(e) {
+      var formData = new FormData();
+      var inputFile = $("input[name='uploadFile']");
+      var files = inputFile[0].files;
+      
+      for(var i=0; i<files.length; i++){
+        if(!checkExtension(files[i].name, files[i].size) ){
+          return false;
+        }
+        formData.append("uploadFile", files[i]);
+      }
+      
+      $.ajax({
+        url: '/kabart/usedProduct/used_prod_sell',
+        processData: false,
+        contentType: false,
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+        },
+        data: formData,
+        type: 'POST',
+        dataType: 'json',
+        success: function(result){
+          console.log(result);
+          showUploadResult(result);
+          //$(".uploadDiv").html(cloneObj.html());
+          }
+        }); // $.ajax
+      });
+  });
+  </script>
 </html>
