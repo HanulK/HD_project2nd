@@ -68,6 +68,7 @@ public class KabartController {
 	@PostMapping(value="/join", produces = MediaType.APPLICATION_JSON_VALUE) 
 	public String joinPost(MemberVO member, RedirectAttributes rttr) {
 		service.signUp(member);
+		rttr.addAttribute("join_result", "회원 가입에 성공하였습니다.");
 		return "redirect:/kabart/home";
 	}
 	

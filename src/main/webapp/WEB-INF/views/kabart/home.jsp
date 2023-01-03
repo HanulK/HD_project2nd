@@ -256,5 +256,12 @@
 		</div>
 	</div>
 	<%@include file="includes/footer.jsp"%>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		let msg = "${join_result}";
+		console.log(msg);
+		//alert(msg);
+	});
+	</script>
 </body>
 </html>
