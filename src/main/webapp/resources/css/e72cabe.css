@@ -2612,7 +2612,7 @@
 }
 
 .mo .btn.btn_wish [class*=ico-] ~span[data-v-2d0ab5c1], .sm .btn.btn_wish [class*=ico-]
-	~span[data-v-2d0ab5c1] {
+	 ~span[data-v-2d0ab5c1] {
 	margin-left: 0
 }
 
@@ -6090,9 +6090,11 @@
 .product_price .origin_price[data-v-4b0fda50] {
 	line-height: 15px;
 	font-size: 12px;
-	color: rgba(34, 34, 34, .5)
+	color: rgba(34, 34, 34, .5);
+	text-decoration: line-through;
 }
 
+}
 .product_price .discount_price[data-v-4b0fda50] {
 	line-height: 17px;
 	font-size: 14px;

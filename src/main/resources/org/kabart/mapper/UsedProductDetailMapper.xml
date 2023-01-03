@@ -9,7 +9,7 @@
 		prod_price, prod_width, prod_height, prod_depth,
 		up_id, up_regdate, up_comment, grade, sale_date, discount_rate, img_srcs,
 		img_tag, (100 - discount_rate)*0.01*prod_price as used_price
-		from v_used_product
+		from v_used_products
 		where img_tag = 'thumNail' and up_id=#{up_id}
 	</select>
 	
