@@ -14,7 +14,6 @@
 		<result property="prod_depth" column="prod_depth" />
 		<result property="img_srcs" column="img_srcs" />		
 		<collection property="shops" resultMap="shopMap" />
-<!-- 		<collection property="used" resultMap="usedMap" /> -->
 	</resultMap>
 
 	<resultMap type="org.kabart.domain.ShopVO" id="shopMap">
@@ -22,13 +21,6 @@
 		<result property="shop_name" column="shop_name" />
 		<result property="shop_address" column="shop_address" />
 	</resultMap>
-	
-<!-- 	<resultMap type="org.kabart.domain.UsedProductVO" id="usedMap">
-		<result property="prod_id" column="prod_id" />
-		<result property="grade" column="grade" />
-		<result property="discount_rate" column="discount_rate" />
-		<result property="reg_date" column="reg_date" />		
-	</resultMap> -->
 
 	<select id="get" resultMap="getProdDetail">
 		select prod_id, prod_name, prod_price, prod_width,

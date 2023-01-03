@@ -26,6 +26,8 @@ public class UsedProductDetailVO {
 	private String img_srcs;
 	private String img_tag;
 	
+	private int used_price;
+	
 	private List<AttachVO> attachList;
 	
 

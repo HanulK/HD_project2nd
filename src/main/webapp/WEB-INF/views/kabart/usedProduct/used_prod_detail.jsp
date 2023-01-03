@@ -44,8 +44,8 @@
 									class="detail_info_wrap md">
 									<div data-v-67511fc2="" class="detail_info">
 										<p data-v-67511fc2="" class="size">
-											<em data-v-67511fc2="" class="mark_95">"${read.grade}"</em><span
-												data-v-67511fc2="" class="size_text">"${read.prod_name}"</span>
+											<em data-v-67511fc2="" class="mark_95">${read.grade}</em><span
+												data-v-67511fc2="" class="size_text">${read.prod_name}</span>
 										</p>
 									</div>
 									<dl data-v-67511fc2="" class="detail_price">
@@ -54,12 +54,12 @@
 										</dt>
 										<dd data-v-67511fc2="" class="price1">
 											<div data-v-67511fc2="" class="discount_amount">
-												<em data-v-67511fc2="" class="discount_per">"${read.discount_rate}"%</em><span
-													data-v-67511fc2="" class="num">조인해라</span><span
+												<em data-v-67511fc2="" class="discount_per">${read.discount_rate}%</em><span
+													data-v-67511fc2="" class="num">${read.used_price}</span><span
 													data-v-67511fc2="" class="won">원</span>
 											</div>
 											<div data-v-67511fc2="" class="origin_amount">
-												<span data-v-67511fc2="" class="num">"${read.prod_price}"</span><span
+												<span data-v-67511fc2="" class="num">${read.prod_price}</span><span
 													data-v-67511fc2="" class="won">원</span>
 											</div>
 										</dd>
@@ -83,25 +83,25 @@
 												<div data-v-b809b0a6="" class="detail_box model_num">
 													<dt data-v-b809b0a6="" class="product_title">너비</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														"${read.prod_width}"
+														${read.prod_width}
 													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
 													<dt data-v-b809b0a6="" class="product_title">높이</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														"${read.prod_height}"
+														${read.prod_height}
 													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
 													<dt data-v-b809b0a6="" class="product_title">깊이</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														"${read.prod_depth}"
+														${read.prod_depth}
 													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
 													<dt data-v-b809b0a6="" class="product_title">발매가</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														"${read.prod_price}"
+														${read.prod_price}
 													</dd>
 												</div>
 											</dl>
@@ -114,7 +114,7 @@
 										<p data-v-2e0c1d1d="" class="title">검수 결과</p>
 										<div data-v-315a3e4a="" data-v-2e0c1d1d="" class="review_item">
 											<div data-v-315a3e4a="" class="title">
-												<span data-v-315a3e4a="">"${read.grade}"</span>
+												<span data-v-315a3e4a="">${read.grade}</span>
 											</div>
 										</div>
 									</div>
@@ -123,7 +123,7 @@
 										class="review_section plain">
 										<p data-v-2e0c1d1d="" class="title">설명</p>
 										<div data-v-47ba7f78="" data-v-2e0c1d1d="" class="review_item">
-											<p data-v-47ba7f78="">"${read.up_comment}"</p>
+											<p data-v-47ba7f78="">${read.up_comment}</p>
 										</div>
 									</div>
 									<!---->
@@ -156,7 +156,7 @@
 										class="review_section empty_header top">
 										<p data-v-2e0c1d1d="" class="title"></p>
 										<div data-v-97275b18="" data-v-2e0c1d1d="" class="review_item">
-											<p data-v-97275b18="" class="review_date">등록일 "${read.up_regdate}"</p>
+											<p data-v-97275b18="" class="review_date">등록일 ${read.up_regdate}</p>
 										</div>
 										<!---->
 									</div>
