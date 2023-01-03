@@ -22,9 +22,10 @@ public class MemberServiceImpl implements MemberService {
 
 	@Transactional
 	@Override
-	public void signUp(MemberVO member) {
+	public int signUp(MemberVO member) {
 		member.setMem_pw(pwencoder.encode(member.getMem_pw()));
-		mapper.insertMember(member);
+		int result = mapper.insertMember(member);
 		mapper.setAuth(member.getMem_id());
+		return result;
 	}
 }
