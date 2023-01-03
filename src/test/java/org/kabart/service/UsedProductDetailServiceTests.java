@@ -24,15 +24,11 @@ public class UsedProductDetailServiceTests {
 		log.info(service.read(24));
 	}
 	
-	@Test
-	public void testUpdate() {
-		UsedProductDetailVO vo = service.read(27);
-		
-		if(vo == null) {
-			return;
-		}
-		vo.setUp_comment("내용을 또 수정해보는 서비스테스트걸");
-		log.info("result.......... : " + service.update(vo));
-	}
+	/*
+	 * @Test public void testUpdate() { UsedProductDetailVO vo = service.read(27);
+	 * 
+	 * if(vo == null) { return; } vo.setUp_comment("내용을 또 수정해보는 서비스테스트걸");
+	 * log.info("result.......... : " + service.update(vo)); }
+	 */
 
 }

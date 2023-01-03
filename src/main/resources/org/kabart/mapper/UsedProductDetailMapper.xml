@@ -13,7 +13,7 @@
 		where img_tag = 'thumNail' and up_id=#{up_id}
 	</select>
 	
-	<delete id="delete">
+	<!-- <delete id="delete">
 		delete from used_products where up_id=#{up_id}
 	</delete>
 	
@@ -21,6 +21,6 @@
 		update used_products
 		set up_comment=#{up_comment}
 		where up_id=#{up_id}
-	</update>
+	</update> -->
 
 </mapper>
