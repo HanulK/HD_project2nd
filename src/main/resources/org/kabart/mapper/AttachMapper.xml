@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kabart.mapper.AttachMapper">
+
+	<insert id="insert">
+		insert into attach (file_uuid, uploadpath, filename, filetype, up_id)
+		values (#{file_uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{up_id} )
+	</insert>
+
+	<delete id="delete">
+		delete from attach where file_uuid = #{file_uuid}
+	</delete>
+
+	<select id="findByBno"
+		resultType="org.kabart.domain.AttachVO">
+		select * from attach where up_id = #{up_id}
+	</select>
+</mapper>

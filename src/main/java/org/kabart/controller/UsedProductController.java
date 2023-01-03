@@ -1,18 +1,14 @@
 package org.kabart.controller;
 
+
 import java.util.List;
 
-import org.kabart.domain.Criteria;
-import org.kabart.domain.PageDTO;
-import org.kabart.domain.UsedProductListVO;
-import org.kabart.service.UsedProductListService;
+import org.kabart.domain.*;
+import org.kabart.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -21,11 +17,16 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/kabart/usedProduct/")
 @Log4j
 public class UsedProductController {
+	
+	private UsedProductDetailService service;
 
 	@GetMapping("/detail")
-	public void used_prod_detail(@RequestParam("prod_id") int prod_id, @RequestParam("up_id") int up_id) {
+	public void used_prod_detail(@RequestParam("up_id") int up_id, Model model) {
 		log.info("used item detail controller....");
-
+		
+		UsedProductDetailVO read = service.read(up_id);
+		
+		model.addAttribute("read", read);
 	}
 	
 	@Setter(onMethod_ = { @Autowired })
@@ -45,7 +46,8 @@ public class UsedProductController {
 		
 	}
 
-	@GetMapping("/used_prod_sell")
+	@RequestMapping("/used_prod_sell")
+	// @PreAuthorize("isAuthenticated()")
 	public void used_prod_sell() {
 		log.info("used prod sell....");
 	}
