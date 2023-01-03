@@ -434,3 +434,19 @@ a.btn.solid.full.buy1.large {
     color: white;
     letter-spacing: 1px;
 }
+
+.snb_area {
+    height: 500px;
+}
+
+.price_area {
+    overflow: hidden;
+    min-height: 380px;
+}
+
+.real_price {
+    float: right;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: right;
+}
