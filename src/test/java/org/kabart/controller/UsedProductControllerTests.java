@@ -37,4 +37,19 @@ public class UsedProductControllerTests {
 //		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/detail").param("up_id", "24"))
 //				.andReturn().getModelAndView().getModelMap());
 //	}
+	
+	@Test
+	public void testUsedSellSelect() throws Exception {
+		
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/used_prod_sell").param("prod_id", "171130")).andReturn().getModelAndView().getModelMap());
+	}
+	
+	@Test
+	public void testUsedSellInsert() throws Exception {
+		
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/kabart/usedProduct/used_prod_sell").param("prod_id", "171130").param("mem_id", "doongdoong").param("grade", "ROYAL").param("up_comment", "컨트롤러단에서 테스트"))
+							.andReturn().getModelAndView().getViewName();
+		
+		log.info(resultPage);
+	}
 }

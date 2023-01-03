@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 		<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+		<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 			<c:set var="contextPath" value="${PageContext.request.contextPath}" />
 			<!DOCTYPE html>
 			<html lang="en">
@@ -14,17 +15,20 @@
 			</head>
 
 			<body>
-				<div id="__nuxt">
-					<!---->
-					<div id="__layout">
-						<div tabindex="0" class="wrap win_os md" data-v-3007c576="">
-							<jsp:include page="../includes/header.jsp"></jsp:include>
+				<form role="form" action='/kabart/usedProduct/used_prod_sell?prod_id=${detail.prod_id}' method="post">
+					<input name="prod_id" type="hidden" value="${detail.prod_id}">
+					<input name='mem_id' type='hidden' value='<sec:authentication property="principal.username"/>'>
+					<div id="__nuxt">
+						<!---->
+						<div id="__layout">
+							<div tabindex="0" class="wrap win_os md" data-v-3007c576="">
+								<jsp:include page="../includes/header.jsp"></jsp:include>
 
-							<div data-v-b36cb8c4="" data-v-34b11929="" class="container sell md step-1">
-								<!---->
-								<div data-v-b36cb8c4="" class="content">
-									<form role="form" action="/kabart/product/prod_list" method="post">
-										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<div data-v-b36cb8c4="" data-v-34b11929="" class="container sell md step-1">
+									<!---->
+									<div data-v-b36cb8c4="" class="content">
+
+
 										<div data-v-877ed62a="" data-v-b36cb8c4="" class="buy_immediate">
 											<div data-v-19e1c5dc="" class="center">
 												<h2 data-v-34b11929="" data-v-19e1c5dc="" class="title1">
@@ -48,7 +52,7 @@
 												<div data-v-2b95d831="" class="product_info">
 													<div data-v-09fbcf09="" data-v-2b95d831="" class="product">
 														<picture data-v-321fc3b6="" data-v-09fbcf09="" class="picture product_img"> <img alt=""
-																src="<c:out value="${detail.img_srcs}"/>" style="overflow: auto;"></picture>
+																src="<c:out value=" ${detail.img_srcs}" />" style="overflow: auto;"></picture>
 														<!---->
 														<!---->
 														<!---->
@@ -56,7 +60,9 @@
 													</div>
 													<div data-v-6e865099="" data-v-3900a1a2="" class="detail_main_title md">
 														<div data-v-6e865099="" class="main_title_box1">
-															<p data-v-6e865099="" class="title"><c:out value="${detail.prod_name}"/></p>
+															<p data-v-6e865099="" class="title">
+																<c:out value="${detail.prod_name}" />
+															</p>
 														</div>
 													</div>
 												</div>
@@ -67,15 +73,21 @@
 													<dl data-v-b809b0a6="" class="detail_product">
 														<div data-v-b809b0a6="" class="detail_box model_num">
 															<dt data-v-b809b0a6="" class="product_title">너비</dt>
-															<dd data-v-b809b0a6="" class="product_info"><c:out value="${detail.prod_width}" />mm</dd>
+															<dd data-v-b809b0a6="" class="product_info">
+																<c:out value="${detail.prod_width}" />mm
+															</dd>
 														</div>
 														<div data-v-b809b0a6="" class="detail_box">
 															<dt data-v-b809b0a6="" class="product_title">높이</dt>
-															<dd data-v-b809b0a6="" class="product_info"><c:out value="${detail.prod_height}" />mm</dd>
+															<dd data-v-b809b0a6="" class="product_info">
+																<c:out value="${detail.prod_height}" />mm
+															</dd>
 														</div>
 														<div data-v-b809b0a6="" class="detail_box">
 															<dt data-v-b809b0a6="" class="product_title">깊이</dt>
-															<dd data-v-b809b0a6="" class="product_info"><c:out value="${detail.prod_depth}" />mm</dd>
+															<dd data-v-b809b0a6="" class="product_info">
+																<c:out value="${detail.prod_depth}" />mm
+															</dd>
 														</div>
 													</dl>
 												</div>
@@ -83,12 +95,14 @@
 											<div data-v-158ed304="" data-v-877ed62a="" class="price_descision_box">
 												<ul data-v-638c1354="" data-v-158ed304="" class="price_list">
 													<li data-v-638c1354="" class="list_item">
-														<p data-v-638c1354="" class="title">정가</p> <span data-v-638c1354=""
-															class="price"><fmt:formatNumber
-																value="${detail.prod_price}" pattern="#,###" /></span><span data-v-638c1354="" class="unit">원</span>
+														<p data-v-638c1354="" class="title">정가</p> <span data-v-638c1354="" class="price">
+															<fmt:formatNumber value="${detail.prod_price}" pattern="#,###" />
+														</span><span data-v-638c1354="" class="unit">원</span>
 													</li>
 													<li data-v-638c1354="" class="list_item">
-														<p data-v-638c1354="" class="title">검수 등급</p> <select id="grade">
+
+
+														<p data-v-638c1354="" class="title">검수 등급</p> <select name="grade" id="grade">
 															<option value="ROYAL" selected="">ROYAL</option>
 															<option value="PRIME">PRIME</option>
 															<option value="STANDARD">STANDARD</option>
@@ -100,8 +114,9 @@
 											<div class="used_info">
 												<h3 data-v-824856a2="" class="review_title">제품 설명</h3>
 												<div class="info_write">
-													<textarea class="up_comment" rows="5" name="content"></textarea>
+													<textarea class="up_comment" rows="5" name="up_comment"></textarea>
 												</div>
+
 											</div>
 											<div class="used_info">
 												<h3 data-v-824856a2="" class="review_title">상세사진 첨부</h3>
@@ -166,22 +181,28 @@
 												</div>
 												<div class="submit">
 													<div data-v-14995178="" class="btn_confirm">
-														<a data-v-6e799857="" data-v-14995178="" href="#" class="btn full solid false"> 판매하기</a>
+														<a data-v-6e799857="" data-v-14995178="" href="#" class="btn full solid false"> 판매하기
+															<button type="submit"></button>
+														</a>
+
 													</div>
 												</div>
 											</div>
 										</div>
 										<!---->
 										<!---->
-									</form>
+
+									</div>
+									<!---->
+									<!---->
 								</div>
-								<!---->
-								<!---->
+								<%@include file="../includes/footer.jsp" %>
 							</div>
-							<%@include file="../includes/footer.jsp" %>
 						</div>
 					</div>
-				</div>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					
+				</form>
 			</body>
 			<script>
 				function showUploadResult(uploadResultArr) {
@@ -244,6 +265,8 @@
 				});
 
 				$(document).ready(function (e) {
+
+					console.log(${mem_id});
 
 					var formObj = $("form[role='form']");
 					$("div[class='btn_confirm']").on("click", function (e) {
