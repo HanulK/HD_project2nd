@@ -309,15 +309,16 @@
 				},
 		      // Json 형식의 데이터
 		      success : function(result){ // 비동기통신-> 성공 success콜백// 'respone'는 응답받은 데이터
-					if(result=='success'){
-						alert("성공");
+					console.log(result);
+		    	  if(result=='success'){
+						alert("담기 성공");
 					}else {
-						alert("실패")
+						alert("담기 실패")
 					}
 		      
 		      },
 		      error : function(e){
-		    	  alert(e[1]);
+		    	  alert(e);
 		      }
 
 		  });
