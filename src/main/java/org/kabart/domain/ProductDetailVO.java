@@ -14,6 +14,7 @@ public class ProductDetailVO {
 	private int prod_id;
 	private String prod_name;
 	private int prod_price;
+	private String prod_category;
 	private int prod_width;
 	private int prod_height;
 	private int prod_depth;

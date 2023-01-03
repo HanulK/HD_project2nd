@@ -450,3 +450,21 @@ a.btn.solid.full.buy1.large {
     font-weight: 600;
     text-align: right;
 }
+
+div#map {
+    width: 600px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    background: url(http://t1.daumcdn.net/mapjsapi/images/2x/bg_tile.png);
+}
+
+.other_stock .title .title_text1[data-v-3e0ff210] {
+    padding-bottom: 10px;
+    -webkit-box-flex: 1;
+    flex: 1;
+    line-height: 24px;
+    font-size: 20px;
+    letter-spacing: -.15px;
+    font-weight: 400;
+}
