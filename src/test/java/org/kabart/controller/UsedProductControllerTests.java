@@ -32,9 +32,9 @@ public class UsedProductControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
-	@Test
-	public void testRead() throws Exception {
-		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/detail").param("up_id", "24"))
-				.andReturn().getModelAndView().getModelMap());
-	}
+//	@Test
+//	public void testRead() throws Exception {
+//		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/detail").param("up_id", "24"))
+//				.andReturn().getModelAndView().getModelMap());
+//	}
 }

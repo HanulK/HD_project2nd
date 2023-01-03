@@ -14,6 +14,4 @@ public class UsedSellVO {
 	private Date up_regdate;
 	private String up_comment;
 	
-	private List<AttachVO> attachList;
-
 }

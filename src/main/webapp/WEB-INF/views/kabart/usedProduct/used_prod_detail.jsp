@@ -55,11 +55,13 @@
 										<dd data-v-67511fc2="" class="price1">
 											<div data-v-67511fc2="" class="discount_amount">
 												<em data-v-67511fc2="" class="discount_per">${read.discount_rate}%</em><span
-													data-v-67511fc2="" class="num">${read.used_price}</span><span
+													data-v-67511fc2="" class="num"><fmt:formatNumber
+																value="${read.used_price}" pattern="#,###" /></span><span
 													data-v-67511fc2="" class="won">원</span>
 											</div>
 											<div data-v-67511fc2="" class="origin_amount">
-												<span data-v-67511fc2="" class="num">${read.prod_price}</span><span
+												<span data-v-67511fc2="" class="num"><fmt:formatNumber
+																value="${read.prod_price}" pattern="#,###" /></span><span
 													data-v-67511fc2="" class="won">원</span>
 											</div>
 										</dd>

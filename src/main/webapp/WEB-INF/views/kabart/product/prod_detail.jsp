@@ -92,7 +92,7 @@
 												<div data-v-f40660fa="" data-v-77d20f30=""
 													class="detail_stock_btn">
 													<a data-v-6e799857="" data-v-f40660fa=""
-														href="/kabart/usedProduct/used_prod_sell"
+														href="/kabart/usedProduct/used_prod_sell?prod_id=<c:out value="${detail.prod_id}" />"
 														class="btn solid full sell large"> 중고 판매 </a>
 												</div>
 											</div>
@@ -125,13 +125,6 @@
 													<dt data-v-b809b0a6="" class="product_title">깊이</dt>
 													<dd data-v-b809b0a6="" class="product_info">
 														<c:out value="${detail.prod_depth}" />
-													</dd>
-												</div>
-												<div data-v-b809b0a6="" class="detail_box">
-													<dt data-v-b809b0a6="" class="product_title">발매가</dt>
-													<dd data-v-b809b0a6="" class="product_info">
-														<fmt:formatNumber value="${detail.prod_price}"
-															pattern="#,###" />
 													</dd>
 												</div>
 											</dl>

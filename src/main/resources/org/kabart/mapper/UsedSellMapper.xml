@@ -3,16 +3,15 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="org.kabart.mapper.UsedSellMapper">
   	
-  	<insert id="insert">
-  		insert into used_products (up_id, prod_id, mem_id, grade, up_regdate, up_comment)
-  		values (seq_upproduct.nextval, #{prod_id}, #{mem_id}, #{grade}, sysdate, #{up_comment})
+  	<insert id="insertUsedProduct">
+  		
+  		insert into used_products(prod_id, mem_id, grade, up_comment)
+  		values(#{prod_id}, #{mem_id}, #{grade}, #{up_comment})
+  		
+  		<selectKey keyProperty="up_id" order="AFTER" resultType="int">
+  			select max(up_id) from used_products
+  		</selectKey>
+  		
   	</insert>
   	
-  	<insert id="insertSelectKey">
-  		<selectKey keyProperty="up_id" order="BEFORE" resultType="Integer">
-  			select seq_upproduct.nextval from dual
-  		</selectKey>	  		
-  		insert into used_products (up_id, prod_id, mem_id, grade, up_regdate, up_comment)
-  		values (seq_upproduct.nextval, #{prod_id}, #{mem_id}, #{grade}, sysdate, #{up_comment})
-  	</insert>
   </mapper>
