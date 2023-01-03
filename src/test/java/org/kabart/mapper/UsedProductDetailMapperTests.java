@@ -26,13 +26,13 @@ public class UsedProductDetailMapperTests {
 		log.info(up);
 	}
 	
-	@Test
-	public void testupdate() {
-		
-		UsedProductDetailVO up = new UsedProductDetailVO();
-		
-		up.setUp_id(23);
-		up.setUp_comment("새벽엔 소켓이 거의 1시간이 안돌아가는 기이한 현상을 목격 빨리 자라는 거지");
-	}
+	/*
+	 * @Test public void testupdate() {
+	 * 
+	 * UsedProductDetailVO up = new UsedProductDetailVO();
+	 * 
+	 * up.setUp_id(23);
+	 * up.setUp_comment("새벽엔 소켓이 거의 1시간이 안돌아가는 기이한 현상을 목격 빨리 자라는 거지"); }
+	 */
 
 }

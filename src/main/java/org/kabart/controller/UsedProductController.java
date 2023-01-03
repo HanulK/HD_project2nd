@@ -18,9 +18,10 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class UsedProductController {
 	
+	@Setter(onMethod_ = { @Autowired })
 	private UsedProductDetailService service;
 
-	@GetMapping("/detail")
+	@GetMapping("/used_prod_detail")
 	public void used_prod_detail(@RequestParam("up_id") int up_id, Model model) {
 		log.info("used item detail controller....");
 		
