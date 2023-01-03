@@ -1,6 +1,6 @@
 package org.kabart.controller;
 
-import java.util.Map;
+import java.util.*;
 
 import org.kabart.service.CartsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class MypageController {
 	
 	@PostMapping(value="/cart",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<String> addCart(@RequestBody Map<String,Object> body){
+	public ResponseEntity<Map<String,Object>> addCart(@RequestBody Map<String,Object> body){
 		String mem_id = (String)body.get("mem_id");
 		System.out.println("inser Cart gogo ");
 		int prod_id = (int)body.get("prod_id");
@@ -39,7 +39,9 @@ public class MypageController {
 		System.out.println(mem_id);
 		System.out.println(prod_id);
 		System.out.println(quantity);
-		return new ResponseEntity<String>(cService.isExist(mem_id, prod_id, quantity),HttpStatus.OK);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", cService.isExist(mem_id, prod_id, quantity));
+		return new ResponseEntity<>(map,HttpStatus.OK);
 	}
 	
 
