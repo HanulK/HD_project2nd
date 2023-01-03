@@ -166,7 +166,7 @@
 							<c:forEach items="${usedProductList}" var="products">
 							<div class="product_card exhibition_product" data-v-19fda891=""
 								data-v-81b68464="">
-								<a href="/kabart/usedProduct/used_prod_detail?up_id=<c:out value=" ${products.up_id }" />" class="item_inner" data-v-19fda891=""><div
+								<a href="/kabart/usedProduct/detail?up_id=<c:out value="${products.up_id }"/>" class="item_inner" data-v-19fda891=""><div
 										class="product" style="background-color: #f4f4f4;"
 										data-v-09fbcf09="">
 										<picture data-v-321fc3b6="" data-v-09fbcf09=""

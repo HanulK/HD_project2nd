@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,6 +16,8 @@
 		<!---->
 		<div id="__layout">
 			<div data-v-39b2348a="">
+				<input id='mem_id' type='hidden'
+					value='<sec:authentication property="principal.username"/>'>
 				<div data-v-39b2348a="" class="container my lg">
 					<div data-v-39b2348a="">
 						<div data-v-39b2348a="" class="snb_area">
@@ -160,7 +164,11 @@
 	</div>
 	<script type="text/javascript">
 		$(function() {
+			var csrfHeaderName = "${_csrf.headerName}";
+			var csrfTokenValue = "${_csrf.token}";
 			var isUsed = 0;
+			const mem_id = $("#mem_id").val();
+			console.log(mem_id);
 			$('#dateEnd').val(new Date().toISOString().slice(0, 7));
 			$('#dateStart').val(new Date().toISOString().slice(0, 7));
 			function date_add(sDate, nDays) {
@@ -176,11 +184,18 @@
 				return '' + yy + '/' + mm + '/' + dd;
 			}
 			function searchNew(start_date, end_date) {
-				$.ajax({	url : '/search/newbuying',
-							data : {
-								mem_id : "test",
+				$
+						.ajax({
+							type : 'post',
+							url : '/search/newbuying',
+							data : JSON.stringify({
+								mem_id : mem_id,
 								start_date : start_date,
 								end_date : end_date
+							}),
+							beforeSend : function(xhr) {
+								xhr.setRequestHeader(csrfHeaderName,
+										csrfTokenValue);
 							},
 							contentType : "application/json",
 							success : function(result) {
@@ -231,11 +246,16 @@
 			function searchUsed(start_date, end_date) {
 				$
 						.ajax({
+							type: 'post',							
 							url : '/search/usedbuying',
-							data : {
-								mem_id : "anna",
+							data : JSON.stringify({
+								mem_id : mem_id,
 								start_date : start_date,
 								end_date : end_date
+							}),
+							beforeSend : function(xhr) {
+								xhr.setRequestHeader(csrfHeaderName,
+										csrfTokenValue);
 							},
 							contentType : "application/json",
 							success : function(result) {

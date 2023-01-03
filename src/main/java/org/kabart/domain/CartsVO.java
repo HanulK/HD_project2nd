@@ -12,8 +12,6 @@ public class CartsVO {
 	private String mem_id;
 	private int prod_id;
 	private int quantity;
-	
-	
 	private String prod_category; 
 	private String prod_name;
 	private int prod_price;

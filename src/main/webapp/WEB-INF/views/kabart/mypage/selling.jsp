@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +14,8 @@
 
 
 	<jsp:include page="../includes/header.jsp"></jsp:include>
-
+	<input id='mem_id' type='hidden'
+		value='<sec:authentication property="principal.username"/>'>
 	<!---->
 	<div data-v-39b2348a="" class="container my lg">
 		<div data-v-39b2348a="">
@@ -162,6 +165,9 @@
 		$(function() {
 			var csrfHeaderName = "${_csrf.headerName}";
 			var csrfTokenValue = "${_csrf.token}";
+			var mem_id = $("#mem_id").val();
+			console.log("member id : ",mem_id);
+			
 			var isUsed = 0;
 			$('#dateEnd').val(new Date().toISOString().slice(0, 7));
 			$('#dateStart').val(new Date().toISOString().slice(0, 7));
@@ -183,7 +189,7 @@
 							type : 'post',
 							url : '/search/selling',
 							data : JSON.stringify({
-								mem_id : "anna",
+								mem_id : mem_id,
 								start_date : start_date,
 								end_date : end_date
 							}),
@@ -207,6 +213,7 @@
 										console.log(result[i].imgs_src);
 										var status = '판매 중';
 
+										var datestatus = '등록일';
 										row += "<div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
 												+ "<div data-v-2f988574='' class='purchase_list_product'><div data-v-2f988574='' class='list_item_img_wrap'><img data-v-2f988574='' alt='product_image' src='"
 												+ result[i].img_srcs
@@ -219,6 +226,9 @@
 												+ result[i].grade
 												+ "등급</p>"
 												+ "</div></div><div data-v-2f988574='' class='list_item_status'><div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
+												+ datestatus
+												+ "</p></div>"
+												+ "<div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
 												+ result[i].up_regdate
 												+ "</p></div>"
 												+ "<div data-v-2f988574='' class='list_item_column column_last'><p data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"
@@ -244,7 +254,7 @@
 							type : 'post',
 							url : '/search/selled',
 							data : JSON.stringify({
-								mem_id : "test",
+								mem_id : mem_id,
 								start_date : start_date,
 								end_date : end_date
 							}),
@@ -268,6 +278,7 @@
 										console.log(result[i].imgs_src);
 										var status = '판매완료';
 
+										var datestatus = '판매날짜';
 										row += "<div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
 												+ "<div data-v-2f988574='' class='purchase_list_product'><div data-v-2f988574='' class='list_item_img_wrap'><img data-v-2f988574='' alt='product_image' src='"
 												+ result[i].img_srcs
@@ -280,6 +291,9 @@
 												+ result[i].grade
 												+ "등급</p>"
 												+ "</div></div><div data-v-2f988574='' class='list_item_status'><div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
+												+ datestatus
+												+ "</p></div>"
+												+ "<div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
 												+ result[i].sale_date
 												+ "</p></div>"
 												+ "<div data-v-2f988574='' class='list_item_column column_last'><p data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"

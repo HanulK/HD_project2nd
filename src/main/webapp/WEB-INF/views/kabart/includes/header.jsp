@@ -34,8 +34,8 @@
 									</form>
 								</li>
 							</sec:authorize>
-							<li class="gnb_item">마이페이지</li>
-							<li class="gnb_item">장바구니</li>
+							<li class="gnb_item"><a href="/kabart/mypage/my">마이페이지</a></li>
+							<li class="gnb_item"><a href="/kabart/mypage/cart">장바구니</a></li>
 						</ul>
 					</nav>
 					<div class="search_btn_box">
