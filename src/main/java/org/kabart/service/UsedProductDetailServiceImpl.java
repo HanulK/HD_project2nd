@@ -20,16 +20,14 @@ public class UsedProductDetailServiceImpl implements UsedProductDetailService{
 		return mapper.read(up_id);
 	}
 
-	@Override
-	public int delete(int up_id) {
-		log.info("Delete Used Product Detail.........");
-		return mapper.delete(up_id);
-	}
-
-	@Override
-	public boolean update(UsedProductDetailVO upused) {
-		log.info("Delete Used Product Detail.........");
-		return mapper.update(upused) == 1;
-	}
+	/*
+	 * @Override public int delete(int up_id) {
+	 * log.info("Delete Used Product Detail........."); return mapper.delete(up_id);
+	 * }
+	 * 
+	 * @Override public boolean update(UsedProductDetailVO upused) {
+	 * log.info("Delete Used Product Detail........."); return mapper.update(upused)
+	 * == 1; }
+	 */
 
 }
