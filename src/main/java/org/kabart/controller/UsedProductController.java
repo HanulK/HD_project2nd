@@ -51,11 +51,9 @@ public class UsedProductController {
 	@Setter(onMethod_ = { @Autowired })
 	private ProductDetailService productDetailService;
 	
-	@Setter(onMethod_ = {@Autowired})
-	private UsedSellService usedSellService;
 	
-	@RequestMapping("/used_prod_sell")
-	public String used_prod_sell(@RequestParam("prod_id") int prod_id, Model model, UsedSellVO usedSellVO, RedirectAttributes rttr) {
+	@GetMapping("/used_prod_sell")
+	public void used_prod_sell(@RequestParam("prod_id") int prod_id, Model model) {
 		
 		log.info("prod_detail Controller");
 		log.info("prod_id : " + prod_id);
@@ -63,7 +61,6 @@ public class UsedProductController {
 		List<ImgVO> imgs = productDetailService.getdetailImgs(prod_id);
 		List<UsedProductVO> useds = productDetailService.getused(prod_id);
 		
-
 		ProductDetailVO detail = productDetailService.getProdDetail(prod_id);
 
 		detail.setImgs(imgs);
@@ -73,9 +70,17 @@ public class UsedProductController {
 		
 
 		model.addAttribute("detail", detail);
-
+	}
+	
+	@Setter(onMethod_ = {@Autowired})
+	private UsedSellService usedSellService;
+	
+	@PostMapping("/used_prod_sell")
+	public String used_prod_sell_insert(UsedSellVO usedSellVO, RedirectAttributes rttr) {
+		
 		usedSellService.registerUsedProduct(usedSellVO);
 		rttr.addFlashAttribute("result", usedSellVO.getUp_id());
-		return "redirect:kabart/mypage/selling";
+		
+		return "redirect:/kabart/mypage/selling";
 	}
 }

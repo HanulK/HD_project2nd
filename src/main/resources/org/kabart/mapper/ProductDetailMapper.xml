@@ -9,6 +9,7 @@
 		<result property="prod_id" column="prod_id" />
 		<result property="prod_name" column="prod_name" />
 		<result property="prod_price" column="prod_price" />
+		<result property="prod_category" column="prod_category" />
 		<result property="prod_width" column="prod_width" />
 		<result property="prod_height" column="prod_height" />
 		<result property="prod_depth" column="prod_depth" />
@@ -23,7 +24,7 @@
 	</resultMap>
 
 	<select id="get" resultMap="getProdDetail">
-		select prod_id, prod_name, prod_price, prod_width,
+		select prod_id, prod_name, prod_price, prod_category, prod_width,
 		prod_height, prod_depth, img_srcs, img_tag, shop_name, shop_address
 		from v_products
 		where prod_id = #{prod_id} and img_tag='thumNail'
