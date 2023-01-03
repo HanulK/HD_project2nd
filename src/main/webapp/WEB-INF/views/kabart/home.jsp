@@ -21,65 +21,83 @@
 				<!---->
 				<div class="shortcut_item_wrap1">
 					<div class="shortcut_item">
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/010.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/usedProduct/used_prod_list?prod_category=all">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/010.png" class="image"> </picture>
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item">
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/002.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/product/prod_list?prod_category=bed">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/002.png" class="image"> </picture>
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item">
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/001.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/product/prod_list?prod_category=sofa">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/001.png" class="image"> </picture>
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item">
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/004.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/product/prod_list?prod_category=table">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/004.png" class="image"> </picture>
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item">
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/005.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/product/prod_list?prod_category=chair">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/005.png" class="image"> </picture>
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item">
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/006.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/product/prod_list?prod_category=closet">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/006.png" class="image"> </picture>
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item">
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/007.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/product/prod_list?prod_category=drawers">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/007.png" class="image"> </picture>
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item">
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/003.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/product/prod_list?prod_category=desk">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/003.png" class="image"> </picture>
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item">
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/008.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/product/prod_list?prod_category=homeinterior">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/008.png" class="image"> </picture>
+							</div>
+						</a>
 					</div>
 					<div class="shortcut_item">
-					<a href="/kabart/product/prod_list" >
-						<div class="shortcut_item_img_wrap">
-							<picture class="picture shortcut_item_img_bg"> <img
-								src="/resources/img/009.png" class="image"> </picture>
-						</div>
+						<a href="/kabart/product/prod_list?prod_category=all">
+							<div class="shortcut_item_img_wrap">
+								<picture class="picture shortcut_item_img_bg"> <img
+									src="/resources/img/009.png" class="image"> </picture>
+							</div>
 						</a>
 					</div>
 				</div>

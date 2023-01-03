@@ -23,6 +23,9 @@ public class UsedProductDetailVO {
 	private Date sale_date;
 	private int discount_rate;
 	
+	private String img_srcs;
+	private String img_tag;
+	
 	private List<AttachVO> attachList;
 	
 

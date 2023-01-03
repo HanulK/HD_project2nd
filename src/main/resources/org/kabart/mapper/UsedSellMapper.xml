@@ -5,7 +5,7 @@
   	
   	<insert id="insert">
   		insert into used_products (up_id, prod_id, mem_id, grade, up_regdate, up_comment)
-  		values (seq_upproduct.nextval, #{prod_id), #{mem_id}, #{grade}, sysdate, #{up_comment})
+  		values (seq_upproduct.nextval, #{prod_id}, #{mem_id}, #{grade}, sysdate, #{up_comment})
   	</insert>
   	
   	<insert id="insertSelectKey">
@@ -14,6 +14,6 @@
   		</selectKey>	
   		
   		insert into used_products (up_id, prod_id, mem_id, grade, up_regdate, up_comment)
-  		values (seq_upproduct.nextval, #{prod_id), #{mem_id}, #{grade}, sysdate, #{up_comment})
+  		values (seq_upproduct.nextval, #{prod_id}, #{mem_id}, #{grade}, sysdate, #{up_comment})
   	</insert>
   </mapper>
