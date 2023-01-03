@@ -18,6 +18,8 @@
 		<security:logout logout-url="/kabart/logout" invalidate-session="true" logout-success-url="/kabart/home"/>
 		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
 		<security:logout logout-url="/kabart/logout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" logout-success-url="/kabart/home"/>
+		<security:intercept-url pattern="/kabart/mypage/*"
+		access="hasRole('ROLE_MEMBER')"/>
 	</security:http>
 		
 	<!-- authentication manager 사용 선언 -->
