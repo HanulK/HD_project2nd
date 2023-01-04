@@ -14,6 +14,7 @@
 		<result property="prod_height" column="prod_height" />
 		<result property="prod_depth" column="prod_depth" />
 		<result property="img_srcs" column="img_srcs" />		
+		<result property="img_tag" column="img_tag" />		
 		<collection property="shops" resultMap="shopMap" />
 	</resultMap>
 

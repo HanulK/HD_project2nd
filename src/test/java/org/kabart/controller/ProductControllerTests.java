@@ -40,11 +40,10 @@ public class ProductControllerTests {
 				MockMvcRequestBuilders.get("/kabart/product/prod_list").param("pageNum", "1").param("amount", "8").param("prod_category", "all"))
 				.andReturn().getModelAndView().getModelMap());
 	}
-
-//	@Test
-//	public void testProductDetail() throws Exception {
-//		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/product/prod_detail").param("prod_id", "146812"))
-//				.andReturn().getModelAndView().getModelMap());
-//	}
+	@Test
+	public void testProductDetail() throws Exception {
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/product/prod_detail").param("prod_id", "146812"))
+				.andReturn().getModelAndView().getModelMap());
+	}
 
 }

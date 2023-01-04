@@ -26,6 +26,7 @@
 								<li class="gnb_item"><a href="/kabart/login">로그인</a></li>
 							</sec:authorize>
 							<sec:authorize access="isAuthenticated()">
+								<li class="gnb_item"><sec:authentication property="principal.member.mem_name"/>님</li>
 								<li class="gnb_item">
 									<form action="/kabart/logout" method="post">
 										<input type="hidden" name="${_csrf.parameterName }"

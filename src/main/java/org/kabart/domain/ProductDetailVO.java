@@ -19,6 +19,7 @@ public class ProductDetailVO {
 	private int prod_height;
 	private int prod_depth;
 	private String img_srcs;
+	private String img_tag;
 
 	private List<ShopVO> shops;
 	private List<ImgVO> Imgs;
