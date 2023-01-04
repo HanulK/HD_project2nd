@@ -57,8 +57,7 @@
 						</div>
 						<div data-v-5acef129="" class="user_info">
 							<div data-v-5acef129="" class="info_box">
-								<strong data-v-5acef129="" class="name">skarns23</strong>
-								<p data-v-5acef129="" class="email">s******3@naver.com</p>
+								<strong data-v-5acef129="" class="name"><sec:authentication property="principal.username"/></strong>
 								<a data-v-6e799857="" data-v-5acef129="" href="/kabart/mypage/profile"
 									class="btn btn outlinegrey small" type="button"> 프로필 수정 </a>
 							</div>
@@ -274,7 +273,7 @@
 			var buyUsed = 0;
 			var sellingUsed = 0;
 			var selledUsed = 0;
-
+			
 			var mem_id = $("#mem_id").val();
 			var csrfHeaderName = "${_csrf.headerName}";
 			var csrfTokenValue = "${_csrf.token}";

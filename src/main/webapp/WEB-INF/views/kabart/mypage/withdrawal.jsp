@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>KREAM | 한정판 거래의 FLEX</title>
+<title>KABART</title>
 <meta data-n-head="ssr" charset="utf-8">
 </head>
 <body>
@@ -13,6 +13,8 @@
 			<div tabindex="0" class="wrap win_os" data-v-39b2348a="">
 				<!---->
 					<jsp:include page="../includes/header.jsp"></jsp:include>
+					<input type="hidden" name="${_csrf.parameterName }"
+						value="${_csrf.token }" />
 				<!---->
 				<div class="container my lg" data-v-39b2348a="">
 					<div data-v-39b2348a="">
@@ -48,6 +50,7 @@
 							</nav>
 						</div>
 					</div>
+					<!---->
 					<div class="content_area" data-v-0145d93c="" data-v-39b2348a="">
 						<div class="my_withdrawal" data-v-0145d93c="">
 							<div class="content_title" data-v-88eb18f6="" data-v-0145d93c="">
@@ -70,7 +73,7 @@
 														<input id="title0" type="checkbox" name="" class="blind"
 															data-v-4c714e9f=""><label for="title0"
 															class="check_label" data-v-4c714e9f=""><span
-															class="label_txt" data-v-4c714e9f="">KREAM을 탈퇴하면
+															class="label_txt" data-v-4c714e9f="">KABART을 탈퇴하면
 																회원 정보 및 서비스 이용 기록이 삭제됩니다.</span>
 														<!----></label>
 													</div>
@@ -134,7 +137,7 @@
 														<input id="title2" type="checkbox" name="" class="blind"
 															data-v-4c714e9f=""><label for="title2"
 															class="check_label" data-v-4c714e9f=""><span
-															class="label_txt" data-v-4c714e9f="">KREAM 탈퇴가 제한된
+															class="label_txt" data-v-4c714e9f="">KABART 탈퇴가 제한된
 																경우에는 아래 내용을 참고하시기 바랍니다.</span>
 														<!----></label>
 													</div>
@@ -157,12 +160,13 @@
 										<div class="withdrawal_check" data-v-0145d93c=""></div>
 										<div class="withdrawal_btn_box" data-v-0145d93c="">
 											<a href="#" class="btn outlinegrey medium" data-v-6e799857=""
-												data-v-0145d93c=""> 탈퇴하기 </a><a href="#"
+												data-v-0145d93c="" id="withdrawal_next"> 탈퇴하기 </a><a href="/kabart/mypage/profile"
 												class="btn solid medium" data-v-6e799857=""
 												data-v-0145d93c=""> 취소하기 </a>
 										</div>
+										<!---->
 										<div class="layer_withdrawal layer lg" style="display: none;"
-											data-v-1a009402="" data-v-79f8507c="" data-v-0145d93c="">
+											data-v-1a009402="" data-v-79f8507c="" data-v-0145d93c="" id="confirm_box">
 											<div class="layer_container" data-v-1a009402="">
 												<a href="#" class="btn_layer_close" data-v-1a009402=""
 													data-v-79f8507c=""><svg
@@ -183,22 +187,25 @@
 													<p class="withdrawal_desc" data-v-1a009402=""
 														data-v-79f8507c="">
 														탈퇴하기 클릭 시 바로 탈퇴 처리됩니다.<br>탈퇴 후 14일 이내 재가입할 수 없으며,<br>재가입
-														시 동일 이메일을 사용할 수 없습니다.
+														시 동일 아이디를 사용할 수 없습니다.
 													</p>
 													<!---->
 													<div class="withdrawal_btn_box" data-v-1a009402=""
 														data-v-79f8507c="">
 														<!---->
-														<button type="button" class="btn solid medium"
+														<button type="button" class="btn solid medium" id="cancle_btn"
 															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402="">
 															취소하기</button>
+														<button type="button" class="btn solid medium"
+															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402="" id="withdrawal_btn">
+															탈퇴하기</button>
 														<!---->
 														<!---->
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="layer_withdrawal layer lg" style="display: none;"
+										<div class="layer_withdrawal layer lg" style="display: none;" id="result_box"
 											data-v-1a009402="" data-v-79f8507c="" data-v-0145d93c="">
 											<div class="layer_container" data-v-1a009402="">
 												<a href="#" class="btn_layer_close" data-v-1a009402=""
@@ -219,7 +226,7 @@
 												<div class="layer_content" data-v-1a009402="">
 													<p class="withdrawal_desc" data-v-1a009402=""
 														data-v-79f8507c="">
-														그동안 서비스를 이용해 주셔서 감사합니다.<br>14일 후 KREAM을 다시 이용할 수
+														그동안 서비스를 이용해 주셔서 감사합니다.<br>14일 후 KABART을 다시 이용할 수
 														있습니다.
 													</p>
 													<!---->
@@ -228,48 +235,8 @@
 														<!---->
 														<!---->
 														<button type="button" class="btn outlinegrey medium"
-															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402="">
-															확인</button>
-														<!---->
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="layer_withdrawal layer lg" style="display: none;"
-											data-v-1a009402="" data-v-79f8507c="" data-v-0145d93c="">
-											<div class="layer_container" data-v-1a009402="">
-												<a href="#" class="btn_layer_close" data-v-1a009402=""
-													data-v-79f8507c=""><svg
-														xmlns="http://www.w3.org/2000/svg"
-														class="ico-close icon sprite-icons" data-v-1a009402=""
-														data-v-79f8507c="">
-														<use
-															href="../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
-															xlink:href="../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-ico-close"
-															data-v-1a009402="" data-v-79f8507c=""></use></svg></a>
-												<div class="layer_header" data-v-1a009402="">
-													<h2 class="title" data-v-1a009402="" data-v-79f8507c="">
-														<svg xmlns="http://www.w3.org/2000/svg"
-															class="alert-circle-dark icon sprite-icons"
-															data-v-1a009402="" data-v-79f8507c="">
-															<use
-																href="../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-alert-circle-dark"
-																xlink:href="../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-alert-circle-dark"
-																data-v-1a009402="" data-v-79f8507c=""></use></svg>
-														탈퇴 불가한 회원입니다.
-													</h2>
-												</div>
-												<div class="layer_content" data-v-1a009402="">
-													<p class="withdrawal_desc unable_desc" data-v-1a009402=""
-														data-v-79f8507c="">아래 사유가 확인되어 탈퇴가 제한됩니다.</p>
-													<ul class="withdrawal_list" data-v-1a009402=""
-														data-v-79f8507c=""></ul>
-													<div class="withdrawal_btn_box" data-v-1a009402=""
-														data-v-79f8507c="">
-														<!---->
-														<!---->
-														<button type="button" class="btn outlinegrey medium"
-															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402="">
+															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402=""
+															onclick = "location.href = '/kabart/home'">
 															확인</button>
 														<!---->
 													</div>
@@ -286,5 +253,37 @@
 		</div>
 	</div>
 	<jsp:include page="../includes/footer.jsp"></jsp:include>
+	<script type="text/javascript">
+	var csrfHeaderName = "${_csrf.headerName}";
+	var csrfToeknValue = "${_csrf.token}";
+	
+	$("#withdrawal_next").on("click", function(e) {
+		$("#confirm_box").attr("style", "");
+	})
+	
+	$("#cancle_btn").on("click", function() {
+		$("#confirm_box").attr("style", "display: none;");
+	})
+	
+	$("#withdrawal_btn").on("click", function() {
+		$("#confirm_box").attr("style", "display: none;");
+		
+		$.ajax({
+			url : "${contextPath}/kabart/mypage/withdrawal.do",
+			type : "POST",
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfToeknValue);
+			},
+			success : function() {
+				console.log("탈퇴 성공");
+				$("#result_box").attr("style", "");
+			},
+			error : function(e) {
+				console.log(e);
+				console.log("탈퇴 실패");
+			}
+		}); // end ajax 
+	})
+	</script>
 </body>
 </html>

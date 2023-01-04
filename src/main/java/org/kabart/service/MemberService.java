@@ -9,4 +9,5 @@ public interface MemberService {
 	public String findId(String phone);
 	public void changePhoneInfo(String mem_id, String new_data);
 	public void changeFamilyNumInfo(String mem_id, int new_data);
+	public int withdrawalMember(String mem_id);
 }

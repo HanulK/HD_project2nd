@@ -9,4 +9,5 @@ public interface CartsService {
 	public List<CartsVO> getList(String mem_id);
 	public String isExist(String mem_id, int prod_id,int quantity);
 	public int removeCart(String mem_id, List<Integer> prod_id) ;
+	public void deleteAllCart(String mem_id);
 }

@@ -217,7 +217,7 @@
 							</div>
 						</div>
 						<!-- end 배송지 정보 -->
-						<a data-v-587be1b3="" href="/my/withdrawal" class="btn_withdrawal">회원
+						<a data-v-587be1b3="" href="/kabart/mypage/withdrawal" class="btn_withdrawal">회원
 							탈퇴</a>
 					</div>
 				</div>
@@ -282,7 +282,7 @@
 				newData : $("#new_fm").val(),
 				type : "new_fm"
 			}),
-			contentType : "application/json",
+			contentType : "application/json", 
 			beforeSend: function(xhr) {
 				xhr.setRequestHeader(csrfHeaderName, csrfToeknValue);
 			},

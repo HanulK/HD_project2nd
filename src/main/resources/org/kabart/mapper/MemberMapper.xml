@@ -64,4 +64,16 @@
  		UPDATE members SET family_num = #{new_data} WHERE mem_id = #{mem_id}
  	</update>
  	
+ 	<delete id="removeAuthority">
+ 		DELETE FROM authorities WHERE username = #{mem_id}
+ 	</delete>
+ 	
+ 	<delete id="removeRememberMe">
+ 		DELETE FROM persistent_logins WHERE username = #{mem_id}
+ 	</delete>
+ 	
+ 	<update id="registerExpireDate">
+ 		UPDATE members SET expire_date = sysdate WHERE mem_id = #{mem_id}
+ 	</update>
+ 	
  </mapper>
