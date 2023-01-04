@@ -15,5 +15,5 @@ public interface CartsMapper {
 	public int isExist(@Param("mem_id") String mem_id, @Param("prod_id") int prod_id);
 	public int quantityUpdate(@Param("mem_id")String mem_id, @Param("prod_id") int prod_id,@Param("quantity") int quantity);
 	public List<CartsVO> getCarts(@Param("mem_id") String mem_id);
-	
+	public int removeCart(@Param("mem_id") String mem_id, @Param("prod_id") int prod_id);
 }

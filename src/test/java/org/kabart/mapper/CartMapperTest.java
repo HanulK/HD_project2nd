@@ -1,5 +1,7 @@
 package org.kabart.mapper;
 
+import java.util.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
-import oracle.ucp.common.FailoverStats.Item;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
@@ -49,6 +50,14 @@ public class CartMapperTest {
 		// List<CartsVO> list = mapper.getList();
 		// log.info(list.get(0));
 		mapper.getCarts("tori").forEach(item -> log.info(item));
+	}
+	@Test
+	public void removeCart() {
+		List<Integer> prod_id = new ArrayList<>();
+		prod_id.add(42431);
+		prod_id.add(44405);
+		prod_id.add(78931);
+		log.info(mapper.removeCart("tori",42431));
 	}
 
 }

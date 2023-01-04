@@ -36,7 +36,9 @@
 		WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
 
 	</update>
-
+	<delete id="removeCart">
+		DELETE FROM carts WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
+	</delete>
 
 
 

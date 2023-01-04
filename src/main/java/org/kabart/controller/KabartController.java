@@ -2,7 +2,6 @@ package org.kabart.controller;
 
 import java.util.*;
 
-import org.apache.ibatis.javassist.expr.NewArray;
 import org.kabart.domain.MemberVO;
 import org.kabart.mapper.MemberMapper;
 import org.kabart.service.MemberService;
@@ -89,5 +88,16 @@ public class KabartController {
 	@RequestMapping("/findId.do")
 	public String findID(String phone) {
 		return mapper.findId(phone);
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/getInfoById", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<MemberVO> getInfo(@RequestBody Map<String,Object> body){
+		log.info(body.get("mem_id"));
+		MemberVO mVO = service.getInfoById((String)body.get("mem_id"));
+		/*
+		 * Map<String, Object> map = new HashMap<>(); map.put("result", mVO);
+		 */
+		return new ResponseEntity<>(mVO,HttpStatus.OK);
 	}
 }

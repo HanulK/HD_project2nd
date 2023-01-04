@@ -2,6 +2,8 @@ package org.kabart.service;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kabart.service.CartsService;
@@ -37,5 +39,14 @@ public class CartsserviceTest {
 	public void isExist() {
 		String result = service.isExist("test", 108607, 5);
 		log.info("Insert or Update :"+result);
+	}
+	@Test
+	public void removeCart() {
+		List<Integer> prod_id = new ArrayList<>();
+		prod_id.add(8614);
+		prod_id.add(44405);
+		prod_id.add(78931);
+		
+		service.removeCart("tori", prod_id);
 	}
 }
