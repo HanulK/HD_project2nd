@@ -18,12 +18,13 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @RequestMapping("/kabart/usedProduct/")
 @Log4j
+
 public class UsedProductController {
 	
 	@Setter(onMethod_ = { @Autowired })
 	private UsedProductDetailService service;
 
-	@GetMapping("/used_prod_detail")
+	@GetMapping({"/used_prod_detail", "/used_prod_detail_modify"})
 	public void used_prod_detail(@RequestParam("up_id") int up_id, Model model) {
 		log.info("used item detail controller....");
 		
@@ -84,5 +85,28 @@ public class UsedProductController {
 		rttr.addFlashAttribute("result", usedSellVO.getUp_id());
 		
 		return "redirect:/kabart/mypage/selling";
+	}
+	
+
+	@PostMapping("/used_prod_detail_modify")
+	public String used_prod_modify(@RequestParam("up_id") int up_id, UsedSellVO usedSellVO, RedirectAttributes rttr) {
+		
+		log.info("modify : " + usedSellVO);
+		
+		if (usedSellService.modifyUsedProduct(usedSellVO)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		
+		return "redirect:/kabart/usedProduct/used_prod_detail?up_id="+up_id;
+	}
+	
+	@PostMapping("/used_prod_detail_remove")
+	public String used_prod_remove(@RequestParam("up_id") int up_id, RedirectAttributes rttr) {
+		
+		log.info("remove : " + up_id);
+		if (usedSellService.removeUsedProduct(up_id)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		return "redirect:/kabart/usedProduct/used_prod_list?prod_category=all";
 	}
 }

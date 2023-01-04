@@ -14,4 +14,14 @@
   		
   	</insert>
   	
+  	<delete id="deleteUsedProduct">
+  		delete from used_products where up_id = #{up_id}
+  	</delete>
+  	
+  	<update id="updateUsedProduct">
+  		update used_products
+  		set up_regdate = sysdate, up_comment = #{up_comment}, grade = #{grade}
+  		where up_id = #{up_id}
+  	</update>
+  	
   </mapper>

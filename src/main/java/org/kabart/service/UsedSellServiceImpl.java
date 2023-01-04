@@ -17,6 +17,20 @@ public class UsedSellServiceImpl implements UsedSellService {
 	private UsedSellMapper usedSellMapper;
 	
 	@Override
+	public boolean modifyUsedProduct(UsedSellVO usedSell) {
+		
+		log.info("modify,,,,,,,,," + usedSell);
+		return usedSellMapper.updateUsedProduct(usedSell) == 1;
+	}
+
+	@Override
+	public boolean removeUsedProduct(int up_id) {
+		
+		log.info("remove ,,,,,,," + up_id);
+		return usedSellMapper.deleteUsedProduct(up_id) == 1;
+	}
+	
+	@Override
 	public void registerUsedProduct(UsedSellVO usedSell) {
 		
 		usedSellMapper.insertUsedProduct(usedSell);

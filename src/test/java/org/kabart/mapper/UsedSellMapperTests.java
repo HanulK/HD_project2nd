@@ -20,17 +20,34 @@ public class UsedSellMapperTests {
 	private UsedSellMapper mapper;
 	
 	
+//	@Test
+//	public void testInsert() {
+//		UsedSellVO used = new UsedSellVO();
+//		used.setProd_id(146812);
+//		used.setMem_id("doongdoong");
+//		used.setGrade("ROYAL");
+//		used.setUp_comment("시퀀스 값 때문에 네번째 sell insert 매퍼 테스트 돌리는 중 SelectKey");
+//		
+//		mapper.insertUsedProduct(used);
+//		
+//		log.info(used);
+//	}
+	
+//	@Test
+//	public void testDelete() {
+//		log.info("delete count : " + mapper.deleteUsedProduct(72));
+//	}
+	
 	@Test
-	public void testInsert() {
-		UsedSellVO used = new UsedSellVO();
-		used.setProd_id(146812);
-		used.setMem_id("doongdoong");
-		used.setGrade("ROYAL");
-		used.setUp_comment("시퀀스 값 때문에 네번째 sell insert 매퍼 테스트 돌리는 중 SelectKey");
+	public void testUpdate() {
 		
-		mapper.insertUsedProduct(used);
+		UsedSellVO usedSellVO = new UsedSellVO();
+		usedSellVO.setUp_id(70);
+		usedSellVO.setUp_comment("업데이트 테스트");
 		
-		log.info(used);
+		int count = mapper.updateUsedProduct(usedSellVO);
+		
+		log.info(count);
 	}
 
 }

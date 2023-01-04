@@ -20,17 +20,33 @@ public class UsedSellServiceTests {
 	@Setter(onMethod_ = @Autowired)
 	private UsedSellService usedSellService;
 	
+//	@Test
+//	public void testInsert() {
+//		UsedSellVO usedSellVO = new UsedSellVO();
+//		usedSellVO.setProd_id(171130);
+//		usedSellVO.setMem_id("doongdoong");
+//		usedSellVO.setGrade("ROYAL");
+//		usedSellVO.setUp_comment("여섯번째 서비스단 테스트 중입니다.");
+//		
+//		usedSellService.registerUsedProduct(usedSellVO);
+//		
+//		log.info("생성된 게시물의 번호" + usedSellVO.getUp_id());
+//		log.info(usedSellVO);
+//	}
+	
 	@Test
-	public void testInsert() {
-		UsedSellVO usedSellVO = new UsedSellVO();
-		usedSellVO.setProd_id(171130);
-		usedSellVO.setMem_id("doongdoong");
-		usedSellVO.setGrade("ROYAL");
-		usedSellVO.setUp_comment("여섯번째 서비스단 테스트 중입니다.");
+	public void testUpdate() {
 		
-		usedSellService.registerUsedProduct(usedSellVO);
+		UsedSellVO sellVO = new UsedSellVO();
 		
-		log.info("생성된 게시물의 번호" + usedSellVO.getUp_id());
-		log.info(usedSellVO);
+		sellVO.setUp_id(70);
+		sellVO.setUp_comment("서비스단 업데이트 테스트");
+		log.info("수정 결과 : " + usedSellService.modifyUsedProduct(sellVO));
 	}
+	
+//	@Test
+//	public void testRemove() {
+//		
+//		log.info("삭제 결과"  + usedSellService.removeUsedProduct(64));
+//	}
 }
