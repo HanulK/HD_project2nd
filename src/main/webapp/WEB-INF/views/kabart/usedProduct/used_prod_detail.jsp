@@ -91,50 +91,52 @@
 								<!-- /판매완료 구분 -->
 								<!-- 멤버아이디 구분 -->
 								<sec:authorize access="isAuthenticated()">
-								<sec:authentication property="principal.username" var="user_id"/>
-								<c:if test="${read.mem_id eq user_id}">
-									<li class="gnb_item">
-										<div data-v-23bbaa82="" data-v-3900a1a2=""
-											class="division_btn_box1 md">
-											<div data-v-f40660fa="" data-v-77d20f30=""
-												class="detail_stock_btn">
+									<sec:authentication property="principal.username" var="user_id" />
+									<c:if test="${read.mem_id eq user_id}">
+										<li class="gnb_item">
+											<div data-v-23bbaa82="" data-v-3900a1a2=""
+												class="division_btn_box1 md">
+												<div data-v-f40660fa="" data-v-77d20f30=""
+													class="detail_stock_btn">
 
-												<a id="cart" data-v-6e799857="" data-v-f40660fa=""
-													href="/kabart/mypage/cart"
-													class="btn solid full buy1 large"> 수정 </a>
+													<a id="cart" data-v-6e799857="" data-v-f40660fa=""
+														href="/kabart/mypage/cart"
+														class="btn solid full buy1 large"> 수정 </a>
 
+												</div>
+
+												<div data-v-f40660fa="" data-v-77d20f30=""
+													class="detail_stock_btn">
+													<a data-v-6e799857="" data-v-f40660fa=""
+														href="/kabart/usedProduct/used_prod_sell?prod_id=45189"
+														class="btn solid full sell large"> 삭제 </a>
+												</div>
 											</div>
-
-											<div data-v-f40660fa="" data-v-77d20f30=""
-												class="detail_stock_btn">
-												<a data-v-6e799857="" data-v-f40660fa=""
-													href="/kabart/usedProduct/used_prod_sell?prod_id=45189"
-													class="btn solid full sell large"> 삭제 </a>
-											</div>
-										</div>
-									</li>
+										</li>
 									</c:if>
 									<c:if test="${read.mem_id ne user_id}">
-									<div data-v-77d20f30="" class="btn_wrap">
-										<c:if test="${read.sale_date eq null}">
-											<div data-v-f40660fa="" data-v-77d20f30=""
-												class="detail_stock_btn">
-												<a data-v-6e799857="" data-v-f40660fa="" href="#"
-													class="btn solid full buy large"> 바로 구매하기 </a>
-											</div>
-										</c:if>
-										<c:if test="${read.sale_date ne null}">
-											<div data-v-f40660fa="" data-v-77d20f30=""
-												class="detail_stock_btn1">
-												<a data-v-6e799857="" data-v-f40660fa=""
-													class="btn solid full buy1 large"> 판매 완료 </a>
-											</div>
-										</c:if>
-									</div>
+										<div data-v-77d20f30="" class="btn_wrap">
+											<c:if test="${read.sale_date eq null}">
+												<div data-v-f40660fa="" data-v-77d20f30=""
+													class="detail_stock_btn">
+													<a data-v-6e799857="" data-v-f40660fa=""
+														href="/kabart/order/list?prod_id=<c:out value="${detail.prod_id}" />&up_id=<c:out value="${detail.up_id}" />"
+														class="btn solid full buy large"> 바로 구매 </a>
+												</div>
+											</c:if>
+											<c:if test="${read.sale_date ne null}">
+												<div data-v-f40660fa="" data-v-77d20f30=""
+													class="detail_stock_btn1">
+													<a data-v-6e799857="" data-v-f40660fa=""
+														class="btn solid full buy1 large"> 판매 완료 </a>
+												</div>
+											</c:if>
+										</div>
 									</c:if>
-									</sec:authorize>
+								</sec:authorize>
 								<!-- /멤버아이디 구분 -->
-								<div data-v-824856a2="" data-v-77d20f30="" class="checked_review" style="padding: 20px 0;">
+								<div data-v-824856a2="" data-v-77d20f30=""
+									class="checked_review" style="padding: 20px 0;">
 									<div data-v-3900a1a2="" class="product_info_wrap">
 										<h3 data-v-52dd777b="" data-v-3900a1a2=""
 											class="detail_title info_title md" style="padding-top: 0px;">상품

@@ -124,4 +124,10 @@
 	background: #999;
 }
 
+.sub_title {
+    font-family: "GillSansWGL","NotoSansCJKkr",sans-serif;
+    margin-top: 25px;
+    font-size: 60px;
+    font-weight: bold;
+}
 

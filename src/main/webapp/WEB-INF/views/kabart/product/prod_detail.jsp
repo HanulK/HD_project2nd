@@ -237,9 +237,20 @@
 							<div data-v-3e0ff210="" data-v-cf786f84="" class="other_stock"
 								style="padding-bottom: 0px;">
 								<div data-v-3e0ff210="" class="title">
-									<h3 data-v-3e0ff210="" class="title_text1">
+									<h3 data-v-3e0ff210="" class="title_text1"
+										style="font-weight: bold;">
 										<em>Kabart</em> DISPLAY SHOP
 									</h3>
+								</div>
+								<div class="shoplist">
+									<c:forEach var="shop" items="${detail.shops}">
+										<div class='shop__wrap'>
+											<div class='shop__top'>
+												<div class='shop_name'>${shop.shop_name}</div>
+												<span class='shop_address'>${shop.shop_address}</span>
+											</div>
+										</div>
+									</c:forEach>
 								</div>
 								<div id="map"></div>
 								<script>
@@ -287,7 +298,7 @@
 					</c:if>
 					<!-- /.오프라인 샵  -->
 					<!-- 샵 리스트 -->
-					
+
 					<!-- /샵 리스트 -->
 					<div data-v-12376b79="" data-v-cf786f84="" class="feed_area">
 						<div class="goodsView__bottom js__goods-detail">
