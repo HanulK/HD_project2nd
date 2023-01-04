@@ -106,12 +106,14 @@ public class MypageController {
 		String origin = (String) body.get("old_pw");
 		String modified = (String) body.get("new_pw");
 		
-		// 비밀번호 match
-//		boolean result = mService.pwCheck(origin);
-//		if (!result)
+		boolean match = mService.checkPW(mem_id, origin);
+		if (match) {
+			mService.changePW(mem_id, modified);
+			return new ResponseEntity<String>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		}
 		
-		// 
-		return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 	}
 
 	@GetMapping("/withdrawal")
@@ -120,7 +122,6 @@ public class MypageController {
 
 	@RequestMapping("/withdrawal.do")
 	public String withdrawalAction(Principal principal, SessionStatus sessionStatus, RedirectAttributes attr) {
-		log.warn(principal.getName() + " 회원 탈퇴 과정");
 		String mem_id = principal.getName();
 		int result = mService.withdrawalMember(mem_id);
 		if (result > 0) {

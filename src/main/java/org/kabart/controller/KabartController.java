@@ -71,7 +71,7 @@ public class KabartController {
 	@ResponseBody
 	@RequestMapping("/idCheck.do")
 	public int idCheck(String new_id) {
-		return service.idCheck(new_id);
+		return service.checkId(new_id);
 	}
 	
 	@GetMapping("/find_id")

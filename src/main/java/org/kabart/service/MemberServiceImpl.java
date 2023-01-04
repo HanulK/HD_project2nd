@@ -38,8 +38,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int idCheck(String new_id) {
-		int result = mMapper.idCheck(new_id);
+	public int checkId(String new_id) {
+		int result = mMapper.checkId(new_id);
 		return result;
 	}
 	
@@ -74,13 +74,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public boolean pwCheck(String mem_id, String tester) {
-		log.warn("??????" + tester);
+	public boolean checkPW(String mem_id, String tester) {
 		String origin = mMapper.findEncodedPW(mem_id);
-		System.out.println("인코딩 된 PW : " + origin);
-		boolean tmp = pwencoder.matches(tester, origin);
-		System.out.println("match 함수 결과!!!!      " + tmp);
-		
-		return false;
+		return pwencoder.matches(tester, origin);
+	}
+	
+	@Override
+	public void changePW(String mem_id, String new_data) {
+		new_data = pwencoder.encode(new_data);
+		mMapper.changePW(mem_id, new_data);
 	}
 }
