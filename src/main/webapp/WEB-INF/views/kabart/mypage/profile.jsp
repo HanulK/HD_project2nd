@@ -107,23 +107,19 @@
 									<h6 data-v-587be1b3="" data-v-1c44afeb="" class="input_title">이전
 										비밀번호</h6>
 									<div data-v-1c44afeb="" class="input_item">
-										<input data-v-1c44afeb="" type="password"
-											placeholder="영문, 숫자, 특수문자 조합 8-16자" autocomplete="off"
-											class="input_txt">
+										<input data-v-1c44afeb="" type="password" id="old_pw"
+											placeholder="이전 비밀번호를 입력해주세요." autocomplete="off"
+											class="input_txt" onkeyup="changePwBtn()">
 									</div>
-									<p data-v-587be1b3="" data-v-1c44afeb="" class="input_error">
-										영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)</p>
 								</div>
 								<div data-v-1c44afeb="" data-v-587be1b3="" class="input_box">
 									<h6 data-v-587be1b3="" data-v-1c44afeb="" class="input_title">새
 										비밀번호</h6>
 									<div data-v-1c44afeb="" class="input_item">
-										<input data-v-1c44afeb="" type="password"
-											placeholder="영문, 숫자, 특수문자 조합 8-16자" autocomplete="off"
-											class="input_txt">
+										<input data-v-1c44afeb="" type="password"  id="new_pw"
+											placeholder="새로운 비밀번호를 입력해주세요." autocomplete="off"
+											class="input_txt" onkeyup="changePwBtn()">
 									</div>
-									<p data-v-587be1b3="" data-v-1c44afeb="" class="input_error">
-										영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)</p>
 								</div>
 								<div data-v-587be1b3="" class="modify_btn_box">
 									<button data-v-575aff82="" data-v-587be1b3="" type="button"
@@ -295,6 +291,35 @@
 				console.log("가구원 정보를 변경하지 못하였습니다.");
 			}
 		}); // end ajax 
+	})
+	
+	$("#pw_submit").on("click", function() {
+		let old_pw = $("#old_pw").val();
+		let new_pw = $("#new_pw").val();
+		console.log("old : ",old_pw);
+		console.log("new : ",new_pw);
+		
+		$.ajax({
+			url : "${contextPath}/kabart/mypage/changePW.do",
+			type : "POST",
+			data : JSON.stringify({
+				mem_id : mem_id,
+				old_pw : old_pw,
+				new_pw : new_pw
+			}),
+			contentType : "application/json", 
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfToeknValue);
+			},
+			success : function() {
+				console.log("비밀번호를 변경하였습니다.");
+				//location.href = "/kabart/mypage/profile";
+			},
+			error : function(e) {
+				console.log(e);
+				console.log("비밀번호를 변경하지 못하였습니다.");
+			}
+		}); // end ajax
 	})
 	</script>
 </body>

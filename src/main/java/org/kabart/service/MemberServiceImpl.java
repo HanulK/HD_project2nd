@@ -63,16 +63,24 @@ public class MemberServiceImpl implements MemberService {
 	public int withdrawalMember(String mem_id) {
 		// member cart 비우기
 		cMapper.deleteAllCartProds(mem_id);
-		
 		// member 탈회 날자 update
 		mMapper.registerExpireDate(mem_id);
-		
 		// 자동 로그인 기록 지우기
 		mMapper.removeRememberMe(mem_id);
-
 		// member 권한 지우기
 		int result = mMapper.removeAuthority(mem_id);
 		
 		return result;
+	}
+	
+	@Override
+	public boolean pwCheck(String mem_id, String tester) {
+		log.warn("??????" + tester);
+		String origin = mMapper.findEncodedPW(mem_id);
+		System.out.println("인코딩 된 PW : " + origin);
+		boolean tmp = pwencoder.matches(tester, origin);
+		System.out.println("match 함수 결과!!!!      " + tmp);
+		
+		return false;
 	}
 }

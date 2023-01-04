@@ -3,6 +3,7 @@ package org.kabart.service;
 import org.kabart.domain.UsedSellVO;
 import org.kabart.mapper.UsedSellMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import lombok.Setter;
