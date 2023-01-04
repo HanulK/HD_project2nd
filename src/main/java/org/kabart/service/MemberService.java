@@ -1,5 +1,7 @@
 package org.kabart.service;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.kabart.domain.MemberVO;
 
 public interface MemberService {
@@ -12,4 +14,6 @@ public interface MemberService {
 	public int withdrawalMember(String mem_id);
 	public boolean checkPW(String mem_id, String tester);
 	public void changePW(String mem_id, String new_data);
+	public void findPW(HttpServletResponse resp, String mem_id, String email) throws Exception;
+	public void sendEmail(String mem_id, String tmp_pw, String email, String div) throws Exception;
 }

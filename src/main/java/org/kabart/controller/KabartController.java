@@ -2,8 +2,9 @@ package org.kabart.controller;
 
 import java.util.*;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.kabart.domain.MemberVO;
-import org.kabart.mapper.MemberMapper;
 import org.kabart.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -74,7 +75,7 @@ public class KabartController {
 		return service.checkId(new_id);
 	}
 	
-	@GetMapping("/find_id")
+	@GetMapping("/findId")
 	public void findId() {}
 	
 	@ResponseBody
@@ -92,5 +93,17 @@ public class KabartController {
 		 * Map<String, Object> map = new HashMap<>(); map.put("result", mVO);
 		 */
 		return new ResponseEntity<>(mVO,HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/findPW")
+	public void findPW() throws Exception {}
+
+	@ResponseBody
+	@RequestMapping(value = "/findPW", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public void findPW(@RequestBody Map<String, Object> body, HttpServletResponse response) throws Exception{
+		log.warn("POST findPW");
+		String mem_id = (String) body.get("id");
+		String email = (String) body.get("email");
+		service.findPW(response, mem_id, email);
 	}
 }

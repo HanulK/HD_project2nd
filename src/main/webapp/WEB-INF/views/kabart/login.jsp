@@ -60,8 +60,11 @@
 									href="/kabart/join" class="look_link" data-v-464f7370="">회원
 										가입</a></li>
 								<li class="look_list" data-v-464f7370=""><a
-									href="/kabart/find_id" class="look_link" data-v-464f7370="">
+									href="/kabart/findId" class="look_link" data-v-464f7370="">
 										아이디 찾기 </a></li>
+								<li class="look_list" data-v-464f7370=""><a
+									href="/kabart/findPW" class="look_link" data-v-464f7370="">
+										비밀번호 찾기 </a></li>
 							</ul>
 							<div class="social_login" data-v-464f7370=""></div>
 						</fieldset>
