@@ -315,6 +315,7 @@
 			},
 			error : function(e) {
 				console.log("비밀번호를 변경하지 못하였습니다.");
+				alert("이전 비밀번호가 맞지 않습니다. ")
 			}
 		}); // end ajax
 	})
