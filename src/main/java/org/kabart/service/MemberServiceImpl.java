@@ -98,7 +98,6 @@ public class MemberServiceImpl implements MemberService {
 
 		// 가입된 아이디가 없으면
 		if (mMapper.checkId(mem_id) == 0) {
-			System.out.println("등록되지 않은 ID!!!");
 			out.print("등록되지 않은 아이디입니다.");
 			out.close();
 		} else {
