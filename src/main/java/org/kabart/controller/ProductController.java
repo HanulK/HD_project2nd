@@ -43,7 +43,7 @@ public class ProductController {
 
 	}
 
-	@GetMapping("/prod_detail")
+	@GetMapping(value="/prod_detail")
 	public void prod_detail(@RequestParam("prod_id") int prod_id, Model model) {
 
 		log.info("prod_detail Controller");
