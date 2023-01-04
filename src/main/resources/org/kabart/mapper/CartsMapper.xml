@@ -39,6 +39,14 @@
 	<delete id="removeCart">
 		DELETE FROM carts WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
 	</delete>
+	
+	<delete id="removeCartAll">
+		DELETE FROM carts WHERE mem_id = #{mem_id}
+	</delete>
+	<update id="updateQuantity">
+		UPDATE carts SET quantity = quantity + #{quantity}
+		WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
+	</update>
 
 
 

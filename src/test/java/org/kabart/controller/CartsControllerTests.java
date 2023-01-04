@@ -62,4 +62,21 @@ public class CartsControllerTests {
 				.content(jsonStr))
 				.andExpect(status().is(200));
 	}
+	
+	@Test
+	public void testRemove() throws Exception {
+		Map<String,Object> map = new HashMap<>();
+		List<Integer> id  = new ArrayList<>();
+		id.add(79909);
+		id.add(77747);
+		id.add(181266);
+		map.put("mem_id", "tori");
+		map.put("prod_id", id);
+		String jsonStr = new Gson().toJson(map);
+		log.info(jsonStr);
+		mockMvc.perform(MockMvcRequestBuilders.get("/kabart/mypage/removeCarts?mem_id=tori")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(jsonStr))
+				.andExpect(status().is(200));
+	}
 }

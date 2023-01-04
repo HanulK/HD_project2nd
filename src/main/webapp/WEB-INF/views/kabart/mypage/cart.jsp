@@ -134,7 +134,7 @@
 
 						<div data-v-f40660fa="" data-v-77d20f30=""
 							class="detail_stock_btn">
-							<a data-v-6e799857="" data-v-f40660fa=""
+							<a id="cartDel" data-v-6e799857="" data-v-f40660fa=""
 								href="/kabart/usedProduct/used_prod_sell?prod_id=71007"
 								class="btn solid full sell large"
 								style="font-size: 14px; padding: 0; height: 40px;"> 선택 삭제</a>
@@ -247,7 +247,7 @@
 			}
 			getCheckboxValue();
 		})
-		 function getCheckboxValue(event)  {
+		 function getCheckboxValue()  {
           	var result = 0;	
 			$("input[name=isCheck]:checked").each(function(){
 				
@@ -256,11 +256,45 @@
 				result +=price * quantity;
 				console.log(price);
 					console.log(quantity);
-          		})
-          		$(".buy_total_confirm .amount").html(result.toLocaleString('ko-KR'));
-             }
+          		});
+          		console.log(result);
+			$(".buy_total_confirm .amount").html(result.toLocaleString('ko-KR'));
+           };
+		
              
-          
+  		$("#cartDel").on("click",function removeCarts(e){
+  			e.preventDefault();
+  			var valArr = [];
+  			var url = '/kabart/mypage/removeCarts?mem_id='+mem_id+'&prod_id=';
+  			$("input[name=isCheck]:checked").each(function(){
+  				valArr.push($(this).val());
+  				url += $(this).val()+',';
+  			});
+  			url = url.substr(0,url.length-1);
+  			console.log(url);
+  			$.ajax({
+  				url : url,
+  				contentType : "application/json",
+  				success : function(){
+  					getAllCarts();
+  					
+  				},
+  				error : function(e){
+  					console.log(e);
+  				}
+  			})
+  			
+  			
+  		});
+  		function qPlus(i,ths){
+  			var amount = $('#qmt'+i).data('value');
+  			+1	
+  			
+  			
+  		}
+  		function qMinus(i,ths){
+  			-1	
+  		}
 		function getAllCarts() {
 			$
 					.ajax({
@@ -276,8 +310,9 @@
 						},
 						contentType : "application/json",
 						success : function(result) {
-							console.log(result);
+							console.log(result.length);
 							var row = "";
+							
 							if (result.length == 0) {
 								row = "<div data-v-e2f6767a='' class='empty_area'><p data-v-e2f6767a='' class='desc'>추가하신 관심 상품이 없습니다.</p><a data-v-575aff82='' data-v-e2f6767a='' href='/kabart/home' class='btn outlinegrey small'> SHOP 바로가기 </a></div>";
 							} else {
@@ -290,7 +325,7 @@
 											+ result[i].prod_category
 											+ "</a></div><p data-v-4faab390='' class='name'>"
 											+ result[i].prod_name
-											+ "</p><div data-v-4faab390='' class='size'><span data-v-4faab390='' class='size'>수량</span> <span class='count' style='padding: 0px 10px;'> <a href='#' class='minus' style='padding: 0px 3px'>-</a> <span id='qmt"+result[i].prod_id+"' data-value='"+result[i].quantity+"'data-v-4faab390='' class='size' style='padding: 0px 3px'>"
+											+ "</p><div data-v-4faab390='' class='size'><span data-v-4faab390=''class='size'>수량</span> <span class='count' style='padding: 0px 10px;'> <a href='#' class='minus' style='padding: 0px 3px'>-</a> <span id='qmt"+result[i].prod_id+"' data-value='"+result[i].quantity+"'data-v-4faab390='' class='size' style='padding: 0px 3px'>"
 											+ result[i].quantity
 											+ "</span>"
 											+ "<a href='#' class='plus'>+</a></span></div></div></div><div data-v-4faab390='' class='wish_buy'><div data-v-4faab390=''><div data-v-23bbaa82='' data-v-4faab390='' class='division_btn_box lg'>"
@@ -299,9 +334,10 @@
 											+ "</em><span data-v-23bbaa82='' class='won'>원</span></span>"
 											+ "</div></span></div></div></div></div></li>";
 								}
-								$(".wish_list").html(row);
+								
 							}
-
+							$(".wish_list").html(row);
+							getCheckboxValue();
 						},
 						error : function(e) {
 							console.log(e);
@@ -309,7 +345,7 @@
 
 					})
 		}
-
+		
 		$(function() {
 			getAllCarts();
 		})
