@@ -3,14 +3,12 @@ package org.kabart.controller;
 import java.security.Principal;
 import java.util.*;
 
-import org.apache.catalina.mapper.Mapper;
 import org.kabart.domain.*;
 import org.kabart.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.support.SmartTransactionObject;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
@@ -47,7 +45,7 @@ public class MypageController {
 		return new ResponseEntity<>(cService.getList((String) body.get("mem_id")), HttpStatus.OK);
 
 	}
-
+	
 	@PostMapping(value = "/cart", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> addCart(@RequestBody Map<String, Object> body) {
@@ -126,5 +124,15 @@ public class MypageController {
 	@GetMapping("/selling")
 	public void selling() {
 
+	}
+	
+	@PostMapping("/update")
+	@ResponseBody
+	public ResponseEntity<String> updateAmount(@RequestBody Map<String,Object> body){
+		String mem_id = (String)body.get("mem_id");
+		int prod_id = (int)body.get("prod_id");
+		int quantity = (int)body.get("quantity");
+		cService.updateCart(mem_id, prod_id, quantity);
+		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 }

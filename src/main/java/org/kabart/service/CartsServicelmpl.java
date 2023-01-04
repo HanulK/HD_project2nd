@@ -68,8 +68,7 @@ public class CartsServicelmpl implements CartsService {
 
 	@Override
 	public void updateCart(String mem_id, int prod_id, int quantity) {
-		
-		
+		mapper.updateQuantity(mem_id, prod_id, quantity);	
 	}
 	
 	

@@ -93,10 +93,6 @@
 													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-page-prev"></use>
                       </svg></a>
 									</div>
-									<div data-v-1f9de2f0="" class="page_bind">
-										<a data-v-1f9de2f0="" href="/my/wish?page=1"
-											class="btn_page active" aria-label="1페이지"> 1 </a>
-									</div>
 									<div data-v-1f9de2f0="" class="next_btn_box">
 										<a data-v-1f9de2f0="" href="/my/wish?page=2" class="btn_arr"
 											aria-label="다음 페이지"><svg data-v-1f9de2f0=""
@@ -199,7 +195,7 @@
 							<div class="submit"></div>
 
 							<div data-v-14995178="" class="btn_confirm">
-								<a data-v-6e799857="" data-v-14995178="" href="#"
+								<a id="goOrder"data-v-6e799857="" data-v-14995178="" href="#"
 									class="btn full solid false" style="background-color: #ef6253;">구매하기</a>
 							</div>
 						</div>
@@ -286,14 +282,38 @@
   			
   			
   		});
-  		function qPlus(i,ths){
-  			var amount = $('#qmt'+i).data('value');
-  			+1	
-  			
-  			
-  		}
-  		function qMinus(i,ths){
-  			-1	
+  		function updateAmount(val,ths){
+  			var id = $(ths).data('value');
+  			console.log(id);
+  			console.log(val);
+  			var quan = $('#qmt'+id).data('value');
+
+  			console.log(quan);
+  			if(quan==1 &&val==-1){
+  				return ;
+  			}
+  			$('#qmt'+id).data('value',quan+val);
+  			$('#qmt'+id).html(quan+val);
+  			$.ajax({
+  				type : 'post',
+  				url : '/kabart/mypage/update',
+  				beforeSend : function(xhr){
+  					xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+  				},
+  				data : JSON.stringify({
+  					mem_id : mem_id,
+  					prod_id : id,
+  					quantity : val
+  				}),
+  				contentType : "application/json",
+  				succeess : function(){
+  		  			
+  				},
+  				error : function(e){
+  					console.log(e);
+  				}
+  			})
+  			getCheckboxValue();
   		}
 		function getAllCarts() {
 			$
@@ -325,10 +345,10 @@
 											+ result[i].prod_category
 											+ "</a></div><p data-v-4faab390='' class='name'>"
 											+ result[i].prod_name
-											+ "</p><div data-v-4faab390='' class='size'><span data-v-4faab390=''class='size'>수량</span> <span class='count' style='padding: 0px 10px;'> <a href='#' class='minus' style='padding: 0px 3px'>-</a> <span id='qmt"+result[i].prod_id+"' data-value='"+result[i].quantity+"'data-v-4faab390='' class='size' style='padding: 0px 3px'>"
+											+ "</p><div data-v-4faab390='' class='size'><span data-v-4faab390=''class='size'>수량</span> <span class='count' style='padding: 0px 10px;'> <button type='button' onclick='updateAmount(-1,this)' data-value='"+result[i].prod_id+"'class='minus' style='padding: 0px 3px'>-</button> <span id='qmt"+result[i].prod_id+"' data-value='"+result[i].quantity+"'data-v-4faab390='' class='size' style='padding: 0px 3px'>"
 											+ result[i].quantity
 											+ "</span>"
-											+ "<a href='#' class='plus'>+</a></span></div></div></div><div data-v-4faab390='' class='wish_buy'><div data-v-4faab390=''><div data-v-23bbaa82='' data-v-4faab390='' class='division_btn_box lg'>"
+											+ "<button type='button' onclick='updateAmount(1,this)' data-value='"+result[i].prod_id+"' class='plus'>+</a></span></div></div></div><div data-v-4faab390='' class='wish_buy'><div data-v-4faab390=''><div data-v-23bbaa82='' data-v-4faab390='' class='division_btn_box lg'>"
 											+ "<span data-v-23bbaa82='' class='btn_division buy'> <strong data-v-23bbaa82='' class='title'>가격</strong><div data-v-23bbaa82='' class='price'><span data-v-23bbaa82='' class='amount'><em id='src"+result[i].prod_id+"' data-value='"+result[i].prod_price+"' data-v-23bbaa82='' class='num'>"
 											+ price
 											+ "</em><span data-v-23bbaa82='' class='won'>원</span></span>"
@@ -345,7 +365,22 @@
 
 					})
 		}
-		
+		$("#goOrder").on("click",function(e){
+			e.preventDefault();
+			var valArr = [];
+  			var url = '/kabart/mypage/order?prod_id=';
+  			$("input[name=isCheck]:checked").each(function(){
+  				valArr.push($(this).val());
+  				url += $(this).val()+',';
+  			});
+  			url = url.substr(0,url.length-1);
+  			if(valArr.length==0){
+  				return ;
+  			}
+  			console.log(url);
+			location.href=url;
+  			
+		})
 		$(function() {
 			getAllCarts();
 		})

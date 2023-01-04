@@ -79,4 +79,19 @@ public class CartsControllerTests {
 				.content(jsonStr))
 				.andExpect(status().is(200));
 	}
+	
+	@Test
+	public void testUpdate() throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("mem_id", "dodo");
+		map.put("prod_id", 60088);
+		map.put("quantity", 1);
+		String jsonStr = new Gson().toJson(map);
+		log.info(jsonStr);
+		mockMvc.perform(MockMvcRequestBuilders.post("/kabart/mypage/update")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+				.content(jsonStr))
+				.andExpect(status().is(200));
+	}
+	
 }

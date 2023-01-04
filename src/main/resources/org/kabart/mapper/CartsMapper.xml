@@ -53,8 +53,6 @@
 		UPDATE carts SET quantity = quantity + #{quantity}
 		WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
 	</update>
-
-
-
+	
 
 </mapper>

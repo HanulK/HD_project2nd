@@ -49,4 +49,9 @@ public class CartsserviceTest {
 		
 		service.removeCart("tori", prod_id);
 	}
+	
+	@Test
+	public void updateCart() {
+		service.updateCart("dodo", 60088, 2);
+	}
 }
