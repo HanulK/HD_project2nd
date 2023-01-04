@@ -15,4 +15,5 @@ public interface MemberMapper {
 	public int removeAuthority(String mem_id);
 	public void registerExpireDate(String mem_id);
 	public void removeRememberMe(String mem_id);
+	public String findEncodedPW(String mem_id);
 }

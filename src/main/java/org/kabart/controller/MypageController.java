@@ -98,6 +98,22 @@ public class MypageController {
 			mService.changeFamilyNumInfo(mem_id, new_data);
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/changePW.do", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> changePW(@RequestBody Map<String, Object> body) {
+		log.warn("====================== 비밀번호 바꾸자!!!");
+		String mem_id = (String) body.get("mem_id");
+		String origin = (String) body.get("old_pw");
+		String modified = (String) body.get("new_pw");
+		
+		// 비밀번호 match
+//		boolean result = mService.pwCheck(origin);
+//		if (!result)
+		
+		// 
+		return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+	}
 
 	@GetMapping("/withdrawal")
 	public void withdrawal() {
@@ -111,9 +127,7 @@ public class MypageController {
 		if (result > 0) {
 			SecurityContextHolder.clearContext();
 		}
-		
 		return "redirect:/";
-
 	}
 
 	@GetMapping("/buying")

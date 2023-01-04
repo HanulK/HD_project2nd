@@ -6,6 +6,7 @@ import java.util.List;
 import org.kabart.domain.*;
 import org.kabart.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +52,7 @@ public class UsedProductController {
 	@Setter(onMethod_ = { @Autowired })
 	private ProductDetailService productDetailService;
 	
-	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/used_prod_sell")
 	public void used_prod_sell(@RequestParam("prod_id") int prod_id, Model model) {
 		

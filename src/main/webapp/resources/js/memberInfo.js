@@ -56,3 +56,15 @@ function checkBtn(obj) {
 		}
 	}	
 };
+
+function changePwBtn() {
+	let old_pw = $("#old_pw").val();	
+	let new_pw = $("#new_pw").val();
+	
+	if (old_pw !== '' && new_pw !== '') {
+		$("#pw_submit").attr("class", "btn solid medium");
+		$("#pw_submit").attr("disabled",false);
+	} else {
+		$("#pw_submit").attr("disabled",true);
+	}
+};
