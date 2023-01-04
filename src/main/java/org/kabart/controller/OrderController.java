@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 @RequestMapping("/kabart/order")
 public class OrderController {
 	
-	@PreAuthorize("isAuthenticated")
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/order")
 	public void test() {
 		

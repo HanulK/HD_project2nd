@@ -76,6 +76,7 @@ public class UsedProductController {
 	@Setter(onMethod_ = {@Autowired})
 	private UsedSellService usedSellService;
 	
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/used_prod_sell")
 	public String used_prod_sell_insert(UsedSellVO usedSellVO, RedirectAttributes rttr) {
 		

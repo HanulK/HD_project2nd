@@ -87,7 +87,6 @@ public class MypageController {
 		String type = (String) body.get("type");
 
 		log.warn("new data : " + body.get("newData"));
-
 		if (type.equals("phone")) {
 			// 전화 번호 변경
 			String new_data = (String) body.get("newData");
