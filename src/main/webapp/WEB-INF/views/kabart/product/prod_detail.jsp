@@ -87,7 +87,11 @@
 
 													<a id="cart" data-v-6e799857="" data-v-f40660fa=""
 														href="/kabart/mypage/cart"
+<<<<<<< Updated upstream
 														class="btn solid full buy1 large"> 장바구니 </a>
+=======
+														class="btn solid full buy1 large">장바구니</a>
+>>>>>>> Stashed changes
 
 												</div>
 
@@ -101,7 +105,11 @@
 											<div data-v-f40660fa="" data-v-77d20f30=""
 												class="detail_stock_btn">
 												<a data-v-6e799857="" data-v-f40660fa="" href="#"
+<<<<<<< Updated upstream
 													class="btn solid full buy large"> 바로 구매 </a>
+=======
+													class="btn solid full buy large"> 바로구매하기 </a>
+>>>>>>> Stashed changes
 											</div>
 										</div>
 									</div>
@@ -114,7 +122,7 @@
 												<div data-v-b809b0a6="" class="detail_box model_num">
 													<dt data-v-b809b0a6="" class="product_title">너비</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														<c:out value="${detail.prod_width}" />
+														<c:out value="${detail.prod_width}"/>
 													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
@@ -248,6 +256,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         level: 3 // 지도의 확대 레벨
     };  
 
+<<<<<<< Updated upstream
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
@@ -320,6 +329,23 @@ geocoder.addressSearch('서울특별시 강서구 공항대로 283', function(re
 												</div>
 											</div>
 										</c:forEach>
+=======
+												<p>
+												<center>
+													<table border="0" cellpadding="0" cellspacing="0"
+														width="760">
+														<tbody>
+															<tr>
+																<td style="text-align: center;"><img
+																	src="${detail.imgs[5].img_srcs}"></td>
+															</tr>
+														</tbody>
+													</table>
+												</center>
+												</p>
+											</section>
+										</div>
+>>>>>>> Stashed changes
 									</div>
 								</div>
 								<!-- 후기 fin -->
@@ -330,6 +356,7 @@ geocoder.addressSearch('서울특별시 강서구 공항대로 283', function(re
 				</div>
 			</div>
 		</div>
+<<<<<<< Updated upstream
 	</div>
 </body>
 </html>
@@ -375,3 +402,36 @@ geocoder.addressSearch('서울특별시 강서구 공항대로 283', function(re
 	
 		
 </script>
+=======
+		<script>
+			$("#cart").on("click", function(e) {
+				e.preventDefault();
+				// ajax start
+				$.ajax({
+
+					type : "get",
+					url : "/kabart/mypage/carts",
+					data : {
+						mem_id : 'test', // ${}
+						prod_id : "181266",
+						quantity : "2"
+					},
+					contentType : "application/json",
+
+					// Json 형식의 데이터
+					success : function(result) {
+
+						alert("장바구니에 등록되었습니다" + result);
+
+					},
+
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+						alert("장바구니 등록에 실패하였습니다")
+					}
+				});
+
+			});
+		</script>
+</body>
+</html>
+>>>>>>> Stashed changes

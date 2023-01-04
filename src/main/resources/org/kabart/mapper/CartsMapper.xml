@@ -3,42 +3,42 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kabart.mapper.CartsMapper">
-	<!-- definition of user define function -->
+   <!-- definition of user define function -->
 
-	<insert id="insert">
-		insert into carts(mem_id, prod_id, quantity)
-		values(#{mem_id},#{prod_id},#{quantity})
+   <insert id="insert">
+      insert into carts(mem_id, prod_id, quantity)
+      values(#{mem_id},#{prod_id},#{quantity})
 
-		<!-- 장바구니 버튼 누르면 실행되는 쿼리문 -->
-	</insert>
+      <!-- 장바구니 버튼 누르면 실행되는 쿼리문 -->
+   </insert>
 
 
-	<select id="getCarts" resultType="org.kabart.domain.CartsVO">
+   <select id="getCarts" resultType="org.kabart.domain.CartsVO">
 
-		SELECT pd.prod_id,c.quantity, pd.prod_name,pd.prod_price,im.img_srcs, pd.prod_category
-		FROM carts c JOIN products pd ON c.prod_id = pd.prod_id
-		JOIN imgs im ON pd.prod_id = im.prod_id AND img_tag='thumNail'
-		WHERE mem_id = #{mem_id}
-		<!-- test값 변경해야함 ${} -->
+      SELECT pd.prod_id,c.quantity, pd.prod_name,pd.prod_price,im.img_srcs, pd.prod_category
+      FROM carts c JOIN products pd ON c.prod_id = pd.prod_id
+      JOIN imgs im ON pd.prod_id = im.prod_id AND img_tag='thumNail'
+      WHERE mem_id = #{mem_id}
+      <!-- test값 변경해야함 ${} -->
 
-		<!-- 장바구니에 정보 가려오는 쿼리문 -->
+      <!-- 장바구니에 정보 가려오는 쿼리문 -->
 
-	</select>
-	<!--아래로 남승현 작성 -->
-	<!-- 카트에 상품 존재여부 판단 -->
-	<select id="isExist" resultType="_int">
-		SELECT count(*) FROM carts WHERE
-		mem_id = #{mem_id} and prod_id = #{prod_id}
-	</select>
+   </select>
+   <!--아래로 남승현 작성 -->
+   <!-- 카트에 상품 존재여부 판단 -->
+   <select id="isExist" resultType="_int">
+      SELECT count(*) FROM carts WHERE
+      mem_id = #{mem_id} and prod_id = #{prod_id}
+   </select>
 
-	<update id="quantityUpdate">
-		UPDATE carts set quantity = quantity + #{quantity}
-		WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
+   <update id="quantityUpdate">
+      UPDATE carts set quantity = quantity + #{quantity}
+      WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
 
-	</update>
-	<delete id="removeCart">
-		DELETE FROM carts WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
-	</delete>
+   </update>
+   <delete id="removeCart">
+      DELETE FROM carts WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
+   </delete>
 
 
 

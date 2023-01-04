@@ -34,5 +34,7 @@ public class ProductListMapperTests {
 		List<ProductListVO> list = mapper.getListWithPaging(prod_category, cri);
 		list.forEach(category -> log.info(category));
 	}
-		
+	
+
+
 }
