@@ -52,9 +52,27 @@ public class CartsServicelmpl implements CartsService {
 
 		return result;
 	}
+
 	
 	@Override
 	public void deleteAllCart(String mem_id) {
 		mapper.deleteAllCartProds(mem_id);
 	}
+
+
+	@Override
+	public int removeCartAll(String mem_id) {
+		
+		return mapper.removeCartAll(mem_id);
+	}
+
+	@Override
+	public void updateCart(String mem_id, int prod_id, int quantity) {
+		
+		
+	}
+	
+	
+	
+
 }

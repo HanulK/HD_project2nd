@@ -40,10 +40,20 @@
 		DELETE FROM carts WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
 	</delete>
 	
+
 	<!-- 김한울 작성 -->
 	<delete id="deleteAllCartProds">
 		DELETE FROM carts WHERE mem_id = #{mem_id}
 	</delete>
+
+	<delete id="removeCartAll">
+		DELETE FROM carts WHERE mem_id = #{mem_id}
+	</delete>
+	<update id="updateQuantity">
+		UPDATE carts SET quantity = quantity + #{quantity}
+		WHERE mem_id = #{mem_id} and prod_id = #{prod_id}
+	</update>
+
 
 
 

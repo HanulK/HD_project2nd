@@ -61,6 +61,19 @@ public class MypageController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("result", cService.isExist(mem_id, prod_id, quantity));
 		return new ResponseEntity<>(map, HttpStatus.OK);
+
+	}
+
+	@GetMapping(value = "/removeCarts", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> removeCart(@RequestParam("mem_id") String mem_id,
+			@RequestParam(value = "prod_id", required = false) List<Integer> prod_id) {
+		if (prod_id == null) {
+			cService.removeCartAll(mem_id);
+		} else {
+			cService.removeCart(mem_id, prod_id);
+		}
+		return new ResponseEntity<String>(HttpStatus.OK);
+
 	}
 
 	@GetMapping("/profile")
@@ -102,6 +115,7 @@ public class MypageController {
 		}
 		
 		return "redirect:/";
+
 	}
 
 	@GetMapping("/buying")
