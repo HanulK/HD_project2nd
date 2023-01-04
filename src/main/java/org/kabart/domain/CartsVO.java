@@ -12,6 +12,6 @@ public class CartsVO {
 	private int quantity; 
 	private String prod_name;
 	private int prod_price;
-	private String imgSrcs;
+	private String img_srcs;
 	private String prod_category;
 }

@@ -20,7 +20,7 @@
 				<!---->
 				<jsp:include page="../includes/header.jsp"></jsp:include>
 				<div data-v-39b2348a="" class="wrap_inner"></div>
-				<input type='hidden'
+				<input id='mem_id' type='hidden'
 					value='<sec:authentication property="principal.username"/>'>
 				<div data-v-39b2348a="" class="container my lg">
 					<div data-v-39b2348a="">
@@ -66,81 +66,11 @@
 								<!---->
 							</div>
 							<ul data-v-4faab390="" class="wish_list">
-								<li data-v-4faab390="">
-									<div data-v-4faab390="" class="wish_item">
-										<div data-v-4faab390="" class="wish_product">
-											<input type="checkbox" class="chk">
-											<div data-v-4faab390="" class="product_box">
-
-
-
-												<div data-v-09fbcf09="" data-v-4faab390="" class="product"
-													style="background-color: rgb(244, 244, 244);">
-													<picture data-v-321fc3b6="" data-v-09fbcf09=""
-														class="picture product_img">
-													<source data-v-321fc3b6="" type="image/webp"
-														srcset="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=m_webp">
-													<source data-v-321fc3b6=""
-														srcset="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=m">
-													<img data-v-321fc3b6="" alt="상품 이미지"
-														src="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=m"
-														loading="lazy" class="image"> </picture>
-													<!---->
-													<!---->
-													<!---->
-													<!---->
-												</div>
-											</div>
-
-
-
-
-											<div data-v-4faab390="" class="product_detail">
-												<div data-v-4faab390="">
-													<a data-v-4faab390="" href="#" class="brand-text">상품이카테고리</a>
-													<!---->
-												</div>
-
-												<p data-v-4faab390="" class="name">Apple AirPods Pro 2nd
-													Gen (Korean Ver.)</p>
-
-												<div data-v-4faab390="" class="size">
-													<span data-v-4faab390="" class="size">수량</span> <span
-														class="count" style="padding: 0px 10px;"> <a
-														href="#" class="minus" style="padding: 0px 3px">-</a> <span
-														data-v-4faab390="" class="size" style="padding: 0px 3px">0</span>
-														<a href="#" class="plus">+</a>
-													</span>
-
-												</div>
-											</div>
-
-
-
-										</div>
-
-										<div data-v-4faab390="" class="wish_buy">
-											<div data-v-4faab390="">
-												<div data-v-23bbaa82="" data-v-4faab390=""
-													class="division_btn_box lg">
-													<a data-v-23bbaa82=""
-														href="http://localhost/kabart/order/order"
-														class="btn_division buy"> <strong data-v-23bbaa82=""
-														class="title"> 구매 </strong>
-														<div data-v-23bbaa82="" class="price">
-															<span data-v-23bbaa82="" class="amount"><em
-																data-v-23bbaa82="" class="num">316,000</em><span
-																data-v-23bbaa82="" class="won">원</span></span><span
-																data-v-23bbaa82="" class="desc">즉시 구매가</span>
-														</div>
-													</a>
-												</div>
-
-											</div>
-											<!---->
-										</div>
-									</div>
-								</li>
+								<div data-v-e2f6767a="" class="empty_area">
+									<p data-v-e2f6767a="" class="desc">추가하신 관심 상품이 없습니다.</p>
+									<a data-v-575aff82="" data-v-e2f6767a="" href="/kabart/home"
+										class="btn outlinegrey small"> SHOP 바로가기 </a>
+								</div>
 							</ul>
 
 
@@ -220,7 +150,7 @@
 									<dl data-v-15aa5096="" class="price_now_box">
 										<dt data-v-15aa5096="" class="price_now_title">전체 금액</dt>
 										<dd data-v-15aa5096="" class="price">
-											<span data-v-15aa5096="" class="amount">712,000</span><span
+											<span data-v-15aa5096="" class="amount">0</span><span
 												data-v-15aa5096="" class="unit">원</span>
 										</dd>
 									</dl>
@@ -259,7 +189,7 @@
 								<dl data-v-679d7250="" class="price_box">
 									<dt data-v-679d7250="" class="price_title">정산금액</dt>
 									<dd data-v-679d7250="" class="price">
-										<span data-v-679d7250="" class="amount">704,900</span><span
+										<span data-v-679d7250="" class="amount">0</span><span
 											data-v-679d7250="" class="unit">원</span>
 									</dd>
 								</dl>
@@ -297,9 +227,92 @@
 			</div>
 		</div>
 	</div>
-
 	<script>
+		let csrfHeaderName = "${_csrf.headerName}";
+		let csrfTokenValue = "${_csrf.token}";
+		var prod_list = [];
+		var flag = false;
+		const mem_id = $("#mem_id").val();
+		const allCheck = $("#cart");
 		
+		allCheck.on("click",function(e){
+			e.preventDefault();
+			var list = $(".chk");
+			if(flag){
+				list.prop("checked",false);
+				flag = !flag;
+			}else {
+				list.prop("checked",true);
+				flag = !flag;
+			}
+			getCheckboxValue();
+		})
+		 function getCheckboxValue(event)  {
+          	var result = 0;	
+			$("input[name=isCheck]:checked").each(function(){
+				
+				var price = $('#src'+$(this).val()).data('value');
+				var quantity = $('#qmt'+$(this).val()).data('value');
+				result +=price * quantity;
+				console.log(price);
+					console.log(quantity);
+          		})
+          		$(".buy_total_confirm .amount").html(result.toLocaleString('ko-KR'));
+             }
+             
+          
+		function getAllCarts() {
+			$
+					.ajax({
+						type : 'post',
+						url : '/kabart/mypage/cartlist',
+						data : JSON.stringify({
+							mem_id : mem_id
+						}),
+						beforeSend : function(xhr) {
+							xhr
+									.setRequestHeader(csrfHeaderName,
+											csrfTokenValue);
+						},
+						contentType : "application/json",
+						success : function(result) {
+							console.log(result);
+							var row = "";
+							if (result.length == 0) {
+								row = "<div data-v-e2f6767a='' class='empty_area'><p data-v-e2f6767a='' class='desc'>추가하신 관심 상품이 없습니다.</p><a data-v-575aff82='' data-v-e2f6767a='' href='/kabart/home' class='btn outlinegrey small'> SHOP 바로가기 </a></div>";
+							} else {
+								for (var i = 0; i < result.length; i++) {
+									let price = result[i].prod_price
+											.toLocaleString('ko-KR');
+									row += "<li data-v-4faab390=''><div data-v-4faab390='' class='wish_item'><div data-v-4faab390='' class='wish_product'><input value='"+result[i].prod_id+"' onclick='getCheckboxValue(event)' name='isCheck' type='checkbox' class='chk'><div data-v-4faab390='' class='product_box'><div data-v-09fbcf09='' data-v-4faab390='' class='product' style='background-color: rgb(244, 244, 244);'>"
+											+ "<picture data-v-321fc3b6='' data-v-09fbcf09='' class='picture product_img'><source data-v-321fc3b6='' type='image/webp' srcset='"+result[i].img_srcs+"'><source data-v-321fc3b6='' srcset='"+result[i].img_srcs+"'><img data-v-321fc3b6='' alt='상품 이미지' src='"+result[i].img_srcs+"' loading='lazy' class='image'></picture>"
+											+ "</div></div><div data-v-4faab390='' class='product_detail'><div data-v-4faab390=''><a data-v-4faab390='' href='#' class='brand-text'>"
+											+ result[i].prod_category
+											+ "</a></div><p data-v-4faab390='' class='name'>"
+											+ result[i].prod_name
+											+ "</p><div data-v-4faab390='' class='size'><span data-v-4faab390='' class='size'>수량</span> <span class='count' style='padding: 0px 10px;'> <a href='#' class='minus' style='padding: 0px 3px'>-</a> <span id='qmt"+result[i].prod_id+"' data-value='"+result[i].quantity+"'data-v-4faab390='' class='size' style='padding: 0px 3px'>"
+											+ result[i].quantity
+											+ "</span>"
+											+ "<a href='#' class='plus'>+</a></span></div></div></div><div data-v-4faab390='' class='wish_buy'><div data-v-4faab390=''><div data-v-23bbaa82='' data-v-4faab390='' class='division_btn_box lg'>"
+											+ "<span data-v-23bbaa82='' class='btn_division buy'> <strong data-v-23bbaa82='' class='title'>가격</strong><div data-v-23bbaa82='' class='price'><span data-v-23bbaa82='' class='amount'><em id='src"+result[i].prod_id+"' data-value='"+result[i].prod_price+"' data-v-23bbaa82='' class='num'>"
+											+ price
+											+ "</em><span data-v-23bbaa82='' class='won'>원</span></span>"
+											+ "</div></span></div></div></div></div></li>";
+								}
+								$(".wish_list").html(row);
+							}
+
+						},
+						error : function(e) {
+							console.log(e);
+						}
+
+					})
+		}
+
+		$(function() {
+			getAllCarts();
+		})
 	</script>
 
 
