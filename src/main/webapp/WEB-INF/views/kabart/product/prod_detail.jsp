@@ -101,7 +101,8 @@
 											</div>
 											<div data-v-f40660fa="" data-v-77d20f30=""
 												class="detail_stock_btn">
-												<a data-v-6e799857="" data-v-f40660fa="" href="/kabart/order/list?prod_id=${detail.prod_id}"
+												<a data-v-6e799857="" data-v-f40660fa=""
+													href="/kabart/order/list?prod_id=${detail.prod_id}"
 													class="btn solid full buy large"> 바로 구매 </a>
 
 											</div>
@@ -116,7 +117,7 @@
 												<div data-v-b809b0a6="" class="detail_box model_num">
 													<dt data-v-b809b0a6="" class="product_title">너비</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														<c:out value="${detail.prod_width}"/>
+														<c:out value="${detail.prod_width}" />
 													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
@@ -217,8 +218,8 @@
 													</p>
 													<p data-v-4b0fda50="" class="discount_price">
 														<em data-v-4b0fda50="" class="discount_per">${useditems.discount_rate}%</em>
-														<span data-v-4b0fda50="" class="amount"><fmt:formatNumber value="${useditems.used_price}"
-															pattern="#,###" />원</span>
+														<span data-v-4b0fda50="" class="amount"><fmt:formatNumber
+																value="${useditems.used_price}" pattern="#,###" />원</span>
 													</p>
 													<p data-v-4b0fda50="" class="price_desc">구매가</p>
 												</div>
@@ -235,6 +236,7 @@
 					<!-- 부중서 끝 -->
 					<!-- 오프라인 샵  -->
 					<c:if test="${not empty detail.shops}">
+						<!-- 샵 리스트 -->
 						<div class="used_stock">
 							<div data-v-3e0ff210="" data-v-cf786f84="" class="other_stock"
 								style="padding-bottom: 0px;">
@@ -254,7 +256,8 @@
 										</div>
 									</c:forEach>
 								</div>
-								<div id="map" style="margin-top: 3%;"></div>
+								<!-- /샵 리스트 -->
+								<div id="map"></div>
 								<script>
 								var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 							    mapOption = {
@@ -300,9 +303,7 @@
 						</div>
 					</c:if>
 					<!-- /.오프라인 샵  -->
-					<!-- 샵 리스트 -->
 
-					<!-- /샵 리스트 -->
 					<div data-v-12376b79="" data-v-cf786f84="" class="feed_area">
 						<div class="goodsView__bottom js__goods-detail">
 							<div class="inner-align-module">
@@ -313,6 +314,7 @@
 								</ul>
 								<!-- 버튼 -->
 								<a id="tabLocaton"></a>
+
 								<!-- 상세정보 -->
 								<div class="item__info">
 									<center>
@@ -330,6 +332,176 @@
 								</div>
 								<!-- 상세정보 fin -->
 								<!-- 후기 -->
+								<!-- 연령대 / 가구 분석 -->
+								<div class="graph_area">
+									<div class="graph_bar_wrap">
+										<p class="graph_category">가구원</p>
+										<div class="graph_bar_area">
+											<div class="baseline_wrap">
+												<ol class="baseline_area">
+													<li class="baseline baseline0"><span
+														class="baseline_num">0</span></li>
+													<li class="baseline baseline20"><span
+														class="baseline_num">20%</span> <span class="baseline_bar"></span>
+													</li>
+													<li class="baseline baseline40"><span
+														class="baseline_num">40%</span> <span class="baseline_bar"></span>
+													</li>
+													<li class="baseline baseline60"><span
+														class="baseline_num">60%</span> <span class="baseline_bar"></span>
+													</li>
+													<li class="baseline baseline80"><span
+														class="baseline_num">80%</span> <span class="baseline_bar"></span>
+													</li>
+													<li class="baseline baseline100"><span
+														class="baseline_num">100%</span> <span
+														class="baseline_bar"></span></li>
+												</ol>
+											</div>
+											<ul class="bar_wrap">
+												<li>
+													<dl>
+														<dt class="bar_name">1인</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar " style="height: 1%"><span
+																	class="bar_num">1%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+												<li>
+													<dl>
+														<dt class="bar_name">2인</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar " style="height: 3%"><span
+																	class="bar_num">3%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+												<li>
+													<dl>
+														<dt class="bar_name">3인</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar " style="height: 18%"><span
+																	class="bar_num">18%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+												<li>
+													<dl>
+														<dt class="bar_name">4인</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar hightest" style="height: 32%"><span
+																	class="bar_num">32%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+												<li>
+													<dl>
+														<dt class="bar_name">5인 이상</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar " style="height: 30%"><span
+																	class="bar_num">30%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<!-- 연령대 -->
+									<div class="graph_bar_wrap1">
+										<p class="graph_category">연령</p>
+										<div class="graph_bar_area">
+											<div class="baseline_wrap">
+												<ol class="baseline_area">
+													<li class="baseline baseline0"><span
+														class="baseline_num">0</span></li>
+													<li class="baseline baseline20"><span
+														class="baseline_num">20%</span> <span class="baseline_bar"></span>
+													</li>
+													<li class="baseline baseline40"><span
+														class="baseline_num">40%</span> <span class="baseline_bar"></span>
+													</li>
+													<li class="baseline baseline60"><span
+														class="baseline_num">60%</span> <span class="baseline_bar"></span>
+													</li>
+													<li class="baseline baseline80"><span
+														class="baseline_num">80%</span> <span class="baseline_bar"></span>
+													</li>
+													<li class="baseline baseline100"><span
+														class="baseline_num">100%</span> <span
+														class="baseline_bar"></span></li>
+												</ol>
+											</div>
+											<ul class="bar_wrap">
+												<li>
+													<dl>
+														<dt class="bar_name">20~24세</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar " style="height: 1%"><span
+																	class="bar_num">1%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+												<li>
+													<dl>
+														<dt class="bar_name">25~29세</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar " style="height: 30%"><span
+																	class="bar_num">30%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+												<li>
+													<dl>
+														<dt class="bar_name">30대</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar " style="height: 3%"><span
+																	class="bar_num">3%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+												<li>
+													<dl>
+														<dt class="bar_name">40대</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar " style="height: 18%"><span
+																	class="bar_num">18%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+												<li>
+													<dl>
+														<dt class="bar_name">50대</dt>
+														<dd>
+															<p class="bar_area">
+																<span class="bar hightest" style="height: 32%"><span
+																	class="bar_num">32%</span></span>
+															</p>
+														</dd>
+													</dl>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
 								<div class="item__review">
 									<div class='reviews'>
 										<c:forEach var="rv" items="${review}">

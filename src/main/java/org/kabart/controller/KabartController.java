@@ -4,8 +4,8 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.kabart.domain.MemberVO;
-import org.kabart.service.MemberService;
+import org.kabart.domain.*;
+import org.kabart.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
@@ -26,6 +26,18 @@ public class KabartController {
 	
 	@Setter (onMethod_ = {@Autowired})
 	private MemberService service;
+	
+	@Setter (onMethod_ = {@Autowired})
+	private BestProductService bestproductservice;
+	
+	@GetMapping("/")
+	public void home(Model model) {
+		List<BestProductVO> best = bestproductservice.bestprod();
+		
+		log.info(best);
+		
+		model.addAttribute("best", best);
+	}
 
 	
 	@GetMapping("/login")

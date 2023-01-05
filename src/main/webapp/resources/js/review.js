@@ -5,6 +5,7 @@ $('.prod__info').click(function(){
 	$(this).addClass('active');
 	
 	$('.item__review').css('display','none');
+	$('.graph_area').css('display','none');
 	$('.item__info').css('display','block');
 })
 $('.prod__review').click(function(){
@@ -13,4 +14,5 @@ $('.prod__review').click(function(){
 	
 	$('.item__info').css('display','none');
 	$('.item__review').css('display','block');
+	$('.graph_area').css('display','block');
 })

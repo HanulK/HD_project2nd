@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kabart.mapper.BestProductMapper">
+
+	<select id="bestprod" resultType="org.kabart.domain.BestProductVO">
+	
+		SELECT *
+		from (select distinct b.prod_id, b.quantity, a.prod_name, a.prod_price,
+		a.img_srcs, a.img_tag
+		FROM v_products a INNER JOIN
+		(select pd.prod_id,nvl(sum(od.order_quantity),0) as quantity
+		from products pd
+		LEFT join order_details od on pd.prod_id = od.prod_id
+		group by pd.prod_id order by 2 desc, 1) b
+		on a.prod_id = b.prod_id
+		where img_tag='thumNail'
+		order by b.quantity desc)
+		<![CDATA[where rownum <= 4]]>
+
+	</select>
+
+</mapper>
