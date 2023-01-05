@@ -102,7 +102,7 @@
 													<li data-v-638c1354="" class="list_item">
 
 
-														<p data-v-638c1354="" class="title">검수 등급</p> <select name="grade" id="grade">
+														<p data-v-638c1354="" class="title">검수 등급</p> <select name="grade" id="grade" onChange="calculatePay()">
 															<option value="ROYAL" selected="">ROYAL</option>
 															<option value="PRIME">PRIME</option>
 															<option value="STANDARD">STANDARD</option>
@@ -131,18 +131,7 @@
 											</div>
 											<div data-v-14995178="" data-v-877ed62a="" class="buy_total_confirm" is-instant="true">
 												<div data-v-158ed304="" class="instant_group">
-													<div data-v-15aa5096="" data-v-158ed304="" class="price_now">
-														<dl data-v-15aa5096="" class="price_now_box">
-															<dt data-v-15aa5096="" class="price_now_title">판매가</dt>
-															<dd data-v-15aa5096="" class="price">
-																<span data-v-15aa5096="" class="amount">712,000</span><span data-v-15aa5096=""
-																	class="unit">원</span>
-															</dd>
-														</dl>
-														<div data-v-15aa5096="" class="price_warning" style="display: none;">
-															<!---->
-														</div>
-													</div>
+													
 													<div data-v-158ed304="" class="price_bind">
 														<dl data-v-3a2a7b6b="" data-v-158ed304="" class="price_addition">
 															<dt data-v-3a2a7b6b="" class="price_title">
@@ -163,7 +152,7 @@
 																<span data-v-3a2a7b6b="">배송비</span>
 																<!---->
 															</dt>
-															<dd data-v-3a2a7b6b="" class="price_text">선불 ・ 판매자 부담</dd>
+															<dd data-v-3a2a7b6b="" class="price_text">무료</dd>
 														</dl>
 													</div>
 												</div>
@@ -171,7 +160,7 @@
 													<dl data-v-679d7250="" class="price_box">
 														<dt data-v-679d7250="" class="price_title">정산금액</dt>
 														<dd data-v-679d7250="" class="price">
-															<span data-v-679d7250="" class="amount">704,900</span><span data-v-679d7250=""
+															<span data-v-679d7250="" class="amount" id="discount_price"></span><span data-v-679d7250=""
 																class="unit">원</span>
 														</dd>
 													</dl>
@@ -205,6 +194,30 @@
 				</form>
 			</body>
 			<script>
+				function calculatePay() {
+					let grade = document.getElementById("grade").value;
+					console.log(grade);
+					let discount_price = "${read.prod_price}";
+					console.log(discount_price);
+					if (grade === 'ROYAL') {
+						discount_price = discount_price - (discount_price * 0.2);
+					}
+					else if (grade === 'PRIME') {
+						discount_price = discount_price - (discount_price * 0.4);
+					}
+					else {
+						discount_price = discount_price - (discount_price * 0.6);
+					}
+					console.log(discount_price);
+
+
+					document.getElementById("discount_price").innerHTML = priceToString(discount_price);
+				}
+
+				function priceToString(price) {
+					return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+				}
+
 				function showUploadResult(uploadResultArr) {
 					if (!uploadResultArr || uploadResultArr.length == 0) { return; }
 					var uploadUL = $(".uploadResult ul");
