@@ -146,11 +146,18 @@ public class MemberServiceImpl implements MemberService {
 
 		if (div.equals("findpw")) {
 			subject = "KABART 임시 비밀번호 입니다.";
-			msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
-			msg += "<h3 style='color: blue;'>";
-			msg += mem_id + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
-			msg += "<p>임시 비밀번호 : ";
+			msg += "<div style='margin: 0 auto; padding: 60px 0 160px; width: 400px;'>";
+			msg += "<div><h2 style='padding-bottom: 41px; text-align: center; font-size: 32px; letter-spacing: -.48px; color: #000; border-bottom: 2px solid #000;'>KABART</h2>";
+			msg += "<div style='padding: 40px 0 30px;'><p style='margin: 0px 35px 10px;'>" + mem_id + "님의 임시 비밀번호 입니다.<br>비밀번호를 변경하여 사용하세요.</p></div>";
+			msg += "<div style='position: relative; padding: 10px 35px 14px;'>";
+			msg += "<h3 style='font-size: 13px; letter-spacing: -.07px; line-height: 18px;'>임시 비밀번호</h3>";
+			msg += "<p style='padding: 8px 0; width: 100%; font-size: 15px; letter-spacing: -.15px; line-height: 22px; border-bottom: 1px solid #ebebeb;'>";
 			msg += tmp_pw + "</p></div>";
+			msg += "<div style='padding-top: 44px; margin: 0; padding: 0;'>";
+			msg += "<a href='http://localhost/kabart/login'";
+			msg += "style='align-items: center; justify-content: center; font-weight: 700; color: #fff; background-color: #222; width: 100%; font-size: 16px; letter-spacing: -.16px; ";
+			msg += " cursor: pointer; height: 52px; border-radius: 12px; display: inline-flex;'>";
+			msg += " 로그인 </a></div></div></div>";
 		}
 
 		// 받는 사람 E-Mail 주소
