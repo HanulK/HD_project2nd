@@ -5762,10 +5762,11 @@
 }
 button.btn {
     position: relative;
-    display: flex;
+    display: ;
     justify-content: center;
     align-items: center;
 }
+
 button.btn .icon {
     display: block;
     background-position: center center;

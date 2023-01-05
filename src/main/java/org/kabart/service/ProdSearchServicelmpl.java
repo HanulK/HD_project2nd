@@ -19,6 +19,8 @@ public class ProdSearchServicelmpl implements ProdSearchService {
 	@Setter(onMethod_ = @Autowired)
 	private ProdSearchMapper mapper;
 
+
+	
 	@Override
 	public List<ProductListVO> searchProd(Criteria cri) {
 		log.info(cri);
@@ -27,9 +29,9 @@ public class ProdSearchServicelmpl implements ProdSearchService {
 	
 	
 	//토탈 
-	//@Override
-//	public int getTotal(Criteria cri) {
-//		log.info("get total count");
-//		return mapper.getTotalCount(cri);
-//	}
+	@Override
+	public int getTotal(Criteria cri) {
+		log.info("get total count");
+		return mapper.getTotalCount(cri);
+	}
 }

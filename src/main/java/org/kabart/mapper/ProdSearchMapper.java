@@ -10,5 +10,5 @@ public interface ProdSearchMapper {
 	
 	public List<ProductListVO> getListWithPaging2(Criteria cri);
 	
-	//public int getTotal(Criteria cri);
+	public int getTotal(Criteria cri);
 }

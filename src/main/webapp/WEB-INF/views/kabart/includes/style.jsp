@@ -74,3 +74,6 @@
 <link href="/resources/css/a52fa45.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/acdef89.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/734fa9a.css" rel="stylesheet" type="text/css">
+
+<link href="/resources/css/search.min.css" rel="stylesheet">
+<link href="/resources/css/search1.css" rel="stylesheet">

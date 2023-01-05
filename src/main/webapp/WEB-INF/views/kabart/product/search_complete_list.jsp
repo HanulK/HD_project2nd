@@ -190,9 +190,15 @@
 											</div>
 										</c:forEach>
 
+						
+
 									</div>
 								</div>
-								<%-- <div class='pull-right'>
+							
+								<!-- 검색창 -->
+								
+								
+								<div class='pull-right'>
 									<ul id="min" class="pagination" style="display: flex; justify-content:center;">
 										<c:if test="${pageMaker.prev}">
 											<li class="paginate_button previous"><a href="${pageMaker.startPage - 1 } ">이전</a></li>
@@ -207,7 +213,7 @@
 											<li class="paginate_button next"><a href="${pageMaker.endPage + 1}">다음</a></li>
 										</c:if>
 									</ul>
-								</div> --%>
+								</div> 
 								
 								<!-- 페이징 처리 끝-->
 								<div class="soo">
@@ -218,6 +224,35 @@
 									</form>
 								</div>
 								<!-- /상품 그루핑 -->
+								
+								
+								
+<!-- <form id='searchForm' action="/kabart/product/prod_list" method='get'> -->
+								<!-- 정훈추가 -->
+								<form id='searchForm' action="/kabart/product/search_complete_list" method='get'
+>
+					
+							
+							<select name='type' ">
+							
+								<option value="T"
+									<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제품명</option>
+								
+								<option value="C"
+									<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>카테고리</option>
+
+								<option value="TC"
+									<c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제품명
+									or 카테고리</option>
+
+							</select> 
+							
+								<input type='text' name='keyword'
+								value='<c:out value="${pageMaker.cri.keyword}"/>'
+								button class='btn btn-default'  required/>
+								<button class='btn btn-default'>Search</button>
+						</form>
+						<!-- 정훈추가끝 -->								
 							</div>
 							<%@include file="../includes/footer.jsp" %>
 								<!---->
