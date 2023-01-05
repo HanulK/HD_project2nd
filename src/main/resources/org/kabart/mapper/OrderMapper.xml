@@ -35,14 +35,15 @@
 
 	</select>
 	<insert id="orderID">
-		INSERT INTO orders values(seq_order.nextVAl,#{mem_id},#{addr},#{addr_detail},#{phone},#{dname},sysdate)
+		INSERT INTO orders
+		values(seq_order.nextVAl,#{mem_id},#{addr},#{addr_detail},#{phone},#{dname},sysdate)
 	</insert>
-	
-		<insert id="insertOrders">
-		INSERT INTO order_details  values(
-			SELECT max(order_id) as order_id FROM ORDERS WHERE mem_id = #{mem_id}
-		)
-		
+
+	<insert id="insertOrders">
+		INSERT INTO order_details values(
+		(SELECT max(order_id) FROM ORDERS WHERE mem_id =
+		#{mem_id}),#{mem_id},#{isUsed},#{quantity},#{review_check},null,#{prod_id})
+
 	</insert>
 
 
