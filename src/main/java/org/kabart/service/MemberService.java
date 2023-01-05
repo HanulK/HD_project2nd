@@ -14,6 +14,6 @@ public interface MemberService {
 	public int withdrawalMember(String mem_id);
 	public boolean checkPW(String mem_id, String tester);
 	public void changePW(String mem_id, String new_data);
-	public void findPW(HttpServletResponse resp, String mem_id, String email) throws Exception;
-	public void sendEmail(String mem_id, String tmp_pw, String email, String div) throws Exception;
+	public int findPW(HttpServletResponse resp, String mem_id, String email) throws Exception;
+	public boolean sendEmail(String mem_id, String tmp_pw, String email, String div) throws Exception;
 }

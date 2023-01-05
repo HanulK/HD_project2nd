@@ -102,7 +102,6 @@ public class MypageController {
 	@ResponseBody
 	@RequestMapping(value = "/changePW.do", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> changePW(@RequestBody Map<String, Object> body) {
-		log.warn("====================== 비밀번호 바꾸자!!!");
 		String mem_id = (String) body.get("mem_id");
 		String origin = (String) body.get("old_pw");
 		String modified = (String) body.get("new_pw");
