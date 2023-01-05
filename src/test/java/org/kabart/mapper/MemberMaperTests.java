@@ -30,7 +30,7 @@ public class MemberMaperTests {
 	@Test
 	public void idCheckTest() {
 		String new_id = "asdf";
-		int result = mapper.idCheck(new_id);
+		int result = mapper.checkId(new_id);
 		log.warn("ID 중복 체크 : " + result);
 	}
 	

@@ -296,8 +296,6 @@
 	$("#pw_submit").on("click", function() {
 		let old_pw = $("#old_pw").val();
 		let new_pw = $("#new_pw").val();
-		console.log("old : ",old_pw);
-		console.log("new : ",new_pw);
 		
 		$.ajax({
 			url : "${contextPath}/kabart/mypage/changePW.do",
@@ -313,11 +311,11 @@
 			},
 			success : function() {
 				console.log("비밀번호를 변경하였습니다.");
-				//location.href = "/kabart/mypage/profile";
+				location.href = "/kabart/mypage/profile";
 			},
 			error : function(e) {
-				console.log(e);
 				console.log("비밀번호를 변경하지 못하였습니다.");
+				alert("이전 비밀번호가 맞지 않습니다. ")
 			}
 		}); // end ajax
 	})
