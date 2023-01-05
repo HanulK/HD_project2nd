@@ -31,12 +31,12 @@ public class ProdSearchContoller {
 		//model.addAttribute("pageMaker", pageDTO);
 		
 		//model.addAttribute("productList", list);
-		int totalCount = prodSearchService.getTotalCount(cri);
+//		int totalCount = prodSearchService.getTotalCount(cri);
 		//PageDTO pageDTO = new PageDTO(cri, totalCount);
 		
 		
 		
-		model.addAttribute("pageMaker", new PageDTO(cri, totalCount));
+//		model.addAttribute("pageMaker", new PageDTO(cri, totalCount));
 		
 		
 
