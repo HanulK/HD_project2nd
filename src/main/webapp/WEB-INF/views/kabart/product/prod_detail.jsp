@@ -145,8 +145,7 @@
 												</div>
 												<div data-v-12ba7144="" class="way_desc">
 													<p data-v-12ba7144="" class="company">
-														<span data-v-12ba7144="" class="badge_title">일반배송 </span>
-														<span data-v-12ba7144="" class="title">3,000원</span>
+														<span data-v-12ba7144="" class="badge_title">무료배송 </span>
 														<!---->
 													</p>
 													<p data-v-12ba7144="" class="sub_text">검수 후 배송 ・ 5-7일 내
@@ -216,7 +215,8 @@
 													</p>
 													<p data-v-4b0fda50="" class="discount_price">
 														<em data-v-4b0fda50="" class="discount_per">${useditems.discount_rate}%</em>
-														<span data-v-4b0fda50="" class="amount">${useditems.used_price}원</span>
+														<span data-v-4b0fda50="" class="amount"><fmt:formatNumber value="${useditems.used_price}"
+															pattern="#,###" />원</span>
 													</p>
 													<p data-v-4b0fda50="" class="price_desc">구매가</p>
 												</div>
@@ -252,7 +252,7 @@
 										</div>
 									</c:forEach>
 								</div>
-								<div id="map"></div>
+								<div id="map" style="margin-top: 3%;"></div>
 								<script>
 								var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 							    mapOption = {
