@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>KABART</title>
+<script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
 <script type="text/javascript">
 	function checkedInput() {
 		let name = $("#username").val();
@@ -12,6 +13,10 @@
 
 		if (name != "" && pwd != "") {
 			$("#btn-next").attr("class", "btn full solid");
+			$("#btn-next").attr("disabled", false);
+		} else {
+			$("#btn-next").attr("class", "btn full solid disabled");
+			$("#btn-next").attr("disabled", true);
 		}
 	}
 </script>
@@ -78,6 +83,19 @@
 			</div>
 		</div>
 		<%@include file="includes/footer.jsp"%>
+		<div data-v-3007c576="">
+			<!---->
+			<div id="toast" class="toast md" data-v-66ae1b7c="">
+				<div class="wrap" data-v-66ae1b7c="">
+					<picture data-v-66ae1b7c=""  class="toast_img toast-icon" >
+						<img alt="" id="img_icon">
+						</picture>
+					<div class="toast-content" data-v-66ae1b7c="">
+						<p data-v-66ae1b7c=""></p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
@@ -89,7 +107,7 @@
 
 		function checkID(error) {
 			if (error !== '') {
-				alert(error);
+				showToast(error, -1);
 			}
 		}
 

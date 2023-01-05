@@ -112,18 +112,21 @@ public class KabartController {
 
 	@ResponseBody
 	@RequestMapping(value = "/findPW", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<String> findPW(@RequestBody Map<String, Object> body, HttpServletResponse response) throws Exception{
+	public ResponseEntity<Map<String,Object>> findPW(@RequestBody Map<String, Object> body, HttpServletResponse response) throws Exception{
 		log.warn("POST findPW");
 		String mem_id = (String) body.get("id");
 		String email = (String) body.get("email");
 		int result =  service.findPW(response, mem_id, email);
 		
+		Map<String, Object> map =  new HashMap<String, Object>();
 		if (result == 1) {
-			return new ResponseEntity<String>("성공", HttpStatus.OK);
+			map.put("msg", "이메일로 임시 비밀번호를 발송하였습니다.");
 		} else if (result == 0) {
-			return new ResponseEntity<String>("아이디 없음", HttpStatus.NOT_FOUND);
+			map.put("msg", "일치하는 사용자 정보를 찾을 수 없습니다.");
 		} else {
-			return new ResponseEntity<String>("이메일 확인", HttpStatus.NOT_FOUND);	
+			map.put("msg", "메일 전송에 문제가 발생하였습니다.");
 		}
+		map.put("result", result);
+		return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 	}
 }

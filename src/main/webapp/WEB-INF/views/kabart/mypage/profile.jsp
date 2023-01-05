@@ -12,7 +12,7 @@
 <html lang="ko">
 <head>
 <title>KABART</title>
-
+<script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
 <script type="text/javascript" src="/resources/js/memberInfo.js" defer></script>
 </head>
 <body>
@@ -223,17 +223,13 @@
 		<!---->
 		<div data-v-39b2348a="">
 			<!---->
-			<div id="toast" class="toast lg" data-v-66ae1b7c="">
+			<div id="toast" class="toast md" data-v-66ae1b7c="">
 				<div class="wrap" data-v-66ae1b7c="">
-					<svg xmlns="http://www.w3.org/2000/svg"
-						class="icon sprite-icons toast-icon toast-success"
-						data-v-66ae1b7c="">
-								<use
-							href="../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-toast-success"
-							xlink:href="../resources/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-toast-success"
-							data-v-66ae1b7c=""></use></svg>
+					<picture data-v-66ae1b7c=""  class="toast_img toast-icon" >
+						<img alt="" id="img_icon">
+						</picture>
 					<div class="toast-content" data-v-66ae1b7c="">
-						<p data-v-66ae1b7c="">내용</p>
+						<p data-v-66ae1b7c=""></p>
 					</div>
 				</div>
 			</div>
@@ -315,7 +311,8 @@
 			},
 			error : function(e) {
 				console.log("비밀번호를 변경하지 못하였습니다.");
-				alert("이전 비밀번호가 맞지 않습니다. ")
+				let msg = "이전 비밀번호가 맞지 않습니다.";
+				showToast(msg);
 			}
 		}); // end ajax
 	})

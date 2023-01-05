@@ -9,8 +9,10 @@
 	function checkedInput(check_id) {
 		if (check_id.value.length > 9 && check_id.value.length < 12) {
 			$(".btn").attr("class", "btn full solid");
+			$(".btn").attr("disabled", false);
 		} else {
 			$(".btn").attr("class", "btn full solid disabled");
+			$(".btn").attr("disabled", ture);
 		}
 	}
 	

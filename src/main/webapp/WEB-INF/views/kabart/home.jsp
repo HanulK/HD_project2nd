@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+	integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <c:set var="contextPath" value="${PageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Home</title>
 <script type="text/javascript">
-	$(document).ready(function(){
+/* 	$(document).ready(function(){
 		var result = "${result}";
 		console.log(result);
 		if(result == 'true'){
@@ -19,7 +24,7 @@
 		} else {
 			alert("등록이 실패하였습니다.");
 		}
-	});
+	}); */
 	</script>
 </head>
 <body>
@@ -268,17 +273,5 @@
 		</div>
 	</div>
 	<%@include file="includes/footer.jsp"%>
-	<script type="text/javascript">
-/* 	$(document).ready(function(){
-		var result = ${result};
-		console.log(result);
-		if(result === 'true'){
-			console.log(result);
-			alert("등록이 완료되었습니다."");
-		} else {
-			alert("등록이 실패하였습니다.")
-		}
-	}); */
-	</script>
 </body>
 </html>

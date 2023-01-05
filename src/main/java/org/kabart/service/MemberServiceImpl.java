@@ -1,11 +1,12 @@
 package org.kabart.service;
 
 import java.io.PrintWriter;
+import java.security.SecureRandom;
+import java.util.stream.*;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.mail.HtmlEmail;
-import org.aspectj.util.GenericSignature.TypeSignature;
 import org.kabart.domain.MemberVO;
 import org.kabart.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,44 +95,46 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int findPW(HttpServletResponse resp, String mem_id, String email) throws Exception {
 		resp.setContentType("text/html;charset=utf-8");
-		System.out.println("member id : "+mem_id);
-		
-		MemberVO mem = mMapper.read(mem_id);
-		
+		System.out.println("member id : " + mem_id);
+
 		try {
+			MemberVO mem = mMapper.read(mem_id);
+			System.out.println(mem.getMem_id() + " 회원 비밀 번호 찾기");
 			
-		} catch (IllegalArgumentException e) {
-			// 존재하지 않는 아이디 혹은 탈퇴한 회원
-			return 0;
-		}
-		
-		System.out.println(mem.toString());
-
-		// 가입된 아이디가 없으면
-		if (mMapper.checkId(mem_id) == 0) {
-			return 0;
-		} else {
 			// 임시 비밀번호 생성
-			String tmpPW = "";
-			for (int i = 0; i < 12; i++) {
-				tmpPW += (char) ((Math.random() * 26) + 97);
-			}
+			String tmpPW = generateRandomPW();
 			System.out.println("임시 번호 : " + tmpPW);
-
+			
 			// 비밀번호 변경
 			changePW(mem_id, tmpPW);
+			
 			// 비밀번호 변경 메일 발송
-			Boolean sendResult = this.sendEmail(mem_id, tmpPW, email, "findpw");
-
-			return sendResult == true ? 1 : -1;
+			boolean result = this.sendEmail(mem_id, tmpPW, email, "findpw");
+			return result == true ? 1 : -1;
+		} catch (NullPointerException e) {
+			// 가입된 아이디가 없거나 탈퇴한 회원인 경우
+			return 0;
 		}
 	}
+	
+	// 특정 길이의 임의의 영숫자 비밀번호를 생성하는 메소드
+    public static String generateRandomPW()
+    {
+    	int len = 12;
+        final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        SecureRandom random = new SecureRandom();
+ 
+        return IntStream.range(0, len)
+                .map(i -> random.nextInt(chars.length()))
+                .mapToObj(randomIndex -> String.valueOf(chars.charAt(randomIndex)))
+                .collect(Collectors.joining());
+    }
 
 	@Override
 	public boolean sendEmail(String mem_id, String tmp_pw, String mail, String div) throws Exception {
 		// Mail Server 설정
 		String charSet = "utf-8";
-		String hostSMTP = "smtp.gmail.com"; // 네이버 이용시 smtp.naver.com
+		String hostSMTP = "smtp.gmail.com";
 		String hostSMTPid = "hanscnnee@gmail.com";
 		String hostSMTPpwd = "znanbhigkemybjmd";
 
@@ -157,7 +160,7 @@ public class MemberServiceImpl implements MemberService {
 			email.setCharset(charSet);
 			email.setSSL(true);
 			email.setHostName(hostSMTP);
-			email.setSmtpPort(465); // 네이버 이용시 587
+			email.setSmtpPort(465);
 
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
 			email.setTLS(true);
@@ -166,7 +169,6 @@ public class MemberServiceImpl implements MemberService {
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);
 			email.send();
-			
 			return true;
 		} catch (Exception e) {
 			System.out.println("메일발송 실패 : " + e);

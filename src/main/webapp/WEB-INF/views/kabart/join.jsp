@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>KABART</title>
+<script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
 <script type="text/javascript">
 function checkedInput() {
 	let mem_id = $("input[name=mem_id]").val();
@@ -19,9 +20,11 @@ function checkedInput() {
   	if (mem_id != "" && mem_pw != "" && mem_name != "" && birth.length == 8 
 			&& family_num > 0 && phone.length > 9 && address != "" && address_detail != "") {
 		console.log("check!");
-		$("#btn-next").attr("class", "btn full solid");		
+		$("#btn-next").attr("class", "btn full solid");	
+		$("#btn-next").attr("disabled", false);
 	} else {
 		$("#btn-next").attr("class", "btn btn_join full solid disabled");
+		$("#btn-next").attr("disabled", true);
 	}
 }
 </script>
@@ -174,6 +177,23 @@ function checkedInput() {
 		</div>
 		<!---->
 	</div>
+	<jsp:include page="includes/footer.jsp"></jsp:include>
+	<div data-v-3007c576="">
+			<!---->
+			<div id="toast" class="toast md" data-v-66ae1b7c="" >
+				<div class="wrap" data-v-66ae1b7c="">
+					<picture data-v-66ae1b7c=""  class="toast_img toast-icon" >
+						<img alt="" id="img_icon">
+						</picture>
+					<div class="toast-content" data-v-66ae1b7c="">
+						<p data-v-66ae1b7c=""></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	
+	
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -207,11 +227,11 @@ function checkedInput() {
 			},
 			success : function(result) {
 				location.href = "/kabart/home";
-				alert("회원 가입을 완료하였습니다!");
+				showToast("회원 가입을 완료하였습니다.", 1);
 			},
 			error : function(e) {
 				console.log(e);
-				alert("회원 가입에 문제가 발생하였습니다.");
+				showToast("회원 가입에 문제가 발생하였습니다.", 0);
 			}
 		}); // end ajax 
 	});
@@ -383,6 +403,5 @@ function checkedInput() {
 					}).open();
 		}
 	</script>
-	<jsp:include page="includes/footer.jsp"></jsp:include>
 </body>
 </html>
