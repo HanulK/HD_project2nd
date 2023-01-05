@@ -35,4 +35,9 @@ public class OrderMapperTests {
 	public void testUsed() {
 		log.info(oMapper.getUsedList("41"));
 	}
+	
+	@Test
+	public void insertOD() {
+		oMapper.orderID("dodo", "안녕", "바보", "010515223372","port");
+	}
 }

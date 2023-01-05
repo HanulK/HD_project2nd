@@ -22,55 +22,29 @@
 	<select id="getUsedList" resultType="org.kabart.domain.OrderVO">
 		SELECT pd.prod_id,
 		prod_name, prod_price,
-		im.img_srcs,pd.prod_category,1 as quantity,up.up_id,gd.grade,gd.discount_rate
+		im.img_srcs,pd.prod_category,1 as
+		quantity,up.up_id,gd.grade,gd.discount_rate
 		FROM
-		products pd join imgs im on pd.prod_id = im.prod_id and
-		img_tag='thumNail' join used_products up on up.prod_id = pd.prod_id
+		products pd join imgs
+		im on pd.prod_id = im.prod_id and
+		img_tag='thumNail' join used_products
+		up on up.prod_id = pd.prod_id
 		and up.up_id=#{prod_id}
-		join grades gd on gd.grade = up.grade
+		join grades gd on
+		gd.grade = up.grade
 
 	</select>
+	<insert id="orderID">
+		INSERT INTO orders values(seq_order.nextVAl,#{mem_id},#{addr},#{addr_detail},#{phone},#{dname},sysdate)
+	</insert>
+	
+		<insert id="insertOrders">
+		INSERT INTO order_details  values(
+			SELECT max(order_id) as order_id FROM ORDERS WHERE mem_id = #{mem_id}
+		)
+		
+	</insert>
 
-
-	<select id="getSearchUsedList"
-		resultType="org.kabart.domain.SearchOrderUsedVO">
- 		<![CDATA[
- 			SELECT pd.prod_name, pd.prod_price, up.grade,gd.discount_rate,up.up_regdate,up.sale_date, im.img_srcs 
-			FROM products pd JOIN used_products up on pd.prod_id = up.prod_id JOIN grades gd on up.grade = gd.grade JOIN imgs im on pd.prod_id = im.prod_id
-			WHERE im.img_tag = 'thumNail' AND  
-			up.purchase_id = #{user_id} AND 
-			(#{start_date}<=sale_date  and sale_date <=#{end_date})
- 			
- 		]]>
-	</select>
-
-	<select id="getSellingList"
-		resultType="org.kabart.domain.SearchOrderUsedVO">
-		<![CDATA[
-		SELECT pd.prod_name, pd.prod_price,
-		up.grade,gd.discount_rate,up.up_regdate,up.sale_date, im.img_srcs
-		FROM products pd JOIN used_products up on pd.prod_id = up.prod_id JOIN
-		grades gd on up.grade = gd.grade JOIN imgs im on pd.prod_id =
-		im.prod_id
-		WHERE im.img_tag = 'thumNail' AND
-		up.mem_id = #{user_id} AND
-		(#{start_date}<=up_regdate and up_regdate <=#{end_date}) AND
-		sale_date IS NULL
-		]]>
-	</select>
-	<select id="getSelledList"
-		resultType="org.kabart.domain.SearchOrderUsedVO">
-		<![CDATA[
-		SELECT pd.prod_name, pd.prod_price,
-		up.grade,gd.discount_rate,up.up_regdate,up.sale_date, im.img_srcs
-		FROM products pd JOIN used_products up on pd.prod_id = up.prod_id JOIN
-		grades gd on up.grade = gd.grade JOIN imgs im on pd.prod_id =
-		im.prod_id
-		WHERE im.img_tag = 'thumNail' AND
-		up.mem_id = #{user_id} AND
-		(#{start_date}<=sale_date and sale_date <=#{end_date})
-		]]>
-	</select>
 
 
 </mapper>
