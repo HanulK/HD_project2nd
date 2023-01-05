@@ -503,6 +503,13 @@
 									</div>
 								</div>
 								<div class="item__review">
+									<c:if test="${empty review}">
+										<ul data-v-4faab390="" class="wish_list">
+											<div data-v-e2f6767a="" class="empty_area">
+												<p data-v-e2f6767a="" class="desc" style="font-size: 16px;">등록된 후기가 없습니다.</p>
+											</div>
+										</ul>
+									</c:if>
 									<div class='reviews'>
 										<c:forEach var="rv" items="${review}">
 											<div class='review__wrap'>

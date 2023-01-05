@@ -10,17 +10,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Home</title>
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 		var result = "${result}";
 		console.log(result);
-		if(result == 'true'){
+		if (result == 'true') {
 			console.log(result);
 			alert("등록이 완료되었습니다.");
 		} else {
 			alert("등록이 실패하였습니다.");
 		}
 	});
-	</script>
+</script>
 </head>
 <body>
 	<jsp:include page="includes/header.jsp"></jsp:include>
@@ -149,118 +149,34 @@
 
 
 						<!-- 단일 상품 -->
-						<div class="product_card exhibition_product" data-v-19fda891=""
-							data-v-81b68464="">
-							<a href="/products/83946" class="item_inner" data-v-19fda891=""><div
-									class="product" style="background-color: #f4f4f4;"
-									data-v-09fbcf09="">
-									<picture data-v-321fc3b6="" data-v-09fbcf09=""
-										class="picture product_img"> <img alt=""
-										src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-								</div>
-								<div class="product_info_area" data-v-c90cb1da="">
-									<div class="title" data-v-c90cb1da="">
-										<p class="product_info_brand brand" data-v-878934fe=""
-											data-v-c90cb1da="">
-											벨로씨 For casamiashop
-											<!---->
-										</p>
+						<c:forEach items="${best}" var="best">
+							<div class="product_card exhibition_product" data-v-19fda891=""
+								data-v-81b68464="">
+								<a
+									href="/kabart/product/prod_detail?prod_id=<c:out value="${best.prod_id }" />"
+									class="item_inner" data-v-19fda891=""><div class="product"
+										style="background-color: #f4f4f4;" data-v-09fbcf09="">
+										<picture data-v-321fc3b6="" data-v-09fbcf09=""
+											class="picture product_img"> <img alt=""
+											src="${best.img_srcs}" style="overflow: auto;"></picture>
 									</div>
-								</div>
-								<div class="price price_area" data-v-ef71e3ac=""
-									data-v-7dab533a="">
-									<p class="amount" data-v-ef71e3ac="">
-										<!---->
-										167,000원
-									</p>
-								</div></a>
-						</div>
-						<!-- /.단일 상품 -->
-						<!-- 단일 상품 -->
-						<div class="product_card exhibition_product" data-v-19fda891=""
-							data-v-81b68464="">
-							<a href="/products/83946" class="item_inner" data-v-19fda891=""><div
-									class="product" style="background-color: #f4f4f4;"
-									data-v-09fbcf09="">
-									<picture data-v-321fc3b6="" data-v-09fbcf09=""
-										class="picture product_img"> <img alt=""
-										src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-								</div>
-								<div class="product_info_area" data-v-c90cb1da="">
-									<div class="title" data-v-c90cb1da="">
-										<p class="product_info_brand brand" data-v-878934fe=""
-											data-v-c90cb1da="">
-											벨로씨 For casamiashop
-											<!---->
-										</p>
+									<div class="product_info_area" data-v-c90cb1da="">
+										<div class="title" data-v-c90cb1da="">
+											<p class="product_info_brand brand" data-v-878934fe=""
+												data-v-c90cb1da="">
+												${best.prod_name}
+												<!---->
+											</p>
+										</div>
 									</div>
-								</div>
-								<div class="price price_area" data-v-ef71e3ac=""
-									data-v-7dab533a="">
-									<p class="amount" data-v-ef71e3ac="">
-										<!---->
-										167,000원
-									</p>
-								</div></a>
-						</div>
+									<div class="price price_area" data-v-ef71e3ac=""
+										data-v-7dab533a="">
+										<p class="amount" data-v-ef71e3ac="">
+										<fmt:formatNumber value="${best.prod_price}" pattern="#,###" />원</p>
+									</div></a>
+							</div>
+						</c:forEach>
 						<!-- /.단일 상품 -->
-						<!-- 단일 상품 -->
-						<div class="product_card exhibition_product" data-v-19fda891=""
-							data-v-81b68464="">
-							<a href="/products/83946" class="item_inner" data-v-19fda891=""><div
-									class="product" style="background-color: #f4f4f4;"
-									data-v-09fbcf09="">
-									<picture data-v-321fc3b6="" data-v-09fbcf09=""
-										class="picture product_img"> <img alt=""
-										src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-								</div>
-								<div class="product_info_area" data-v-c90cb1da="">
-									<div class="title" data-v-c90cb1da="">
-										<p class="product_info_brand brand" data-v-878934fe=""
-											data-v-c90cb1da="">
-											벨로씨 For casamiashop
-											<!---->
-										</p>
-									</div>
-								</div>
-								<div class="price price_area" data-v-ef71e3ac=""
-									data-v-7dab533a="">
-									<p class="amount" data-v-ef71e3ac="">
-										<!---->
-										167,000원
-									</p>
-								</div></a>
-						</div>
-						<!-- /.단일 상품 -->
-						<!-- 단일 상품 -->
-						<div class="product_card exhibition_product" data-v-19fda891=""
-							data-v-81b68464="">
-							<a href="/products/83946" class="item_inner" data-v-19fda891=""><div
-									class="product" style="background-color: #f4f4f4;"
-									data-v-09fbcf09="">
-									<picture data-v-321fc3b6="" data-v-09fbcf09=""
-										class="picture product_img"> <img alt=""
-										src="/resources/img/prod1.png" style="overflow: auto;"></picture>
-								</div>
-								<div class="product_info_area" data-v-c90cb1da="">
-									<div class="title" data-v-c90cb1da="">
-										<p class="product_info_brand brand" data-v-878934fe=""
-											data-v-c90cb1da="">
-											벨로씨 For casamiashop
-											<!---->
-										</p>
-									</div>
-								</div>
-								<div class="price price_area" data-v-ef71e3ac=""
-									data-v-7dab533a="">
-									<p class="amount" data-v-ef71e3ac="">
-										<!---->
-										167,000원
-									</p>
-								</div></a>
-						</div>
-						<!-- /.단일 상품 -->
-
 					</div>
 				</div>
 				<!-- /상품 그루핑 -->
@@ -269,16 +185,16 @@
 	</div>
 	<%@include file="includes/footer.jsp"%>
 	<script type="text/javascript">
-/* 	$(document).ready(function(){
-		var result = ${result};
-		console.log(result);
-		if(result === 'true'){
-			console.log(result);
-			alert("등록이 완료되었습니다."");
-		} else {
-			alert("등록이 실패하였습니다.")
-		}
-	}); */
+		/* 	$(document).ready(function(){
+		 var result = ${result};
+		 console.log(result);
+		 if(result === 'true'){
+		 console.log(result);
+		 alert("등록이 완료되었습니다."");
+		 } else {
+		 alert("등록이 실패하였습니다.")
+		 }
+		 }); */
 	</script>
 </body>
 </html>
