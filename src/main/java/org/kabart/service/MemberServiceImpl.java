@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.mail.HtmlEmail;
+import org.aspectj.util.GenericSignature.TypeSignature;
 import org.kabart.domain.MemberVO;
 import org.kabart.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,17 +92,25 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void findPW(HttpServletResponse resp, String mem_id, String email) throws Exception {
+	public int findPW(HttpServletResponse resp, String mem_id, String email) throws Exception {
 		resp.setContentType("text/html;charset=utf-8");
 		System.out.println("member id : "+mem_id);
-		PrintWriter out = resp.getWriter();
+		
+		MemberVO mem = mMapper.read(mem_id);
+		
+		try {
+			
+		} catch (IllegalArgumentException e) {
+			// 존재하지 않는 아이디 혹은 탈퇴한 회원
+			return 0;
+		}
+		
+		System.out.println(mem.toString());
 
 		// 가입된 아이디가 없으면
 		if (mMapper.checkId(mem_id) == 0) {
-			out.print("등록되지 않은 아이디입니다.");
-			out.close();
+			return 0;
 		} else {
-			System.out.println("옛다 임시 비밀번호");
 			// 임시 비밀번호 생성
 			String tmpPW = "";
 			for (int i = 0; i < 12; i++) {
@@ -112,15 +121,14 @@ public class MemberServiceImpl implements MemberService {
 			// 비밀번호 변경
 			changePW(mem_id, tmpPW);
 			// 비밀번호 변경 메일 발송
-			this.sendEmail(mem_id, tmpPW, email, "findpw");
+			Boolean sendResult = this.sendEmail(mem_id, tmpPW, email, "findpw");
 
-			out.print("이메일로 임시 비밀번호를 발송하였습니다.");
-			out.close();
+			return sendResult == true ? 1 : -1;
 		}
 	}
 
 	@Override
-	public void sendEmail(String mem_id, String tmp_pw, String mail, String div) throws Exception {
+	public boolean sendEmail(String mem_id, String tmp_pw, String mail, String div) throws Exception {
 		// Mail Server 설정
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.gmail.com"; // 네이버 이용시 smtp.naver.com
@@ -158,8 +166,11 @@ public class MemberServiceImpl implements MemberService {
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);
 			email.send();
+			
+			return true;
 		} catch (Exception e) {
 			System.out.println("메일발송 실패 : " + e);
+			return false;
 		}
 	}
 }
