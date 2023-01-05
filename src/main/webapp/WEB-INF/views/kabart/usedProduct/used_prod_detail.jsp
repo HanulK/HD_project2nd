@@ -113,6 +113,7 @@
 														class="detail_stock_btn">
 														<button type="submit" data-oper='remove'
 															style="width: 100%;">
+
 															<a data-v-6e799857="" data-v-f40660fa="" href="#"
 																class="btn solid full sell large">삭제 </a>
 														</button>
@@ -130,6 +131,7 @@
                                                          ${detail.prod_id}" />&up_id=
                                                       <c:out value="${detail.up_id}" />"
 															class="btn solid full buy large"> 바로 구매 </a>
+
 													</div>
 												</c:if>
 												<c:if test="${read.sale_date ne null}">
@@ -233,6 +235,7 @@
 											</div>
 											<!---->
 										</div>
+
 
 										<!---->
 									</div>

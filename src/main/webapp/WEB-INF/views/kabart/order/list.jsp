@@ -26,8 +26,17 @@
 					<!---->
 					<div data-v-63d14162="" class="content">
 						<!---->
+						<form id="sendData" method='post' action ='/kabart/order/ordercomplete'>
 						<div data-v-b8efdcc8="" data-v-63d14162="" class="buy_immediate">
+								<input type="hidden" name="${_csrf.parameterName }"
+						value="${_csrf.token }" />
+								<input type="hidden" name="mem_id" value='<sec:authentication property="principal.username"/>'/>
 							<c:forEach items="${products}" var="product">
+								<input type='hidden' name='quantity' value=${product.quantity}>
+								<input type='hidden' name='prod_id' value=${product.prod_id}>
+								<c:if test="${product.up_id ne 0}">
+									<input type='hidden' name='isUsed' value='${product.up_id}'>
+								</c:if>	
 								<div data-v-2b95d831="" data-v-b8efdcc8=""
 									class="product_info_area">
 									<div data-v-2b95d831="" class="product_info">
@@ -95,6 +104,7 @@
 								</div>
 
 							</c:forEach>
+							</form>
 							<section data-v-e7203b1c="" data-v-b8efdcc8="">
 								<div data-v-e7203b1c="" class="section_unit">
 									<div data-v-e7203b1c="" class="section_title">
@@ -305,7 +315,7 @@
 									</div>
 									<div data-v-14995178="" class="btn_confirm">
 										<a data-v-575aff82="" data-v-14995178="" 
-											href="#" class="btn full solid false"> 결제하기 </a>
+											href="#" class="btn full solid false" id="paid"> 결제하기 </a>
 									</div>
 								</div>
 							</section>
@@ -339,11 +349,13 @@
 							<!---->
 							<!---->
 						</div>
+						
 						<!---->
 					</div>
 					<!---->
 					<!---->
 				</div>
+			
 				<div data-v-34b11929=""></div>
 				<!---->
 				<div data-v-34b11929="">
@@ -372,10 +384,52 @@
 	<jsp:include page="../includes/footer.jsp"></jsp:include>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+			$("#paid").on("click",function(e){
+				e.preventDefault();
+				var form = $("#sendData")[0];   	
+				var hiddenField = document.createElement("input");
+
+			         hiddenField.setAttribute("type", "hidden");
+
+			         hiddenField.setAttribute("name", "dname");
+
+			         hiddenField.setAttribute("value", $("#mem_name").val());
+					var hiddenFieldphone= document.createElement("input");
+
+					hiddenFieldphone.setAttribute("type", "hidden");
+
+					hiddenFieldphone.setAttribute("name", "phone");
+
+					hiddenFieldphone.setAttribute("value", $("#mem_phone").val()+"");
+				         var hiddenFieldaddr= document.createElement("input");
+
+				         hiddenFieldaddr.setAttribute("type", "hidden");
+
+				         hiddenFieldaddr.setAttribute("name", "address");
+
+				         hiddenFieldaddr.setAttribute("value", $("#sample6_address").val());
+				         var hiddenFieldaddrdetail= document.createElement("input");
+
+				         hiddenFieldaddrdetail.setAttribute("type", "hidden");
+
+				         hiddenFieldaddrdetail.setAttribute("name", "address_detail");
+
+				         hiddenFieldaddrdetail.setAttribute("value", $("#sample6_detailAddress").val());
+			         form.appendChild(hiddenField);
+			         form.appendChild(hiddenFieldphone);
+			         form.appendChild(hiddenFieldaddr);
+			         form.appendChild(hiddenFieldaddrdetail);
+
+				$("#sendData").submit();
+			})
+		})
+	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var totalSum = 0;
-
 			$(".prod_price").each(function() {
 				totalSum += $(this).data('value');
 			});
