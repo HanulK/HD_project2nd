@@ -17,6 +17,8 @@
 			<div class="panel-heading">Board List Page</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
+			
+			
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
@@ -51,7 +53,7 @@
 				<div class='row'>
 					<div class="col-lg-12">
 
-						<form id='searchForm' action="/kabart/product/search_list" method='get'>
+						<form id='searchForm' action="/kabart/product/search_complete_list" method='get'>
 							<select name='type'>
 								<option value="T"
 									<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제품명</option>
@@ -99,7 +101,7 @@
 				<!--  end Pagination -->
 			</div>
 
-			<form id='actionForm' action="/board/list" method='get'>
+			<form id='actionForm' action="/board/list" method='post'>
 				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
 
@@ -119,7 +121,7 @@
 <!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(document)
 			.ready(
 					function() {
@@ -139,7 +141,7 @@
 							if (parseInt(result) > 0) {
 								$(".modal-body").html(
 										"게시글 " + parseInt(result)
-												+ " 번이 등록되었습니다.");
+												+ " 등록되었습니다.");
 							}
 
 							$("#myModal").modal("show");
@@ -178,7 +180,7 @@
 																	"href")
 															+ "'>");
 											actionForm.attr("action",
-													"/board/get");
+													"/board/post");
 											actionForm.submit();
 
 										});
@@ -210,6 +212,6 @@
 								});
 
 					});
-</script>
+</script> -->
 
 <%@include file="../includes/footer.jsp"%>

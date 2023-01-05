@@ -16,16 +16,15 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @RequestMapping("/kabart/product")
 public class ProdSearchContoller {
-	
+	///kabart/product/search_list
 	//정훈
 	@Setter(onMethod_= {@Autowired} )
 	private ProdSearchService prodSearchService;
 	
-	@PostMapping("/search_list")
-	public String getSearchList(Criteria cri, Model model) {
+	@GetMapping("/search_complete_list")
+	public void getSearchList(Criteria cri, Model model) {
 //		List<String> products = new ArrayList<String>();
-//		for(String p : products) {
-//			
+//		for(String prod : products) {
 //		}
 		log.info(cri);
 		List<ProductListVO> list = prodSearchService.searchProd(cri);
@@ -36,13 +35,18 @@ public class ProdSearchContoller {
 		
 		model.addAttribute("products",list);
 		//model.addAttribute("pageMaker", pageDTO);
-		return "";
+		//search_complete_lsit페이로 경로 줘야함
 		
 	}
-	@GetMapping("/search_list")
-	public void getSearchProd() {
 	
+	@GetMapping("/search_list")
+	public void getSearch() {
 		
 	}
-	 
+	
+	
+	@GetMapping("/search_page")
+	public void getSearchpage() {
+		
+	}
 }

@@ -18,4 +18,12 @@ public class ProdSearchVO {
 	private int prod_depth;
 	
 	private String prod_category; 
+	
+	
+//	private int prod_id;
+//	private String prod_name;
+//	private int prod_price;
+//	private String prod_category;
+//	private String img_srcs;
+//	private String img_tag;
 }

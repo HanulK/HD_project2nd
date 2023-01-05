@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
+	<!--  정훈 -->
 <mapper namespace="org.kabart.mapper.ProdSearchMapper">
 
 	<!-- <select id="getSearchList"
@@ -34,7 +34,7 @@ from products
 	</sql>
 	
 	
-	<!--  정훈 -->
+
 	<select id="getListWithPaging2"
 		resultType="org.kabart.domain.ProductListVO">
 		<![CDATA[
@@ -61,12 +61,11 @@ from products
 			]]>
 			<include refid="criteria"></include> 
 			<![CDATA[ 
-			rownum <= #{pageNum} * #{amount} 
-				and img_tag='thumNail'
+				img_tag='thumNail'
 		) 
-		where rn > (#{pageNum} -1) * #{amount} ]]>
+		 ]]>
+		 
 	</select>
-	
 	<select id="getTotalCount" resultType="int"> 
 		select count(*) from
 			products 

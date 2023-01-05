@@ -87,11 +87,8 @@
 
 													<a id="cart" data-v-6e799857="" data-v-f40660fa=""
 														href="/kabart/mypage/cart"
-<<<<<<< Updated upstream
 														class="btn solid full buy1 large"> 장바구니 </a>
-=======
-														class="btn solid full buy1 large">장바구니</a>
->>>>>>> Stashed changes
+
 
 												</div>
 
@@ -105,11 +102,8 @@
 											<div data-v-f40660fa="" data-v-77d20f30=""
 												class="detail_stock_btn">
 												<a data-v-6e799857="" data-v-f40660fa="" href="#"
-<<<<<<< Updated upstream
 													class="btn solid full buy large"> 바로 구매 </a>
-=======
-													class="btn solid full buy large"> 바로구매하기 </a>
->>>>>>> Stashed changes
+
 											</div>
 										</div>
 									</div>

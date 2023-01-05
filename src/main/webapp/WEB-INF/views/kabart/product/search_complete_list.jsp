@@ -2,17 +2,18 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 		<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 			<c:set var="contextPath" value="${PageContext.request.contextPath}" />
+			
+			
 			<!DOCTYPE html>
 			<html lang="en">
 
 			<head>
-			
-			
 				<meta charset="UTF-8" />
 				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-				<title>NEW PRODUCTS</title>
+				
+				<title>PRODUCT SEARCH</title>
 				<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 				<script type="text/javascript">
 					$(document).ready(function () {
@@ -132,6 +133,7 @@
 									</div>
 								</div>
 							</div>
+							
 							<div class="exhibition_items" data-v-4f87b95c="" data-v-352cdc90="" data-v-3007c576="">
 								<div class="exhibition_item image" data-v-4f87b95c="">
 									<div class="exhibition_item_image exhibition_item_section" style="background-color: #ffffff;"
@@ -161,18 +163,18 @@
 										data-v-4f87b95c="">
 
 										<!-- 단일 상품 -->
-										<c:forEach items="${productList}" var="products">
+										<c:forEach items="${products}" var="pro">
 											<div class="product_card exhibition_product" data-v-19fda891="" data-v-81b68464="">
-												<a href="/kabart/product/prod_detail?prod_id=<c:out value="${products.prod_id }" />"
+												<a href="/kabart/product/prod_detail?prod_id=<c:out value="${pro.prod_id }" />"
 												class="item_inner" data-v-19fda891="">
 												<div class="product" style="background-color: #f4f4f4;" data-v-09fbcf09="">
 													<picture data-v-321fc3b6="" data-v-09fbcf09="" class="picture product_img"> <img alt=""
-															src="${products.img_srcs}" style="overflow: auto;"></picture>
+															src="${pro.img_srcs}" style="overflow: auto;"></picture>
 												</div>
 												<div class="product_info_area" data-v-c90cb1da="">
 													<div class="title" data-v-c90cb1da="">
 														<p class="product_info_brand brand" data-v-878934fe="" data-v-c90cb1da="">
-															<c:out value="${products.prod_name}" />
+															<c:out value="${pro.prod_name}" />
 															<!---->
 														</p>
 														
@@ -181,7 +183,7 @@
 												<div class="price price_area" data-v-ef71e3ac="" data-v-7dab533a="">
 													<p class="amount" data-v-ef71e3ac="">
 														<!---->
-														<fmt:formatNumber value="${products.prod_price}" pattern="#,###" />
+														<fmt:formatNumber value="${pro.prod_price}" pattern="#,###" />
 													</p>
 												</div>
 												</a>
@@ -190,7 +192,7 @@
 
 									</div>
 								</div>
-								<div class='pull-right'>
+								<%-- <div class='pull-right'>
 									<ul id="min" class="pagination" style="display: flex; justify-content:center;">
 										<c:if test="${pageMaker.prev}">
 											<li class="paginate_button previous"><a href="${pageMaker.startPage - 1 } ">이전</a></li>
@@ -205,7 +207,8 @@
 											<li class="paginate_button next"><a href="${pageMaker.endPage + 1}">다음</a></li>
 										</c:if>
 									</ul>
-								</div>
+								</div> --%>
+								
 								<!-- 페이징 처리 끝-->
 								<div class="soo">
 									<form id='actionForm' action='/kabart/product/prod_list' method="get">

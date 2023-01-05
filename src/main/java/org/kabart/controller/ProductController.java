@@ -1,5 +1,6 @@
 package org.kabart.controller;
 
+import java.io.Console;
 import java.util.List;
 
 import org.kabart.domain.*;
@@ -39,8 +40,9 @@ public class ProductController {
 		log.info("total : " + total);
 		log.info("productGetList in Controller" + cri);
 
+		
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
-
+		
 	}
 
 	@GetMapping("/prod_detail")
