@@ -169,8 +169,14 @@
 			console.log("member id : ",mem_id);
 			
 			var isUsed = 0;
-			$('#dateEnd').val(new Date().toISOString().slice(0, 7));
-			$('#dateStart').val(new Date().toISOString().slice(0, 7));
+			const today = new Date().toISOString().slice(0, 10);
+			$('#dateEnd').val(today);
+			$('#dateStart').val(today);
+			
+			
+			
+			$('#dateStart').attr("max",today);
+			$('#dateEnd').attr("max",today);
 			function date_add(sDate, nDays) {
 				var yy = parseInt(sDate.substr(0, 4), 10);
 				var mm = parseInt(sDate.substr(5, 2), 10);

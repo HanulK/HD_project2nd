@@ -368,7 +368,7 @@
 		$("#goOrder").on("click",function(e){
 			e.preventDefault();
 			var valArr = [];
-  			var url = '/kabart/mypage/order?prod_id=';
+  			var url = '/kabart/order/list?prod_id=';
   			$("input[name=isCheck]:checked").each(function(){
   				valArr.push($(this).val());
   				url += $(this).val()+',';
