@@ -23,20 +23,23 @@ public class ProdSearchContoller {
 	
 	@GetMapping("/search_complete_list")
 	public void getSearchList(Criteria cri, Model model) {
-//		List<String> products = new ArrayList<String>();
-//		for(String prod : products) {
-//		}
+		
+		
 		log.info(cri);
 		List<ProductListVO> list = prodSearchService.searchProd(cri);
-		
-		// totalCount = prodSearchService.getTotalCount(cri);
-		
-		//PageDTO pageDTO = new PageDTO(cri, totalCount);
-		
 		model.addAttribute("products",list);
 		//model.addAttribute("pageMaker", pageDTO);
-		//search_complete_lsit페이로 경로 줘야함
 		
+		//model.addAttribute("productList", list);
+		int totalCount = prodSearchService.getTotalCount(cri);
+		//PageDTO pageDTO = new PageDTO(cri, totalCount);
+		
+		
+		
+		model.addAttribute("pageMaker", new PageDTO(cri, totalCount));
+		
+		
+
 	}
 	
 	@GetMapping("/search_list")
@@ -49,4 +52,6 @@ public class ProdSearchContoller {
 	public void getSearchpage() {
 		
 	}
+	
+	
 }

@@ -6,15 +6,8 @@
 	<!--  정훈 -->
 <mapper namespace="org.kabart.mapper.ProdSearchMapper">
 
-	<!-- <select id="getSearchList"
-		resultType="org.kabart.domain.prodSearchVO">
- 		<![CDATA[
- 			select prod_name, prod_price, prod_width, prod_height, prod_depth, prod_category
-from products
- 			where prod_name like '%'||#{keyword}||'%'
-			
- 		]]>
-	</select> -->
+	
+
 	<sql id="criteria">
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 
@@ -66,6 +59,13 @@ from products
 		 ]]>
 		 
 	</select>
+	
+	<!-- 	<![CDATA[ rownum <= #{pageNum} * #{amount} ) 
+		where rn > (#{pageNum} -1) * #{amount} ]]> 
+	
+	 -->
+	
+	
 	<select id="getTotalCount" resultType="int"> 
 		select count(*) from
 			products 

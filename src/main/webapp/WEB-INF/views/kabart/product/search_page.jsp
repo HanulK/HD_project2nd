@@ -95,9 +95,10 @@
 																		<c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제품명
 																		or 카테고리</option>
 
-																</select> <input id="inputbox" data-v-63326639="" type="text" name="keyword"
+																</select> 
+																<input data-v-63326639="" type="text" name="keyword"
 																	placeholder="상품명, 카테고리, 상품명 + 카테고리 등" title="검색창"
-																	class="input_search show_placeholder_on_focus">
+																	class="input_search show_placeholder_on_focus" required/>
 																	
 																<button class='btn btn-default'>찾기</button>
 
