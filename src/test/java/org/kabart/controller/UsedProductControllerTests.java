@@ -38,18 +38,36 @@ public class UsedProductControllerTests {
 //				.andReturn().getModelAndView().getModelMap());
 //	}
 	
+//	@Test
+//	public void testUsedSellSelect() throws Exception {
+//		
+//		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/used_prod_sell").param("prod_id", "171130")).andReturn().getModelAndView().getModelMap());
+//	}
+//	
+//	@Test
+//	public void testUsedSellInsert() throws Exception {
+//		
+//		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/kabart/usedProduct/used_prod_sell").param("prod_id", "146812").param("mem_id", "doongdoong").param("grade", "ROYAL").param("up_comment", "컨트롤러단에서 테스트"))
+//							.andReturn().getModelAndView().getViewName();
+//		
+//		log.info(resultPage);
+//	}
+//	
 	@Test
-	public void testUsedSellSelect() throws Exception {
+	public void testUsedSellModify() throws Exception {
 		
-		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/used_prod_sell").param("prod_id", "171130")).andReturn().getModelAndView().getModelMap());
-	}
-	
-	@Test
-	public void testUsedSellInsert() throws Exception {
-		
-		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/kabart/usedProduct/used_prod_sell").param("prod_id", "171130").param("mem_id", "doongdoong").param("grade", "ROYAL").param("up_comment", "컨트롤러단에서 테스트"))
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/kabart/usedProduct/used_prod_detail/modify").param("up_id", "71").param("up_comment", "url 두번째 컨트롤러 테스트"))
 							.andReturn().getModelAndView().getViewName();
 		
 		log.info(resultPage);
 	}
+	
+//	@Test
+//	public void testUsedSellRemove() throws Exception {
+//		
+//		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/kabart/usedProduct/used_prod_detail/remove").param("up_id", "73"))
+//							.andReturn().getModelAndView().getViewName();
+//		
+//		log.info(resultPage);
+//	}
 }
