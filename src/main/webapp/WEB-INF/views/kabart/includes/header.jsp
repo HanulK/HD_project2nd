@@ -40,7 +40,7 @@
 						</ul>
 					</nav>
 					<div class="search_btn_box">
-						<a aria-label="검색" href="#" class="btn_search"> <img
+						<a aria-label="검색" href="/src/main/webapp/WEB-INF/views/kabart/search.jsp" class="btn_search"> <img
 							src="/resources/img/search.png"
 							style="max-width: 20px; max-height: 20px;" /></a>
 					</div>

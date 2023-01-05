@@ -58,3 +58,19 @@
 <link href="/resources/css/acdef89.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/1fbb0fa.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/00c65a6.css" rel="stylesheet" type="text/css">
+
+<!-- SearchPage css-->
+<!-- <link rel="stylesheet" href="/resources/css/3dec003.css"> -->
+<!-- <link rel="stylesheet" href="/resources/css/734fa9a.css"> -->
+<!-- <link rel="stylesheet" href="/resources/css/325de86.css"> -->
+<!-- <link rel="stylesheet" href="/resources/css/a52fa45.css"> -->
+<!-- <link rel="stylesheet" href="/resources/css/acdef89.css"> -->
+<!-- <link rel="stylesheet" href="/resources/css/48656c7.css"> -->
+<link rel="stylesheet" href="/resources/css/ae12c7f.css">
+
+<link href="/resources/css/325de86.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/ae12c7f.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/48656c7.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/a52fa45.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/acdef89.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/734fa9a.css" rel="stylesheet" type="text/css">

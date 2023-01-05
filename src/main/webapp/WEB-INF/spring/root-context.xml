@@ -31,6 +31,7 @@
 		<property name="maxLifetime" value="30000" />
 		<property name="autoCommit" value="true" />
 		<property name="leakDetectionThreshold" value="2000" /> -->
+		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> -->
 	</bean>
 
 	<!-- HikariCP configuration -->

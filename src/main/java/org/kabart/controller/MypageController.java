@@ -22,6 +22,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class MypageController {
 
+
 	@Setter(onMethod_ = { @Autowired })
 	private CartsService cService;
 
@@ -130,8 +131,9 @@ public class MypageController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/buying")
-	public void buying() {
+   @GetMapping("/buying")
+   public void buying() {
+
 
 	}
 
@@ -150,3 +152,4 @@ public class MypageController {
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 }
+

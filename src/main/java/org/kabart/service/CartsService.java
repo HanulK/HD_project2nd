@@ -3,6 +3,7 @@ package org.kabart.service;
 import java.util.List;
 
 import org.kabart.domain.CartsVO;
+import org.kabart.domain.ProductDetailVO;
 
 public interface CartsService {
 //	public void cartsadd(CartsVO carts);
@@ -12,4 +13,6 @@ public interface CartsService {
 	public void deleteAllCart(String mem_id);
 	public int removeCartAll(String mem_id);
 	public void updateCart(String mem_id, int prod_id, int quantity);
+
+
 }

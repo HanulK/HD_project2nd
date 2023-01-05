@@ -89,6 +89,7 @@
 														href="/kabart/mypage/cart"
 														class="btn solid full buy1 large"> 장바구니 </a>
 
+
 												</div>
 
 												<div data-v-f40660fa="" data-v-77d20f30=""
@@ -102,6 +103,7 @@
 												class="detail_stock_btn">
 												<a data-v-6e799857="" data-v-f40660fa="" href="/kabart/order/list?prod_id=${detail.prod_id}"
 													class="btn solid full buy large"> 바로 구매 </a>
+
 											</div>
 										</div>
 									</div>
@@ -114,7 +116,7 @@
 												<div data-v-b809b0a6="" class="detail_box model_num">
 													<dt data-v-b809b0a6="" class="product_title">너비</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														<c:out value="${detail.prod_width}" />
+														<c:out value="${detail.prod_width}"/>
 													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
@@ -259,6 +261,7 @@
 							        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 							        level: 5 // 지도의 확대 레벨
 							    };  
+
 
 							// 지도를 생성합니다    
 							var map = new kakao.maps.Map(mapContainer, mapOption); 

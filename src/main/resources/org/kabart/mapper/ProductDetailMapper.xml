@@ -18,31 +18,32 @@
 		<collection property="shops" resultMap="shopMap" />
 	</resultMap>
 
-	<resultMap type="org.kabart.domain.ShopVO" id="shopMap">
-		<result property="prod_id" column="prod_id" />
-		<result property="shop_name" column="shop_name" />
-		<result property="shop_address" column="shop_address" />
-	</resultMap>
 
-	<select id="get" resultMap="getProdDetail">
-		select prod_id, prod_name, prod_price, prod_category, prod_width,
-		prod_height, prod_depth, img_srcs, img_tag, shop_name, shop_address
-		from v_products
-		where prod_id = #{prod_id} and img_tag='thumNail'
-	</select>
+   <resultMap type="org.kabart.domain.ShopVO" id="shopMap">
+      <result property="prod_id" column="prod_id" />
+      <result property="shop_name" column="shop_name" />
+      <result property="shop_address" column="shop_address" />
+   </resultMap>
+
+   <select id="get" resultMap="getProdDetail">
+      select prod_id, prod_name, prod_price, prod_category, prod_width,
+      prod_height, prod_depth, img_srcs, img_tag, shop_name, shop_address
+      from v_products
+      where prod_id = #{prod_id} and img_tag='thumNail'
+   </select>
 
 
-	<select id="getdetailImgs" resultType="org.kabart.domain.ImgVO">
-		select distinct img_srcs, prod_id, img_tag, rownum from v_products 
-		where prod_id = #{prod_id} and img_tag='detail'
-		order by rownum
-	</select>
+   <select id="getdetailImgs" resultType="org.kabart.domain.ImgVO">
+      select distinct img_srcs, prod_id, img_tag, rownum from v_products 
+      where prod_id = #{prod_id} and img_tag='detail'
+      order by rownum
+   </select>
 
-	<select id="getused" resultType="org.kabart.domain.UsedProductVO">
-		select distinct up_id, prod_id, prod_price, grade, discount_rate, (100 - discount_rate)*0.01*prod_price as used_price 
-		from v_used_products
-		where prod_id = #{prod_id} and sale_date is Null
-		order by used_price DESC
-	</select>
+   <select id="getused" resultType="org.kabart.domain.UsedProductVO">
+      select distinct up_id, prod_id, prod_price, grade, discount_rate, (100 - discount_rate)*0.01*prod_price as used_price 
+      from v_used_products
+      where prod_id = #{prod_id} and sale_date is Null
+      order by used_price DESC
+   </select>
 </mapper>
    

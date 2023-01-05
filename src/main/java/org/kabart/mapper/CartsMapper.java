@@ -8,8 +8,6 @@ import org.kabart.domain.CartsVO;
 public interface CartsMapper {
 	public List<CartsVO> getList();
 
-	// public List<CartsVO> insertcart();
-	// public void insertSelectKey(CartsVO carts);
 	public int insert(@Param("mem_id") String mem_id, @Param("prod_id") int prod_id, @Param("quantity") int quantity);
 	
 	public int isExist(@Param("mem_id") String mem_id, @Param("prod_id") int prod_id);
@@ -21,3 +19,4 @@ public interface CartsMapper {
 	public void updateQuantity(@Param("mem_id") String mem_id, @Param("prod_id") int prod_id, @Param("quantity")int quantity);
 	
 }
+

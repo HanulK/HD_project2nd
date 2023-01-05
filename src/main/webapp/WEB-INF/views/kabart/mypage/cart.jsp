@@ -121,7 +121,6 @@
 						style="height: 50px; max-width: 1280px; display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); grid-column-gap: 10px;">
 						<div data-v-f40660fa="" data-v-77d20f30=""
 							class="detail_stock_btn">
-
 							<a id="cart" data-v-6e799857="" data-v-f40660fa=""
 								href="/kabart/mypage/cart" class="btn solid full buy1 large"
 								style="font-size: 14px; padding: 0; height: 40px;">전체 선택</a>
