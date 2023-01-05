@@ -100,7 +100,7 @@
 											</div>
 											<div data-v-f40660fa="" data-v-77d20f30=""
 												class="detail_stock_btn">
-												<a data-v-6e799857="" data-v-f40660fa="" href="#"
+												<a data-v-6e799857="" data-v-f40660fa="" href="/kabart/order/list?prod_id=${detail.prod_id}"
 													class="btn solid full buy large"> 바로 구매 </a>
 											</div>
 										</div>
@@ -347,7 +347,12 @@
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
 		const mem_id = $("#mem_id").val();
+		if(!mem_id){
+			location.href = "/kabart/login";
+			return ;
+		}
 		  // ajax 
+		
 		  $.ajax({
 		      type : "POST",            // HTTP method type(GET, POST) 형식
 		      url : "/kabart/mypage/cart",      // 컨트롤러에서 대기중인 URL 주소

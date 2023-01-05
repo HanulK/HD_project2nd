@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <html lang="ko">
@@ -25,54 +27,74 @@
 					<div data-v-63d14162="" class="content">
 						<!---->
 						<div data-v-b8efdcc8="" data-v-63d14162="" class="buy_immediate">
-							<div data-v-2b95d831="" data-v-b8efdcc8=""
-								class="product_info_area">
-								<div data-v-2b95d831="" class="product_info">
-									<div data-v-09fbcf09="" data-v-2b95d831="" class="product"
-										style="background-color: rgb(244, 244, 244);">
-
-
-
-
-										<picture data-v-321fc3b6="" data-v-09fbcf09=""
-											class="picture product_img">
-										<source data-v-321fc3b6="" type="image/webp"
-											srcset="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=l_webp">
-										<source data-v-321fc3b6=""
-											srcset="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=l">
-										<img data-v-321fc3b6="" alt="상품 이미지"
-											src="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=l"
-											loading="lazy" class="image"> </picture>
-										<!---->
-										<!---->
-										<!---->
-										<!---->
-
-
-
-									</div>
-
-
-
-									<div data-v-2b95d831="" class="product_detail">
-
-										<strong data-v-2b95d831="" class="model_number"> <!---->MQD83KH/A
-										</strong>
-										<p data-v-2b95d831="" class="model_title">Apple AirPods
-											Pro 2nd Gen (Korean Ver.)</p>
-										<p data-v-2b95d831="" class="model_ko">애플 에어팟 프로 2세대 (국내
-											정식 발매 제품)</p>
-
-										<div data-v-2b95d831="" class="model_desc">
-											<p data-v-2b95d831="" class="size_txt">ONE SIZE</p>
+							<c:forEach items="${products}" var="product">
+								<div data-v-2b95d831="" data-v-b8efdcc8=""
+									class="product_info_area">
+									<div data-v-2b95d831="" class="product_info">
+										<div data-v-09fbcf09="" data-v-2b95d831="" class="product"
+											style="background-color: rgb(244, 244, 244);">
+											<picture data-v-321fc3b6="" data-v-09fbcf09=""
+												class="picture product_img">
+											<source data-v-321fc3b6="" type="image/webp"
+												srcset="${product.img_srcs}">
+											<source data-v-321fc3b6="" srcset="${product.img_srcs}">
+											<img data-v-321fc3b6="" alt="상품 이미지"
+												src="${product.img_srcs}" loading="lazy" class="image">
+											</picture>
 											<!---->
+											<!---->
+											<!---->
+											<!---->
+
+
+
 										</div>
 
+
+
+										<div data-v-2b95d831="" class="product_detail">
+
+											<strong data-v-2b95d831="" class="model_number"> <c:out
+													value="${product.prod_category}"></c:out>
+											</strong>
+											<p data-v-2b95d831="" class="model_title">
+												<c:out value="${product.prod_name }"></c:out>
+												
+											</p>
+											<c:if test="${not empty product.grade}">
+												<p data-v-2b95d831="" class="model_ko">
+													<c:out value="${product.grade}"></c:out>등급
+												</p>
+											</c:if>
+											<div data-v-2b95d831="" class="model_desc">
+												<p data-v-2b95d831="" class="size_txt">
+													수량 :
+													<c:out value="${product.quantity}"></c:out>
+												</p>
+												<c:if test="${empty product.grade}">
+												<p data-v-2b95d831="" class="size_txt prod_price"
+													data-value="${product.prod_price *product.quantity}">
+													<fmt:formatNumber
+														value='${product.prod_price *product.quantity}'></fmt:formatNumber>
+													원
+												</p>
+												</c:if>
+												<c:if test="${not empty product.grade}">
+												<p data-v-2b95d831="" class="size_txt prod_price"
+													data-value="${product.prod_price *(100-product.discount_rate)/100}">
+													<fmt:formatNumber
+														value='${product.prod_price *(100-product.discount_rate)/100}'></fmt:formatNumber>
+													원
+												</p>
+												</c:if>
+												<!---->
+											</div>
+
+										</div>
 									</div>
 								</div>
-							</div>
 
-
+							</c:forEach>
 							<section data-v-e7203b1c="" data-v-b8efdcc8="">
 								<div data-v-e7203b1c="" class="section_unit">
 									<div data-v-e7203b1c="" class="section_title">
@@ -235,13 +257,12 @@
 											</em></span>
 										</div>
 										<div data-v-887ad490="" class="price_bind">
-											<dl data-v-3a2a7b6b="" data-v-887ad490=""
-												class="price_addition is_dark">
+											<dl data-v-3a2a7b6b="" data-v-887ad490="" class="price_addition">
 												<dt data-v-3a2a7b6b="" class="price_title">
 													<span data-v-3a2a7b6b="">원가</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">144,000원</dd>
+												<dd data-v-3a2a7b6b="" id="totalPrice" class="price_text">원</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -249,7 +270,7 @@
 													<span data-v-3a2a7b6b="">할인</span>
 													<!---->
 												</dt>
-												<dd data-v-3a2a7b6b="" class="price_text">-</dd>
+												<dd data-v-3a2a7b6b="" id="sendPrice" class="price_text">-</dd>
 											</dl>
 											<dl data-v-3a2a7b6b="" data-v-887ad490=""
 												class="price_addition">
@@ -283,8 +304,8 @@
 										</em></span>
 									</div>
 									<div data-v-14995178="" class="btn_confirm">
-										<a data-v-575aff82="" data-v-14995178="" disabled="disabled"
-											href="#" class="btn full solid false disabled"> 결제하기 </a>
+										<a data-v-575aff82="" data-v-14995178="" 
+											href="#" class="btn full solid false"> 결제하기 </a>
 									</div>
 								</div>
 							</section>
@@ -352,7 +373,27 @@
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script type="text/javascript">
+		$(document).ready(function() {
+			var totalSum = 0;
+
+			$(".prod_price").each(function() {
+				totalSum += $(this).data('value');
+			});
+			totalSum = parseInt(totalSum,10);
+			$(".amount").text(totalSum.toLocaleString('ko-KR'));
+			$("#totalPrice").html(totalSum.toLocaleString('ko-KR')+'원')
+			if(${isUsed}==1){
+				var discount = ${products[0].prod_price}-totalSum;
+				var realcount = ${products[0].prod_price};
+				console.log(discount);
+				$("#sendPrice").html(discount.toLocaleString('ko-KR')+'원');
+				$("#totalPrice").html(realcount.toLocaleString('ko-KR')+'원');
+				
+			}
+			
+		})
 		$(function() {
+
 			var mem_id = $("#mem_id").val();
 			console.log(mem_id);
 			var csrfHeaderName = "${_csrf.headerName}";
