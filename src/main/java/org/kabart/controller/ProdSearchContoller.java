@@ -16,7 +16,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @RequestMapping("/kabart/product")
 public class ProdSearchContoller {
-	//정훈
+	//정훈 http://localhost/kabart/product/prod_search_n
 	
 	@Setter(onMethod_= {@Autowired} )
 	private ProdSearchService Service;
@@ -28,12 +28,15 @@ public class ProdSearchContoller {
 		List<ProductListVO> list = Service.searchProd(cri);
 		model.addAttribute("products",list);
 
-		
+		//ex count(38) 이 날라옴 
 		int total = Service.getTotal(cri);
-		model.addAttribute("total", total);
 		
+	
+		model.addAttribute("total", total);
+		log.info("total : " + total);
 //		int pageMaker = Service.getTotal(cri);
 //		model.addAttribute("pageMaker", new PageDTO(cri, totalcount));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	@GetMapping("/search_list")
@@ -45,6 +48,11 @@ public class ProdSearchContoller {
 	public void getSearchpage() {
 		
 	}
+	
+//	@GetMapping("/prod_search_n")
+//	public void prod_search() {
+//		
+//	}
 //	@GetMapping("/search_complete_list")
 //	public void list(Model model) {
 //	log.info("list:" +cri);
