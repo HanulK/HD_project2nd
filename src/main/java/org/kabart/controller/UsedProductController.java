@@ -1,6 +1,7 @@
 package org.kabart.controller;
 
 import java.io.*;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -8,15 +9,19 @@ import java.util.*;
 import org.kabart.domain.*;
 import org.kabart.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import net.coobird.thumbnailator.Thumbnailator;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/kabart/usedProduct")
@@ -82,7 +87,11 @@ public class UsedProductController {
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/used_prod_sell")
 	public String used_prod_sell_insert(UsedSellVO usedSellVO, RedirectAttributes rttr) {
-
+		
+		if (usedSellVO.getAttachList() != null) {
+			usedSellVO.getAttachList().forEach(attach -> System.out.println(attach));
+		}
+		
 		usedSellService.registerUsedProduct(usedSellVO);
 		rttr.addFlashAttribute("result", usedSellVO.getUp_id());
 
@@ -112,12 +121,14 @@ public class UsedProductController {
 	}
 
 	@ResponseBody
-	@PostMapping("/uploadAjaxAction")
-	public void uploadAjaxPost(MultipartFile[] uploadFile) {
+	@PostMapping(value="/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<AttachVO>> uploadAjaxPost(MultipartFile[] uploadFile) {
 
+		List<AttachVO> list = new ArrayList<>();
 		String uploadFolder = "C:\\dev64\\workspace-sts\\HD_project2nd\\usedImgs";
-
-		File uploadPath = new File(uploadFolder, getFolder());
+		String uploadFolderPath = getFolder();
+		
+		File uploadPath = new File(uploadFolder, uploadFolderPath);
 
 		if (uploadPath.exists() == false) {
 			uploadPath.mkdirs();
@@ -125,21 +136,87 @@ public class UsedProductController {
 
 		for (MultipartFile multipartFile : uploadFile) {
 
+			AttachVO attachVO = new AttachVO();
+			
 			String uploadFileName = multipartFile.getOriginalFilename();
+			
+			attachVO.setFileName(uploadFileName);
 
 			UUID uuid = UUID.randomUUID();
 			
 			uploadFileName = uuid.toString() + "_" + uploadFileName;
 			
-			File saveFile = new File(uploadPath, uploadFileName);
 
 			try {
+				File saveFile = new File(uploadPath, uploadFileName);
 				multipartFile.transferTo(saveFile);
+				
+				attachVO.setFile_uuid(uuid.toString());
+				attachVO.setUploadPath(uploadFolderPath);
+				
+				if (checkImageType(saveFile)) {
+					
+					attachVO.setFileType(true);
+					
+					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
+					
+					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
+					thumbnail.close();
+				}
+				
+				list.add(attachVO);
+				
 			} catch (Exception e) {
 				log.error(e.getMessage());
 			}
 		}
+		return new ResponseEntity<>(list, HttpStatus.OK);
 
+	}
+	
+	@PostMapping("/deleteFile")
+	@ResponseBody
+	public ResponseEntity<String> deleteFile(String fileName, String type) {
+		
+		File file;
+		
+		try {
+			file = new File("C:\\dev64\\workspace-sts\\HD_project2nd\\usedImgs\\" + URLDecoder.decode(fileName, "UTF-8"));
+			
+			file.delete();
+			
+			if (type.equals("image")) {
+				String largeFileName = file.getAbsolutePath().replace("s_", "");
+				
+				file = new File(largeFileName);
+				
+				file.delete();
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<String>("deleted", HttpStatus.OK);
+	}
+	
+	@GetMapping("/display")
+	@ResponseBody
+	public ResponseEntity<byte[]> getFile(String fileName) {
+		
+		File file = new File("C:\\dev64\\workspace-sts\\HD_project2nd\\usedImgs\\" + fileName);
+		
+		ResponseEntity<byte[]> result = null;
+		
+		try {
+			
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Type", Files.probeContentType(file.toPath()));
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), headers, HttpStatus.OK);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	private String getFolder() {
@@ -159,6 +236,7 @@ public class UsedProductController {
 			String contentType = Files.probeContentType(file.toPath());
 			
 			return contentType.startsWith("image");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
