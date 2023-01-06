@@ -134,10 +134,7 @@
 										href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-page-prev"
 										xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-page-prev"></use></svg></a>
 						</div>
-						<div data-v-4857d0b8="" class="page_bind">
-							<a data-v-4857d0b8="" href="https://kream.co.kr/my/selling#"
-								class="btn_page active"> 1 </a>
-						</div>
+						
 						<div data-v-4857d0b8="" class="next_btn_box">
 							<a data-v-4857d0b8="" href="https://kream.co.kr/my/selling#"
 								class="btn_arr"><svg data-v-4857d0b8=""

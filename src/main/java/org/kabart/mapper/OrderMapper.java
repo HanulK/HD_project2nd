@@ -17,5 +17,7 @@ public interface OrderMapper {
 	public int insertOrders(@Param("mem_id") String mem_id, @Param("prod_id") String prod_id,
 			@Param("quantity") String quantity, @Param("isUsed") String isUsed,
 			@Param("review_check") String review_check);
+	
+	public int updateUsed(@Param("up_id") String up_id, @Param("p_id")String p_id);
 
 }
