@@ -153,10 +153,10 @@ public class MemberServiceImpl implements MemberService {
 			msg += "<h3 style='font-size: 13px; letter-spacing: -.07px; line-height: 18px;'>임시 비밀번호</h3>";
 			msg += "<p style='padding: 8px 0; width: 100%; font-size: 15px; letter-spacing: -.15px; line-height: 22px; border-bottom: 1px solid #ebebeb;'>";
 			msg += tmp_pw + "</p></div>";
-			msg += "<div style='padding-top: 44px; margin: 0; padding: 0;'>";
+			msg += "<div style='padding-top: 44px; margin: 0; padding: 0; text-align: center;'>";
 			msg += "<a href='http://localhost/kabart/login'";
-			msg += "style='align-items: center; justify-content: center; font-weight: 700; color: #fff; background-color: #222; width: 100%; font-size: 16px; letter-spacing: -.16px; ";
-			msg += " cursor: pointer; height: 52px; border-radius: 12px; display: inline-flex;'>";
+			msg += "style='font-weight: 700; color: #fff; background-color: #222; width: 100%; font-size: 16px; letter-spacing: -.16px; ";
+			msg += " cursor: pointer; height: 52px; line-height: 52px; border-radius: 12px; display: block; text-decoration: none;'>";
 			msg += " 로그인 </a></div></div></div>";
 		}
 
