@@ -1,218 +1,62 @@
-.section {
-	margin-top: 68px;
-}
-
-.section input[id*="slide"] {
-	display: none;
-}
-
-.section .slidewrap {
-	max-width: 1920px;
-	margin: 0 auto;
-}
-
-.section .slidelist {
-	white-space: nowrap;
-	font-size: 0;
-	overflow: hidden;
-	position: relative;
-	padding-left: 0px;
-}
-
-.section .slidelist>li {
-	display: inline-block;
-	vertical-align: middle;
-	width: 100%;
-	transition: all .5s;
-}
-
-.section .slidelist>li>a {
-	display: block;
-	position: relative;
-}
-
-.section .slidelist>li>a img {
-	width: 100%;
-}
-
-.section .slidelist label {
-	position: absolute;
-	z-index: 10;
-	top: 50%;
-	transform: translateY(-50%);
-	padding: 50px;
-	cursor: pointer;
-	opacity: 0.3;
-}
-
-/* input에 체크되면 슬라이드 효과 */
-.section input[id="slide01"]:checked ~ .slidewrap .slidelist>li {
-	transform: translateX(0%);
-}
-
-.section input[id="slide02"]:checked ~ .slidewrap .slidelist>li {
-	transform: translateX(-100%);
-}
-
-.section input[id="slide03"]:checked ~ .slidewrap .slidelist>li {
-	transform: translateX(-200%);
-}
-
-
-/* 좌,우 슬라이드 버튼 */
-.slide-control>div {
-	display: none;
-}
-
-.section .left {
-	left: 30px;
-	background: url('/resources/img/left.png') center center/100% no-repeat;
-}
-
-.section .right {
-	right: 30px;
-	background: url('/resources/img/right.png') center center/100% no-repeat;
-}
-
-.section input[id="slide01"]:checked ~ .slidewrap .slide-control>div:nth-child(1)
-	{
-	display: block;
-}
-
-.section input[id="slide02"]:checked ~ .slidewrap .slide-control>div:nth-child(2)
-	{
-	display: block;
-}
-
-.section input[id="slide03"]:checked ~ .slidewrap .slide-control>div:nth-child(3)
-	{
-	display: block;
-}
-
-/* 페이징 */
-.slide-pagelist {
-	text-align: center;
-    padding-top: 15px;
-}
-
-.slide-pagelist>li {
-	display: inline-block;
-	vertical-align: middle;
-}
-
-.slide-pagelist>li>label {
-	display: block;
-    padding: 8px 8px;
-    border-radius: 30px;
-    background: #ccc;
-    margin: 10px 10px;
-    cursor: pointer;
-}
-
-.section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist>li:nth-child(1)>label
-	{
-	background: #999;
-}
-
-.section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist>li:nth-child(2)>label
-	{
-	background: #999;
-}
-
-.section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist>li:nth-child(3)>label
-	{
-	background: #999;
-}
-
-/* .sub_title {
-    font-family: "GillSansWGL","NotoSansCJKkr",sans-serif;
-    margin-top: 25px;
-    font-size: 60px;
-    font-weight: bold;
-}
-
-.banner{
-	z-index: 1000;
-	margin: auto;
-    width: 1820px;
-    height: 900px;
-    margin-bottom: 20px;
-}
-.container{
-    margin: 0 auto;
-    width: 1820px;
-    height: 900px;
-    overflow: hidden;
-}
-.img_wrap{
-    width: 1820px;
-    height: 900px;
-    position: absolute;
-    overflow: hidden;
-}
-
-.rollimgs {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.rollimgs li{
-    position: absolute;
-    width: 1820px;
-    height: 900px;
-    left: 1820px;
-}
-.rollimgs li img{
-    width: 1820px;
-    height: 900px;
-}
-.rollimgs li.currentroll{
-    left: 0;
-    transition: left .5s ease-in-out, right .5s ease-in-out;
-}
-.rollimgs li.prevroll{
-    left: -1820px;
-    transition: left .5s ease-in-out, right .5s ease-in-out;
-}
-.rollimgs.reverse li.prevroll{
-    transition: none;
-}
-.rollimgs li.nextroll{
-    left: 1820px;
-    display: block;
-    transition: none;
-}
-.rollimgs.reverse li.nextroll{
-    transition: left .5s ease-in-out, right .5s ease-in-out;
-}
 
 h3.sub_title {
 	position: absolute;
-    top: 47%;
-    left: 36%;
+    top: 44%;
+    left: 30%;
     height: 100%;
     font-size: 70px;
     font-weight: bold;
     color: white;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 h2.sub_text {
 	position: absolute;
-    top: 43%;
+    top: 39%;
     left: 36%;
     height: 100%;
     font-size: 40px;
     font-weight: bold;
     color: white;
     letter-spacing: 1px;
+    text-align: center;
 }
 
-img.image {
-    transition: all 0.2s linear;
+.swiper {
+    margin-top: 68px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
 }
 
-.shorcut_item_img_wrap:hover img.image {
-    transform: scale(1.4);
+.swiper-button-prev {
+    color: black;
+    opacity: 0.3;
+    font-weight: 900;
+    margin-left: 40px;
+    padding-bottom: 68px;
+}
+
+.swiper-button-next {
+    color: black;
+    opacity: 0.3;
+    font-weight: 900;
+    margin-right: 40px;
+    padding-bottom: 68px;
+}
+
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: black;
+}
+span.swiper-pagination-bullet {
+    background-color: gray;
+}
+
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+    top: 90.2%;
 }

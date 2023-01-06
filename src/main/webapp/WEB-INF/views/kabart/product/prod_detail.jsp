@@ -334,6 +334,7 @@
 								<!-- 상세정보 fin -->
 								<!-- 후기 -->
 								<!-- 연령대 / 가구 분석 -->
+								<c:if test="${not empty family}">
 								<div class="graph_area">
 									<div class="graph_bar_wrap">
 										<p class="graph_category">가구원</p>
@@ -512,6 +513,7 @@
 										</div>
 									</div>
 								</div>
+								</c:if>
 								<div class="item__review">
 									<c:if test="${empty review}">
 										<ul data-v-4faab390="" class="wish_list">

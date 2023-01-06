@@ -45,7 +45,7 @@
 											<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/010.png" class="image">
 											</picture>
 										</div>
-										<p class="shortcut_item_title">USED PRODUCTS</p>
+										<!-- <p class="shortcut_item_title">USED PRODUCTS</p> -->
 									</a>
 									</div>
 									<div class="shortcut_item">
@@ -54,7 +54,7 @@
 												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/002.png" class="image">
 												</picture>
 											</div>
-											<p class="shortcut_item_title">BED</p>
+											<!-- <p class="shortcut_item_title">BED</p> -->
 										</a>
 									</div>
 									<div class="shortcut_item">
@@ -63,7 +63,7 @@
 												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/001.png" class="image">
 												</picture>
 											</div>
-											<p class="shortcut_item_title">SOFA</p>
+											<!-- <p class="shortcut_item_title">SOFA</p> -->
 										</a>
 									</div>
 									<div class="shortcut_item">
@@ -72,7 +72,7 @@
 												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/004.png" class="image">
 												</picture>
 											</div>
-											<p class="shortcut_item_title">TABLE</p>
+											<!-- <p class="shortcut_item_title">TABLE</p> -->
 										</a>
 									</div>
 									<div class="shortcut_item">
@@ -81,7 +81,7 @@
 												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/005.png" class="image">
 												</picture>
 											</div>
-											<p class="shortcut_item_title">CHAIR</p>
+											<!-- <p class="shortcut_item_title">CHAIR</p> -->
 										</a>
 									</div>
 									<div class="shortcut_item">
@@ -90,7 +90,7 @@
 												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/006.png" class="image">
 												</picture>
 											</div>
-											<p class="shortcut_item_title">CLOSET</p>
+											<!-- <p class="shortcut_item_title">CLOSET</p> -->
 										</a>
 									</div>
 									<div class="shortcut_item">
@@ -99,7 +99,7 @@
 												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/007.png" class="image">
 												</picture>
 											</div>
-											<p class="shortcut_item_title">DRAWERS</p>
+											<!-- <p class="shortcut_item_title">DRAWERS</p> -->
 										</a>
 									</div>
 									<div class="shortcut_item">
@@ -108,7 +108,7 @@
 												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/003.png" class="image">
 												</picture>
 											</div>
-											<p class="shortcut_item_title">DESK</p>
+											<!-- <p class="shortcut_item_title">DESK</p> -->
 										</a>
 									</div>
 									<div class="shortcut_item">
@@ -117,7 +117,7 @@
 												<picture class="picture shortcut_item_img_bg"> <img src="/resources/img/008.png" class="image">
 												</picture>
 											</div>
-											<p class="shortcut_item_title">HOME INTERIOR</p>
+											<!-- <p class="shortcut_item_title">HOME INTERIOR</p> -->
 										</a>
 									</div>
 									<div class="shortcut_item">
@@ -127,7 +127,7 @@
 														class="image">
 												</picture>
 											</div>
-											<p class="shortcut_item_title">ALL</p>
+											<!-- <p class="shortcut_item_title">ALL</p> -->
 										</a>
 									</div>
 								</div>

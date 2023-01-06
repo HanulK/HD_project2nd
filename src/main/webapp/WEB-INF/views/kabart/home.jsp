@@ -14,13 +14,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Home</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
 <body>
 	<jsp:include page="includes/header.jsp"></jsp:include>
+	
 	<div class="home lg">
 		<div class="home_card_list">
 			<jsp:include page="includes/banner.jsp"></jsp:include>
-
+			<div class="pagedown">
+				<img class="downbtn" src="/resources/img/down.png">
+			</div>
 			<!-- shorcut collection -->
 			<div container-index="1" class="shortcut_collection">
 				<!---->
@@ -165,7 +173,9 @@
 									<div class="price price_area" data-v-ef71e3ac=""
 										data-v-7dab533a="">
 										<p class="amount" data-v-ef71e3ac="">
-										<fmt:formatNumber value="${best.prod_price}" pattern="#,###" />원</p>
+											<fmt:formatNumber value="${best.prod_price}" pattern="#,###" />
+											원
+										</p>
 									</div></a>
 							</div>
 						</c:forEach>
