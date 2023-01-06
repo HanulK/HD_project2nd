@@ -67,8 +67,8 @@
 								<div data-v-7601c3d6="" data-v-2f436c59="" buy-type="buy">
 									<ul data-v-857b4926="" data-v-7601c3d6="" class="check_list lg"></ul>
 									<div data-v-7601c3d6="" class="btn_confirm lg">
-										<a data-v-6e799857="" data-v-7601c3d6="" disabled="disabled"
-											href="#" class="btn full solid disabled"> 주문내역 확인 </a>
+										<a data-v-6e799857="" data-v-7601c3d6=""
+											href="#" class="btn full solid"> 주문내역 확인 </a>
 									</div>
 									<!---->
 								</div>
