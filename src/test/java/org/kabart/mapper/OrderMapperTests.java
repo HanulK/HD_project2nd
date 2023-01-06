@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kabart.domain.UpdateOrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -44,5 +45,12 @@ public class OrderMapperTests {
 	@Test
 	public void insertProduct() {
 		oMapper.insertOrders("dodo", "45189", "3", "0", "0");
+	}
+	
+	@Test
+	public void updateReview() {
+		UpdateOrderVO uVO = new UpdateOrderVO(50, "dodo", 60088);
+		oMapper.orderCancle(uVO);
+		/* oMapper.orderCancle(uVO); */
 	}
 }

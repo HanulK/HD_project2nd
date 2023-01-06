@@ -6,8 +6,8 @@
 
 	<insert id="insert">
 		
-		insert into reviews (order_id, mem_id, prod_id, rv_text, rv_date)
-		values (#{order_id}, #{mem_id}, #{prod_id}, #{rv_text}, #{rv_date})
+		insert into reviews (order_id, mem_id, rv_text, rv_date,prod_id)
+		values (#{vo.order_id}, #{vo.mem_id}, #{vo.rv_text}, sysdate,#{vo.prod_id})
 		
 	</insert>
 	

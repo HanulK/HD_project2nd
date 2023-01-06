@@ -52,6 +52,22 @@
 			purchase_id = #{p_id}
 		WHERE up_id = #{up_id}
 	</update>
+	
+	<update id="reviewCheck">
+		UPDATE order_details
+		SET review_check = 1
+		WHERE order_id = #{uVO.order_id} and
+			  mem_id = #{uVO.mem_id} and
+			  prod_id = #{uVO.prod_id}
+	</update>
+	
+	<update id="orderCancle">
+		UPDATE order_details
+		SET cancel_date = sysdate
+		WHERE order_id = #{uVO.order_id} and
+			  mem_id = #{uVO.mem_id} and
+			  prod_id = #{uVO.prod_id}
+	</update>
 
 
 

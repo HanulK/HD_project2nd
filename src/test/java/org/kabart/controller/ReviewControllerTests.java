@@ -6,6 +6,7 @@ import java.util.*;
 
 import org.junit.*;
 import org.junit.runner.RunWith;
+import org.kabart.domain.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -27,7 +28,8 @@ import lombok.extern.log4j.Log4j;
 		"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 @Log4j
-public class CartsControllerTests {
+public class ReviewControllerTests {
+	
 	@Setter(onMethod_ = {@Autowired})
 	private WebApplicationContext ctx;
 	
@@ -37,61 +39,45 @@ public class CartsControllerTests {
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
+	
+	
 	@Test
 	public void testInsertorUpdate() throws Exception {
 		Map<String, Object> map = new HashMap<>();
+		map.put("order_id", 48);
+		map.put("prod_id", 171130);
 		map.put("mem_id", "dodo");
-		map.put("prod_id", 181266);
-		map.put("quantity", 1);
-		String jsonStr = new Gson().toJson(map);
+		map.put("rv_text", "dodo");
+
+		ReviewVO rVO = new ReviewVO(48,"dodo","hh","",171130);
+		String jsonStr = new Gson().toJson(rVO);
 		log.info(jsonStr);
-		mockMvc.perform(MockMvcRequestBuilders.post("/kabart/mypage/cart")
+		mockMvc.perform(MockMvcRequestBuilders.post("/review/ppppp")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(jsonStr))
 				.andExpect(status().is(200));
 	}
 	
+	
 	@Test
-	public void testGetCarts() throws Exception {
+	public void getReview() throws Exception {
 		Map<String, Object> map = new HashMap<>();
-		map.put("mem_id", "tori");
-		String jsonStr = new Gson().toJson(map);
+		int order_id = 48;
+		String mem_id = "dodo";
+		String rv_text = "테슷흐";
+		String rv_date = "";
+		int prod_id = 171130;
+		
+		ReviewVO rVO = new ReviewVO(order_id,mem_id,rv_text,rv_date,prod_id);
+		map.put("rVO", rVO);
+		String jsonStr = new Gson().toJson(rVO);
 		log.info(jsonStr);
-		mockMvc.perform(MockMvcRequestBuilders.post("/kabart/mypage/cartlist")
+		mockMvc.perform(MockMvcRequestBuilders.get("/review/get?prod_id=42431")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(jsonStr))
 				.andExpect(status().is(200));
 	}
 	
-	@Test
-	public void testRemove() throws Exception {
-		Map<String,Object> map = new HashMap<>();
-		List<Integer> id  = new ArrayList<>();
-		id.add(79909);
-		id.add(77747);
-		id.add(181266);
-		map.put("mem_id", "tori");
-		map.put("prod_id", id);
-		String jsonStr = new Gson().toJson(map);
-		log.info(jsonStr);
-		mockMvc.perform(MockMvcRequestBuilders.get("/kabart/mypage/removeCarts?mem_id=tori")
-				.contentType(MediaType.APPLICATION_JSON_VALUE)
-				.content(jsonStr))
-				.andExpect(status().is(200));
-	}
 	
-	@Test
-	public void testUpdate() throws Exception {
-		Map<String, Object> map = new HashMap<>();
-		map.put("mem_id", "dodo");
-		map.put("prod_id", 60088);
-		map.put("quantity", 1);
-		String jsonStr = new Gson().toJson(map);
-		log.info(jsonStr);
-		mockMvc.perform(MockMvcRequestBuilders.post("/kabart/mypage/update")
-				.contentType(MediaType.APPLICATION_JSON_VALUE)
-				.content(jsonStr))
-				.andExpect(status().is(200));
-	}
 	
 }

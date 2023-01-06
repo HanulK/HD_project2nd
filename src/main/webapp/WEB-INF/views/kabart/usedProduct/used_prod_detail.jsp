@@ -241,7 +241,7 @@
 											<div data-v-97275b18="" data-v-2e0c1d1d=""
 												class="review_item">
 												<p data-v-97275b18="" class="review_date">등록일
-													${read.up_regdate}</p>
+													  <fmt:formatDate value="${read.up_regdate}"/></p>
 											</div>
 											<!---->
 										</div>

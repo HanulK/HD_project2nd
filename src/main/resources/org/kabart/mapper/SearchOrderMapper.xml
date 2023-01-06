@@ -17,7 +17,7 @@
 	<select id="getSearchUsedList"
 		resultType="org.kabart.domain.SearchOrderUsedVO">
  		<![CDATA[
- 			SELECT pd.prod_name, pd.prod_price, up.grade,gd.discount_rate,up.up_regdate,up.sale_date, im.img_srcs 
+ 			SELECT pd.prod_name, pd.prod_price, up.grade,gd.discount_rate,up.up_regdate,up.sale_date, im.img_srcs, up.up_id
 			FROM products pd JOIN used_products up on pd.prod_id = up.prod_id JOIN grades gd on up.grade = gd.grade JOIN imgs im on pd.prod_id = im.prod_id
 			WHERE im.img_tag = 'thumNail' AND  
 			up.purchase_id = #{user_id} AND 
