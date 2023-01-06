@@ -20,17 +20,32 @@ public class UsedSellServiceImpl implements UsedSellService {
 	@Setter(onMethod_ = @Autowired)
 	private AttachMapper attachMapper;
 	
+	@Transactional
 	@Override
 	public boolean modifyUsedProduct(UsedSellVO usedSell) {
 		
 		log.info("modify,,,,,,,,," + usedSell);
-		return usedSellMapper.updateUsedProduct(usedSell) == 1;
+		
+		attachMapper.deleteAll(usedSell.getUp_id());
+		
+		boolean modifyResult = usedSellMapper.updateUsedProduct(usedSell) == 1;
+		
+		if (modifyResult && usedSell.getAttachList() != null && usedSell.getAttachList().size() > 0) {
+			usedSell.getAttachList().forEach(attach -> {
+				
+				attach.setUp_id(usedSell.getUp_id());
+				attachMapper.insert(attach);
+			});
+		}
+		return modifyResult;
 	}
-
+	
+	@Transactional
 	@Override
 	public boolean removeUsedProduct(int up_id) {
 		
 		log.info("remove ,,,,,,," + up_id);
+		attachMapper.deleteAll(up_id);
 		return usedSellMapper.deleteUsedProduct(up_id) == 1;
 	}
 	
