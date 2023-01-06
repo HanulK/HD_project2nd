@@ -181,7 +181,7 @@
 												<div class="price price_area" data-v-ef71e3ac="" data-v-7dab533a="">
 													<p class="amount" data-v-ef71e3ac="">
 														<!---->
-														<fmt:formatNumber value="${products.prod_price}" pattern="#,###" />
+														<fmt:formatNumber value="${products.prod_price}" pattern="#,###" />원
 													</p>
 												</div>
 												</a>

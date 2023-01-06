@@ -480,13 +480,13 @@ div#map {
 }
 
 .shop_name {
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: 700;
 	line-height: 1.8;
 }
 
 span.shop_address {
-	font-size: 15px;
+	font-size: 14px;
 	color: gray;
 }
 
@@ -671,3 +671,29 @@ span.shop_address {
     width: 475px;
     margin-right: 100px;
 }
+
+::-webkit-scrollbar {
+					/* 스크롤바 전체 영역 */
+  width: 5px;
+  height: 5px;
+} 
+::-webkit-scrollbar-track {
+					/* 스크롤이 움직이는 영역  */
+      background-color: #f0f0f0;
+      border-radius: 30px;
+} 
+::-webkit-scrollbar-thumb {
+					/*  스크롤  */
+      background-color: #787878; 
+  border-radius:30px;
+} 
+::-webkit-scrollbar-button:start:decrement, 
+::-webkit-scrollbar-button:end:increment {
+					/*  스크롤의 화살표가 포함된 영역   */
+  display:block;
+  height:2px;
+} 
+::-webkit-scrollbar-corner {
+					/*  상하+좌우 스크롤이 만나는 공간   */
+      background-color: white;
+} 
