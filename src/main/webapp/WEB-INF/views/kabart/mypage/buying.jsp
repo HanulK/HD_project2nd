@@ -134,10 +134,7 @@
 													href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-page-prev"
 													xlink:href="/_nuxt/3182c3b1ca2f77da7bc3e1acf109306c.svg#i-arr-page-prev"></use></svg></a>
 									</div>
-									<div data-v-4857d0b8="" class="page_bind">
-										<a data-v-4857d0b8="" href="https://kream.co.kr/my/buying#"
-											class="btn_page active"> 1 </a>
-									</div>
+									
 									<div data-v-4857d0b8="" class="next_btn_box">
 										<a data-v-4857d0b8="" href="https://kream.co.kr/my/buying#"
 											class="btn_arr"><svg data-v-4857d0b8=""
@@ -169,8 +166,14 @@
 			var isUsed = 0;
 			const mem_id = $("#mem_id").val();
 			console.log(mem_id);
-			$('#dateEnd').val(new Date().toISOString().slice(0, 7));
-			$('#dateStart').val(new Date().toISOString().slice(0, 7));
+			const today = new Date().toISOString().slice(0, 10);
+			$('#dateEnd').val(today);
+			$('#dateStart').val(today);
+			
+			
+			
+			$('#dateStart').attr("max",today);
+			$('#dateEnd').attr("max",today);
 			function date_add(sDate, nDays) {
 				var yy = parseInt(sDate.substr(0, 4), 10);
 				var mm = parseInt(sDate.substr(5, 2), 10);
@@ -210,6 +213,7 @@
 										console.log(result[i].imgs_src);
 										var d_val = result[i].cancle_date;
 										var status = '주문취소';
+										var datestatus = "주문날짜";
 										if (!result[i].cancle_date) {
 											status = '주문완료';
 										}
@@ -223,6 +227,8 @@
 												+ price
 												+ "</p>"
 												+ "</div></div><div data-v-2f988574='' class='list_item_status'><div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
+												+ datestatus
+												+"<div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
 												+ result[i].order_date
 												+ "</p></div>"
 												+ "<div data-v-2f988574='' class='list_item_column column_last'><p data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"
@@ -272,7 +278,7 @@
 												.toLocaleString('ko-KR');
 										console.log(result[i].imgs_src);
 										var status = '구매확정';
-
+										var datestatus = '주문날짜';
 										row += "<div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
 												+ "<div data-v-2f988574='' class='purchase_list_product'><div data-v-2f988574='' class='list_item_img_wrap'><img data-v-2f988574='' alt='product_image' src='"
 												+ result[i].img_srcs
@@ -285,6 +291,8 @@
 												+ result[i].grade
 												+ "등급</p>"
 												+ "</div></div><div data-v-2f988574='' class='list_item_status'><div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
+												+ datestatus
+												+"</p></div><div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
 												+ result[i].sale_date
 												+ "</p></div>"
 												+ "<div data-v-2f988574='' class='list_item_column column_last'><p data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"

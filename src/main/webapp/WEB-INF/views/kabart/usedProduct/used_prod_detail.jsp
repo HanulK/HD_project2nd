@@ -127,9 +127,7 @@
 													<div data-v-f40660fa="" data-v-77d20f30=""
 														class="detail_stock_btn">
 														<a data-v-6e799857="" data-v-f40660fa=""
-															href="/kabart/order/list?prod_id=<c:out value="
-                                                         ${detail.prod_id}" />&up_id=
-                                                      <c:out value="${detail.up_id}" />"
+															href="/kabart/order/list?prod_id=<c:out value="${read.prod_id}"/>&up_id=<c:out value="${read.up_id}"/>"
 															class="btn solid full buy large"> 바로 구매 </a>
 
 													</div>

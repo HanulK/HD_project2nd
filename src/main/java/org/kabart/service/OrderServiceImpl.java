@@ -46,11 +46,14 @@ public class OrderServiceImpl implements OrderService{
 		int result = 0;
 		List<OrderVO> oVO = new ArrayList<>();
 		String review_check ="0";
-		if(isUsed.equals("1")) {
+		if(!isUsed.equals("0")) {
 			review_check = "1";
+			oMapper.updateUsed(isUsed, mem_id);
+			log.warn("중고상품이십니당");
 		}
 		for(int i = 0 ;i<prod_id.size();i++) {
 			result += oMapper.insertOrders(mem_id, prod_id.get(i), quantity.get(i), isUsed, review_check);
+			log.warn("넣어봅시당");
 			cMapper.removeCart(mem_id, Integer.parseInt(prod_id.get(i)));
 		}
 		
