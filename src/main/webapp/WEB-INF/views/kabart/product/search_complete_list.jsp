@@ -101,7 +101,6 @@
 							data-v-81b68464="" data-v-4f87b95c="">
 
 
-
 							<!-- 단일 상품 -->
 							<c:forEach items="${products}" var="pro">
 								<div class="product_card exhibition_product" data-v-19fda891=""
@@ -136,41 +135,67 @@
 								</div>
 							</c:forEach>
 							
-							
-							<!-- 단잉 상품 삽입 -->
+							<!-- 상품 -->
 						</div>
 					</div>
 
 
 
-					<!-- 하단 -->
-					<div class="pull-right">
-						<ul id="min" class="pagination"
-							style="display: flex; justify-content: center;">
+					<!-- 페이징 시작 -->
+					
+					<div class='pull-right'>
+									<ul id="footnum" class="pagination" style="display: flex; justify-content:center;">
+									
+									
+										<c:if test="${pageMaker.prev}">
+											<li class="paginate_button previous">
+												<a href="${pageMaker.startPage - 1 } ">
+												이전페이지
+												</a>
+											</li>
+										</c:if>
 
-							<li class="paginate_button  active" style="margin: 0 5px;"><a
-								href="1">1</a></li>
 
-							<li class="paginate_button " style="margin: 0 5px;"><a
-								href="2">2</a></li>
+										<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+											<li class="paginate_button ${pageMaker.cri.pageNum == num ? " active" : "" }"
+												style="margin: 0 5px;">
+												<a href="${num}">${num}
+												</a>
+											</li>
+										</c:forEach>
 
-							<li class="paginate_button " style="margin: 0 5px;"><a
-								href="3">3</a></li>
 
-							<li class="paginate_button " style="margin: 0 5px;"><a
-								href="4">4</a></li>
-
-						</ul>
-					</div>
-					<!-- 페이징 처리 끝-->
-					<div class="soo">
+										<c:if test="${pageMaker.next}">
+											<li class="paginate_button next">
+												<a href="${pageMaker.endPage + 1}">
+												다음페이지
+												</a>
+											</li>
+										</c:if>
+										
+										
+										
+									</ul>
+								</div>
+					
+					
+					
+					<div class="footnumber">
 						<form id="actionForm" action="/kabart/product/prod_sarch_n"
 							method="get">
-							<input type="hidden" name="prod_category" value="bed"> <input
-								type="hidden" name="pageNum" value="1"> <input
-								type="hidden" name="amount" value="8">
+							<input type="hidden" name="prod_category" value="bed"> 
+							<inputtype="hidden" name="pageNum" value="1"> 
+							<input type="hidden" name="amount" value="8">
 						</form>
-					</div>
+					</div> 
+					
+					
+					<div class="actionFromdiv">
+					
+									<form id='actionForm' action='/kabart/product/search_complete_list' method="get">
+										<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+										<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+									</form>
 					<!-- /상품 그루핑 -->
 
 					<!-- <form id='searchForm' action="/kabart/product/prod_list" method='get'> -->
@@ -180,7 +205,18 @@
 			</div>
 		</div>
 	</div>
-
+	
+<script type="text/javascript">
+					$(document).ready(function () {
+						let actionForm = $("#actionForm");
+						$(".paginate_button a").on("click", function (e) {
+							e.preventDefault();
+							console.log('click');
+							actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+							actionForm.submit();
+						});
+					});
+				</script>
 </body>
 
 </html>

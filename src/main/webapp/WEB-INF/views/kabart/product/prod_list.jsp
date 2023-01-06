@@ -221,12 +221,13 @@
 										<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 									</form>
 								</div>
-								<!-- /상품 그루핑 -->
+								<!-- 상품 그루핑 -->
 								
 								
 								
 								
 							<!-- <form id='searchForm' action="/kabart/product/prod_list" method='get'> -->
+							
 								<!-- 정훈추가 -->
 								<form id='searchForm' action="/kabart/product/search_complete_list" method='get'
 								>

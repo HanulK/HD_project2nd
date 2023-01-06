@@ -28,12 +28,15 @@ public class ProdSearchContoller {
 		List<ProductListVO> list = Service.searchProd(cri);
 		model.addAttribute("products",list);
 
-		
+		//ex count(38) 이 날라옴 
 		int total = Service.getTotal(cri);
-		model.addAttribute("total", total);
 		
+	
+		model.addAttribute("total", total);
+		log.info("total : " + total);
 //		int pageMaker = Service.getTotal(cri);
 //		model.addAttribute("pageMaker", new PageDTO(cri, totalcount));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	@GetMapping("/search_list")

@@ -3,68 +3,72 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 정훈 -->
+   <!--  정훈 -->
 <mapper namespace="org.kabart.mapper.ProdSearchMapper">
 
-	<sql id="criteria">
-		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+   
 
-			<foreach item='type' collection="typeArr">
-				<trim prefix="OR">
-					<choose>
-						<when test="type == 'T'.toString()">
-							prod_name like '%'||#{keyword}||'%'
-						</when>
-						<when test="type == 'C'.toString()">
-							prod_category like '%'||#{keyword}||'%'
-						</when>
-					</choose>
-				</trim>
-			</foreach>
-		</trim>
-	</sql>
+   <sql id="criteria">
+      <trim prefix="(" suffix=") AND " prefixOverrides="OR">
 
-	<select id="getListWithPaging2"
-		resultType="org.kabart.domain.ProductListVO">
-		<![CDATA[
-		select 
-			prod_id, 
-			prod_name, 
-			prod_price, 
-			prod_category, 
-			img_srcs, 
-			img_tag
-		from
-		(
-			select 
-				rownum rn, 
-				p.prod_id as prod_id, 
-				p.prod_name as prod_name, 
-				p.prod_price as prod_price, 
-				p.prod_category as prod_category, 
-				i.img_srcs as img_srcs, 
-				i.img_tag as img_tag
-			from products p 
-			join imgs i on p.prod_id = i.prod_id
-			where 
-			]]>
-		<include refid="criteria"></include> 
-			
-			<![CDATA[ 
-				   img_tag='thumNail'
-		) 
-		 ]]>
-	</select>
-	<!-- where rn > (#{cri.pageNum} - 1) * #{cri.amount} -->
+         <foreach item='type' collection="typeArr">
+            <trim prefix="OR">
+               <choose>
+                  <when test="type == 'T'.toString()">
+                     prod_name like '%'||#{keyword}||'%'
+                  </when>
+                  <when test="type == 'C'.toString()">
+                     prod_category like '%'||#{keyword}||'%'
+                  </when>
+               </choose>
+            </trim>
+         </foreach>
+      </trim>
+   </sql>
+   
+   
 
+   <select id="getListWithPaging2"
+      resultType="org.kabart.domain.ProductListVO">
+      <![CDATA[
+      select 
+         prod_id, 
+         prod_name, 
+         prod_price, 
+         prod_category, 
+         img_srcs, 
+         img_tag
+      from
+      (
+         select 
+            rownum rn, 
+            p.prod_id as prod_id, 
+            p.prod_name as prod_name, 
+            p.prod_price as prod_price, 
+            p.prod_category as prod_category, 
+            i.img_srcs as img_srcs, 
+            i.img_tag as img_tag
+         from products p 
+         join imgs i on p.prod_id = i.prod_id
+         where 
+         ]]>
+         <include refid="criteria"></include> 
+         <![CDATA[ 
+         rownum <= #{pageNum} * #{amount} and
+            img_tag='thumNail'
+      ) 
+		where rn > (#{pageNum} - 1) * #{amount}
 
-	<select id="getTotalCount" resultType="int">
-		select count(*) from
-		products
-		where
-		<include refid="criteria"></include>
-		1=1
-		<!-- img_tag='thumNail' -->
-	</select>
+       ]]>
+   </select>
+   
+         <!--  where rn > (#{cri.pageNum} - 1) * #{cri.amount} -->
+   <select id="getTotalCount" resultType="int"> 
+      select count(*) from
+         products 
+      where 
+      <include refid="criteria"></include> 
+     1=1
+   </select>
 
 </mapper>

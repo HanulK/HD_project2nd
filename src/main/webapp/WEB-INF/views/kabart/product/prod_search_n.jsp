@@ -65,7 +65,7 @@
 									<div data-v-63326639="" class="search"
 										style="width: 800px; padding-left: 0; padding-right: 0; margin: 0 auto; overflow: hidden;">
 
-										<!-- 박스 -->
+										<!-- search_complete_list로 보냄-->
 
 										<form id="searchForm"
 											action="/kabart/product/search_complete_list" method="get">
