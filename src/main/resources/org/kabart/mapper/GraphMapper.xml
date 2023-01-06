@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kabart.mapper.GraphMapper">
+
+	<select id="family" resultType="org.kabart.domain.FamilyGraphVO">
+		select prod_id,
+		round(ratio_to_report(count(*))over(partition by
+		grouping(prod_id))
+		*100, 1) as percent
+		from v_graphs
+		where prod_id = #{prod_id}
+		group by
+		prod_id, family_num
+		order by family_num asc
+	</select>
+
+	<select id="age" resultType="org.kabart.domain.AgeGraphVO">
+		select prod_id,
+		round(ratio_to_report(count(*))over(partition by
+		grouping(prod_id))*100, 1) as cnt
+		from(select prod_id, trunc((to_char(sysdate, 'YYYY') - substr(birth, 1, 4))/10)
+		as age
+		from v_graphs
+		where prod_id= #{prod_id}
+		group by prod_id, birth)
+		group by prod_id,age
+		order by age
+	</select>
+</mapper>

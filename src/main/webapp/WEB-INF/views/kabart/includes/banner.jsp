@@ -44,7 +44,7 @@
 	</div>
 
 
-</div>
+</div> 
  <!-- banner 후보 2 -->
 <!-- <div class="banner" style="margin-top: 68px;">
 	<div class="container">

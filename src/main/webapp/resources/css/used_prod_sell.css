@@ -628,6 +628,7 @@ span.shop_address {
   width: 15px;
   margin-left: -7.5px;
   background-color: #ccc;
+  border-radius: 20px;
 }
 .graph_area .bar_wrap li .bar_num {
   display: block;
@@ -636,9 +637,7 @@ span.shop_address {
   top: -21px;
   width: 40px;
   height: 21px;
-  line-height: 21px;
   margin-left: -20px;
-  font-family: "Musinsa", sans-serif !important;
   font-size: 14px;
   font-weight: 500;
   text-align: center;
@@ -646,10 +645,10 @@ span.shop_address {
 }
 
 .hightest {
-  background-color: #0078ff !important;
+  background-color: #ef6253 !important;
 }
 .hightest .bar_num {
-  color: #0078ff !important;
+  color: #ef6253 !important;
 }
 
 .graph_title_active {
