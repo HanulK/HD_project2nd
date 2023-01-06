@@ -40,4 +40,9 @@ public class OrderMapperTests {
 	public void insertOD() {
 		oMapper.orderID("dodo", "안녕", "바보", "010515223372","port");
 	}
+	
+	@Test
+	public void insertProduct() {
+		oMapper.insertOrders("dodo", "45189", "3", "0", "0");
+	}
 }

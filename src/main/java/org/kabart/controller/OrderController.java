@@ -47,27 +47,17 @@ public class OrderController {
 
 	@PostMapping("/ordercomplete")
 	public void insertCart(@RequestParam("mem_id") String mem_id,
-			@RequestParam(value = "isUsed", required = false) String Used, 
-			@RequestParam("prod_id") String[] prod_ids,
-			@RequestParam("quantity") String[] quantities,
-			@RequestParam("address_detail")String address_detail,
-			@RequestParam("address") String address,
-			@RequestParam("phone") String phone,
-			@RequestParam("dname") String dname)
-			 {
-		System.out.println(mem_id);
-		for (String str : prod_ids) {
-			System.out.println(str);
+			@RequestParam(value = "isUsed", required = false, defaultValue = "0") String Used,
+			@RequestParam("prod_id") List<String> prod_ids, @RequestParam("quantity") List<String> quantities,
+			@RequestParam("address_detail") String address_detail, @RequestParam("address") String address,
+			@RequestParam("phone") String phone, @RequestParam("dname") String dname, Model model) {
+
+		List<OrderVO> list = new ArrayList<>();
+		int result = oService.insertProducts(mem_id, address, address_detail, phone, dname, prod_ids, quantities, Used);
+		if (prod_ids.size() == result) {
+			list = oService.getProducts(prod_ids,Integer.parseInt(Used));
 		}
-		
-		for (String str : quantities) {
-			System.out.println(str);
-		}
-		
-		System.out.println(address);
-		System.out.println(address_detail);
-		System.out.println(phone);
-		System.out.println(dname);
+		model.addAttribute("products", list);
 
 	}
 
