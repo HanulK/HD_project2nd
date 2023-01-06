@@ -28,6 +28,12 @@
 						});
 					});
 				</script>
+				
+				<style type="text/css">
+				form {
+  				margin:auto; 
+					}
+				</style>
 			</head>
 
 			<body>
@@ -196,33 +202,39 @@
 								</div>
 							
 								<!-- 검색창 -->
-								
-								
-								<div class='pull-right'>
+								<!-- 페이징 처리부분 -->
+							<div class='pull-right'>
 									<ul id="min" class="pagination" style="display: flex; justify-content:center;">
+									
+									
 										<c:if test="${pageMaker.prev}">
 											<li class="paginate_button previous"><a href="${pageMaker.startPage - 1 } ">이전</a></li>
 										</c:if>
+
+
 
 										<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 											<li class="paginate_button ${pageMaker.cri.pageNum == num ? " active" : "" }"
 												style="margin: 0 5px;"><a href="${num}">${num}</a></li>
 										</c:forEach>
 
+
+
 										<c:if test="${pageMaker.next}">
 											<li class="paginate_button next"><a href="${pageMaker.endPage + 1}">다음</a></li>
 										</c:if>
 									</ul>
-								</div> 
+								</div>
 								
-								<!-- 페이징 처리 끝-->
+								
+								<!-- 페이징 처리부분-->
 								<div class="soo">
 									<form id='actionForm' action='/kabart/product/prod_list' method="get">
 										<input type='hidden' name= "prod_category" value="${productList[0].prod_category}">
 										<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 										<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 									</form>
-								</div>
+								</div> 
 								<!-- /상품 그루핑 -->
 								
 								
