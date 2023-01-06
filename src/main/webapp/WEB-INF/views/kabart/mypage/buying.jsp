@@ -7,6 +7,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
 <title>KREAM | 한정판 거래의 FLEX</title>
 </head>
 <body data-v-39b2348a="" tabindex="0" class="wrap win_os">
@@ -323,7 +324,7 @@
 				console.log(end_date);
 				var txt = '주문날짜';
 				if (start_date >= end_date) {
-					alert("종료일이 시작일보다 앞일 수 없습니다.");
+					showToast("종료일이 시작일보다 앞일 수 없습니다.", -1);
 					return;
 				}
 
@@ -361,6 +362,19 @@
 
 	<!-- footer -->
 	<jsp:include page="../includes/footer.jsp"></jsp:include>
+	<div data-v-3007c576="">
+			<!---->
+			<div id="toast" class="toast md" data-v-66ae1b7c="">
+				<div class="wrap" data-v-66ae1b7c="">
+					<picture data-v-66ae1b7c=""  class="toast_img toast-icon" >
+						<img alt="" id="img_icon">
+						</picture>
+					<div class="toast-content" data-v-66ae1b7c="">
+						<p data-v-66ae1b7c=""></p>
+					</div>
+				</div>
+			</div>
+		</div>
 
 </body>
 </html>

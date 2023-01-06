@@ -14,6 +14,7 @@
 <title>Product detail</title>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="/resources/js/review.js" defer></script>
+<script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=96ea39472deedf6bbe92d065299190c2&libraries=services,clusterer,drawing">"></script>
 </head>
@@ -527,6 +528,19 @@
 						</div>
 					</div>
 					<%@include file="../includes/footer.jsp"%>
+					<div data-v-3007c576="">
+			<!---->
+			<div id="toast" class="toast md" data-v-66ae1b7c="">
+				<div class="wrap" data-v-66ae1b7c="">
+					<picture data-v-66ae1b7c=""  class="toast_img toast-icon" >
+						<img alt="" id="img_icon">
+						</picture>
+					<div class="toast-content" data-v-66ae1b7c="">
+						<p data-v-66ae1b7c=""></p>
+					</div>
+				</div>
+			</div>
+		</div>
 				</div>
 			</div>
 		</div>
@@ -563,9 +577,9 @@
 		      // Json 형식의 데이터
 		      success : function(result){ // 비동기통신-> 성공 success콜백// 'respone'는 응답받은 데이터
 		    	  if(result.result==='success'){
-						alert("담기 성공");
+		    			showToast("장바구니에 상품이 담겼습니다.", 1);
 					}else {
-						alert("담기 실패")
+						showToast("장바구니에 상품이 담기지 않았습니다.", -1);
 					}
 		      
 		      },
