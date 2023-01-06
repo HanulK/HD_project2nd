@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-<title>검색 임시 페이지</title>
+<title>PRODUCT SEARCH</title>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -351,6 +351,10 @@
 							</div>
 						</div>
 					</div>
+					
+					
+					
+					<!-- 하단 -->
 					<div class="pull-right">
 						<ul id="min" class="pagination"
 							style="display: flex; justify-content: center;">
@@ -371,7 +375,7 @@
 					</div>
 					<!-- 페이징 처리 끝-->
 					<div class="soo">
-						<form id="actionForm" action="/kabart/product/prod_list"
+						<form id="actionForm" action="/kabart/product/prod_sarch_n"
 							method="get">
 							<input type="hidden" name="prod_category" value="bed"> <input
 								type="hidden" name="pageNum" value="1"> <input

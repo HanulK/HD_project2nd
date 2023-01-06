@@ -16,7 +16,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @RequestMapping("/kabart/product")
 public class ProdSearchContoller {
-	//정훈
+	//정훈 http://localhost/kabart/product/prod_search_n
 	
 	@Setter(onMethod_= {@Autowired} )
 	private ProdSearchService Service;
@@ -45,6 +45,11 @@ public class ProdSearchContoller {
 	public void getSearchpage() {
 		
 	}
+	
+//	@GetMapping("/prod_search_n")
+//	public void prod_search() {
+//		
+//	}
 //	@GetMapping("/search_complete_list")
 //	public void list(Model model) {
 //	log.info("list:" +cri);
