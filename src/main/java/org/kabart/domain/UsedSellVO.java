@@ -13,5 +13,6 @@ public class UsedSellVO {
 	private String grade;
 	private Date up_regdate;
 	private String up_comment;
+	private List<AttachVO> attachList;
 	
 }
