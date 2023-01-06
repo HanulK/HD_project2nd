@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,7 +18,7 @@
 		<!---->
 		<div id="__layout">
 			<div data-v-34b11929="" tabindex="0" class="wrap lg win_os">
-				
+
 				<jsp:include page="../includes/header.jsp"></jsp:include>
 				<!---->
 				<div data-v-2f436c59="" data-v-34b11929="" class="container buy lg">
@@ -27,48 +32,61 @@
 												되었습니다.</span><br data-v-748f439e="" class="br_mo">
 										</h2>
 									</div>
-									<div data-v-748f439e="" class="buy_product_area">
-										<div data-v-748f439e="" class="buy_product">
-											<div data-v-09fbcf09="" data-v-748f439e="" class="product"
-												style="background-color: rgb(244, 244, 244);">
-												<picture data-v-321fc3b6="" data-v-09fbcf09=""
-													class="picture product_img">
-												<source data-v-321fc3b6="" type="image/webp"
-													srcset="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=l_webp">
-												<source data-v-321fc3b6=""
-													srcset="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=l">
-												<img data-v-321fc3b6="" alt="상품 이미지"
-													src="https://kream-phinf.pstatic.net/MjAyMjEwMDdfMjUy/MDAxNjY1MTIyOTA5ODc3.QE2gpcMai02v9hpWQRYPkh03Zd4CyeX4SVOy1yjht28g.QUfdZBeZe-EjVv7NgbrZzmNd0imP0jOmYOAOFDk2zJsg.JPEG/a_5dd8fc37dbf74510bb36d1c370fff93b.jpg?type=l"
-													loading="lazy" class="image"> </picture>
-												<!---->
-												<!---->
-												<!---->
-												<!---->
-											</div>
-											<div data-v-748f439e="" class="buy_info">
-												<div data-v-664f0148="" data-v-748f439e=""
-													class="model_info">
-													<strong data-v-664f0148="" class="model_number"> <!---->
-														<span data-v-664f0148="" class="text">MQD83KH/A</span>
-													</strong>
-													<p data-v-664f0148="" class="model_title">Apple AirPods
-														Pro 2nd Gen (Korean Ver.)</p>
-													<p data-v-664f0148="" class="model_ko">애플 에어팟 프로 2세대
-														(국내 정식 발매 제품)</p>
-													<div data-v-664f0148="" class="model_desc">
-														<p data-v-664f0148="" class="size_txt">ONE SIZE</p>
-														<!---->
+									<c:forEach items="${products}" var="product">
+										<div data-v-748f439e="" class="buy_product_area">
+											<div data-v-748f439e="" class="buy_product">
+												<div data-v-09fbcf09="" data-v-748f439e="" class="product"
+													style="background-color: rgb(244, 244, 244);">
+													<picture data-v-321fc3b6="" data-v-09fbcf09=""
+														class="picture product_img">
+													<source data-v-321fc3b6="" type="image/webp"
+														srcset='<c:out value="${product.img_srcs}"></c:out>'>
+													<source data-v-321fc3b6=""
+														srcset='<c:out value="${product.img_srcs}"></c:out>'>
+													<img data-v-321fc3b6="" alt="상품 이미지"
+														src='<c:out value="${product.img_srcs}"></c:out>'
+														loading="lazy" class="image"> </picture>
+													<!---->
+													<!---->
+													<!---->
+													<!---->
+												</div>
+												<div data-v-748f439e="" class="buy_info">
+													<div data-v-664f0148="" data-v-748f439e=""
+														class="model_info">
+														<strong data-v-664f0148="" class="model_number">
+															<!----> <span data-v-664f0148="" class="text"><c:out value="${product.prod_category}"></c:out></span>
+														</strong>
+														<p data-v-664f0148="" class="model_title"><c:out value="${product.prod_name}"></c:out></p>
+														<p data-v-664f0148="" class="model_ko"><c:if test="${not empty prodcut.up_id }">
+															<c:out value="${product.grade}"></c:out>등급
+														</c:if>  </p>
+														<div data-v-664f0148="" class="model_desc">
+															<p data-v-664f0148="" class="size_txt">수량 : <c:out value="${product.quantity}"></c:out></p>
+															
+															<p data-v-664f0148="" class="size_txt">
+															<c:choose>
+															
+															<c:when test="${not empty product.up_id}">
+															<fmt:formatNumber value="${product.quantity*product.prod_price}"></fmt:formatNumber>  </p>
+															</c:when>
+															<c:otherwise>
+															<fmt:formatNumber value="${product.prod_price*(100-product.discount_rate)/100}"></fmt:formatNumber>  </p>
+															</c:otherwise>
+															</c:choose>
+															<!---->
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									</c:forEach>
 								</div>
 								<div data-v-7601c3d6="" data-v-2f436c59="" buy-type="buy">
 									<ul data-v-857b4926="" data-v-7601c3d6="" class="check_list lg"></ul>
 									<div data-v-7601c3d6="" class="btn_confirm lg">
-										<a data-v-6e799857="" data-v-7601c3d6=""
-											href="#" class="btn full solid"> 주문내역 확인 </a>
+										<a data-v-6e799857="" data-v-7601c3d6="" href="/kabart/mypage/buying"
+											class="btn full solid"> 주문내역 확인 </a>
 									</div>
 									<!---->
 								</div>

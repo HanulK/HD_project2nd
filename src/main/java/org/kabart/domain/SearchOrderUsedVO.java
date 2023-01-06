@@ -19,4 +19,5 @@ public class SearchOrderUsedVO {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy/MM/dd")
 	private Date sale_date;
 	private String img_srcs;
+	private String up_id;
 }

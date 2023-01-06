@@ -16,13 +16,14 @@
 </head>
 
 <body>
-	<form role="form" action="/kabartUsedPerchase" method="post">
+	
 		<div id="__nuxt">
 			<!---->
 			<div id="__layout">
 				<div tabindex="0" class="wrap win_os md" data-v-3007c576="">
 					<!---->
 					<jsp:include page="../includes/header.jsp"></jsp:include>
+					<form role="form" action="/kabartUsedPerchase" method="post">
 					<div data-v-cf786f84="" data-v-3007c576=""
 						class="container detail md">
 						<div data-v-cf786f84="" class="content">
@@ -98,28 +99,39 @@
 											var="user_id" />
 										<c:if test="${read.mem_id eq user_id}">
 											<li class="gnb_item">
-												<div data-v-23bbaa82="" data-v-3900a1a2=""
-													class="division_btn_box1 md">
-													<div data-v-f40660fa="" data-v-77d20f30=""
-														class="detail_stock_btn">
+											<c:choose>
+											
+													<c:when test="${empty read.sale_date }">
+														<div data-v-23bbaa82="" data-v-3900a1a2=""
+															class="division_btn_box1 md">
+															<div data-v-f40660fa="" data-v-77d20f30=""
+																class="detail_stock_btn">
 
-														<a id="cart" data-v-6e799857="" data-v-f40660fa=""
-															href="/kabart/usedProduct/used_prod_detail_modify?up_id=${read.up_id }"
-															class="btn solid full buy1 large"> 수정 </a>
+																<a id="cart" data-v-6e799857="" data-v-f40660fa=""
+																	href="/kabart/usedProduct/used_prod_detail_modify?up_id=${read.up_id }"
+																	class="btn solid full buy1 large"> 수정 </a>
 
-													</div>
+															</div>
 
-													<div data-v-f40660fa="" data-v-77d20f30=""
-														class="detail_stock_btn">
-														<button type="submit" data-oper='remove'
-															style="width: 100%;">
+															<div data-v-f40660fa="" data-v-77d20f30=""
+																class="detail_stock_btn">
+																<button type="submit" data-oper='remove'
+																	style="width: 100%;">
 
-															<a data-v-6e799857="" data-v-f40660fa="" href="#"
-																class="btn solid full sell large">삭제 </a>
-														</button>
-													</div>
-												</div>
-											</li>
+																	<a data-v-6e799857="" data-v-f40660fa="" href="#"
+																		class="btn solid full sell large">삭제 </a>
+																</button>
+															</div>
+														</div>
+													</c:when>
+													<c:otherwise>
+														<div data-v-f40660fa="" data-v-77d20f30=""
+															class="detail_stock_btn1">
+															<a data-v-6e799857="" data-v-f40660fa=""
+																class="btn solid full buy1 large"> 판매 완료 </a>
+														</div>
+													</c:otherwise>
+												</c:choose></li>
 										</c:if>
 										<c:if test="${read.mem_id ne user_id}">
 											<div data-v-77d20f30="" class="btn_wrap">

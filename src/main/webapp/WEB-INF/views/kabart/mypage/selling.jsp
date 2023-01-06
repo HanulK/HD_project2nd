@@ -217,7 +217,7 @@
 										var status = '판매 중';
 
 										var datestatus = '등록일';
-										row += "<div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
+										row += "<a href='/kabart/usedProduct/used_prod_detail?up_id="+result[i].up_id+"'><div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
 												+ "<div data-v-2f988574='' class='purchase_list_product'><div data-v-2f988574='' class='list_item_img_wrap'><img data-v-2f988574='' alt='product_image' src='"
 												+ result[i].img_srcs
 												+ "' class='list_item_img' style='background-color: rgb(235, 240, 245);'>"
@@ -237,13 +237,13 @@
 												+ "<div data-v-2f988574='' class='list_item_column column_last'><p data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"
 												+ status
 												+ "</p><p data-v-5f36ea36='' data-v-2f988574='' class='last_description display_paragraph'></p></div></div>"
-												+ "</div></div></div></div>";
+												+ "</div></div></div></div></a>";
 									}
 								}
 								$(".tab_on .count").html(result.length);
 								console.log($(".tab_on count").html());
 								$(".purchase_list").html(row);
-
+								
 							},
 							error : function(e) {
 								alert('조회 실패');
@@ -282,7 +282,7 @@
 										var status = '판매완료';
 
 										var datestatus = '판매날짜';
-										row += "<div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
+										row += "<a href='/kabart/usedProduct/used_prod_detail?up_id="+result[i].up_id+"'><div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
 												+ "<div data-v-2f988574='' class='purchase_list_product'><div data-v-2f988574='' class='list_item_img_wrap'><img data-v-2f988574='' alt='product_image' src='"
 												+ result[i].img_srcs
 												+ "' class='list_item_img' style='background-color: rgb(235, 240, 245);'>"
@@ -302,7 +302,7 @@
 												+ "<div data-v-2f988574='' class='list_item_column column_last'><p data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"
 												+ status
 												+ "</p><p data-v-5f36ea36='' data-v-2f988574='' class='last_description display_paragraph'></p></div></div>"
-												+ "</div></div></div></div>";
+												+ "</div></div></div></div></a>";
 									}
 								}
 								$(".tab_on .count").html(result.length);
@@ -355,6 +355,7 @@
 			$(".tab_link").on("click", function(e) {
 				e.preventDefault();
 			});
+			$("#search_period").click();
 		})
 	</script>
 </body>
