@@ -217,7 +217,7 @@
 										}
 
 										row += "<div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
-										  + "<div data-v-2f988574='' class='purchase_list_product'><div data-v-2f988574='' class='list_item_img_wrap'><img data-v-2f988574='' alt='product_image' src='"
+										  + "<a href='/kabart/product/prod_detail?prod_id="+result[i].prod_id+"'><div data-v-2f988574='' class='purchase_list_product'><div data-v-2f988574='' class='list_item_img_wrap'><img data-v-2f988574='' alt='product_image' src='"
 										  + result[i].imgs_src
 										  + "' class='list_item_img' style='background-color: rgb(235, 240, 245);'>"
 										  + "</div><div data-v-2f988574='' class='list_item_title_wrap'><p data-v-2f988574='' class='list_item_title'>"
@@ -225,15 +225,24 @@
 										  + "</p><p data-v-2f988574='' class='list_item_description'>"
 										  + price
 										  + "원</p>"
-										  + "</div></div><div data-v-2f988574='' class='list_item_status'><div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
+										  + "</div></div></a><div data-v-2f988574='' class='list_item_status'><div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
 										  + datestatus
 										  + "</p></div>"
 										  + "<div data-v-2f988574='' class='list_item_column column_secondary'><p data-v-5f36ea36='' data-v-2f988574='' class='secondary_title display_paragraph' style='color: rgba(34, 34, 34, 0.5);'>"
 										  + result[i].order_date
 										  + "</p></div>"
-										  + "<div data-v-2f988574='' class='list_item_column column_last'><p data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"
-										  + status
-										  + "</p><p data-v-5f36ea36='' data-v-2f988574='' class='last_description display_paragraph'></p></div></div>"
+										  + "<div data-v-2f988574='' class='list_item_column column_last'>"
+										  if(result[i].review_check==0 &&!result[i].cancle_date){
+										  row +="<p data-pid='"+result[i].prod_id+"' data-oid='"+result[i].order_id+"'data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>리뷰작성</p>"
+										  	  +"<p data-pid='"+result[i].prod_id+"' data-oid='"+result[i].order_id+"'data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>주문취소</p>"
+										  }else {
+											  row += "<p data-pid='"+result[i].prod_id+"' data-oid='"+result[i].order_id+"'data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"
+											  +status
+											 +"</p>"
+										  }
+										  
+										  
+										  row+= "<p data-v-5f36ea36='' data-v-2f988574='' class='last_description display_paragraph'></p></div></div>"
 										  + "</div></div></div></div>";
 									}
 								}
@@ -280,7 +289,7 @@
 										var status = '구매확정';
 										var datestatus = '주문날짜';
 
-										row += "<div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
+										row += "<a href='/kabart/usedProduct/used_prod_detail?up_id="+result[i].up_id+"'><div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
 										  + "<div data-v-2f988574='' class='purchase_list_product'><div data-v-2f988574='' class='list_item_img_wrap'><img data-v-2f988574='' alt='product_image' src='"
 										  + result[i].img_srcs
 										  + "' class='list_item_img' style='background-color: rgb(235, 240, 245);'>"
@@ -300,7 +309,7 @@
 										  + "<div data-v-2f988574='' class='list_item_column column_last'><p data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"
 										  + status
 										  + "</p><p data-v-5f36ea36='' data-v-2f988574='' class='last_description display_paragraph'></p></div></div>"
-										  + "</div></div></div></div>";
+										  + "</div></div></div></div></a>";
 									}
 								}
 								$(".tab_on .count").html(result.length);

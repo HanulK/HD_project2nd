@@ -3,7 +3,7 @@ package org.kabart.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.kabart.domain.OrderVO;
+import org.kabart.domain.*;
 
 public interface OrderMapper {
 
@@ -19,5 +19,9 @@ public interface OrderMapper {
 			@Param("review_check") String review_check);
 	
 	public int updateUsed(@Param("up_id") String up_id, @Param("p_id")String p_id);
+	
+	
+	public int reviewCheck(@Param("uVO")UpdateOrderVO uVO);
+	public int orderCancle(@Param("uVO")UpdateOrderVO uVO);
 
 }
