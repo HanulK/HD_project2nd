@@ -12,6 +12,7 @@
 					<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 					<%@include file="/WEB-INF/views/kabart/includes/style.jsp" %>
 						<title>Product List</title>
+						
 				</head>
 
 				<body>
@@ -122,7 +123,7 @@
 												<div class="used_info">
 													<h3 data-v-824856a2="" class="review_title">상세사진 첨부</h3>
 													<div class="info_write">
-														<input type="file" name='uploadFile' multiple="">
+														<input type="file" name='uploadFile' multiple>
 													</div>
 													<div class='uploadResult'>
 														<ul>
@@ -176,10 +177,10 @@
 													</div>
 													<div class="submit">
 														<div data-v-14995178="" class="btn_confirm">
-															<button type="submit" >
-															<a data-v-6e799857="" data-v-14995178="" href="#" class="btn full solid false"> 판매하기
-																
-															</a>
+															<button type="submit" id="uploadBtn">
+																<a data-v-6e799857="" data-v-14995178="" href="#" class="btn full solid false"> 판매하기
+
+																</a>
 															</button>
 														</div>
 													</div>
@@ -199,175 +200,178 @@
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 					</form>
-				</body>
-				<script
-  					src="https://code.jquery.com/jquery-3.6.3.js"
-  					integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-  					crossorigin="anonymous"></script>
-				<script>
-					function calculatePay() {
-						let grade = document.getElementById("grade").value;
-						console.log(grade);
-						let discount_price = "${detail.prod_price}";
-						console.log(discount_price);
-						if (grade === 'ROYAL') {
-							discount_price = discount_price - (discount_price * 0.2);
-						}
-						else if (grade === 'PRIME') {
-							discount_price = discount_price - (discount_price * 0.4);
-						}
-						else {
-							discount_price = discount_price - (discount_price * 0.6);
-						}
-						console.log(discount_price);
-
-
-						document.getElementById("discount_price").innerHTML = priceToString(discount_price);
-					}
-
-					function priceToString(price) {
-						return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-					}
-
-					function showUploadResult(uploadResultArr) {
-						if (!uploadResultArr || uploadResultArr.length == 0) { return; }
-						var uploadUL = $(".uploadResult ul");
-						var str = "";
-
-						$(uploadResultArr).each(function (i, obj) {
-
-							// image type
-							if (obj.image) {
-								var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.ufile_uid + "_" + obj.fileName);
-								str += "<li data-path='" + obj.uploadPath + "'";
-								str += " data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='" + obj.image + "'"
-								str + " ><div>";
-								str += "<span> " + obj.fileName + "</span>";
-								str += "<button type='button' data-file=\'" + fileCallPath + "\' "
-								str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-								str += "<img src='/display?fileName=" + fileCallPath + "'>";
-								str += "</div>";
-								str + "</li>";
-							} else {
-								var fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.file_uuid + "_" + obj.fileName);
-								var fileLink = fileCallPath.replace(new RegExp(/\\/g), "/");
-
-								str += "<li "
-								str += "data-path='" + obj.uploadPath + "' data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='" + obj.image + "' ><div>";
-								str += "<span> " + obj.fileName + "</span>";
-								str += "<button type='button' data-file=\'" + fileCallPath + "\' data-type='file' "
-								str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-								str += "<img src='/resources/img/attach.png'></a>";
-								str += "</div>";
-								str + "</li>";
+					<script src="https://code.jquery.com/jquery-3.6.3.js"
+						integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+					<script>
+						function calculatePay() {
+							let grade = document.getElementById("grade").value;
+							console.log(grade);
+							let discount_price = "${detail.prod_price}";
+							console.log(discount_price);
+							if (grade === 'ROYAL') {
+								discount_price = discount_price - (discount_price * 0.2);
 							}
-						});
-						uploadUL.append(str);
-					}
-
-					$(".uploadResult").on("click", "button", function (e) {
-						console.log("file delete...");
-
-						var targetFile = $(this).data("file");
-						var type = $(this).data("type");
-
-						var targetLi = $(this).closest("li");
-
-						$.ajax({
-							url: '/deleteFile',
-							data: { fileName: targetFile, type: type },
-							beforeSend: function (xhr) {
-								xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-							},
-							dataType: 'text',
-							type: 'POST',
-							success: function (result) {
-								alert(result);
-								targetLi.remove();
+							else if (grade === 'PRIME') {
+								discount_price = discount_price - (discount_price * 0.4);
 							}
-						}); // $.ajax
-					});
+							else {
+								discount_price = discount_price - (discount_price * 0.6);
+							}
+							console.log(discount_price);
 
-					$(document).ready(function (e) {
 
+							document.getElementById("discount_price").innerHTML = priceToString(discount_price);
+						}
 
-						var formObj = $("form[role='form']");
-						$("button[type='submit']").on("click", function (e) {
-							e.preventDefault();
-							console.log("submit clicked...");
+						function priceToString(price) {
+							return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+						}
+
+						function showUploadResult(uploadResultArr) {
+							if (!uploadResultArr || uploadResultArr.length == 0) { return; }
+							var uploadUL = $(".uploadResult ul");
 							var str = "";
 
-							$(".uploadResult ul li").each(function (i, obj) {
+							$(uploadResultArr).each(function (i, obj) {
 
-								var jobj = $(obj);
+								// image type
+								if (obj.image) {
+									var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.ufile_uid + "_" + obj.fileName);
+									str += "<li data-path='" + obj.uploadPath + "'";
+									str += " data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='" + obj.image + "'"
+									str + " ><div>";
+									str += "<span> " + obj.fileName + "</span>";
+									str += "<button type='button' data-file=\'" + fileCallPath + "\' "
+									str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+									str += "<img src='/display?fileName=" + fileCallPath + "'>";
+									str += "</div>";
+									str + "</li>";
+								} else {
+									var fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.file_uuid + "_" + obj.fileName);
+									var fileLink = fileCallPath.replace(new RegExp(/\\/g), "/");
 
-								console.dir(jobj);
-								console.log("-------------------------");
-								console.log(jobj.data("filename"));
-
-
-								str += "<input type='hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
-								str += "<input type='hidden' name='attachList[" + i + "].file_uuid' value='" + jobj.data("file_uuid") + "'>";
-								str += "<input type='hidden' name='attachList[" + i + "].uploadPath' value='" + jobj.data("path") + "'>";
-								str += "<input type='hidden' name='attachList[" + i + "].fileType' value='" + jobj.data("type") + "'>";
-
+									str += "<li "
+									str += "data-path='" + obj.uploadPath + "' data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='" + obj.image + "' ><div>";
+									str += "<span> " + obj.fileName + "</span>";
+									str += "<button type='button' data-file=\'" + fileCallPath + "\' data-type='file' "
+									str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+									str += "<img src='/resources/img/attach.png'></a>";
+									str += "</div>";
+									str + "</li>";
+								}
 							});
-
-							console.log(str);
-
-							formObj.append(str).submit();
-
-						});
-
-						var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-						var maxSize = 5242880;
-
-						function checkExtension(fileName, fileSize) {
-							if (fileSize >= maxSize) {
-								alert("파일 사이즈 초과");
-								return false;
-							}
-
-							if (regex.test(fileName)) {
-								alert("해당 종류의 파일은 업로드할 수 없습니다.");
-								return false;
-							}
-							return true;
+							uploadUL.append(str);
 						}
 
-						var csrfHeaderName = "${_csrf.headerName}";
-						var csrfTokenValue = "${_csrf.token}";
+						$(".uploadResult").on("click", "button", function (e) {
+							console.log("file delete...");
 
-						$("input[type='file']").change(function (e) {
-							var formData = new FormData();
-							var inputFile = $("input[name='uploadFile']");
-							var files = inputFile[0].files;
+							var targetFile = $(this).data("file");
+							var type = $(this).data("type");
 
-							for (var i = 0; i < files.length; i++) {
-								if (!checkExtension(files[i].name, files[i].size)) {
-									return false;
-								}
-								formData.append("uploadFile", files[i]);
-							}
+							var targetLi = $(this).closest("li");
 
 							$.ajax({
-								url: '/kabart/usedProduct/uploadAjaxAction',
-								processData: false,
-								contentType: false,
+								url: '/deleteFile',
+								data: { fileName: targetFile, type: type },
 								beforeSend: function (xhr) {
 									xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 								},
-								data: formData,
+								dataType: 'text',
 								type: 'POST',
-								dataType: 'json',
 								success: function (result) {
-									console.log(result);
-									showUploadResult(result);
-									//$(".uploadDiv").html(cloneObj.html());
+									alert(result);
+									targetLi.remove();
 								}
 							}); // $.ajax
 						});
-					});
-				</script>
+
+						$(document).ready(function (e) {
+
+							var formObj = $("form[role='form']");
+
+							$("button[type='submit']").on("click", function (e) {
+								e.preventDefault();
+								console.log("submit clicked...");
+								var str = "";
+
+								$(".uploadResult ul li").each(function (i, obj) {
+
+									var jobj = $(obj);
+
+									console.dir(jobj);
+									console.log("-------------------------");
+									console.log(jobj.data("filename"));
+
+
+									str += "<input type='hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
+									str += "<input type='hidden' name='attachList[" + i + "].file_uuid' value='" + jobj.data("file_uuid") + "'>";
+									str += "<input type='hidden' name='attachList[" + i + "].uploadPath' value='" + jobj.data("path") + "'>";
+									str += "<input type='hidden' name='attachList[" + i + "].fileType' value='" + jobj.data("type") + "'>";
+
+								});
+
+								console.log(str);
+
+								formObj.append(str).submit();
+
+							});
+
+							var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+							var maxSize = 5242880;
+
+							function checkExtension(fileName, fileSize) {
+								if (fileSize >= maxSize) {
+									alert("파일 사이즈 초과");
+									return false;
+								}
+
+								if (regex.test(fileName)) {
+									alert("해당 종류의 파일은 업로드할 수 없습니다.");
+									return false;
+								}
+								return true;
+							}
+
+							var csrfHeaderName = "${_csrf.headerName}";
+							var csrfTokenValue = "${_csrf.token}";
+
+							$("input[type='file']").change(function (e) {
+								var formData = new FormData();
+								var inputFile = $("input[name='uploadFile']");
+								var files = inputFile[0].files;
+
+								for (var i = 0; i < files.length; i++) {
+									if (!checkExtension(files[i].name, files[i].size)) {
+										return false;
+									}
+									formData.append("uploadFile", files[i]);
+								}
+
+								$.ajax({
+									url: '/kabart/usedProduct/uploadAjaxAction',
+									processData: false,
+									contentType: false,
+									beforeSend: function (xhr) {
+										xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+									},
+									data: formData,
+									type: 'POST',
+									dataType: 'text',
+									success: function (result) {
+										console.log(formData);
+										/* console.log(result); */
+										/* showUploadResult(result); */
+										//$(".uploadDiv").html(cloneObj.html());
+									},
+									error: function () {
+										alert("error");
+									}
+								}); // $.ajax
+							});
+						});
+					</script>
+				</body>
+
 
 				</html>
