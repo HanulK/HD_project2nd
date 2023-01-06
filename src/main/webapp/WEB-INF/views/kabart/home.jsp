@@ -14,18 +14,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Home</title>
-<script type="text/javascript">
-/* 	$(document).ready(function(){
-		var result = "${result}";
-		console.log(result);
-		if(result == 'true'){
-			console.log(result);
-			alert("등록이 완료되었습니다.");
-		} else {
-			alert("등록이 실패하였습니다.");
-		}
-	}); */
-	</script>
 </head>
 <body>
 	<jsp:include page="includes/header.jsp"></jsp:include>

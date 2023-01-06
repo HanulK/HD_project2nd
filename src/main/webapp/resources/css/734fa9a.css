@@ -50,3 +50,24 @@
 		padding-top: 70px
 	}
 }
+
+.btn[withdrawal] {
+	margin-left: 8px;
+	width: 120px;
+	display: inline-flex;
+    cursor: pointer;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+    font-weight: 700;
+    padding: 0 18px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 14px;
+    letter-spacing: -.14px;
+}

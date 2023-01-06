@@ -82,10 +82,6 @@
 							<div data-v-6dea036d="" class="profile_btn_box"></div>
 						</div>
 					</div>
-					<input data-v-587be1b3="" type="file" accept="image/jpeg,image/png"
-						hidden="hidden">
-					<canvas data-v-587be1b3="" width="1000" height="1000"
-						style="display: none;"></canvas>
 					<div data-v-587be1b3="" class="profile_info">
 						<!-- 로그인 정보 -->
 						<div data-v-587be1b3="" class="profile_group">

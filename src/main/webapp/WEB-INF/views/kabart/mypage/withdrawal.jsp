@@ -160,9 +160,9 @@
 										<div class="withdrawal_check" data-v-0145d93c=""></div>
 										<div class="withdrawal_btn_box" data-v-0145d93c="">
 											<a href="#" class="btn outlinegrey medium" data-v-6e799857=""
-												data-v-0145d93c="" id="withdrawal_next"> 탈퇴하기 </a><a href="/kabart/mypage/profile"
+												data-v-0145d93c=""  withdrawal="" id="withdrawal_next"> 탈퇴하기 </a><a href="/kabart/mypage/profile"
 												class="btn solid medium" data-v-6e799857=""
-												data-v-0145d93c=""> 취소하기 </a>
+												data-v-0145d93c=""  withdrawal=""> 취소하기 </a>
 										</div>
 										<!---->
 										<div class="layer_withdrawal layer lg" style="display: none;"
@@ -194,10 +194,10 @@
 														data-v-79f8507c="">
 														<!---->
 														<button type="button" class="btn solid medium" id="cancle_btn"
-															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402="">
+															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402="" withdrawal="">
 															취소하기</button>
 														<button type="button" class="btn solid medium"
-															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402="" id="withdrawal_btn">
+															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402="" withdrawal="" id="withdrawal_btn">
 															탈퇴하기</button>
 														<!---->
 														<!---->
@@ -235,7 +235,7 @@
 														<!---->
 														<!---->
 														<button type="button" class="btn outlinegrey medium"
-															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402=""
+															data-v-6e799857="" data-v-79f8507c="" data-v-1a009402="" withdrawal=""
 															onclick = "location.href = '/kabart/home'">
 															확인</button>
 														<!---->
