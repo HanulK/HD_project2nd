@@ -60,7 +60,8 @@ body {
 }
 
 .lg .shortcut_item_img_wrap, .lg .shortcut_item_img_wrap:after {
-	border-radius: 10px
+	border-radius: 10px;
+	overflow: hidden;
 }
 
 .image {

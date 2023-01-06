@@ -57,12 +57,11 @@ public class ProdSearchContoller {
 //	}
 	//model.addAttribute("pageMaker", pageDTO);
 	
-			//model.addAttribute("productList", list);
-			
-			//int totalCount = prodSearchService.getTotalCount(cri);
-			//PageDTO pageDTO = new PageDTO(cri, totalCount);
-			//model.addAttribute("pageMaker", new PageDTO(cri, totalCount));
-			//log.info("total: " + total);
-			//model.addAttribute("list", service.getList(cri));
+	// 뿡치가 임시로 만듬
+	@GetMapping("/prod_search_n")
+	public void prod_search_n() {
+		
+	}
+	
 }
 

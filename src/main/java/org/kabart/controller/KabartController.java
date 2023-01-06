@@ -20,9 +20,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/kabart")
 public class KabartController {
-
-	@GetMapping("/home")
-	public void home() { }
 	
 	@Setter (onMethod_ = {@Autowired})
 	private MemberService service;
@@ -30,7 +27,7 @@ public class KabartController {
 	@Setter (onMethod_ = {@Autowired})
 	private BestProductService bestproductservice;
 	
-	@GetMapping("/")
+	@GetMapping("/home")
 	public void home(Model model) {
 		List<BestProductVO> best = bestproductservice.bestprod();
 		
