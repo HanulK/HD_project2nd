@@ -26,6 +26,9 @@ public class ProductController {
 
 	@Setter(onMethod_ = { @Autowired })
 	private ReviewService reviewservice;
+	
+	@Setter(onMethod_ = { @Autowired })
+	private GraphService graphservice;
 
 	@GetMapping("/prod_list")
 	public void productGetList(@RequestParam(value = "prod_category") String prod_category,
@@ -54,6 +57,8 @@ public class ProductController {
 		List<ImgVO> imgs = productDetailService.getdetailImgs(prod_id);
 		List<UsedProductVO> useds = productDetailService.getused(prod_id);
 		List<ReviewVO> rvs = reviewservice.get(prod_id);
+		List<FamilyGraphVO> family = graphservice.family(prod_id);
+		List<AgeGraphVO> age = graphservice.age(prod_id);
 
 		ProductDetailVO detail = productDetailService.getProdDetail(prod_id);
 
@@ -62,9 +67,13 @@ public class ProductController {
 
 		log.info(detail);
 		log.info(rvs);
+		log.info(family);
+		log.info(age);
 
 		model.addAttribute("detail", detail);
 		model.addAttribute("review", rvs);
+		model.addAttribute("family", family);
+		model.addAttribute("age", age);
 	}
 
 	

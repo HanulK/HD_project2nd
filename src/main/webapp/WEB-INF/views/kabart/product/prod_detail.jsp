@@ -364,8 +364,8 @@
 														<dt class="bar_name">1인</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar " style="height: 1%"><span
-																	class="bar_num">1%</span></span>
+																<span class="bar hightest" style="height: ${family[0].percent}%"><span
+																	class="bar_num">${family[0].percent}%</span></span>
 															</p>
 														</dd>
 													</dl>
@@ -375,8 +375,8 @@
 														<dt class="bar_name">2인</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar " style="height: 3%"><span
-																	class="bar_num">3%</span></span>
+																<span class="bar hightest" style="height: ${family[1].percent}%"><span
+																	class="bar_num">${family[1].percent}%</span></span>
 															</p>
 														</dd>
 													</dl>
@@ -386,8 +386,8 @@
 														<dt class="bar_name">3인</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar " style="height: 18%"><span
-																	class="bar_num">18%</span></span>
+																<span class="bar hightest" style="height: ${family[2].percent}%"><span
+																	class="bar_num">${family[2].percent}%</span></span>
 															</p>
 														</dd>
 													</dl>
@@ -397,8 +397,9 @@
 														<dt class="bar_name">4인</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar hightest" style="height: 32%"><span
-																	class="bar_num">32%</span></span>
+																<span class="bar hightest"
+																	style="height: ${family[3].percent}%"><span
+																	class="bar_num">${family[3].percent}%</span></span>
 															</p>
 														</dd>
 													</dl>
@@ -408,14 +409,21 @@
 														<dt class="bar_name">5인 이상</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar " style="height: 30%"><span
-																	class="bar_num">30%</span></span>
+																<span class="bar hightest" style="height: ${family[4].percent}%"><span
+																	class="bar_num">${family[4].percent}%</span></span>
 															</p>
 														</dd>
 													</dl>
 												</li>
 											</ul>
 										</div>
+											<script>
+											let t = 0 
+											bar.style.width = 0 
+											const barAnimation = setInterval(() => { 
+											bar.style.width = t + '%' 
+											t++ >= totalMinwon && clearInterval(barAnimation) }, 10)
+											</script>
 									</div>
 									<!-- 연령대 -->
 									<div class="graph_bar_wrap1">
@@ -445,22 +453,22 @@
 											<ul class="bar_wrap">
 												<li>
 													<dl>
-														<dt class="bar_name">20~24세</dt>
+														<dt class="bar_name">20대 미만</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar " style="height: 1%"><span
-																	class="bar_num">1%</span></span>
+																<span class="bar hightest" style="height: ${age[0].cnt}%"><span
+																	class="bar_num">${age[0].cnt}%</span></span>
 															</p>
 														</dd>
 													</dl>
 												</li>
 												<li>
 													<dl>
-														<dt class="bar_name">25~29세</dt>
+														<dt class="bar_name">20대</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar " style="height: 30%"><span
-																	class="bar_num">30%</span></span>
+																<span class="bar hightest" style="height: ${age[1].cnt}%"><span
+																	class="bar_num">${age[1].cnt}%</span></span>
 															</p>
 														</dd>
 													</dl>
@@ -470,8 +478,8 @@
 														<dt class="bar_name">30대</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar " style="height: 3%"><span
-																	class="bar_num">3%</span></span>
+																<span class="bar hightest" style="height: ${age[2].cnt}%"><span
+																	class="bar_num">${age[2].cnt}%</span></span>
 															</p>
 														</dd>
 													</dl>
@@ -481,19 +489,20 @@
 														<dt class="bar_name">40대</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar " style="height: 18%"><span
-																	class="bar_num">18%</span></span>
+																<span class="bar hightest" style="height: ${age[3].cnt}%"><span
+																	class="bar_num">${age[3].cnt}%</span></span>
 															</p>
 														</dd>
 													</dl>
 												</li>
 												<li>
 													<dl>
-														<dt class="bar_name">50대</dt>
+														<dt class="bar_name">50대 이상</dt>
 														<dd>
 															<p class="bar_area">
-																<span class="bar hightest" style="height: 32%"><span
-																	class="bar_num">32%</span></span>
+																<span class="bar hightest"
+																	style="height: ${age[4].cnt}%"><span
+																	class="bar_num">${age[4].cnt}%</span></span>
 															</p>
 														</dd>
 													</dl>
@@ -506,7 +515,8 @@
 									<c:if test="${empty review}">
 										<ul data-v-4faab390="" class="wish_list">
 											<div data-v-e2f6767a="" class="empty_area">
-												<p data-v-e2f6767a="" class="desc" style="font-size: 16px;">등록된 후기가 없습니다.</p>
+												<p data-v-e2f6767a="" class="desc" style="font-size: 16px;">등록된
+													후기가 없습니다.</p>
 											</div>
 										</ul>
 									</c:if>
