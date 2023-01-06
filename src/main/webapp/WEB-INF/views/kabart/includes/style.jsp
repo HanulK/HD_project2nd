@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<script src="/resources/js/banner.js" defer></script>
 
 <link href="/resources/css/header.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/prod_detail.css" rel="stylesheet" type="text/css">

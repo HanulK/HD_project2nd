@@ -53,5 +53,12 @@ public class ProdSearchContoller {
 		
 	}
 	
+	// 뿡치가 임시로 만듬
+	@GetMapping("/prod_search_n")
+	public void prod_search_n() {
+		
+	}
+	
+	
 	
 }
