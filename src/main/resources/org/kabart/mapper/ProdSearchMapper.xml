@@ -3,10 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-	<!--  정훈 -->
+<!-- 정훈 -->
 <mapper namespace="org.kabart.mapper.ProdSearchMapper">
-
-	
 
 	<sql id="criteria">
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
@@ -25,8 +23,6 @@
 			</foreach>
 		</trim>
 	</sql>
-	
-	
 
 	<select id="getListWithPaging2"
 		resultType="org.kabart.domain.ProductListVO">
@@ -52,26 +48,23 @@
 			join imgs i on p.prod_id = i.prod_id
 			where 
 			]]>
-			<include refid="criteria"></include> 
+		<include refid="criteria"></include> 
+			
 			<![CDATA[ 
-				img_tag='thumNail'
+				   img_tag='thumNail'
 		) 
 		 ]]>
-		 
 	</select>
-	
-	<!-- 	<![CDATA[ rownum <= #{pageNum} * #{amount} ) 
-		where rn > (#{pageNum} -1) * #{amount} ]]> 
-	
-	 -->
-	
-	
-	<select id="getTotalCount" resultType="int"> 
+	<!-- where rn > (#{cri.pageNum} - 1) * #{cri.amount} -->
+
+
+	<select id="getTotalCount" resultType="int">
 		select count(*) from
-			products 
-		where 
-		<include refid="criteria"></include> 
-		img_tag='thumNail'
+		products
+		where
+		<include refid="criteria"></include>
+		1=1
+		<!-- img_tag='thumNail' -->
 	</select>
 
 </mapper>

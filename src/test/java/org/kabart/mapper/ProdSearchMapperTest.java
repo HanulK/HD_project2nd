@@ -26,11 +26,27 @@ public class ProdSearchMapperTest {
 	public void testSearch() {
 		
 		Criteria cri = new Criteria();
-		cri.setKeyword("12312312312312312312312");
+		cri.setKeyword("뮤제오");
 		cri.setType("T");
 		
 		List<ProductListVO> list = mapper.getListWithPaging2(cri);
 		list.forEach(prodlist -> log.info(prodlist));
 			
 	}
+	
+	@Test
+	public void testPaging() {
+		
+		Criteria cri = new Criteria();
+		//8개 1페이지
+		cri.setPageNum(1);
+		cri.setAmount(8);
+		
+		List<ProductListVO> list =mapper.getListWithPaging2(cri);
+		list.forEach( search-> log.info(search));
+		
+	}
+
+
+	
 }

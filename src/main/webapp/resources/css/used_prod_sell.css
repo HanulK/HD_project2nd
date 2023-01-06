@@ -9,6 +9,10 @@ body, button, dd, div, dl, dt, fieldset, figcaption, figure, form, h1,
 	padding: 0;
 }
 
+form#searchForm {
+    margin: auto;
+}
+
 body, button, input, select, table, textarea {
 	font-family: -apple-system, BlinkMacSystemFont, Roboto,
 		AppleSDGothicNeo-Regular, NanumBarunGothic, NanumGothic, 나눔고딕,
