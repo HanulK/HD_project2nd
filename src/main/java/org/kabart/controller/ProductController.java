@@ -1,6 +1,5 @@
 package org.kabart.controller;
 
-import java.io.Console;
 import java.util.List;
 
 import org.kabart.domain.*;
@@ -14,7 +13,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-@RequestMapping("/kabart/product/")
+@RequestMapping("/kabart/product")
 @Log4j
 public class ProductController {
 

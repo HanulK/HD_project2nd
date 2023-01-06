@@ -1,7 +1,9 @@
-	package org.kabart.controller;
+package org.kabart.controller;
 
-
-import java.util.List;
+import java.io.*;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import org.kabart.domain.*;
 import org.kabart.service.*;
@@ -10,103 +12,156 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
-@RequestMapping("/kabart/usedProduct/")
+@RequestMapping("/kabart/usedProduct")
 @Log4j
 
 public class UsedProductController {
-	
+
 	@Setter(onMethod_ = { @Autowired })
 	private UsedProductDetailService service;
 
-	@GetMapping({"/used_prod_detail", "/used_prod_detail_modify"})
+	@GetMapping({ "/used_prod_detail", "/used_prod_detail_modify" })
 	public void used_prod_detail(@RequestParam("up_id") int up_id, Model model) {
 		log.info("used item detail controller....");
-		
+
 		UsedProductDetailVO read = service.read(up_id);
-		
+
 		model.addAttribute("read", read);
 	}
-	
+
 	@Setter(onMethod_ = { @Autowired })
 	private UsedProductListService usedProductListService;
-	
+
 	@GetMapping("/used_prod_list")
-	public void used_prod_list(@RequestParam(value="prod_category") String prod_category,
+	public void used_prod_list(@RequestParam(value = "prod_category") String prod_category,
 			@ModelAttribute("cri") Criteria cri, Model model) {
 		List<UsedProductListVO> list = usedProductListService.getUsedProductListWithPaging(prod_category, cri);
 		if (prod_category.equals("all")) {
 			list.get(0).setProd_category("all");
 		}
 		model.addAttribute("usedProductList", list);
-		
+
 		int total = usedProductListService.getTotalCount(cri);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
-		
+
 	}
-	
+
 	@Setter(onMethod_ = { @Autowired })
 	private ProductDetailService productDetailService;
-	
+
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/used_prod_sell")
 	public void used_prod_sell(@RequestParam("prod_id") int prod_id, Model model) {
-		
+
 		log.info("prod_detail Controller");
 		log.info("prod_id : " + prod_id);
 
 		List<ImgVO> imgs = productDetailService.getdetailImgs(prod_id);
 		List<UsedProductVO> useds = productDetailService.getused(prod_id);
-		
+
 		ProductDetailVO detail = productDetailService.getProdDetail(prod_id);
 
 		detail.setImgs(imgs);
 		detail.setUseds(useds);
 
 		log.info(detail);
-		
 
 		model.addAttribute("detail", detail);
 	}
-	
-	@Setter(onMethod_ = {@Autowired})
+
+	@Setter(onMethod_ = { @Autowired })
 	private UsedSellService usedSellService;
-	
+
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/used_prod_sell")
 	public String used_prod_sell_insert(UsedSellVO usedSellVO, RedirectAttributes rttr) {
-		
+
 		usedSellService.registerUsedProduct(usedSellVO);
 		rttr.addFlashAttribute("result", usedSellVO.getUp_id());
-		
+
 		return "redirect:/kabart/mypage/selling";
 	}
-	
 
 	@PostMapping("/used_prod_detail_modify")
 	public String used_prod_modify(@RequestParam("up_id") int up_id, UsedSellVO usedSellVO, RedirectAttributes rttr) {
-		
+
 		log.info("modify : " + usedSellVO);
-		
+
 		if (usedSellService.modifyUsedProduct(usedSellVO)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		
-		return "redirect:/kabart/usedProduct/used_prod_detail?up_id="+up_id;
+
+		return "redirect:/kabart/usedProduct/used_prod_detail?up_id=" + up_id;
 	}
-	
+
 	@PostMapping("/used_prod_detail_remove")
 	public String used_prod_remove(@RequestParam("up_id") int up_id, RedirectAttributes rttr) {
-		
+
 		log.info("remove : " + up_id);
 		if (usedSellService.removeUsedProduct(up_id)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/kabart/usedProduct/used_prod_list?prod_category=all";
+	}
+
+	@ResponseBody
+	@PostMapping("/uploadAjaxAction")
+	public void uploadAjaxPost(MultipartFile[] uploadFile) {
+
+		String uploadFolder = "C:\\dev64\\workspace-sts\\HD_project2nd\\usedImgs";
+
+		File uploadPath = new File(uploadFolder, getFolder());
+
+		if (uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
+
+		for (MultipartFile multipartFile : uploadFile) {
+
+			String uploadFileName = multipartFile.getOriginalFilename();
+
+			UUID uuid = UUID.randomUUID();
+			
+			uploadFileName = uuid.toString() + "_" + uploadFileName;
+			
+			File saveFile = new File(uploadPath, uploadFileName);
+
+			try {
+				multipartFile.transferTo(saveFile);
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}
+
+	}
+
+	private String getFolder() {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		Date date = new Date();
+
+		String str = sdf.format(date);
+
+		return str.replace("-", File.separator);
+	}
+	
+	private boolean checkImageType(File file) {
+		
+		try {
+			String contentType = Files.probeContentType(file.toPath());
+			
+			return contentType.startsWith("image");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
