@@ -11,6 +11,7 @@
 				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<%@include file="/WEB-INF/views/kabart/includes/style.jsp" %>
+				<script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
 					<title>Product List</title>
 			</head>
 
@@ -186,6 +187,19 @@
 									<!---->
 								</div>
 								<%@include file="../includes/footer.jsp" %>
+								<div data-v-3007c576="">
+								<!---->
+								<div id="toast" class="toast md" data-v-66ae1b7c="">
+									<div class="wrap" data-v-66ae1b7c="">
+									<picture data-v-66ae1b7c=""  class="toast_img toast-icon" >
+										<img alt="" id="img_icon">
+										</picture>
+									<div class="toast-content" data-v-66ae1b7c="">
+									<p data-v-66ae1b7c=""></p>
+								</div>
+				</div>
+			</div>
+		</div>
 							</div>
 						</div>
 					</div>
@@ -271,7 +285,7 @@
 						dataType: 'text',
 						type: 'POST',
 						success: function (result) {
-							alert(result);
+							showToast(result, 1);
 							targetLi.remove();
 						}
 					}); // $.ajax
@@ -314,12 +328,12 @@
 
 					function checkExtension(fileName, fileSize) {
 						if (fileSize >= maxSize) {
-							alert("파일 사이즈 초과");
+							showToast("파일 사이즈를 초과하였습니다.", -1);
 							return false;
 						}
 
 						if (regex.test(fileName)) {
-							alert("해당 종류의 파일은 업로드할 수 없습니다.");
+							showToast("해당 종류의 파일은 업로드를 할 수가 없습니다.", -1);
 							return false;
 						}
 						return true;
