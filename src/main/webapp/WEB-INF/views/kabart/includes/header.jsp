@@ -31,7 +31,7 @@
 									<form action="/kabart/logout" method="post">
 										<input type="hidden" name="${_csrf.parameterName }"
 											value="${_csrf.token }" />
-										<button>로그아웃</button>
+										<input type="submit" readonly="readonly" value="로그아웃">
 									</form>
 								</li>
 							</sec:authorize>
