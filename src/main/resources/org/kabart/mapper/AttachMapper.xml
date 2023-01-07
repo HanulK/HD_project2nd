@@ -26,6 +26,6 @@
 
 	<select id="getOldFiles" resultType="org.kabart.domain.AttachVO">
 		select * from attachs where
-		uplodapath = to_char(sysdate - 1, 'yyyy\mm\dd')
+		uploadpath = to_char(sysdate - 1, 'yyyy\mm\dd')
 	</select>
 </mapper>
