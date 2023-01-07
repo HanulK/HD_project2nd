@@ -183,6 +183,16 @@
 									<h3 data-v-3e0ff210="" class="title_text">
 										<em>Kabart</em> 추천 상품
 									</h3>
+									<div class="imgfold">
+										<img class="foldbtn" src="/resources/img/down.png">
+									</div>
+									<script>
+								$(function (){
+									$("#imgfold").click(function (){
+								  	$("#other_stock_list").toggle();
+								  });
+								});
+								</script>
 								</div>
 								<div data-v-3e0ff210="" class="other_stock_list">
 									<!-- stock item 단일-->
@@ -334,186 +344,199 @@
 								<!-- 상세정보 fin -->
 								<!-- 후기 -->
 								<!-- 연령대 / 가구 분석 -->
-								<c:if test="${not empty family}">
 								<div class="graph_area">
-									<div class="graph_bar_wrap">
-										<p class="graph_category">가구원</p>
-										<div class="graph_bar_area">
-											<div class="baseline_wrap">
-												<ol class="baseline_area">
-													<li class="baseline baseline0"><span
-														class="baseline_num">0</span></li>
-													<li class="baseline baseline20"><span
-														class="baseline_num">20%</span> <span class="baseline_bar"></span>
+									<c:if test="${not empty family}">
+										<div class="graph_bar_wrap">
+											<p class="graph_category">가구원</p>
+											<div class="graph_bar_area">
+												<div class="baseline_wrap">
+													<ol class="baseline_area">
+														<li class="baseline baseline0"><span
+															class="baseline_num">0</span></li>
+														<li class="baseline baseline20"><span
+															class="baseline_num">20%</span> <span
+															class="baseline_bar"></span></li>
+														<li class="baseline baseline40"><span
+															class="baseline_num">40%</span> <span
+															class="baseline_bar"></span></li>
+														<li class="baseline baseline60"><span
+															class="baseline_num">60%</span> <span
+															class="baseline_bar"></span></li>
+														<li class="baseline baseline80"><span
+															class="baseline_num">80%</span> <span
+															class="baseline_bar"></span></li>
+														<li class="baseline baseline100"><span
+															class="baseline_num">100%</span> <span
+															class="baseline_bar"></span></li>
+													</ol>
+												</div>
+												<ul class="bar_wrap">
+													<li>
+														<dl>
+															<dt class="bar_name">1인</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${family[0].percent}%"><span
+																		class="bar_num">${family[0].percent}%</span></span>
+																</p>
+															</dd>
+														</dl>
 													</li>
-													<li class="baseline baseline40"><span
-														class="baseline_num">40%</span> <span class="baseline_bar"></span>
+													<li>
+														<dl>
+															<dt class="bar_name">2인</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${family[1].percent}%"><span
+																		class="bar_num">${family[1].percent}%</span></span>
+																</p>
+															</dd>
+														</dl>
 													</li>
-													<li class="baseline baseline60"><span
-														class="baseline_num">60%</span> <span class="baseline_bar"></span>
+													<li>
+														<dl>
+															<dt class="bar_name">3인</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${family[2].percent}%"><span
+																		class="bar_num">${family[2].percent}%</span></span>
+																</p>
+															</dd>
+														</dl>
 													</li>
-													<li class="baseline baseline80"><span
-														class="baseline_num">80%</span> <span class="baseline_bar"></span>
+													<li>
+														<dl>
+															<dt class="bar_name">4인</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${family[3].percent}%"><span
+																		class="bar_num">${family[3].percent}%</span></span>
+																</p>
+															</dd>
+														</dl>
 													</li>
-													<li class="baseline baseline100"><span
-														class="baseline_num">100%</span> <span
-														class="baseline_bar"></span></li>
-												</ol>
+													<li>
+														<dl>
+															<dt class="bar_name">5인 이상</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${family[4].percent}%"><span
+																		class="bar_num">${family[4].percent}%</span></span>
+																</p>
+															</dd>
+														</dl>
+													</li>
+												</ul>
 											</div>
-											<ul class="bar_wrap">
-												<li>
-													<dl>
-														<dt class="bar_name">1인</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest" style="height: ${family[0].percent}%"><span
-																	class="bar_num">${family[0].percent}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-												<li>
-													<dl>
-														<dt class="bar_name">2인</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest" style="height: ${family[1].percent}%"><span
-																	class="bar_num">${family[1].percent}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-												<li>
-													<dl>
-														<dt class="bar_name">3인</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest" style="height: ${family[2].percent}%"><span
-																	class="bar_num">${family[2].percent}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-												<li>
-													<dl>
-														<dt class="bar_name">4인</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest"
-																	style="height: ${family[3].percent}%"><span
-																	class="bar_num">${family[3].percent}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-												<li>
-													<dl>
-														<dt class="bar_name">5인 이상</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest" style="height: ${family[4].percent}%"><span
-																	class="bar_num">${family[4].percent}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-											</ul>
-										</div>
 											<script>
-											let t = 0 
-											bar.style.width = 0 
-											const barAnimation = setInterval(() => { 
-											bar.style.width = t + '%' 
-											t++ >= totalMinwon && clearInterval(barAnimation) }, 10)
+											var maxIndex = $("bar hightest").length;
+
+											for(var i=0; i<maxIndex; i++){
+											  var val = $("bar hightest").eq(i).attr('height');
+											  $("bar hightest").eq(i).css({
+											    "left": (i+1)*80+"px"
+											  }).animate({
+											    "height":val+"%"
+											  },800);
+											}
 											</script>
-									</div>
-									<!-- 연령대 -->
-									<div class="graph_bar_wrap1">
-										<p class="graph_category">연령</p>
-										<div class="graph_bar_area">
-											<div class="baseline_wrap">
-												<ol class="baseline_area">
-													<li class="baseline baseline0"><span
-														class="baseline_num">0</span></li>
-													<li class="baseline baseline20"><span
-														class="baseline_num">20%</span> <span class="baseline_bar"></span>
-													</li>
-													<li class="baseline baseline40"><span
-														class="baseline_num">40%</span> <span class="baseline_bar"></span>
-													</li>
-													<li class="baseline baseline60"><span
-														class="baseline_num">60%</span> <span class="baseline_bar"></span>
-													</li>
-													<li class="baseline baseline80"><span
-														class="baseline_num">80%</span> <span class="baseline_bar"></span>
-													</li>
-													<li class="baseline baseline100"><span
-														class="baseline_num">100%</span> <span
-														class="baseline_bar"></span></li>
-												</ol>
-											</div>
-											<ul class="bar_wrap">
-												<li>
-													<dl>
-														<dt class="bar_name">20대 미만</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest" style="height: ${age[0].cnt}%"><span
-																	class="bar_num">${age[0].cnt}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-												<li>
-													<dl>
-														<dt class="bar_name">20대</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest" style="height: ${age[1].cnt}%"><span
-																	class="bar_num">${age[1].cnt}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-												<li>
-													<dl>
-														<dt class="bar_name">30대</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest" style="height: ${age[2].cnt}%"><span
-																	class="bar_num">${age[2].cnt}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-												<li>
-													<dl>
-														<dt class="bar_name">40대</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest" style="height: ${age[3].cnt}%"><span
-																	class="bar_num">${age[3].cnt}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-												<li>
-													<dl>
-														<dt class="bar_name">50대 이상</dt>
-														<dd>
-															<p class="bar_area">
-																<span class="bar hightest"
-																	style="height: ${age[4].cnt}%"><span
-																	class="bar_num">${age[4].cnt}%</span></span>
-															</p>
-														</dd>
-													</dl>
-												</li>
-											</ul>
 										</div>
-									</div>
+										<!-- 연령대 -->
+										<div class="graph_bar_wrap1">
+											<p class="graph_category">연령</p>
+											<div class="graph_bar_area">
+												<div class="baseline_wrap">
+													<ol class="baseline_area">
+														<li class="baseline baseline0"><span
+															class="baseline_num">0</span></li>
+														<li class="baseline baseline20"><span
+															class="baseline_num">20%</span> <span
+															class="baseline_bar"></span></li>
+														<li class="baseline baseline40"><span
+															class="baseline_num">40%</span> <span
+															class="baseline_bar"></span></li>
+														<li class="baseline baseline60"><span
+															class="baseline_num">60%</span> <span
+															class="baseline_bar"></span></li>
+														<li class="baseline baseline80"><span
+															class="baseline_num">80%</span> <span
+															class="baseline_bar"></span></li>
+														<li class="baseline baseline100"><span
+															class="baseline_num">100%</span> <span
+															class="baseline_bar"></span></li>
+													</ol>
+												</div>
+												<ul class="bar_wrap">
+													<li>
+														<dl>
+															<dt class="bar_name">20대 미만</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${age[0].cnt}%"><span
+																		class="bar_num">${age[0].cnt}%</span></span>
+																</p>
+															</dd>
+														</dl>
+													</li>
+													<li>
+														<dl>
+															<dt class="bar_name">20대</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${age[1].cnt}%"><span
+																		class="bar_num">${age[1].cnt}%</span></span>
+																</p>
+															</dd>
+														</dl>
+													</li>
+													<li>
+														<dl>
+															<dt class="bar_name">30대</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${age[2].cnt}%"><span
+																		class="bar_num">${age[2].cnt}%</span></span>
+																</p>
+															</dd>
+														</dl>
+													</li>
+													<li>
+														<dl>
+															<dt class="bar_name">40대</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${age[3].cnt}%"><span
+																		class="bar_num">${age[3].cnt}%</span></span>
+																</p>
+															</dd>
+														</dl>
+													</li>
+													<li>
+														<dl>
+															<dt class="bar_name">50대 이상</dt>
+															<dd>
+																<p class="bar_area">
+																	<span class="bar hightest"
+																		style="height: ${age[4].cnt}%"><span
+																		class="bar_num">${age[4].cnt}%</span></span>
+																</p>
+															</dd>
+														</dl>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</c:if>
 								</div>
-								</c:if>
 								<div class="item__review">
 									<c:if test="${empty review}">
 										<ul data-v-4faab390="" class="wish_list">
@@ -541,18 +564,39 @@
 					</div>
 					<%@include file="../includes/footer.jsp"%>
 					<div data-v-3007c576="">
-			<!---->
-			<div id="toast" class="toast md" data-v-66ae1b7c="">
-				<div class="wrap" data-v-66ae1b7c="">
-					<picture data-v-66ae1b7c=""  class="toast_img toast-icon" >
-						<img alt="" id="img_icon">
-						</picture>
-					<div class="toast-content" data-v-66ae1b7c="">
-						<p data-v-66ae1b7c=""></p>
+						<div id="goto-top">
+							<div class="material-icons">arrow_upward</div>
+						</div>
+						<script>
+		const gotoTopEl = document.querySelector('#goto-top')
+		window.addEventListener('scroll', function() {
+			if (window.scrollY > 500) {
+				gsap.to(gotoTopEl, .2, {
+					x : 0
+				})
+			} else {
+				gsap.to(gotoTopEl, .2, {
+					x : 100
+				})
+			}
+		}, 300)
+		gotoTopEl.addEventListener('click', function() {
+			gsap.to(window, .7, {
+				scrollTo : 0
+			})
+		})
+	</script>
+						<!---->
+						<div id="toast" class="toast md" data-v-66ae1b7c="">
+							<div class="wrap" data-v-66ae1b7c="">
+								<picture data-v-66ae1b7c="" class="toast_img toast-icon">
+								<img alt="" id="img_icon"> </picture>
+								<div class="toast-content" data-v-66ae1b7c="">
+									<p data-v-66ae1b7c=""></p>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-		</div>
 				</div>
 			</div>
 		</div>
