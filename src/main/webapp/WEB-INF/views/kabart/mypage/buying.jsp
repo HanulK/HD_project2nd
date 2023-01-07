@@ -8,6 +8,78 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/css/bootstrap.css" rel="stylesheet">
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+	integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script type="text/javascript" src="/resources/js/bootstrap.js"></script>
+<script type="text/javascript" src="/resources/js/reply.js"></script>	
+<script>
+	var prod_id = 0;
+	var order_id = 0;
+	var rv_text = "";
+	
+function registerReview(){
+	const mem_id = $("#mem_id").val();
+	var csrfHeaderName = "${_csrf.headerName}";
+	var csrfTokenValue = "${_csrf.token}";
+	var modal = $(".modal");
+	console.log(prod_id,order_id);
+	var modalInputReply = modal.find("input[name='reply']");
+	var rv_text = modalInputReply.val();
+	console.log(rv_text);
+	console.log("클릭");
+	$.ajax({
+		type : 'post',
+		url : '/review/insert',
+		data : JSON.stringify({
+			order_id : order_id,
+			mem_id : mem_id,
+			rv_text : rv_text,
+			rv_date  :"??",
+			prod_id : prod_id
+		}),
+		beforeSend : function(xhr) {
+			xhr.setRequestHeader(csrfHeaderName,
+					csrfTokenValue);
+		},
+		contentType : "application/json",
+		success : function(result){
+			alert('리뷰등록 성공');
+			console.log(result);
+			modal.modal('hide');
+			$("#search_period").trigger("click");
+		},
+		error : function(xhr){
+			console.log(xhr);
+		}
+	});
+};
+function reviewModal(ths){
+	const mem_id = $("#mem_id").val();
+	console.log(mem_id);
+	var modal = $(".modal");
+	var modalInputReply = modal.find("input[name='reply']");
+	var modalInputReplyer = modal.find("input[name='replyer']");
+	var modalInputReplyDate = modal.find("input[name='replyDate']");
+	var modalRegisterBtn = $("#modalRegisterBtn");
+	console.log($(ths));
+	$("#myModalLabel").html($(ths).data('pname'));
+	modal.find("input").val("");
+	modalInputReplyDate.closest("div").hide();
+	modal.find("button[id !='modalCloseBtn']").hide();
+	modalInputReplyer.val(mem_id);
+	modalInputReplyer.prop('readonly',true);
+	modalRegisterBtn.show();
+	prod_id = $(ths).data('pid');
+	order_id = $(ths).data('oid');
+	$(".modal").modal("show");
+};
+
+</script>
 <title>KREAM | 한정판 거래의 FLEX</title>
 </head>
 <body data-v-39b2348a="" tabindex="0" class="wrap win_os">
@@ -53,6 +125,35 @@
 							</nav>
 						</div>
 					</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">REPLY MODAL</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>후기</label> <input class="form-control" name='reply'
+						value='New Reply!!!!'>
+				</div>
+				<div class="form-group">
+					<label>작성자</label> <input class="form-control" name='replyer'
+						value='replyer'>
+				</div>
+				
+
+			</div>
+			<div class="modal-footer">
+				<button onclick='registerReview()'id='modalRegisterBtn' type="button" class="btn btn-primary">Register</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
 					<div data-v-39b2348a="" class="content_area">
 						<div class="my_purchase">
 							<div data-v-88eb18f6="" class="content_title">
@@ -160,11 +261,14 @@
 			</div>
 		</div>
 	</div>
+		<script type="text/javascript" src="/resources/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			var csrfHeaderName = "${_csrf.headerName}";
 			var csrfTokenValue = "${_csrf.token}";
 			var isUsed = 0;
+			
 			const mem_id = $("#mem_id").val();
 			console.log(mem_id);
 			const today = new Date().toISOString().slice(0, 10);
@@ -173,6 +277,7 @@
 
 			$('#dateStart').attr("max",today);
 			$('#dateEnd').attr("max",today);
+			
 			function date_add(sDate, nDays) {
 				var yy = parseInt(sDate.substr(0, 4), 10);
 				var mm = parseInt(sDate.substr(5, 2), 10);
@@ -214,7 +319,7 @@
 										var status = '주문취소';
 										var datestatus = "주문날짜";
 										if (!result[i].cancle_date) {
-											status = '주문완료';
+											status = '구매확정';
 										}
 
 										row += "<div data-v-50c8b1d2='' class='purchase_list finished bid'><div data-v-50c8b1d2=''><div data-v-2f988574='' data-v-50c8b1d2=''><div data-v-2f988574='' class='purchase_list_display_item' style='background-color: rgb(255, 255, 255);'>"
@@ -234,15 +339,13 @@
 										  + "</p></div>"
 										  + "<div data-v-2f988574='' class='list_item_column column_last'>"
 										  if(result[i].review_check==0 &&!result[i].cancle_date){
-										  row +="<p data-pid='"+result[i].prod_id+"' data-oid='"+result[i].order_id+"'data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>리뷰작성</p>"
-										  	  +"<p data-pid='"+result[i].prod_id+"' data-oid='"+result[i].order_id+"'data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>주문취소</p>"
+										  row +="<p data-pname='"+result[i].prod_name+"' onclick='reviewModal(this)' type='button' data-type='review' data-pid='"+result[i].prod_id+"' data-oid='"+result[i].order_id+"'data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph review' style='color: rgb(34, 34, 34);'>리뷰작성</p>"
+										  	  +"<p data-type='cancle' data-pid='"+result[i].prod_id+"' data-oid='"+result[i].order_id+"'data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph remove' style='color: rgb(34, 34, 34);'>주문취소</p>"
 										  }else {
 											  row += "<p data-pid='"+result[i].prod_id+"' data-oid='"+result[i].order_id+"'data-v-5f36ea36='' data-v-2f988574='' class='last_title display_paragraph' style='color: rgb(34, 34, 34);'>"
 											  +status
 											 +"</p>"
 										  }
-										  
-										  
 										  row+= "<p data-v-5f36ea36='' data-v-2f988574='' class='last_description display_paragraph'></p></div></div>"
 										  + "</div></div></div></div>";
 									}
@@ -250,7 +353,8 @@
 								$(".tab_on .count").html(result.length);
 								console.log($(".tab_on count").html());
 								$(".purchase_list").html(row);
-
+								
+								
 							},
 							error : function(e) {
 								alert('조회 실패');
@@ -315,6 +419,7 @@
 								}
 								$(".tab_on .count").html(result.length);
 								console.log($(".tab_on count").html());
+								
 								$(".purchase_list").html(row);
 
 							},
@@ -362,7 +467,9 @@
 			$(".tab_link").on("click", function(e) {
 				e.preventDefault();
 			});
-			$("#search_period").click();
+			
+		
+			
 		})
 	</script>
 

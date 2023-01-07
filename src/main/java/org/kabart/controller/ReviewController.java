@@ -28,6 +28,8 @@ public class ReviewController {
 
 	@PostMapping(value="/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Map<String, Object>> insertReview(@RequestBody ReviewVO rVO) {
+		log.warn("여기들어온겨??");
+		log.warn(rVO);
 		Map<String, Object> map = new HashMap<>();
 		map.put("result", rService.insert(rVO));
 		return new ResponseEntity<Map<String, Object>>(map,HttpStatus.OK);
