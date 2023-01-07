@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 <title>PRODUCT SEARCH</title>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
 	$(document).ready(function() {
 		let actionForm = $("#actionForm");
 
@@ -24,7 +25,8 @@
 			actionForm.submit();
 		});
 	});
-</script>
+
+</script> -->
 </head>
 
 <body>
@@ -355,8 +357,8 @@
 					
 					
 					<!-- 하단 -->
-					<div class="pull-right">
-						<ul id="min" class="pagination"
+			<!-- 		<div class="pull-right">
+						<ul id="footnum" class="pagination"
 							style="display: flex; justify-content: center;">
 
 							<li class="paginate_button  active" style="margin: 0 5px;"><a
@@ -372,16 +374,16 @@
 								href="4">4</a></li>
 
 						</ul>
-					</div>
+					</div> -->
 					<!-- 페이징 처리 끝-->
-					<div class="soo">
+				
 						<form id="actionForm" action="/kabart/product/prod_sarch_n"
 							method="get">
-							<input type="hidden" name="prod_category" value="bed"> <input
-								type="hidden" name="pageNum" value="1"> <input
-								type="hidden" name="amount" value="8">
+						<!-- <input type="hidden" name="prod_category" value="bed"> -->
+							<input type="hidden" name="pageNum" value="1"> 
+							<input type="hidden" name="amount" value="8">
 						</form>
-					</div>
+					
 					<!-- /상품 그루핑 -->
 
 					<!-- <form id='searchForm' action="/kabart/product/prod_list" method='get'> -->
@@ -392,6 +394,23 @@
 		</div>
 	</div>
 
+
+<script type="text/javascript">
+
+var actionForm = $("#actionForm");
+$(".paginate_button a").on(
+		"click",
+		function(e) {
+
+			e.preventDefault();
+
+			console.log('click');
+
+			actionForm.find("input[name='pageNum']")
+					.val($(this).attr("href"));
+			actionForm.submit();
+		});
+</script>
 </body>
 
 </html>

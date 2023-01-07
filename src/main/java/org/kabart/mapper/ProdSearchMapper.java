@@ -2,6 +2,7 @@ package org.kabart.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.kabart.domain.Criteria;
 import org.kabart.domain.ProductListVO;
 
@@ -11,5 +12,7 @@ public interface ProdSearchMapper {
 	public List<ProductListVO> getListWithPaging2(Criteria cri);
 	
 	public int getTotalCount(Criteria cri);
+	
+	//public List<ProductListVO> getListWithPaging2(@Param("keword") String keword, @Param("cri") Criteria cri);
 	
 }

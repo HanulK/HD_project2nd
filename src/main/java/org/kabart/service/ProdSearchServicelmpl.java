@@ -32,5 +32,6 @@ public class ProdSearchServicelmpl implements ProdSearchService {
 		log.info("get total count");
 		return mapper.getTotalCount(cri);
 	}
+	
 
 }

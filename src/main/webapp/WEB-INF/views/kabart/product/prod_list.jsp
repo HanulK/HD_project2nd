@@ -252,7 +252,7 @@
 								button class='btn btn-default'  required/>
 								<button class='btn btn-default'>Search</button>
 						</form>
-						<!-- 정훈추가끝 -->
+						<!-- 정훈추가 -->
 							</div>
 							<%@include file="../includes/footer.jsp" %>
 								<!---->

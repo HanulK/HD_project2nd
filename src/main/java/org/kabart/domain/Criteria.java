@@ -24,6 +24,10 @@ public class Criteria {
 		this.amount = amount;
 	}
 	
+	public Criteria(String keyword) {
+		this.keyword = keyword;
+	
+	}
 	
 	
 	public String[] getTypeArr() {

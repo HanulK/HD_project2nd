@@ -62,13 +62,13 @@
        ]]>
    </select>
    
-         <!--  where rn > (#{cri.pageNum} - 1) * #{cri.amount} -->
+       
    <select id="getTotalCount" resultType="int"> 
-      select count(*) from
-         products 
-      where 
+   select count(*) from
+		products p join imgs i on (p.prod_id = i.prod_id)
+		where
       <include refid="criteria"></include> 
-     1=1
+     img_tag='thumNail'
    </select>
 
 </mapper>
