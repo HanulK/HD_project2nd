@@ -146,7 +146,7 @@
 										<c:if test="${pageMaker.prev}">
 											<li class="paginate_button previous">
 												<a href="${pageMaker.startPage - 1 } ">
-												이전 10개   < 
+												이전
 												</a>
 											</li>
 										</c:if>
@@ -163,7 +163,7 @@
 										<c:if test="${pageMaker.next}">
 											<li class="paginate_button next">
 												<a href="${pageMaker.endPage + 1}">
-												 >   다음 10개
+												 다음
 												</a>
 											</li>
 										</c:if>

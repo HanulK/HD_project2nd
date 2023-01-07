@@ -227,32 +227,7 @@
 								
 								
 							<!-- <form id='searchForm' action="/kabart/product/prod_list" method='get'> -->
-							
-								<!-- 정훈추가 -->
-								<form id='searchForm' action="/kabart/product/search_complete_list" method='get'
-								>
-					
-							
-							<select name='type' ">
-							
-								<option value="T"
-									<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제품명</option>
-								
-								<option value="C"
-									<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>카테고리</option>
 
-								<option value="TC"
-									<c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제품명
-									or 카테고리</option>
-
-							</select> 
-							
-								<input type='text' name='keyword'
-								value='<c:out value="${pageMaker.cri.keyword}"/>'
-								button class='btn btn-default'  required/>
-								<button class='btn btn-default'>Search</button>
-						</form>
-						<!-- 정훈추가 -->
 							</div>
 							<%@include file="../includes/footer.jsp" %>
 								<!---->

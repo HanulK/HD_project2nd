@@ -177,22 +177,17 @@
 																	<div data-v-b809b0a6="" class="detail_box model_num">
 																		<dt data-v-b809b0a6="" class="product_title">너비</dt>
 																		<dd data-v-b809b0a6="" class="product_info">
-																			${read.prod_width}</dd>
+																			${read.prod_width} mm</dd>
 																	</div>
 																	<div data-v-b809b0a6="" class="detail_box">
 																		<dt data-v-b809b0a6="" class="product_title">높이</dt>
 																		<dd data-v-b809b0a6="" class="product_info">
-																			${read.prod_height}</dd>
+																			${read.prod_height} mm</dd>
 																	</div>
 																	<div data-v-b809b0a6="" class="detail_box">
 																		<dt data-v-b809b0a6="" class="product_title">깊이</dt>
 																		<dd data-v-b809b0a6="" class="product_info">
-																			${read.prod_depth}</dd>
-																	</div>
-																	<div data-v-b809b0a6="" class="detail_box">
-																		<dt data-v-b809b0a6="" class="product_title">발매가</dt>
-																		<dd data-v-b809b0a6="" class="product_info">
-																			${read.prod_price}</dd>
+																			${read.prod_depth} mm</dd>
 																	</div>
 																</dl>
 															</div>
