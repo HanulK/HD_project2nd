@@ -274,28 +274,30 @@
 						uploadUL.append(str);
 					}
 
-					$(".uploadResult").on("click", "button", function (e) {
+					$(".uploadResult").on("click", "span", function (e) {
 						console.log("file delete...");
-
 						var targetFile = $(this).data("file");
 						var type = $(this).data("type");
-
 						var targetLi = $(this).closest("li");
-
+						var csrfHeaderName = "${_csrf.headerName}";
+						var csrfTokenValue = "${_csrf.token}";
 						$.ajax({
-							url: '/deleteFile',
-							data: { fileName: targetFile, type: type },
-							beforeSend: function (xhr) {
-								xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-							},
-							dataType: 'text',
-							type: 'POST',
-							success: function (result) {
-								showToast(result, 1);
-								targetLi.remove();
-							}
+							 url: '/kabart/usedProduct/deleteFile',
+							 data: {
+									fileName: targetFile,
+									type: type
+							 },
+							 beforeSend: function (xhr) {
+									xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+							 },
+							 dataType: 'text',
+							 type: 'POST',
+							 success: function (result) {
+									showToast(result, 1);
+									targetLi.remove();
+							 }
 						}); // $.ajax
-					});
+				 });
 
 					$(document).ready(function (e) {
 
