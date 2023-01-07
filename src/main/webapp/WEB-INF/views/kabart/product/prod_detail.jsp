@@ -187,11 +187,10 @@
 										<img class="foldbtn" src="/resources/img/down.png">
 									</div>
 									<script>
-								$(function (){
-									$("#imgfold").click(function (){
-								  	$("#other_stock_list").toggle();
-								  });
-								});
+									$('.imgfold').click(function() {
+									    $('#other_stock_list').show();
+									    $('#other_stock_list').hide();
+									});
 								</script>
 								</div>
 								<div data-v-3e0ff210="" class="other_stock_list">

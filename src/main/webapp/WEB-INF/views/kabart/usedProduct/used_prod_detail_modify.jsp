@@ -126,7 +126,7 @@
 													<div class="info_write">
 														<input type="file" name='uploadFile' multiple="">
 														<div class='uploadResult'>
-															<ul>
+															<ul style="display: flex; justify-content: flex-start;">
 
 															</ul>
 														</div>
@@ -248,7 +248,6 @@
 								str += "<li data-path='" + obj.uploadPath + "'";
 								str += " data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='" + obj.image + "'"
 								str + " ><div>";
-								str += "<span> " + obj.fileName + "</span>";
 								str += "<button type='button' data-file=\'" + fileCallPath + "\' "
 								str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";	
 								str += "<img src='/display?fileName=" + fileCallPath + "'>";
@@ -263,10 +262,9 @@
 								var fileLink = fileCallPath.replace(new RegExp(
 									/\\/g), "/");
 								str += "<li "
-								str += "data-path='" + obj.uploadPath + "' data-uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='true' ><div>";
-								str += "<span> " + obj.fileName + "</span>";
-								str += "<img src='/kabart/usedProduct/display?fileName=" + fileCallPath + "'>";
-								str += "<span data-file=\'" + fileCallPath + "\' data-type='image'> x </span>";
+								str += "data-path='" + obj.uploadPath + "' data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='true' style='margin-top: 10px; margin-right: 10px;'><div>";
+	                            str += "<img src='/kabart/usedProduct/display?fileName=" + fileCallPath + "'>";
+	                            str += "<span data-file=\'" + fileCallPath + "\' data-type='image'><img src='/resources/img/X.png' style='max-width: 17px; margin-left: 2px;'></span>";
 								str += "</div>";
 								str + "</li>";
 							}
@@ -314,9 +312,8 @@
 									let fileCallPath = encodeURIComponent(attach.uploadPath + "/s_" + attach.file_uuid + "_" + attach.fileName);
 
 									str += "<li data-v-73da1ab5='' data-path='" + attach.uploadPath + "' data-uuid='" + attach.file_uuid + "' data-fileName='" + attach.fileName + "' data-type='" + attach.fileType + "' ><div>";
-									str += "<span> " + attach.fileName + "</span>";
 									str += "<img data-v-73da1ab5='' src='/kabart/usedProduct/display?fileName=" + fileCallPath + "' class='stock_95_image'>";
-									str += "<span data-file=\'" + fileCallPath + "\' data-type='image'> x </span>";
+									str += "<span data-file=\'" + fileCallPath + "\' data-type='image'><img src='/resources/img/X.png' style='max-width: 17px; margin-left: 2px;'></span>";
 									str += "</div>";
 									str += "</li>";
 								});

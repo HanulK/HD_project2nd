@@ -4871,8 +4871,8 @@
 	position: relative;
 	display: inline-block;
 	vertical-align: top;
-	width: 13.335%;
-	height: 70px;
+	/* width: 13.335%;
+	height: 70px; */
 	margin: 2.5px;
 	cursor: -webkit-zoom-in;
 	cursor: zoom-in

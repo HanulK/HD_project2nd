@@ -215,7 +215,7 @@
 															</div>
 														</div>
 														<div data-v-2e0c1d1d="" data-v-824856a2="" class="review_section plain">
-															<p data-v-2e0c1d1d="" class="title">상세 사진</p>
+															<p data-v-2e0c1d1d="" class="title" style="margin-top: 17px;">상세 사진</p>
 															<div data-v-73da1ab5="" data-v-2e0c1d1d="" class="review_item">
 																<ul data-v-73da1ab5="" class="stock_images">
 																	

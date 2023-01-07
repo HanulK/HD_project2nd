@@ -130,7 +130,7 @@
                                        <div class="info_write">
                                           <input type="file" name='uploadFile' multiple>
                                           <div class='uploadResult'>
-                                             <ul>
+                                             <ul style="display: flex; justify-content: flex-start; margin-top: 10px;">
 
                                              </ul>
                                           </div>
@@ -259,8 +259,7 @@
                                  + obj.fileName);
                               str += "<li data-path='" + obj.uploadPath + "'";
                               str += " data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='image'"
-                              str + " ><div>";
-                              str += "<span> " + obj.fileName + "</span>";
+                              str + " ><div style='margin-top: 10px; margin-right: 10px;'>";
                               str += "<button type='button' data-file=\'" + fileCallPath + "\' "
                               str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
                               str += "<img src='/kabart/usedProduct/display?fileName=" + fileCallPath + "'>";
@@ -276,10 +275,9 @@
                               var fileLink = fileCallPath.replace(new RegExp(
                                  /\\/g), "/");
                               str += "<li "
-                              str += "data-path='" + obj.uploadPath + "' data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='true' ><div>";
-                              str += "<span> " + obj.fileName + "</span>";
+                              str += "data-path='" + obj.uploadPath + "' data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='true' ><div style='margin-top: 10px; margin-right: 10px;'>";
                               str += "<img src='/kabart/usedProduct/display?fileName=" + fileCallPath + "'>";
-                              str += "<span data-file=\'" + fileCallPath + "\' data-type='image'> x </span>";
+                              str += "<span data-file=\'" + fileCallPath + "\' data-type='image'><img src='/resources/img/X.png' style='max-width: 17px; margin-left: 2px;'></span>";
                               str += "</div>";
                               str + "</li>";
                            }
