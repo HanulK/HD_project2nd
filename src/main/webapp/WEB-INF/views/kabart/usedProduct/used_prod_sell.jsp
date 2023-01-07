@@ -279,7 +279,7 @@
                               str += "data-path='" + obj.uploadPath + "' data-file_uuid='" + obj.file_uuid + "' data-filename='" + obj.fileName + "' data-type='true' ><div>";
                               str += "<span> " + obj.fileName + "</span>";
                               str += "<img src='/kabart/usedProduct/display?fileName=" + fileCallPath + "'>";
-                              str += "<span data-file=\'" + fileCallPath + "\' data-type='image'> x </span>"
+                              str += "<span data-file=\'" + fileCallPath + "\' data-type='image'> x </span>";
                               str += "</div>";
                               str + "</li>";
                            }

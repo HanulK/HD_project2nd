@@ -20,6 +20,7 @@ public class UsedProductDetailServiceImpl implements UsedProductDetailService{
 	
 	@Setter(onMethod_ = @Autowired)
 	private AttachMapper attachMapper;
+	
 	@Override
 	public UsedProductDetailVO read(int up_id) {
 		log.info("Used Product Detail.........");
@@ -29,7 +30,7 @@ public class UsedProductDetailServiceImpl implements UsedProductDetailService{
 	@Override
 	public List<AttachVO> getAttachList(int up_id) {
 		
-		return null;
+		return attachMapper.findByUuid(up_id);
 	}
 
 	/*

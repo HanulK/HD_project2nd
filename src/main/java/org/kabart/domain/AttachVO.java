@@ -12,4 +12,6 @@ public class AttachVO {
 	private Boolean fileType;
 	
 	private Integer up_id;
+
+
 }

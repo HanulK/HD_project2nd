@@ -1,5 +1,7 @@
 package org.kabart.domain;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.*;
 
 @Getter
@@ -33,4 +35,6 @@ public class Criteria {
 	public String[] getTypeArr() {
 		return type == null? new String[] {}  : type.split(""); 
 	}
+	
+
 }

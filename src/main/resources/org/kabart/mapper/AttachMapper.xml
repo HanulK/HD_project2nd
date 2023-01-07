@@ -5,16 +5,27 @@
 <mapper namespace="org.kabart.mapper.AttachMapper">
 
 	<insert id="insert">
-		insert into attachs (file_uuid, uploadpath, filename, filetype, up_id)
-		values (#{file_uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{up_id} )
+		insert into attachs (file_uuid, uploadpath, filename,
+		filetype, up_id)
+		values (#{file_uuid}, #{uploadPath}, #{fileName},
+		#{fileType}, #{up_id} )
 	</insert>
 
 	<delete id="delete">
 		delete from attachs where file_uuid = #{file_uuid}
 	</delete>
 
-	<select id="findByUuid"
-		resultType="org.kabart.domain.AttachVO">
-		select * from attachs where up_id = #{up_id}
+	<select id="findByUuid" resultType="org.kabart.domain.AttachVO">
+		select * from attachs where
+		up_id = #{up_id}
+	</select>
+
+	<delete id="deleteAll">
+		delete attachs where up_id = #{up_id}
+	</delete>
+
+	<select id="getOldFiles" resultType="org.kabart.domain.AttachVO">
+		select * from attachs where
+		uploadpath = to_char(sysdate - 1, 'yyyy\mm\dd')
 	</select>
 </mapper>

@@ -2,7 +2,7 @@ package org.kabart.controller;
 
 import java.io.*;
 import java.net.URLDecoder;
-import java.nio.file.Files;
+import java.nio.file.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -31,7 +31,14 @@ public class UsedProductController {
 
 	@Setter(onMethod_ = { @Autowired })
 	private UsedProductDetailService service;
-
+	
+	@GetMapping(value="/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<AttachVO>> getAttachList(int up_id) {
+		return new ResponseEntity<>(service.getAttachList(up_id), HttpStatus.OK);
+	}
+	
+	
 	@GetMapping({ "/used_prod_detail", "/used_prod_detail_modify" })
 	public void used_prod_detail(@RequestParam("up_id") int up_id, Model model) {
 		log.info("used item detail controller....");
@@ -110,11 +117,16 @@ public class UsedProductController {
 		return "redirect:/kabart/usedProduct/used_prod_detail?up_id=" + up_id;
 	}
 
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/used_prod_detail_remove")
 	public String used_prod_remove(@RequestParam("up_id") int up_id, RedirectAttributes rttr) {
 
 		log.info("remove : " + up_id);
+		
+		List<AttachVO> attachList = service.getAttachList(up_id);
+		
 		if (usedSellService.removeUsedProduct(up_id)) {
+			deleteFiles(attachList);
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/kabart/usedProduct/used_prod_list?prod_category=all";
@@ -241,5 +253,26 @@ public class UsedProductController {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	private void deleteFiles(List<AttachVO> attachList) {
+		
+		if (attachList == null || attachList.size() == 0) {
+			return;
+		}
+		
+		attachList.forEach(attach -> {
+			try {
+				Path file = Paths.get("C:\\dev64\\workspace-sts\\HD_project2nd\\usedImgs\\" + attach.getUploadPath()+"\\"+attach.getFile_uuid()+"_"+attach.getFileName());
+				Files.deleteIfExists(file);
+				
+				if (Files.probeContentType(file).startsWith("image")) {
+					Path thumbNail = Paths.get("C:\\dev64\\workspace-sts\\HD_project2nd\\usedImgs\\"+attach.getUploadPath()+"\\s_"+attach.getFile_uuid()+"_"+attach.getFileName());
+					Files.delete(thumbNail);
+				}
+			} catch (Exception e) {
+				log.error("delete file error : " + e.getMessage());
+			}
+		});
 	}
 }
