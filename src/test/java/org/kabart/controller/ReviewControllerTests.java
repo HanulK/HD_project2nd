@@ -49,7 +49,7 @@ public class ReviewControllerTests {
 		map.put("mem_id", "dodo");
 		map.put("rv_text", "dodo");
 
-		ReviewVO rVO = new ReviewVO(48,"dodo","hh","",171130);
+		ReviewVO rVO = new ReviewVO(48,"dodo","hh",null,171130);
 		String jsonStr = new Gson().toJson(rVO);
 		log.info(jsonStr);
 		mockMvc.perform(MockMvcRequestBuilders.post("/review/ppppp")
@@ -68,7 +68,7 @@ public class ReviewControllerTests {
 		String rv_date = "";
 		int prod_id = 171130;
 		
-		ReviewVO rVO = new ReviewVO(order_id,mem_id,rv_text,rv_date,prod_id);
+		ReviewVO rVO = new ReviewVO(order_id,mem_id,rv_text,null,prod_id);
 		map.put("rVO", rVO);
 		String jsonStr = new Gson().toJson(rVO);
 		log.info(jsonStr);

@@ -29,7 +29,7 @@ public class ReviewServiceTests {
 		String rv_date = "";
 		int prod_id = 42431;
 
-		ReviewVO rVO = new ReviewVO(order_id,mem_id,rv_text,rv_date,prod_id);
+		ReviewVO rVO = new ReviewVO(order_id,mem_id,rv_text,null,prod_id);
 		service.insert(rVO);
 		
 	}

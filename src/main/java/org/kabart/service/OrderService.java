@@ -2,7 +2,7 @@ package org.kabart.service;
 
 import java.util.List;
 
-import org.kabart.domain.OrderVO;
+import org.kabart.domain.*;
 
 public interface OrderService {
 
@@ -10,5 +10,5 @@ public interface OrderService {
 
 	public int insertProducts(String mem_id, String addr, String addr_dt, String phone, String dname,
 			 List<String> prod_id,  List<String> quantity, String isUsed);
-
+	public int orderCancle(UpdateOrderVO oVO);
 }

@@ -2,15 +2,18 @@ package org.kabart.controller;
 
 import java.util.*;
 
-import org.kabart.domain.OrderVO;
+import org.apache.catalina.tribes.group.Response;
+import org.kabart.domain.*;
 import org.kabart.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.Setter;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/kabart/order")
@@ -59,6 +62,14 @@ public class OrderController {
 		}
 		model.addAttribute("products", list);
 
+	}
+	
+	@PostMapping(value = "/cancle",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> cancle(@RequestBody UpdateOrderVO oVO) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", oService.orderCancle(oVO));
+		return new ResponseEntity<>(map,HttpStatus.OK);
 	}
 
 }

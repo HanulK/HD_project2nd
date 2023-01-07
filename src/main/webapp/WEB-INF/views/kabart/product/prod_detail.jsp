@@ -551,8 +551,7 @@
 											<div class='review__wrap'>
 												<div class='wrap__top'>
 													<div class='reivew__title'>${rv.rv_text}</div>
-													<span class='review__nick'>${rv.mem_id}</span> | <span
-														class='review__date'>${rv.rv_date}</span>
+													<span class='review__nick'>${rv.mem_id}  |  </span><p class='review__date'><fmt:formatDate value="${rv.rv_date}" /></p>
 												</div>
 											</div>
 										</c:forEach>
