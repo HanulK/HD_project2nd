@@ -2,7 +2,7 @@ package org.kabart.service;
 
 import java.util.*;
 
-import org.kabart.domain.OrderVO;
+import org.kabart.domain.*;
 import org.kabart.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,5 +60,13 @@ public class OrderServiceImpl implements OrderService{
 		
 		return result;
 	}
+
+
+	@Override
+	public int orderCancle(UpdateOrderVO oVO) {		
+		return oMapper.orderCancle(oVO);
+	}
+	
+	
 
 }

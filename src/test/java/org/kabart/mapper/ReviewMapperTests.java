@@ -37,7 +37,7 @@ public class ReviewMapperTests {
 		String rv_text =" 포근하고 따듯한,,";
 		String rv_date = null;
 		int prod_id = 60088;
-		ReviewVO rVo = new ReviewVO(order_id, mem_id, rv_text, rv_date, prod_id);
+		ReviewVO rVo = new ReviewVO(order_id, mem_id, rv_text, null, prod_id);
 		mapper.insert(rVo);
 	
 	}

@@ -264,7 +264,8 @@ function reviewModal(ths){
 		<script type="text/javascript" src="/resources/js/bootstrap.js"></script>
 	<script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		$(function() {
+	
+	$(function() {
 			var csrfHeaderName = "${_csrf.headerName}";
 			var csrfTokenValue = "${_csrf.token}";
 			var isUsed = 0;
@@ -277,7 +278,35 @@ function reviewModal(ths){
 
 			$('#dateStart').attr("max",today);
 			$('#dateEnd').attr("max",today);
-			
+			$(document).on("click",'p[data-type=cancle]',function(ths){
+				var csrfHeaderName = "${_csrf.headerName}";
+				var csrfTokenValue = "${_csrf.token}";
+				if(confirm("주문취소 하시겠습니까?")){
+					console.log($(this).data('oid'));
+					console.log($(this).data('pid'));
+					$.ajax({
+							type : 'post',
+							url : '/kabart/order/cancle',
+							data : JSON.stringify({
+								mem_id : mem_id,
+								order_id : $(this).data('oid'),
+								prod_id : $(this).data('pid')
+							}),
+							contentType : "application/json",
+							beforeSend : function(xhr) {
+								xhr.setRequestHeader(csrfHeaderName,
+										csrfTokenValue);
+							},
+							success : function(result){
+								alert('삭제성공');
+								$("#search_period").trigger("click");
+							},
+							error : function(result){
+								console.log(result);
+							}
+						})
+				}
+			})	
 			function date_add(sDate, nDays) {
 				var yy = parseInt(sDate.substr(0, 4), 10);
 				var mm = parseInt(sDate.substr(5, 2), 10);
