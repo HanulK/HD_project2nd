@@ -1,7 +1,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	margin-left: 0px;
-    margin-right: 0px;
+	margin-right: 0px;
 }
 
 /* .banner{
@@ -21,11 +21,18 @@ body {
 .shortcut_item {
 	text-align: center;
 	display: inline-block;
-	cursor: pointer
+	cursor: pointer;
+	overflow: hidden;
+	border-radius: 10px;
 }
 
 .shortcut_item_img_wrap {
 	position: relative
+}
+
+.shortcut_item_img_wrap:hover {
+    transform: scale(1.4);
+    transition: all 0.2s linear;
 }
 
 .shortcut_item_img_wrap>.shortcut_item_img_bg {
@@ -114,36 +121,81 @@ body {
 }
 
 input[type="checkbox" i] {
-    background-color: initial;
-    cursor: default;
-    appearance: auto;
-    box-sizing: border-box;
-    margin: 5px 5px 5px 5px;
-    padding: initial;
-    border: initial;
+	background-color: initial;
+	cursor: default;
+	appearance: auto;
+	box-sizing: border-box;
+	margin: 5px 5px 5px 5px;
+	padding: initial;
+	border: initial;
 }
 
 user agent stylesheet
 input {
-    writing-mode: horizontal-tb !important;
-    font-style: ;
-    font-variant-ligatures: ;
-    font-variant-caps: ;
-    font-variant-numeric: ;
-    font-variant-east-asian: ;
-    font-weight: ;
-    font-stretch: ;
-    font-size: ;
-    font-family: ;
-    text-rendering: auto;
-    color: fieldtext;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    -webkit-rtl-ordering: logical;
+	writing-mode: horizontal-tb !important;
+	font-style:;
+	font-variant-ligatures:;
+	font-variant-caps:;
+	font-variant-numeric:;
+	font-variant-east-asian:;
+	font-weight:;
+	font-stretch:;
+	font-size:;
+	font-family:;
+	text-rendering: auto;
+	color: fieldtext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+	-webkit-rtl-ordering: logical;
 }
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+
+ #goto-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9;
+        width: 42px;
+        height: 42px;
+        background-color: #333;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+img.downbtn {
+    max-width: 20px;
+    margin: auto;
+    display: block;
+    margin-top: 7px;
+    animation:ani 1s infinite alternate;  
+    cursor: pointer;
+}
+
+.header__logo {
+    display: block;
+    animation: ani1 1s infinite alternate;
+    cursor: pointer;
+}
+
+@keyframes ani{
+   0%{transform:translate(0,0);}
+   100%{transform:translate(0,10px);}
+}  
+
+@keyframes ani1{
+   0%{transform:translate(0,0);}
+   100%{transform:translate(0,5px);}
+}  

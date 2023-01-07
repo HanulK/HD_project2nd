@@ -1,11 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-	integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <c:set var="contextPath" value="${PageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
@@ -14,13 +9,25 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Home</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
 <body>
 	<jsp:include page="includes/header.jsp"></jsp:include>
 	<div class="home lg">
 		<div class="home_card_list">
 			<jsp:include page="includes/banner.jsp"></jsp:include>
-
+			<div class="pagedown">
+				<img class="downbtn" src="/resources/img/down.png">
+			</div>
+			<script>
+			$(".pagedown").click(function(){
+			    $("html, body").animate({ scrollTop: 855}, 500);
+			});
+			</script>
 			<!-- shorcut collection -->
 			<div container-index="1" class="shortcut_collection">
 				<!---->
@@ -165,7 +172,9 @@
 									<div class="price price_area" data-v-ef71e3ac=""
 										data-v-7dab533a="">
 										<p class="amount" data-v-ef71e3ac="">
-										<fmt:formatNumber value="${best.prod_price}" pattern="#,###" />원</p>
+											<fmt:formatNumber value="${best.prod_price}" pattern="#,###" />
+											원
+										</p>
 									</div></a>
 							</div>
 						</c:forEach>
@@ -177,5 +186,27 @@
 		</div>
 	</div>
 	<%@include file="includes/footer.jsp"%>
+	<div id="goto-top">
+		<div class="material-icons">arrow_upward</div>
+	</div>
+	<script>
+		const gotoTopEl = document.querySelector('#goto-top')
+		window.addEventListener('scroll', function() {
+			if (window.scrollY > 500) {
+				gsap.to(gotoTopEl, .2, {
+					x : 0
+				})
+			} else {
+				gsap.to(gotoTopEl, .2, {
+					x : 100
+				})
+			}
+		}, 300)
+		gotoTopEl.addEventListener('click', function() {
+			gsap.to(window, .7, {
+				scrollTo : 0
+			})
+		})
+	</script>
 </body>
 </html>

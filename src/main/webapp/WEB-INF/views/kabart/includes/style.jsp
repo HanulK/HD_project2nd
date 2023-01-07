@@ -1,5 +1,19 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <script src="/resources/js/banner.js" defer></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+	integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"
+	integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"
+	integrity="sha512-kSI9CgGh60rJbNVeMJvfNX0UTKAq8LEOea/yKJQbFpIroxT7bf9/zUFXbnfsQP5F6xlOOHtCfBPgsE1ceiHnRw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <link href="/resources/css/header.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/prod_detail.css" rel="stylesheet" type="text/css">

@@ -54,3 +54,12 @@ button#dvBtnFbmain {
 .column_top {
     margin-bottom: 30px;
 }
+
+img.foldbtn {
+    max-width: 20px;
+    margin: auto;
+    animation: ani 1s infinite alternate;
+    cursor: pointer;
+    margin-right: 1020px;
+    padding-bottom: 17px;
+}

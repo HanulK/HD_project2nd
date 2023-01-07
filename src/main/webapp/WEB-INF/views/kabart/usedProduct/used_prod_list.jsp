@@ -42,7 +42,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/011.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">신상품</p>
+								<!-- <p class="shortcut_item_title">신상품</p> -->
 							</a>
 						</div>
 						<div class="shortcut_item">
@@ -51,7 +51,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/002.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">중고 침대</p>
+								<!-- <p class="shortcut_item_title">중고 침대</p> -->
 							</a>
 						</div>
 						<div class="shortcut_item">
@@ -60,7 +60,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/001.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">중고 소파</p>
+								<!-- <p class="shortcut_item_title">중고 소파</p> -->
 							</a>
 						</div>
 						<div class="shortcut_item">
@@ -69,7 +69,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/004.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">중고 식탁</p>
+								<!-- <p class="shortcut_item_title">중고 식탁</p> -->
 							</a>
 						</div>
 						<div class="shortcut_item">
@@ -78,7 +78,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/005.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">중고 의자</p>
+								<!-- <p class="shortcut_item_title">중고 의자</p> -->
 							</a>
 						</div>
 						<div class="shortcut_item">
@@ -87,7 +87,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/006.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">중고 옷장</p>
+								<!-- <p class="shortcut_item_title">중고 옷장</p> -->
 							</a>
 						</div>
 						<div class="shortcut_item">
@@ -97,7 +97,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/007.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">중고 서랍장</p>
+								<!-- <p class="shortcut_item_title">중고 서랍장</p> -->
 							</a>
 						</div>
 						<div class="shortcut_item">
@@ -106,7 +106,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/003.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">중고 책상</p>
+								<!-- <p class="shortcut_item_title">중고 책상</p> -->
 							</a>
 						</div>
 						<div class="shortcut_item">
@@ -116,7 +116,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/008.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">중고 홈인테리어</p>
+								<!-- <p class="shortcut_item_title">중고 홈인테리어</p> -->
 							</a>
 						</div>
 						<div class="shortcut_item">
@@ -125,7 +125,7 @@
 									<picture class="picture shortcut_item_img_bg"> <img
 										src="/resources/img/009.png" class="image"> </picture>
 								</div>
-								<p class="shortcut_item_title">중고 전체보기</p>
+								<!-- <p class="shortcut_item_title">중고 전체보기</p> -->
 							</a>
 						</div>
 					</div>
