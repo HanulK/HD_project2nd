@@ -57,9 +57,18 @@ public class FileCheckTask {
 		
 		log.warn("-------------------------------------");
 		
-		for (File file : removeFiles) {
-			log.warn(file.getAbsolutePath());
-			file.delete();
+		try {
+			
+			for (File file : removeFiles) {
+				log.warn(file.getAbsolutePath());
+				file.delete();
+			}
+		} catch (Exception e) {
+			log.warn("-------------------------------------");
+			log.warn("어제 자의 파일이 없습니다.");
+			e.printStackTrace();
 		}
+		
+		
 	}
 }
