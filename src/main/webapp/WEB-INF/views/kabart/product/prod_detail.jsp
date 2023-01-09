@@ -69,7 +69,7 @@
 											<div data-v-679b6792="" data-v-3900a1a2=""
 												class="detail_price">
 												<div data-v-679b6792="" class="title">
-													<span data-v-679b6792="" class="title_txt">구매가</span>
+													<span data-v-679b6792="" class="title_txt">수량</span>
 												</div>
 												<div data-v-679b6792="" class="price">
 													<div data-v-679b6792="" class="amount">
