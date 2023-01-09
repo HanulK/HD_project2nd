@@ -11,7 +11,8 @@
 					<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 					<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 					<%@include file="/WEB-INF/views/kabart/includes/style.jsp" %>
-						<script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
+						<script type="text/javascipt" src="/resources/js/toastmsg.js" ></script>
+						<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 						<title>Product List</title>
 				</head>
 
@@ -325,12 +326,31 @@
 						$(".uploadResult").on("click", "span", function (e) {
 
 							console.log("delete file");
-
-							if (confirm("파일을 삭제하시겠습니까 ?")) {
-								let targetLi = $(this).closest("li");
-								targetLi.remove();
-							}
+							let targetLi = $(this).closest("li");
+							deleteFileConfirm(targetLi);
 						});
+						
+						function deleteFileConfirm(obj) {
+							Swal.fire({
+								  title: '파일을 삭제하시겠습니까?',
+								  text: "삭제하신 파일은 되돌릴 수 없습니다.",
+								  icon: 'question',
+								  showCancelButton: true,
+								  confirmButtonColor: '#3085d6',
+								  cancelButtonColor: '#d33',
+								  confirmButtonText: '파일 삭제',
+								  cancelButtonText: '취소'
+								}).then((result) => {
+								  if (result.isConfirmed) {
+									  obj.remove();
+									  Swal.fire(
+							      				'삭제 완료',
+							      				'파일 삭제를 완료하였습니다.',
+							      				'success'
+							    			)
+								  }
+								});
+						}
 
 						var formObj = $("form[role='form']");
 						$("div[class='btn_confirm']").on("click", function (e) {
