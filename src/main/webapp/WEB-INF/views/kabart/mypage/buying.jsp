@@ -16,7 +16,8 @@
 	integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script type="text/javascript" src="/resources/js/bootstrap.js"></script>
-<script type="text/javascript" src="/resources/js/reply.js"></script>	
+<script type="text/javascript" src="/resources/js/reply.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>	
 <script>
 	var prod_id = 0;
 	var order_id = 0;
@@ -280,32 +281,56 @@ function reviewModal(ths){
 			$(document).on("click",'p[data-type=cancle]',function(ths){
 				var csrfHeaderName = "${_csrf.headerName}";
 				var csrfTokenValue = "${_csrf.token}";
-				if(confirm("주문취소 하시겠습니까?")){
-					console.log($(this).data('oid'));
-					console.log($(this).data('pid'));
-					$.ajax({
-							type : 'post',
-							url : '/kabart/order/cancle',
-							data : JSON.stringify({
-								mem_id : mem_id,
-								order_id : $(this).data('oid'),
-								prod_id : $(this).data('pid')
-							}),
-							contentType : "application/json",
-							beforeSend : function(xhr) {
-								xhr.setRequestHeader(csrfHeaderName,
-										csrfTokenValue);
-							},
-							success : function(result){
-								alert('삭제성공');
-								$("#search_period").trigger("click");
-							},
-							error : function(result){
-								console.log(result);
-							}
-						})
-				}
-			})	
+				
+				let oid = $(this).data('oid');
+				let pid = $(this).data('pid');
+				deleteOrderConfirm(oid, pid);
+			})
+			
+			function deleteOrderConfirm(oid, pid) {
+				Swal.fire({
+					  title: '주문을 취소하시겠습니까?',
+					  text: "취소하신 주문은 되돌릴 수 없습니다.",
+					  icon: 'question',
+					  showCancelButton: true,
+					  confirmButtonColor: '#3085d6',
+					  cancelButtonColor: '#d33',
+					  confirmButtonText: '주문 취소',
+					  cancelButtonText: '취소'
+					}).then((result) => {
+					  if (result.isConfirmed) {
+						  console.log(oid);
+						  console.log(pid);
+						  
+						  $.ajax({
+								type : 'post',
+								url : '/kabart/order/cancle',
+								data : JSON.stringify({
+									mem_id : mem_id,
+									order_id : oid,
+									prod_id : pid
+								}),
+								contentType : "application/json",
+								beforeSend : function(xhr) {
+									xhr.setRequestHeader(csrfHeaderName,
+											csrfTokenValue);
+								},
+								success : function(result){
+									Swal.fire(
+					      				'주문 취소',
+					      				'요청하신 주문을 취소하였습니다.',
+					      				'success'
+					    			)
+									$("#search_period").trigger("click");
+								},
+								error : function(result){
+									console.log(result);
+								}
+							})
+					    
+					  }
+					});
+			}
 			function date_add(sDate, nDays) {
 				var yy = parseInt(sDate.substr(0, 4), 10);
 				var mm = parseInt(sDate.substr(5, 2), 10);

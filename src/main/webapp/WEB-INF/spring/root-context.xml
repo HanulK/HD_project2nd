@@ -77,4 +77,8 @@
 		base-package="org.kabart.service" />
 	<context:component-scan
 		base-package="org.kabart.task"></context:component-scan>
+	<context:component-scan
+		base-package="org.kabart.aop"></context:component-scan>
+		
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>
