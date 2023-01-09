@@ -6,6 +6,6 @@ import lombok.Data;
 public class FamilyGraphVO {
 	
 	private int prod_id;
-	private int percent;
+	private double percent;
 
 }
