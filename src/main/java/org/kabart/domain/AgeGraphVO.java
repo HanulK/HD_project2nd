@@ -6,6 +6,6 @@ import lombok.Data;
 public class AgeGraphVO {
 	
 	private int prod_id;
-	private int cnt;
+	private double cnt;
 
 }
