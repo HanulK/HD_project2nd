@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class UsedSellVO {
 	
-	private int up_id;
-	private int prod_id;
+	private Integer up_id;
+	private Integer prod_id;
 	private String mem_id;
 	private String grade;
 	private Date up_regdate;
