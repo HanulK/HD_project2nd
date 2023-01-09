@@ -15,10 +15,10 @@
             <trim prefix="OR">
                <choose>
                   <when test="type == 'T'.toString()">
-                     prod_name like '%'||#{keyword}||'%'
+                    (prod_name) like ( ('%'||#{keyword}||'%') )
                   </when>
                   <when test="type == 'C'.toString()">
-                     prod_category like '%'||#{keyword}||'%'
+                      lower(prod_category) like ( lower('%'||#{keyword}||'%') )
                   </when>
                </choose>
             </trim>
