@@ -334,7 +334,8 @@
 														.each(
 																function(i,
 																		attach) {
-
+																	
+																	
 																	let fileCallPath = encodeURIComponent(attach.uploadPath
 																			+ "/s_"
 																			+ attach.file_uuid

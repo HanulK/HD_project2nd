@@ -311,7 +311,7 @@
 
 									let fileCallPath = encodeURIComponent(attach.uploadPath + "/s_" + attach.file_uuid + "_" + attach.fileName);
 
-									str += "<li data-v-73da1ab5='' data-path='" + attach.uploadPath + "' data-uuid='" + attach.file_uuid + "' data-fileName='" + attach.fileName + "' data-type='" + attach.fileType + "' ><div>";
+									str += "<li data-v-73da1ab5='' data-path='" + attach.uploadPath + "' data-file_uuid='" + attach.file_uuid + "' data-fileName='" + attach.fileName + "' data-type='" + attach.fileType + "' ><div style='margin-top: 10px; margin-right: 10px;'>";
 									str += "<img data-v-73da1ab5='' src='/kabart/usedProduct/display?fileName=" + fileCallPath + "' class='stock_95_image'>";
 									str += "<span data-file=\'" + fileCallPath + "\' data-type='image'><img src='/resources/img/X.png' style='max-width: 17px; margin-left: 2px;'></span>";
 									str += "</div>";
@@ -341,14 +341,16 @@
 							$(".uploadResult ul li").each(function (i, obj) {
 
 								var jobj = $(obj);
-
+								
+								console.log(jobj.data("uuid"));
+								
 								console.dir(jobj);
 								console.log("-------------------------");
 								console.log(jobj.data("filename"));
 
 
 								str += "<input type='hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
-								str += "<input type='hidden' name='attachList[" + i + "].file_uuid' value='" + jobj.data("uuid") + "'>";
+								str += "<input type='hidden' name='attachList[" + i + "].file_uuid' value='" + jobj.data("file_uuid") + "'>";
 								str += "<input type='hidden' name='attachList[" + i + "].uploadPath' value='" + jobj.data("path") + "'>";
 								str += "<input type='hidden' name='attachList[" + i + "].fileType' value='" + jobj.data("type") + "'>";
 
