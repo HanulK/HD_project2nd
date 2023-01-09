@@ -80,8 +80,8 @@
 												</div>
 												<span class="count" style="padding: 0px 10px;">
 													<button type="button" onclick="updateAmount(-1)"
-														class="minus" style="padding: 0px 3px">-</button>
-													<span id="quantity" data-value="1" data-v-4faab390=""
+														class="minus" style="padding: 0px 3px">-</button> <span
+													id="quantity" data-value="1" data-v-4faab390=""
 													class="size" style="padding: 0px 3px">1</span>
 													<button type="button" onclick="updateAmount(1)"
 														class="plus">+</button>
@@ -110,8 +110,8 @@
 											</div>
 											<div data-v-f40660fa="" data-v-77d20f30=""
 												class="detail_stock_btn">
-												<a id='buy' onclick='buyNow(this)'data-v-6e799857="" data-v-f40660fa=""
-													href="#" 
+												<a id='buy' onclick='buyNow(this)' data-v-6e799857=""
+													data-v-f40660fa="" href="#"
 													class="btn solid full buy large"> 바로 구매 </a>
 
 											</div>
@@ -198,7 +198,7 @@
 										<img class="foldbtn" src="/resources/img/down.png">
 									</div>
 									<script>
-				j					$('.imgfold').click(function() {
+$('.imgfold').click(function() {
 									    $('#other_stock_list').show();
 									    $('#other_stock_list').hide();
 									});
@@ -354,7 +354,7 @@
 								<!-- 상세정보 fin -->
 								<!-- 후기 -->
 								<!-- 연령대 / 가구 분석 -->
-								<div class="graph_area">
+								<div class="graph_area" style="display:none;">
 									<c:if test="${not empty family}">
 										<div class="graph_bar_wrap">
 											<p class="graph_category">가구원</p>
@@ -561,10 +561,9 @@
 											<div class='review__wrap'>
 												<div class='wrap__top'>
 													<div class='reivew__title'>${rv.rv_text}</div>
-													<span class='review__nick'>${rv.mem_id} | </span>
-													<p class='review__date'>
+													<span class='review__nick'>${rv.mem_id}</span> | <span class='review__date'>
 														<fmt:formatDate value="${rv.rv_date}" />
-													</p>
+													</span>
 												</div>
 											</div>
 										</c:forEach>
