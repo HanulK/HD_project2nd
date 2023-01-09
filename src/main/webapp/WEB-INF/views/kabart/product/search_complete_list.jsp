@@ -53,7 +53,7 @@
 									<div data-v-63326639="" class="search"
 										style="width: 800px; padding-left: 0; padding-right: 0; margin: 0 auto; overflow: hidden;">
 
-										<!-- 박스 -->
+										<!-- 검색 박스 -->
 
 										<form id="searchForm"
 											action="/kabart/product/search_complete_list" method="get">
@@ -65,22 +65,15 @@
 
 												<option value="TC">제품명 or 카테고리</option>
 
-											</select> 
-											<input data-v-63326639="" 
-													type="text" 
-													name="keyword"
-													placeholder="   상품명, 카테고리, 상품명 + 카테고리 등" 
-													title="검색창"
-													class="input_search show_placeholder_on_focus" 
-													required=""
-													style="width: 550px; margin-left: 10px; vertical-align: middle;"
-													
-													>
-												<%-- <input type='hidden' name="keyword" value="${pageMaker.cri.keyword}"> --%>
-												
-												<button class="btn btn-default" style="vertical-align: sub;">SEARCH</button>
-											
-											
+											</select> <input data-v-63326639="" type="text" name="keyword"
+												placeholder="   상품명, 카테고리, 상품명 + 카테고리 등" title="검색창"
+												class="input_search show_placeholder_on_focus" required=""
+												style="width: 550px; margin-left: 10px; vertical-align: middle;">
+											<%-- <input type='hidden' name="keyword" value="${pageMaker.cri.keyword}"> --%>
+
+											<button class="btn btn-default" style="vertical-align: sub;">SEARCH</button>
+
+
 
 										</form>
 
@@ -91,14 +84,14 @@
 						</div>
 					</div>
 
-					<!-- 상품 묶음 -->
+					
 					<div class="product_list" data-v-4f87b95c="">
 						<div id="prod_list"
 							class="exhibition_item_products exhibition_item_section"
 							data-v-81b68464="" data-v-4f87b95c="">
 
 
-							<!-- 단일 상품 -->
+							<!-- 상품 -->
 							<c:forEach items="${products}" var="pro">
 								<div class="product_card exhibition_product" data-v-19fda891=""
 									data-v-81b68464="">
@@ -125,90 +118,83 @@
 											data-v-7dab533a="">
 											<p class="amount" data-v-ef71e3ac="">
 												<!---->
-												<fmt:formatNumber value="${pro.prod_price}" pattern="" /> 원
+												<fmt:formatNumber value="${pro.prod_price}" pattern="" />
+												원
 											</p>
 										</div>
 									</a>
 								</div>
 							</c:forEach>
-							
+
 							<!-- 상품 -->
 						</div>
 					</div>
 
 
 
-					<!-- 페이징 시작 -->
-					
+					<!-- 페이징 1페이지 8개씩 -->
+
 					<div class='pull-right'>
-									<ul id="footnum" class="pagination" style="display: flex; justify-content:center;">
-									
-										<c:if test="${pageMaker.prev}">
-											<li class="paginate_button previous">
-												<a href="${pageMaker.startPage - 1 } ">
-												이전
-												</a>
-											</li>
-										</c:if>
+						<ul id="footnum" class="pagination"
+							style="display: flex; justify-content: center;">
 
-										
-										<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-											<li class="paginate_button ${pageMaker.cri.pageNum == num ? " active" : "" }"
-												style="margin: 0 5px;">
-												<b><a href="${num}">${num}</a></b>
-											</li>
-										</c:forEach>
+							<c:if test="${pageMaker.prev}">
+								<li class="paginate_button previous"><a
+									href="${pageMaker.startPage - 1 } "> 이전 </a></li>
+							</c:if>
 
 
-										<c:if test="${pageMaker.next}">
-											<li class="paginate_button next">
-												<a href="${pageMaker.endPage + 1}">
-												 다음
-												</a>
-											</li>
-										</c:if>
-										
-										
-										
-									</ul>
-								</div>
+							<c:forEach var="num" begin="${pageMaker.startPage}"
+								end="${pageMaker.endPage}">
+								<li class="paginate_button ${pageMaker.cri.pageNum == num ? "
+									active" : "" }"
+												style="margin: 0 5px;"><b><a
+										href="${num}">${num}</a></b></li>
+							</c:forEach>
+
+
+							<c:if test="${pageMaker.next}">
+								<li class="paginate_button next"><a
+									href="${pageMaker.endPage + 1}"> 다음 </a></li>
+							</c:if>
+					<!--페이징 끝 -->
+
+						</ul>
+					</div>
+
+					<div class="actionFromdiv">
+						<!-- <form id='searchForm' action="/kabart/product/prod_list" method='get'> -->
+
+						<form id='actionForm'
+							action='/kabart/product/search_complete_list' method="get">
+
+							<input type="hidden" name="pageNum"
+								value="${pageMaker.cri.pageNum}"> <input type="hidden"
+								name="amount" value="${pageMaker.cri.amount}"> <input
+								type='hidden' name="keyword" value="${pageMaker.cri.keyword}">
+							<input type='hidden' name="type" value="${pageMaker.cri.type}">
+						</form>
+					</div>
 					
-									<div class="actionFromdiv">
-									<!-- <form id='searchForm' action="/kabart/product/prod_list" method='get'> -->
-									
-										<form id='actionForm' action='/kabart/product/search_complete_list' method="get">
-											
-											<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-											<input type="hidden" name="amount"  value="${pageMaker.cri.amount}">
-											<input type='hidden' name="keyword" value="${pageMaker.cri.keyword}">
-											<input type='hidden' name="type" value="${pageMaker.cri.type}">
-										</form>
-									</div>
-					<!-- /상품 그루핑 -->
 
-				
-									
-
-				<%@include file="../includes/footer.jsp"%>
+					<%@include file="../includes/footer.jsp"%>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-<script type="text/javascript">
 
-var actionForm = $("#actionForm");
+		<script type="text/javascript">
+			var actionForm = $("#actionForm");
 
-$(".paginate_button a").on(
-		"click",
-		function(e) {
-			e.preventDefault();
-			console.log('click');
-			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
-			actionForm.submit();
-		});
-
-</script>
-				
+			$(".paginate_button a").on(
+					"click",
+					function(e) {
+						e.preventDefault();
+						console.log('click');
+						actionForm.find("input[name='pageNum']").val(
+								$(this).attr("href"));
+						actionForm.submit();
+					});
+		</script>
 </body>
 
 </html>
