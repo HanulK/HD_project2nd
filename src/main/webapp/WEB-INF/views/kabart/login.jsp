@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>KABART</title>
-<script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
+<script type="text/javascript" src="/resources/js/toastmsg.js"></script>
 <script type="text/javascript">
 	function checkedInput() {
 		let name = $("#username").val();

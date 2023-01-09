@@ -7,7 +7,6 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="/resources/css/bootstrap.css" rel="stylesheet">
 
@@ -17,6 +16,7 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script type="text/javascript" src="/resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
+<script type="text/javascript" src="/resources/js/toastmsg.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>	
 <script>
 	var prod_id = 0;
@@ -48,7 +48,7 @@ function registerReview(){
 		},
 		contentType : "application/json",
 		success : function(result){
-			alert('리뷰등록 성공');
+			showToast('리뷰등록 성공', 1);
 			console.log(result);
 			modal.modal('hide');
 			$("#search_period").trigger("click");
@@ -80,7 +80,7 @@ function reviewModal(ths){
 };
 
 </script>
-<title>KREAM | 한정판 거래의 FLEX</title>
+<title>KABART</title>
 </head>
 <body data-v-39b2348a="" tabindex="0" class="wrap win_os">
 	<jsp:include page="../includes/header.jsp"></jsp:include>
