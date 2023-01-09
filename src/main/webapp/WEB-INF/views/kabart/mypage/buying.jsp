@@ -39,7 +39,6 @@ function registerReview(){
 			order_id : order_id,
 			mem_id : mem_id,
 			rv_text : rv_text,
-			rv_date  :"??",
 			prod_id : prod_id
 		}),
 		beforeSend : function(xhr) {

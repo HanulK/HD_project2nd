@@ -25,7 +25,7 @@ public class OrderController {
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/list")
 	public void getOrderList(@RequestParam("prod_id") List<String> prod_id,
-			@RequestParam(value = "up_id", required = false, defaultValue = "-1") String up_id, Model model) {
+			@RequestParam(value = "up_id", required = false, defaultValue = "-1") String up_id,@RequestParam(value="quantity",required = false, defaultValue = "1")String quantity, Model model) {
 		List<OrderVO> oList;
 		int isUsed = 0;
 		if (up_id.equals("-1")) {
@@ -36,6 +36,9 @@ public class OrderController {
 			List<String> pList = new ArrayList<>();
 			pList.add(up_id);
 			oList = oService.getProducts(pList, isUsed);
+		}
+		if(!quantity.equals("1")) {
+			oList.get(0).setQuantity(Integer.parseInt(quantity));
 		}
 		model.addAttribute("products", oList);
 		model.addAttribute("isUsed", isUsed);

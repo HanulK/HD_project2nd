@@ -78,6 +78,14 @@
 															data-v-679b6792="" class="won">원</span>
 													</div>
 												</div>
+												<span class="count" style="padding: 0px 10px;">
+													<button type="button" onclick="updateAmount(-1)"
+														class="minus" style="padding: 0px 3px">-</button>
+													<span id="quantity" data-value="1" data-v-4faab390=""
+													class="size" style="padding: 0px 3px">1</span>
+													<button type="button" onclick="updateAmount(1)"
+														class="plus">+</button>
+												</span>
 											</div>
 										</div>
 										<div data-v-3900a1a2="" class="btn_wrap">
@@ -102,8 +110,8 @@
 											</div>
 											<div data-v-f40660fa="" data-v-77d20f30=""
 												class="detail_stock_btn">
-												<a data-v-6e799857="" data-v-f40660fa=""
-													href="/kabart/order/list?prod_id=${detail.prod_id}"
+												<a id='buy' onclick='buyNow(this)'data-v-6e799857="" data-v-f40660fa=""
+													href="#" 
 													class="btn solid full buy large"> 바로 구매 </a>
 
 											</div>
@@ -118,19 +126,22 @@
 												<div data-v-b809b0a6="" class="detail_box model_num">
 													<dt data-v-b809b0a6="" class="product_title">너비</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														<c:out value="${detail.prod_width}" /> mm
+														<c:out value="${detail.prod_width}" />
+														mm
 													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
 													<dt data-v-b809b0a6="" class="product_title">높이</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														<c:out value="${detail.prod_height}" /> mm
+														<c:out value="${detail.prod_height}" />
+														mm
 													</dd>
 												</div>
 												<div data-v-b809b0a6="" class="detail_box">
 													<dt data-v-b809b0a6="" class="product_title">깊이</dt>
 													<dd data-v-b809b0a6="" class="product_info">
-														<c:out value="${detail.prod_depth}" /> mm
+														<c:out value="${detail.prod_depth}" />
+														mm
 													</dd>
 												</div>
 											</dl>
@@ -187,7 +198,7 @@
 										<img class="foldbtn" src="/resources/img/down.png">
 									</div>
 									<script>
-									$('.imgfold').click(function() {
+				j					$('.imgfold').click(function() {
 									    $('#other_stock_list').show();
 									    $('#other_stock_list').hide();
 									});
@@ -550,7 +561,10 @@
 											<div class='review__wrap'>
 												<div class='wrap__top'>
 													<div class='reivew__title'>${rv.rv_text}</div>
-													<span class='review__nick'>${rv.mem_id}  |  </span><p class='review__date'><fmt:formatDate value="${rv.rv_date}" /></p>
+													<span class='review__nick'>${rv.mem_id} | </span>
+													<p class='review__date'>
+														<fmt:formatDate value="${rv.rv_date}" />
+													</p>
 												</div>
 											</div>
 										</c:forEach>
@@ -602,12 +616,39 @@
 </body>
 </html>
 <script>
+
+
+
+
+function updateAmount(val){
+		var quan = $('#quantity').data('value');
+		console.log(quan);
+		if(quan==1 &&val==-1){
+			return ;
+		}
+		$('#quantity').data('value',quan+val);
+		$('#quantity').html(quan+val);
 		
+	};
+	
+	
+	function buyNow(e){
+		var quan = $('#quantity').data('value');
+		var prod_id = ${detail.prod_id};
+		console.log(quan);
+		console.log(prod_id);
+		var url = '/kabart/order/list?prod_id='+prod_id+'&quantity='+quan;
+		console.log(url);
+		location.href = url;
+		
+	};
+	
 		$("#cart").on("click", function(e) {
 		e.preventDefault(); //원래 이번트 막음 / 원하는 이벤트 
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
 		const mem_id = $("#mem_id").val();
+		var quantity = $('#quantity').data('value');
 		if(!mem_id){
 			location.href = "/kabart/login";
 			return ;
@@ -620,7 +661,7 @@
 		      data : JSON.stringify({
 		    	  mem_id : mem_id,
 		    	  prod_id : ${detail.prod_id},
-		    	  quantity : 1
+		    	  quantity : quantity
 		    	  
 		      }),
 		      contentType : "application/json",
