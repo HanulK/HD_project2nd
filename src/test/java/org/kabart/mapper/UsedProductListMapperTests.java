@@ -1,6 +1,5 @@
 package org.kabart.mapper;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
 import java.util.List;
 
@@ -16,6 +15,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+/**
+ *
+ * @author @차민수
+ * @Date 2023. 1. 11.
+ * @기능 중고 상품 리스트를 보여주는 Mapper 를 테스트 
+ * 
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
 	"file:src/main/webapp/WEB-INF/spring/security-context.xml",

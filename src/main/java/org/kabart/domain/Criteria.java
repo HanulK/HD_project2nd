@@ -4,6 +4,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import lombok.*;
 
+/**
+ * 
+ * @author 차민수
+ * 기능 : 페이징 처리를 하기 위한 VO
+ *
+ */
+
 @Getter
 @Setter
 @ToString

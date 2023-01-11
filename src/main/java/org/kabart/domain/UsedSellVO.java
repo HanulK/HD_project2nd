@@ -4,6 +4,13 @@ import java.util.*;
 
 import lombok.Data;
 
+/**
+ *
+ * @author @차민수
+ * @Date 2023. 1. 11.
+ * @기능 : 중고 상품 판매를 위한 VO
+ * 
+ */
 @Data
 public class UsedSellVO {
 	

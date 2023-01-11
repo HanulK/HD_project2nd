@@ -5,6 +5,11 @@
 
 <mapper namespace="org.kabart.mapper.ProductListMapper">
    
+   
+   <!--
+   	* 작성자 : 차민수
+   	* 기능 : 페이징 처리를 하기 위해 1페이지 당 신상품 데이터를 8개씩 select 함
+   -->
    <select id="getListWithPaging" resultType="org.kabart.domain.ProductListVO" >
       <![CDATA[
       select prod_id, prod_name, prod_price, prod_category, img_srcs, img_tag
@@ -18,6 +23,10 @@
       ]]>
    </select>
    
+   <!--
+   	* 작성자 : 차민수
+   	* 기능 : 페이징 처리를 하기 위해 신상품 데이터의 전체 갯수를 반환
+   -->
    <select id="getTotalCount" resultType="int">
       select count(*)
       from

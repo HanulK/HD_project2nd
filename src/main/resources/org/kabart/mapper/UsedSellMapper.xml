@@ -3,6 +3,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="org.kabart.mapper.UsedSellMapper">
   	
+  	<!--  
+  		작성자 : 차민수
+  		기능 : 중고 상품 판매 insert 문 및 insert 후 insert 된 up_id 를 반환 
+  	-->
   	<insert id="insertUsedProduct">
   		
   		insert into used_products(prod_id, mem_id, grade, up_comment)
@@ -14,10 +18,18 @@
   		
   	</insert>
   	
+  	<!--  
+  		작성자 : 차민수
+  		기능 : 중고 상품 판매 delete 문
+  	-->
   	<delete id="deleteUsedProduct">
   		delete from used_products where up_id = #{up_id}
   	</delete>
   	
+  	<!--  
+  		작성자 : 차민수
+  		기능 : 중고 상품 판매 update 문
+  	-->
   	<update id="updateUsedProduct">
   		update used_products
   		set up_regdate = sysdate, up_comment = #{up_comment}, grade = #{grade}

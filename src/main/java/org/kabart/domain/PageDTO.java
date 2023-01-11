@@ -3,6 +3,13 @@ package org.kabart.domain;
 import lombok.Getter;
 import lombok.ToString;
 
+
+/**
+ * 
+ * @author 차민수
+ * 기능 : 페이징 처리를 하기 위해 Criteria VO 를 통해 페이지 로직을 처리하는 DTO
+ *
+ */
 @Getter
 @ToString
 public class PageDTO {

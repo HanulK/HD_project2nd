@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kabart.mapper.UsedProductListMapper">
-
+	
+	<!--
+   	* 작성자 : 차민수
+   	* 기능 : 페이징 처리를 하기 위해 1페이지 당 중고 상품 데이터를 8개씩 select 함
+   -->
     <select
         id="getUsedProductListWithPaging"
         resultType="org.kabart.domain.UsedProductListVO">
@@ -24,6 +28,10 @@
 		]]>
     </select>
 
+	<!--
+   	* 작성자 : 차민수
+   	* 기능 : 페이징 처리를 하기 위해 중고 상품 데이터의 전체 갯수를 반환
+   -->
     <select id="getTotalCount" resultType="int">
         select count(*) from ( select rownum rn, p.prod_name, prod_name, up.prod_id,
         up.up_id, up.grade as grade, up.up_regdate as up_regdate, up.sale_date as sale_date, p.prod_price as

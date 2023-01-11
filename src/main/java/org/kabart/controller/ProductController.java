@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+
 @Controller
 @RequestMapping("/kabart/product")
 @Log4j
@@ -28,7 +29,14 @@ public class ProductController {
 	
 	@Setter(onMethod_ = { @Autowired })
 	private GraphService graphservice;
-
+	
+	/**
+	 *
+	 * @author @차민수
+	 * @Date 2023. 1. 11.
+	 * @기능  신상품 리스트를 보여주기 위한 Controller (GETMAPPING 으로 처리)
+	 * 
+	 */
 	@GetMapping("/prod_list")
 	public void productGetList(@RequestParam(value = "prod_category") String prod_category,
 			@ModelAttribute("cri") Criteria cri, Model model) {

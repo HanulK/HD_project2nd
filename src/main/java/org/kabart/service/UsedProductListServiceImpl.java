@@ -11,6 +11,13 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
+/**
+ *
+ * @author @차민수
+ * @Date 2023. 1. 11.
+ * @기능 중고 상품 리스트를 보여주기 위한 인터페이스를 구현한 구현체 (비즈니스 로직 처리)  
+ * 
+ */
 @Log4j
 @Service
 @AllArgsConstructor

@@ -15,6 +15,14 @@ import org.springframework.web.context.WebApplicationContext;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+
+/**
+ *
+ * @author 차민수, 이세아
+ * @Date 2023. 1. 11.
+ * @기능  신상품 Controller 테스트
+ * 
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration // Test for Controller
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
@@ -33,7 +41,13 @@ public class ProductControllerTests {
 	public void setUp() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
-
+	/**
+	 *
+	 * @author @차민수
+	 * @Date 2023. 1. 11.
+	 * @기능  신상품 리스트를 보여주는 메서드 테스트
+	 * 
+	 */
 	@Test
 	public void testProductGetList() throws Exception {
 		log.info(mockMvc.perform(
