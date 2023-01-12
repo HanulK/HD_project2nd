@@ -28,58 +28,84 @@
  	</resultMap>
  	
  	<!-- definition of user define function -->
+ 	<!-- writer : hanul 
+	회원 정보 조회(아이디, 암호화된 비밀번호, 이름, 가입일, 권한) 쿼리 -->
  	<select id="read" resultMap="memberMap">
  		SELECT mem.mem_id, mem_pw, mem_name, join_date, auths.authority
 		FROM members mem, authorities auths
 		WHERE mem.mem_id = auths.username AND mem.mem_id = #{mem_id}
  	</select>
  	
+ 	<!-- writer : hanul 
+	회원 개인 정보 조회(아이디, 이름, 핸드폰 번호, 생년월일, 가구원 수, 성별, 주소) 쿼리 -->
  	<select id="getInfo" resultMap="memberMap">
  		SELECT mem_id, mem_name, phone, birth, family_num, gender, address, address_detail
 		FROM members WHERE mem_id = #{mem_id}
  	</select>
  	
+ 	<!-- writer : hanul 
+	회원 가입 쿼리 -->
  	<insert id="insertMember">
  		INSERT INTO members(mem_id, mem_pw, mem_name, birth, address, address_detail, gender, phone, family_num)
 		VALUES (#{mem_id}, #{mem_pw}, #{mem_name}, #{birth}, #{address}, #{address_detail}, #{gender}, #{phone}, #{family_num})
  	</insert>
  	
+ 	<!-- writer : hanul 
+	신규 회원 권한 부여 쿼리 -->
  	<insert id="setAuth">
  		INSERT INTO authorities(username, authority) VALUES(#{mem_id}, 'ROLE_MEMBER')
  	</insert>
- 	
+ 
+ 	<!-- writer : hanul 
+	특정 이름의 아이디 조회 쿼리 -->
  	<select id="checkId" resultType="int">
  		SELECT count(*) FROM members WHERE mem_id = #{mem_id}
  	</select>
  	
+ 	<!-- writer : hanul 
+	특정 전화번호를 가지는 아이디 조회 쿼리 -->
  	<select id="findId" resultType="String">
  		SELECT mem_id FROM members WHERE phone=#{phone}
  	</select>
  	
+ 	<!-- writer : hanul 
+	members 테이블의 전화번호 정보 업데이트 쿼리 -->
  	<update id="updatePhone">
  		UPDATE members SET phone = #{new_data} WHERE mem_id = #{mem_id}
  	</update>
  	
+ 	<!-- writer : hanul 
+	members 테이블의 가구원 수 정보 업데이트 쿼리 -->
  	<update id="updateFamilyNum">
  		UPDATE members SET family_num = #{new_data} WHERE mem_id = #{mem_id}
  	</update>
  	
+ 	<!-- writer : hanul 
+	특정 회원의 권한 삭제 쿼리 -->
  	<delete id="removeAuthority">
  		DELETE FROM authorities WHERE username = #{mem_id}
  	</delete>
  	
+ 	<!-- writer : hanul 
+	특정 회원의 자동 로그인 삭제 쿼리 -->
  	<delete id="removeRememberMe">
  		DELETE FROM persistent_logins WHERE username = #{mem_id}
  	</delete>
  	
+ 	<!-- writer : hanul 
+	특정 회원의 탈회 날짜 업데이트 쿼리 -->
  	<update id="registerExpireDate">
  		UPDATE members SET expire_date = sysdate WHERE mem_id = #{mem_id}
  	</update>
  	
+ 	<!-- writer : hanul 
+	특정 회원의 암호화된 비밀번호 조회 쿼리 -->
  	<select id="findEncodedPW" resultType="String">
  		SELECT mem_pw FROM members WHERE mem_id = #{mem_id}
  	</select>
  	
+ 	<!-- writer : hanul 
+	특정 회원의 비밀번호 변경 쿼리 -->
  	<update id="changePW">
  		UPDATE members SET mem_pw = #{new_data}  WHERE mem_id = #{mem_id}
  	</update>

@@ -5,17 +5,26 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.8.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 		
+<!-- 	writer : hanul
+		기능 : bean 등록 (bcryptPasswordEncoder, customUserDetailsService, loginFailureHandler)
+		bcryptPasswordEncoder : 비밀번호 암호화에 사용할 bean 등록
+		customUserDetailsService : DB에서 유저의 정보를 불러오기 위한 bean 등록
+		loginFailureHandler : 로그인 실패 핸들러를 위한 bean 등록 -->
+	
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 	<bean id="customUserDetailsService" class="org.kabart.security.CustomUserDetailsService" />
 	<bean id="loginFailureHandler" class="org.kabart.security.LoginFailureHandler" />
 		
 	<!-- spring security 시작 지정 -->
 	<security:http auto-config="true" use-expressions="true">
+		<!-- spring security에서 제공하는 로그인 페이지가 아닌 custom login page를 지정 -->
 		<security:form-login  login-page="/kabart/login" authentication-failure-handler-ref="loginFailureHandler" />
-
 		<security:logout logout-url="/kabart/logout" invalidate-session="true" logout-success-url="/kabart/home"/>
+		<!-- DB를 이용해 자동 로그인 설정 --> 
 		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
+		
 		<security:logout logout-url="/kabart/logout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" logout-success-url="/kabart/home"/>
+		<!-- 마이페이지 하위 기능 접근 제한 설정 -->
 		<security:intercept-url pattern="/kabart/mypage/*" access="hasRole('ROLE_MEMBER')"/>
 	</security:http>
 		

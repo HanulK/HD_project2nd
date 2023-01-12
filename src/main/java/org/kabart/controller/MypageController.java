@@ -75,12 +75,17 @@ public class MypageController {
 
 	}
 
+	/* writer : hanul 
+	 * 마이페이지 첫 화면으로 이동
+	 * security 에서 사용자 정보를 입력 받아 아이디 등 정보 표시 */ 
 	@GetMapping("/profile")
 	public void profile(Principal principal, Model model) {
 		MemberVO mem = mService.getInfoById(principal.getName());
 		model.addAttribute("member", mem);
 	}
 
+	/* writer : hanul 
+	 * 개인정보 수정(전화번호, 가구원 수 변경) action */ 
 	@ResponseBody
 	@RequestMapping(value = "/changeInfo.do", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void idCheck(@RequestBody Map<String, Object> body) {
@@ -99,6 +104,9 @@ public class MypageController {
 		}
 	}
 	
+	/* writer : hanul 
+	 * 비밀번호 변경 action
+	 * member Service의 checkPW로 사용자가 입력한 비밀번호 확인 후 변경 진행 */ 
 	@ResponseBody
 	@RequestMapping(value = "/changePW.do", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> changePW(@RequestBody Map<String, Object> body) {
@@ -116,10 +124,14 @@ public class MypageController {
 		
 	}
 
+	/* writer : hanul 
+	 * 회원 탈퇴 페이지로 넘어가는 controller */ 
 	@GetMapping("/withdrawal")
 	public void withdrawal() {
 	}
 
+	/* writer : hanul 
+	 * 회원 탈퇴 action */
 	@RequestMapping("/withdrawal.do")
 	public String withdrawalAction(Principal principal, SessionStatus sessionStatus, RedirectAttributes attr) {
 		String mem_id = principal.getName();
