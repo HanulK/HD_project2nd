@@ -1,5 +1,11 @@
 package org.kabart.controller;
 
+/*
+ * *Author : 이세아, 차민수
+ * *기능 : 중고제품 상세정보 Controller Test, 중고제품 CRUD Controller Test
+ * 
+ * */
+
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,27 +38,27 @@ public class UsedProductControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
-//	@Test
-//	public void testRead() throws Exception {
-//		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/detail").param("up_id", "24"))
-//				.andReturn().getModelAndView().getModelMap());
-//	}
+	@Test
+	public void testRead() throws Exception {
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/detail").param("up_id", "24"))
+				.andReturn().getModelAndView().getModelMap());
+	}
 	
-//	@Test
-//	public void testUsedSellSelect() throws Exception {
-//		
-//		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/used_prod_sell").param("prod_id", "171130")).andReturn().getModelAndView().getModelMap());
-//	}
-//	
-//	@Test
-//	public void testUsedSellInsert() throws Exception {
-//		
-//		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/kabart/usedProduct/used_prod_sell").param("prod_id", "146812").param("mem_id", "doongdoong").param("grade", "ROYAL").param("up_comment", "컨트롤러단에서 테스트"))
-//							.andReturn().getModelAndView().getViewName();
-//		
-//		log.info(resultPage);
-//	}
-//	
+	@Test
+	public void testUsedSellSelect() throws Exception {
+		
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/usedProduct/used_prod_sell").param("prod_id", "171130")).andReturn().getModelAndView().getModelMap());
+	}
+	
+	@Test
+	public void testUsedSellInsert() throws Exception {
+		
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/kabart/usedProduct/used_prod_sell").param("prod_id", "146812").param("mem_id", "doongdoong").param("grade", "ROYAL").param("up_comment", "컨트롤러단에서 테스트"))
+							.andReturn().getModelAndView().getViewName();
+		
+		log.info(resultPage);
+	}
+	
 	@Test
 	public void testUsedSellModify() throws Exception {
 		
@@ -62,12 +68,12 @@ public class UsedProductControllerTests {
 		log.info(resultPage);
 	}
 	
-//	@Test
-//	public void testUsedSellRemove() throws Exception {
-//		
-//		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/kabart/usedProduct/used_prod_detail/remove").param("up_id", "73"))
-//							.andReturn().getModelAndView().getViewName();
-//		
-//		log.info(resultPage);
-//	}
+	@Test
+	public void testUsedSellRemove() throws Exception {
+		
+	String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/kabart/usedProduct/used_prod_detail/remove").param("up_id", "73"))
+							.andReturn().getModelAndView().getViewName();
+		
+		log.info(resultPage);
+	}
 }

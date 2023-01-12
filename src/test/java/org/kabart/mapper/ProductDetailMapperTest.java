@@ -1,5 +1,11 @@
 package org.kabart.mapper;
 
+/*
+ * *Author : 이세아
+ * *기능 : 상품 상세정보 Mapper Test
+ * 
+ * */
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kabart.domain.ProductDetailVO;
@@ -27,27 +33,18 @@ public class ProductDetailMapperTest {
 
 		ProductDetailVO detail = mapper.get(146812);
 		log.info(detail);
-		
+
 		detail.getShops().forEach(shop -> log.info(shop));
 	}
-	
+
 	@Test
 	public void testGetImgs() {
 		mapper.getdetailImgs(146812).forEach(imgs -> log.info(imgs));
 	}
-	
+
 	@Test
 	public void testGetUsed() {
 		mapper.getused(146812).forEach(use -> log.info(use));
 	}
 
-	/*
-	 * @Test public void testGetShop() { mapper.getShop(146812).forEach(shop ->
-	 * log.info(shop));
-	 * 
-	 * }
-	 */
-
-	
-	 
 }

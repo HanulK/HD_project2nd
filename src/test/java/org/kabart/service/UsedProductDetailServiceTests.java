@@ -1,5 +1,12 @@
 package org.kabart.service;
 
+/*
+ * *Author : 이세아
+ * *기능 : 중고제품 상세정보 Service Test
+ * 
+ * */
+
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kabart.domain.UsedProductDetailVO;

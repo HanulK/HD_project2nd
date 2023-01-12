@@ -1,5 +1,11 @@
 package org.kabart.service;
 
+/*
+ * *Author : 이세아
+ * *기능 : 상세 제품 정보 Service
+ * 
+ * */
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;

@@ -1,5 +1,11 @@
 package org.kabart.mapper;
 
+/*
+ * *Author : 이세아
+ * *기능 : 메인에 나오는 베스트 상품 Mapper Test
+ * 
+ * */
+
 import java.util.List;
 
 import org.junit.Test;
