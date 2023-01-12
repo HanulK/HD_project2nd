@@ -20,6 +20,8 @@ public class MemberMaperTests {
 	@Setter (onMethod_ = {@Autowired})
 	private MemberMapper mapper;
 	
+	/* writer : hanul 
+	 * 회원 정보 읽기 테스트 */
 	@Test
 	public void readMemberTest() {
 		String member_id = "banana";
@@ -27,13 +29,17 @@ public class MemberMaperTests {
 		log.info(member);
 	}
 	
+	/* writer : hanul 
+	 * 아이디 중복 확인 테스트 */
 	@Test
 	public void idCheckTest() {
 		String new_id = "asdf";
 		int result = mapper.checkId(new_id);
-		log.warn("ID 중복 체크 : " + result);
+		log.info("ID 중복 체크 : " + result);
 	}
 	
+	/* writer : hanul 
+	 * 핸드폰 번호로 아이디 조회 테스트 */
 	@Test
 	public void findIdTest() {
 		String phone = "01051523372";
@@ -41,6 +47,8 @@ public class MemberMaperTests {
 		log.info(mem_id);
 	}
 	
+	/* writer : hanul 
+	 * 특정 회원 정보 조회 테스트 */
 	@Test
 	public void getMemberInfo() {
 		String mem_id = "anna";
