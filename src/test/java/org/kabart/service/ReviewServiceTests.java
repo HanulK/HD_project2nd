@@ -1,5 +1,12 @@
 package org.kabart.service;
 
+/*
+ * *Author : 이세아, 남승현
+ * *기능 : 리뷰 Service Test
+ * 
+ * */
+
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kabart.domain.ReviewVO;
@@ -33,6 +40,8 @@ public class ReviewServiceTests {
 		service.insert(rVO);
 		
 	}
+	
+	/* 이세아 - 제품 id에 따라 리뷰 조회 */
 	@Test
 	public void getreviews() {
 		log.info("product reviews");

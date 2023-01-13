@@ -1,5 +1,11 @@
 package org.kabart.domain;
 
+/*
+ * *Author : 이세아
+ * *기능 : Main화면에서 보여지는 Best Item VO
+ * 
+ * */
+
 import lombok.Data;
 
 @Data

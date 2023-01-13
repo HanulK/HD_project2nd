@@ -1,5 +1,11 @@
 package org.kabart.mapper;
 
+/*
+ * *Author : 이세아
+ * *기능 : 상세제품 정보 Mapper
+ * 
+ * */
+
 import java.util.List;
 
 import org.kabart.domain.ImgVO;

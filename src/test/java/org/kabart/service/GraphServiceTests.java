@@ -1,5 +1,11 @@
 package org.kabart.service;
 
+/*
+ * *Author : 이세아
+ * *기능 : 독창성 기능 중 고객 분석 그래프 Service Test
+ * 
+ * */
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

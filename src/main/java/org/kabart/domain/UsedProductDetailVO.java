@@ -1,5 +1,11 @@
 package org.kabart.domain;
 
+/*
+ * *Author : 이세아
+ * *기능 : 중고 제품 상세정보 VO
+ * 
+ * */
+
 import java.util.*;
 
 import lombok.Data;

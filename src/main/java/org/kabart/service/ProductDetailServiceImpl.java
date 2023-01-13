@@ -1,5 +1,10 @@
-
 package org.kabart.service;
+
+/*
+ * *Author : 이세아
+ * *기능 : 상세 제품 정보 Service Implements
+ * 
+ * */
 
 import java.util.List;
 

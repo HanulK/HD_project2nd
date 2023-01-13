@@ -1,5 +1,11 @@
 package org.kabart.service;
 
+/*
+ * *Author : 이세아
+ * *기능 : 중고 제품 상세 정보 Service Implements
+ * 
+ * */
+
 import java.util.List;
 
 import org.kabart.domain.*;

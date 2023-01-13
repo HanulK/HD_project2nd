@@ -1,5 +1,11 @@
 package org.kabart.mapper;
 
+/*
+ * *Author : 이세아
+ * *기능 : 독창성 기능 중 고객 분석 그래프 Mapper Test
+ * 
+ * */
+
 import java.util.List;
 
 import org.junit.Test;

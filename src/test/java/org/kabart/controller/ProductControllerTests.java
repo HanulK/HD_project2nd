@@ -1,5 +1,11 @@
 package org.kabart.controller;
 
+/*
+ * *Author : 차민수, 이세아
+ * *기능 : 상품 리스트 + 페이징 Controller Test, 상품 상세정보 Controller Test
+ * 
+ * */
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,6 +60,8 @@ public class ProductControllerTests {
 				MockMvcRequestBuilders.get("/kabart/product/prod_list").param("pageNum", "1").param("amount", "8").param("prod_category", "all"))
 				.andReturn().getModelAndView().getModelMap());
 	}
+	
+	/* 이세아 - 상품 상세 정보 Controller Test */
 	@Test
 	public void testProductDetail() throws Exception {
 		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/kabart/product/prod_detail").param("prod_id", "146812"))

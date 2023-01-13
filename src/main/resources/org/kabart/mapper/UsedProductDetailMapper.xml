@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kabart.mapper.UsedProductDetailMapper">
-
+	<!-- Author : 이세아
+		 기능 : 중고 상세제품 정보 mapper -->
 	<select id="read" resultType="org.kabart.domain.UsedProductDetailVO">
 		select mem_id, prod_id, prod_name,
 		prod_price, prod_category, prod_width, prod_height, prod_depth,

@@ -1,5 +1,11 @@
 package org.kabart.service;
 
+/*
+ * *Author : 이세아
+ * *기능 : 메인에 나오는 베스트 상품 Service Test
+ * 
+ * */
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,11 @@
 package org.kabart.mapper;
 
+/*
+ * *Author : 남승현, 이세아
+ * *기능 : 상세제품 정보에 들어가는 Review Test
+ * 
+ * */
+
 import java.util.List;
 
 import org.junit.Test;
@@ -42,6 +48,7 @@ public class ReviewMapperTests {
 	
 	}
 
+	/* 이세아 - 제품 상세정보의 상세후기에 들어가는 후기 테스트 */
 	@Test
 	public void testGet() {
 		int prod_id = 60088;
