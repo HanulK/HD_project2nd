@@ -237,6 +237,8 @@
 	var csrfToeknValue = "${_csrf.token}";
 	const mem_id = $("#mem_id").val();
 	
+	/* writer : hanul 
+	 * 개인 정보(핸드폰 번호) 변경 action으로 POST */
 	$("#phone_submit").on("click", function() {
 		$.ajax({
 			url : "${contextPath}/kabart/mypage/changeInfo.do",
@@ -261,6 +263,9 @@
 		}); // end ajax 
 	})
 	
+	
+	/* writer : hanul 
+	 * 개인 정보(가구원 수) 변경 action으로 POST */
 	$("#familynum_submit").on("click", function() {
 		$.ajax({
 			url : "${contextPath}/kabart/mypage/changeInfo.do",
@@ -289,6 +294,8 @@
 		let old_pw = $("#old_pw").val();
 		let new_pw = $("#new_pw").val();
 		
+		/* writer : hanul 
+		 * 비밀번호 변경 action으로 POST */
 		$.ajax({
 			url : "${contextPath}/kabart/mypage/changePW.do",
 			type : "POST",

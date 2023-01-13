@@ -1,3 +1,6 @@
+/* writer : hanul 
+* 마이페이지 개인 정보 출력 화면에서의 버튼 활성화/비활성화 처리 */
+
 $("#btn_change_pw").on("click", function() {
 	$("#origin_pw").attr("style", "display:none");
 	$("#change_pw").attr("style", "");

@@ -1,6 +1,5 @@
 package org.kabart.service;
 
-import java.io.PrintWriter;
 import java.security.SecureRandom;
 import java.util.stream.*;
 
@@ -30,6 +29,8 @@ public class MemberServiceImpl implements MemberService {
 	@Setter(onMethod_ = { @Autowired })
 	private PasswordEncoder pwencoder;
 
+	/* writer : hanul 
+	 * 회원 가입 서비스 기능 */
 	@Transactional
 	@Override
 	public int signUp(MemberVO member) {
@@ -39,32 +40,45 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	/* writer : hanul 
+	 * 아이디로 회원 여부 확인 기능 */
 	@Override
 	public MemberVO getInfoById(String mem_id) {
 		return mMapper.getInfo(mem_id);
 	}
 
+	/* writer : hanul 
+	 * 중복된 아이디 확인 기능 */
 	@Override
 	public int checkId(String new_id) {
 		int result = mMapper.checkId(new_id);
 		return result;
 	}
 
+	/* writer : hanul 
+	 * 핸드폰 번호로 아이디 조회하는 기능 */
 	@Override
 	public String findId(String phone) {
 		return mMapper.findId(phone);
 	}
 
+	/* writer : hanul 
+	 * 회원 정보(전화번호) 변경 기능 */
 	@Override
 	public void changePhoneInfo(String mem_id, String new_data) {
 		mMapper.updatePhone(mem_id, new_data);
 	}
 
+	/* writer : hanul 
+	 * 회원 정보(가구원 수) 변경 기능 */
 	@Override
 	public void changeFamilyNumInfo(String mem_id, int new_data) {
 		mMapper.updateFamilyNum(mem_id, new_data);
 	}
 
+	/* writer : hanul 
+	 * 회원 탈퇴 기능 
+	 * 회원의 기존 카트 삭제 및 권한 회수*/
 	@Transactional
 	@Override
 	public int withdrawalMember(String mem_id) {
@@ -80,18 +94,24 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	/* writer : hanul 
+	 * 인코딩된 비밀번호와 일치하는지 확인하는 기능 */
 	@Override
 	public boolean checkPW(String mem_id, String tester) {
 		String origin = mMapper.findEncodedPW(mem_id);
 		return pwencoder.matches(tester, origin);
 	}
 
+	/* writer : hanul 
+	 * 새로운 비밀번호를 암호화하여 저장하는 기능 */
 	@Override
 	public void changePW(String mem_id, String new_data) {
 		new_data = pwencoder.encode(new_data);
 		mMapper.changePW(mem_id, new_data);
 	}
 
+	/* writer : hanul 
+	 * 회원 여부 확인하여 임시 비밀번호 발급하여 메일로 전송하는 기능 */
 	@Override
 	public int findPW(HttpServletResponse resp, String mem_id, String email) throws Exception {
 		resp.setContentType("text/html;charset=utf-8");
@@ -117,7 +137,8 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 	
-	// 특정 길이의 임의의 영숫자 비밀번호를 생성하는 메소드
+	/* writer : hanul 
+	 * 12자리의 임시 비밀번호 생성 기능 */
     public static String generateRandomPW()
     {
     	int len = 12;
@@ -130,6 +151,8 @@ public class MemberServiceImpl implements MemberService {
                 .collect(Collectors.joining());
     }
 
+    /* writer : hanul 
+	 * 임시 비밀번호를 사용자가 입력한 이메일로 전송하는 기능 */
 	@Override
 	public boolean sendEmail(String mem_id, String tmp_pw, String mail, String div) throws Exception {
 		// Mail Server 설정

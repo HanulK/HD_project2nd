@@ -36,7 +36,8 @@ public class KabartController {
 		model.addAttribute("best", best);
 	}
 
-	
+	/* writer : hanul 
+	 * 로그인 페이지로 이동하기 위한 controller */ 
 	@GetMapping("/login")
 	public void login(String error, String logout, Model model) {
 		log.warn("###### Error : " + error);
@@ -45,7 +46,6 @@ public class KabartController {
 		// handling account error
 		if(error != null) {
 			model.addAttribute("error", "비밀번호를 정확히 입력해주세요.");
-			System.out.println("비밀번호 틀림");
 		}
 		
 		// handing logout
@@ -54,20 +54,27 @@ public class KabartController {
 		}
 	}
 	
+	
 	@PostMapping("/login")
 	public void loginGet(@RequestParam("error") String error) {
 		log.warn("###### login with error : "+error);
 	}
 	
+	/* writer : hanul 
+	 * 로그아웃 페이지로 이동하기 위한 controller 
+	 * 원칙적으로 post 방식으로 요청해야 로그아웃이 됨*/ 
 	@GetMapping("/logout")
 	public void logoutGet() {
 		log.warn("###### Logout");
 	}
 	
+	/* writer : hanul 
+	 * 회원가입 페이지로 이동하기 위한 controller */ 
 	@GetMapping("/join")
 	public void joinGet() { }
 	
-	
+	/* writer : hanul 
+	 * 실제 회원 가입이 이루어지는 action */ 
 	@ResponseBody
 	@PostMapping(value="/join",consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = MediaType.APPLICATION_JSON_VALUE) 
 	public ResponseEntity<Map<String,Object>> joinPost(@RequestBody MemberVO member, RedirectAttributes rttr) {
@@ -78,35 +85,44 @@ public class KabartController {
 		return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
 	}
 	
+	/* writer : hanul 
+	 * 아이디 중복 체크 기능 */ 
 	@ResponseBody
 	@RequestMapping("/idCheck.do")
 	public int idCheck(String new_id) {
 		return service.checkId(new_id);
 	}
 	
+	/* writer : hanul 
+	 * 아이디 찾기 페이지로 이동하기 위한 controller */ 
 	@GetMapping("/findId")
 	public void findId() {}
 	
+	/* writer : hanul 
+	 * 회원 아이디 찾는 action */ 
 	@ResponseBody
 	@RequestMapping("/findId.do")
 	public String findId(String phone) {
 		return service.findId(phone);
 	}
 	
+	
 	@ResponseBody
 	@PostMapping(value="/getInfoById", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<MemberVO> getInfo(@RequestBody Map<String,Object> body){
 		log.info(body.get("mem_id"));
 		MemberVO mVO = service.getInfoById((String)body.get("mem_id"));
-		/*
-		 * Map<String, Object> map = new HashMap<>(); map.put("result", mVO);
-		 */
 		return new ResponseEntity<>(mVO,HttpStatus.OK);
 	}
 	
+	/* writer : hanul 
+	 * 비밀번호 찾기 페이지로 이동하기 위한 controller */ 
 	@GetMapping(value = "/findPW")
 	public void findPW() throws Exception {}
 
+	/* writer : hanul 
+	 * 비밀번호 찾기 action 
+	 * member service의 결과에 따른 메시지를 사용자에게 전달 */ 
 	@ResponseBody
 	@RequestMapping(value = "/findPW", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<Map<String,Object>> findPW(@RequestBody Map<String, Object> body, HttpServletResponse response) throws Exception{

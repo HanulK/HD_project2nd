@@ -13,6 +13,8 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 
 import lombok.Data;
 
+/* writer : hanul 
+ * 로그인에 실패한 경우, 어떠한 이유로 로그인이 실패하였는지 사용자에게 오류 메세지를 작성하여 전달하기 위해 구현 */
 @Data
 public class LoginFailureHandler implements AuthenticationFailureHandler {
 

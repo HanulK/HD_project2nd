@@ -7,6 +7,9 @@
 <title>KABART</title>
 <script type="text/javascript" src="/resources/js/toastmsg.js" defer></script>
 <script type="text/javascript">
+/* writer : hanul 
+ * 회원가입 검사, 필수 항목들이 채워지지 않을 경우 혹은 항목의 입력값 길이가 맞지 않은 경우 
+ * 회원 가입 버튼 비활성화되어 있음*/
 function checkedInput() {
 	let mem_id = $("input[name=mem_id]").val();
 	let mem_pw = $("input[name=mem_pw]").val();
@@ -206,6 +209,9 @@ function checkedInput() {
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfToeknValue = "${_csrf.token}";
 		
+		/* writer : hanul 
+		 * 회원 가입 action으로 POST
+		 * 결과를 toast로 보여줌 */
  		$.ajax({
 			url : "${contextPath}/kabart/join",
 			type : "POST",
@@ -249,6 +255,8 @@ function checkedInput() {
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfToeknValue = "${_csrf.token}";
 		
+		/* writer : hanul 
+		 * 아이디 중복 검사 action으로 POST */
 		$.ajax({
 			url : "${contextPath}/kabart/idCheck.do",
 			type : "POST",
@@ -275,12 +283,16 @@ function checkedInput() {
 		
 	}
 	
+	/* writer : hanul 
+	 * 생년월일 길이 체크 */
 	function maxLengthCheck(birth) {
 		if (birth.value.length > birth.maxLength) {
 			birth.value = birth.value.slice(0, birth.maxLength);
 		}
 	}
 	
+	/* writer : hanul 
+	 * 비밀번호 확인 기능 */
 	$(document).ready(function(){
 		$("input[name=mem_pw]").on("keyup", function() {
 			$(".input_error_msg").html("비밀번호가 일치 하지 않습니다.");
