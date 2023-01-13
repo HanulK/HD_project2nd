@@ -53,7 +53,8 @@
 									<div data-v-63326639="" class="search"
 										style="width: 800px; padding-left: 0; padding-right: 0; margin: 0 auto; overflow: hidden;">
 
-										<!-- 검색 박스 -->
+										<!-- 작성자 : 박정훈 
+										     기능 : 검색 타입 선택 -->
 
 										<form id="searchForm"
 											action="/kabart/product/search_complete_list" method="get">

@@ -16,11 +16,13 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/security-context.xml" })
 @Log4j
+/* 작성자 : 박정훈
+ * 기능  : 검색타입과 검색 키워드 및 페이징 처리 test 
+ */
 public class ProdSearchMapperTest {
 
 	@Setter(onMethod_ = @Autowired)
 	private ProdSearchMapper mapper;
-	
 	
 	@Test
 	public void testSearch() {
@@ -41,7 +43,6 @@ public class ProdSearchMapperTest {
 		//8개 1페이지
 		cri.setPageNum(1);
 		cri.setAmount(8);
-		
 		List<ProductListVO> list =mapper.getListWithPaging2(cri);
 		list.forEach( search-> log.info(search));
 		
