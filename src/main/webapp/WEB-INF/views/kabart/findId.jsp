@@ -66,6 +66,8 @@
 							var csrfHeaderName = "${_csrf.headerName}";
 							var csrfToeknValue = "${_csrf.token}";
 
+							/* writer : hanul 
+							 * 핸드폰 번호로 아이디 찾는 action으로 POST */
 							$.ajax({
 										url : "${contextPath}/kabart/findId.do",
 										type : "POST",

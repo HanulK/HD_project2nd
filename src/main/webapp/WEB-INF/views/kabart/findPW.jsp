@@ -87,6 +87,9 @@
 			var csrfHeaderName = "${_csrf.headerName}";
 			var csrfToeknValue = "${_csrf.token}";
 
+			/* writer : hanul 
+			 * 비밀번호 찾기 action으로 POST 
+			 * 결과를 toast로 보여주고 2초 후 home으로 이동 */
 			$.ajax({
 				url : "/kabart/findPW",
 				type : "POST",

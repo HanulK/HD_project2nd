@@ -1,3 +1,6 @@
+/* writer : hanul 
+* 사용자에게 간단한 toast 메세지 전달 */
+
 function showToast(msg, tag) {
 	$("#toast").attr("style", "visibility: visible;");
 	$(".toast-content").html(msg);
