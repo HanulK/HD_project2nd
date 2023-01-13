@@ -4,6 +4,8 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.kabart.mapper.BestProductMapper">
+	<!-- Author : 이세아
+		 기능 : 메인의 인기상품 mapper -->
 
 	<select id="bestprod" resultType="org.kabart.domain.BestProductVO">
 	

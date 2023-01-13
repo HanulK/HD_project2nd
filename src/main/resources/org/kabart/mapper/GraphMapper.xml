@@ -4,7 +4,8 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.kabart.mapper.GraphMapper">
-
+	<!-- Author : 이세아
+		 기능 : 상품 상세정보의 소비자 분석 mapper -->
 	<select id="family" resultType="org.kabart.domain.FamilyGraphVO">
 		select prod_id,
 		round(ratio_to_report(count(*))over(partition by
