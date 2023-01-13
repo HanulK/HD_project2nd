@@ -3,7 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kabart.mapper.OrderMapper">
-
+	<!-- 
+		Author : 남승현
+		기능 : 신상품 구매 시 상품 목록 가져오기
+	 -->	
 	<select id="getNewList" resultType="org.kabart.domain.OrderVO"
 		parameterType="java.util.List">
 		SELECT
@@ -19,6 +22,11 @@
 
 		</foreach>
 	</select>
+	
+	<!-- 
+		Author : 남승현
+		기능 : 중고상품 구매 시 상품 가져오기
+	 -->	
 	<select id="getUsedList" resultType="org.kabart.domain.OrderVO">
 		SELECT pd.prod_id,
 		prod_name, prod_price,
@@ -34,11 +42,20 @@
 		gd.grade = up.grade
 
 	</select>
+	
+	<!-- 
+		Author : 남승현
+		기능 : 주문서 생성
+	 -->	
 	<insert id="orderID">
 		INSERT INTO orders
 		values(seq_order.nextVAl,#{mem_id},#{addr},#{addr_detail},#{phone},#{dname},sysdate)
 	</insert>
-
+	
+		<!-- 
+		Author : 남승현
+		기능 : 주문서 내, 주문 상품 삽입
+	 -->	
 	<insert id="insertOrders">
 		INSERT INTO order_details values(
 		(SELECT max(order_id) FROM ORDERS WHERE mem_id =
@@ -46,6 +63,10 @@
 
 	</insert>
 	
+		<!-- 
+		Author : 남승현
+		기능 : 중고상품 구매 시, 판매일과 구매자 아이디 업데이트
+	 -->	
 	<update id="updateUsed">
 		UPDATE used_products
 		SET sale_date = sysdate,
@@ -53,6 +74,10 @@
 		WHERE up_id = #{up_id}
 	</update>
 	
+	<!-- 
+		Author : 남승현
+		기능 : 리뷰 작성 시, 주문 상품에 대한 review_check 컬럼 값 변경 
+	 -->	
 	<update id="reviewCheck">
 		UPDATE order_details
 		SET review_check = 1
@@ -61,6 +86,10 @@
 			  prod_id = #{uVO.prod_id}
 	</update>
 	
+	<!-- 
+		Author : 남승현
+		기능 : 주문취소 기능
+	 -->	
 	<update id="orderCancle">
 		UPDATE order_details
 		SET cancel_date = sysdate

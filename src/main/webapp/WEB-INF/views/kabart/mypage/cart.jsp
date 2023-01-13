@@ -194,7 +194,7 @@
 							<div class="submit"></div>
 
 							<div data-v-14995178="" class="btn_confirm">
-								<a id="goOrder"data-v-6e799857="" data-v-14995178="" href="#"
+								<a id="goOrder" data-v-6e799857="" data-v-14995178="" href="#"
 									class="btn full solid false" style="background-color: #ef6253;">구매하기</a>
 							</div>
 						</div>
@@ -229,91 +229,98 @@
 		var flag = false;
 		const mem_id = $("#mem_id").val();
 		const allCheck = $("#cart");
-		
-		allCheck.on("click",function(e){
+
+		/*
+		 * Author : 남승현
+		 * 기능 : 장바구니 전체 선택 기능
+		 */
+		allCheck.on("click", function(e) {
 			e.preventDefault();
 			var list = $(".chk");
-			if(flag){
-				list.prop("checked",false);
+			if (flag) {
+				list.prop("checked", false);
 				flag = !flag;
-			}else {
-				list.prop("checked",true);
+			} else {
+				list.prop("checked", true);
 				flag = !flag;
 			}
 			getCheckboxValue();
 		})
-		 function getCheckboxValue()  {
-          	var result = 0;	
-			$("input[name=isCheck]:checked").each(function(){
-				
-				var price = $('#src'+$(this).val()).data('value');
-				var quantity = $('#qmt'+$(this).val()).data('value');
-				result +=price * quantity;
-				console.log(price);
-					console.log(quantity);
-          		});
-          		console.log(result);
-			$(".buy_total_confirm .amount").html(result.toLocaleString('ko-KR'));
-           };
-		
-             
-  		$("#cartDel").on("click",function removeCarts(e){
-  			e.preventDefault();
-  			var valArr = [];
-  			var url = '/kabart/mypage/removeCarts?mem_id='+mem_id+'&prod_id=';
-  			$("input[name=isCheck]:checked").each(function(){
-  				valArr.push($(this).val());
-  				url += $(this).val()+',';
-  			});
-  			url = url.substr(0,url.length-1);
-  			console.log(url);
-  			$.ajax({
-  				url : url,
-  				contentType : "application/json",
-  				success : function(){
-  					getAllCarts();
-  					
-  				},
-  				error : function(e){
-  					console.log(e);
-  				}
-  			})
-  			
-  			
-  		});
-  		function updateAmount(val,ths){
-  			var id = $(ths).data('value');
-  			console.log(id);
-  			console.log(val);
-  			var quan = $('#qmt'+id).data('value');
 
-  			console.log(quan);
-  			if(quan==1 &&val==-1){
-  				return ;
-  			}
-  			$('#qmt'+id).data('value',quan+val);
-  			$('#qmt'+id).html(quan+val);
-  			$.ajax({
-  				type : 'post',
-  				url : '/kabart/mypage/update',
-  				beforeSend : function(xhr){
-  					xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
-  				},
-  				data : JSON.stringify({
-  					mem_id : mem_id,
-  					prod_id : id,
-  					quantity : val
-  				}),
-  				contentType : "application/json",
-  				succeess : function(){
-  		  			
-  				},
-  				error : function(e){
-  					console.log(e);
-  				}
-  			})
-  			getCheckboxValue();
-  		}
+		/*
+		 * Author : 남승현
+		 * 기능 : 상품 상세내 장바구니 혹은 바로구매에 필요한 수량 조절
+		 */
+		function getCheckboxValue() {
+			var result = 0;
+			$("input[name=isCheck]:checked").each(function() {
+
+				var price = $('#src' + $(this).val()).data('value');
+				var quantity = $('#qmt' + $(this).val()).data('value');
+				result += price * quantity;
+				console.log(price);
+				console.log(quantity);
+			});
+			console.log(result);
+			$(".buy_total_confirm .amount")
+					.html(result.toLocaleString('ko-KR'));
+		};
+
+		$("#cartDel").on(
+				"click",
+				function removeCarts(e) {
+					e.preventDefault();
+					var valArr = [];
+					var url = '/kabart/mypage/removeCarts?mem_id=' + mem_id
+							+ '&prod_id=';
+					$("input[name=isCheck]:checked").each(function() {
+						valArr.push($(this).val());
+						url += $(this).val() + ',';
+					});
+					url = url.substr(0, url.length - 1);
+					console.log(url);
+					$.ajax({
+						url : url,
+						contentType : "application/json",
+						success : function() {
+							getAllCarts();
+
+						},
+						error : function(e) {
+							console.log(e);
+						}
+					})
+
+				});
+		function updateAmount(val, ths) {
+			var id = $(ths).data('value');
+			var quan = $('#qmt' + id).data('value');
+			if (quan == 1 && val == -1) {
+				return;
+			}
+			$('#qmt' + id).data('value', quan + val);
+			$('#qmt' + id).html(quan + val);
+			$.ajax({
+				type : 'post',
+				url : '/kabart/mypage/cart',
+				beforeSend : function(xhr) {
+					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				},
+				data : JSON.stringify({
+					mem_id : mem_id,
+					prod_id : id,
+					quantity : val
+				}),
+				contentType : "application/json",
+				succeess : function() {
+
+				},
+				error : function(e) {
+					console.log(e);
+				}
+			})
+			getCheckboxValue();
+		}
 		function getAllCarts() {
 			$
 					.ajax({
@@ -331,29 +338,35 @@
 						success : function(result) {
 							console.log(result.length);
 							var row = "";
-							
+
 							if (result.length == 0) {
 								row = "<div data-v-e2f6767a='' class='empty_area'><p data-v-e2f6767a='' class='desc'>추가하신 관심 상품이 없습니다.</p><a data-v-575aff82='' data-v-e2f6767a='' href='/kabart/home' class='btn outlinegrey small'> SHOP 바로가기 </a></div>";
 							} else {
 								for (var i = 0; i < result.length; i++) {
 									let price = result[i].prod_price
 											.toLocaleString('ko-KR');
-									row += "<li data-v-4faab390=''><div data-v-4faab390='' class='wish_item'><div data-v-4faab390='' class='wish_product'><input value='"+result[i].prod_id+"' onclick='getCheckboxValue(event)' name='isCheck' type='checkbox' class='chk'><div data-v-4faab390='' class='product_box'><div data-v-09fbcf09='' data-v-4faab390='' class='product' style='background-color: rgb(244, 244, 244);'>"
+									row += "<li data-v-4faab390=''><div data-v-4faab390='' class='wish_item'><div data-v-4faab390='' class='wish_product'><input value='"
+											+ result[i].prod_id
+											+ "' onclick='getCheckboxValue(event)' name='isCheck' type='checkbox' class='chk'><div data-v-4faab390='' class='product_box'><div data-v-09fbcf09='' data-v-4faab390='' class='product' style='background-color: rgb(244, 244, 244);'>"
 											+ "<picture data-v-321fc3b6='' data-v-09fbcf09='' class='picture product_img'><source data-v-321fc3b6='' type='image/webp' srcset='"+result[i].img_srcs+"'><source data-v-321fc3b6='' srcset='"+result[i].img_srcs+"'><img data-v-321fc3b6='' alt='상품 이미지' src='"+result[i].img_srcs+"' loading='lazy' class='image'></picture>"
 											+ "</div></div><div data-v-4faab390='' class='product_detail'><div data-v-4faab390=''><a data-v-4faab390='' href='#' class='brand-text'>"
 											+ result[i].prod_category
 											+ "</a></div><p data-v-4faab390='' class='name'>"
 											+ result[i].prod_name
-											+ "</p><div data-v-4faab390='' class='size'><span data-v-4faab390=''class='size'>수량</span> <span class='count' style='padding: 0px 10px;'> <button type='button' onclick='updateAmount(-1,this)' data-value='"+result[i].prod_id+"'class='minus' style='padding: 0px 3px'>-</button> <span id='qmt"+result[i].prod_id+"' data-value='"+result[i].quantity+"'data-v-4faab390='' class='size' style='padding: 0px 3px'>"
+											+ "</p><div data-v-4faab390='' class='size'><span data-v-4faab390=''class='size'>수량</span> <span class='count' style='padding: 0px 10px;'> <button type='button' onclick='updateAmount(-1,this)' data-value='"
+											+ result[i].prod_id
+											+ "'class='minus' style='padding: 0px 3px'>-</button> <span id='qmt"+result[i].prod_id+"' data-value='"+result[i].quantity+"'data-v-4faab390='' class='size' style='padding: 0px 3px'>"
 											+ result[i].quantity
 											+ "</span>"
-											+ "<button type='button' onclick='updateAmount(1,this)' data-value='"+result[i].prod_id+"' class='plus'>+</a></span></div></div></div><div data-v-4faab390='' class='wish_buy'><div data-v-4faab390=''><div data-v-23bbaa82='' data-v-4faab390='' class='division_btn_box lg'>"
+											+ "<button type='button' onclick='updateAmount(1,this)' data-value='"
+											+ result[i].prod_id
+											+ "' class='plus'>+</a></span></div></div></div><div data-v-4faab390='' class='wish_buy'><div data-v-4faab390=''><div data-v-23bbaa82='' data-v-4faab390='' class='division_btn_box lg'>"
 											+ "<span data-v-23bbaa82='' class='btn_division buy'> <strong data-v-23bbaa82='' class='title'>가격</strong><div data-v-23bbaa82='' class='price'><span data-v-23bbaa82='' class='amount'><em id='src"+result[i].prod_id+"' data-value='"+result[i].prod_price+"' data-v-23bbaa82='' class='num'>"
 											+ price
 											+ "</em><span data-v-23bbaa82='' class='won'>원</span></span>"
 											+ "</div></span></div></div></div></div></li>";
 								}
-								
+
 							}
 							$(".wish_list").html(row);
 							getCheckboxValue();
@@ -364,21 +377,21 @@
 
 					})
 		}
-		$("#goOrder").on("click",function(e){
+		$("#goOrder").on("click", function(e) {
 			e.preventDefault();
 			var valArr = [];
-  			var url = '/kabart/order/list?prod_id=';
-  			$("input[name=isCheck]:checked").each(function(){
-  				valArr.push($(this).val());
-  				url += $(this).val()+',';
-  			});
-  			url = url.substr(0,url.length-1);
-  			if(valArr.length==0){
-  				return ;
-  			}
-  			console.log(url);
-			location.href=url;
-  			
+			var url = '/kabart/order/list?prod_id=';
+			$("input[name=isCheck]:checked").each(function() {
+				valArr.push($(this).val());
+				url += $(this).val() + ',';
+			});
+			url = url.substr(0, url.length - 1);
+			if (valArr.length == 0) {
+				return;
+			}
+			console.log(url);
+			location.href = url;
+
 		})
 		$(function() {
 			getAllCarts();

@@ -618,7 +618,10 @@ $('.imgfold').click(function() {
 
 
 
-
+/*
+ * Author : 남승현
+ * 기능 : 상품 상세내 장바구니 혹은 바로구매에 필요한 수량 조절
+ */
 function updateAmount(val){
 		var quan = $('#quantity').data('value');
 		console.log(quan);
@@ -630,7 +633,10 @@ function updateAmount(val){
 		
 	};
 	
-	
+	/*
+	 * Author : 남승현
+	 * 기능 : 바로 구매기능
+	 */	
 	function buyNow(e){
 		var quan = $('#quantity').data('value');
 		var prod_id = ${detail.prod_id};
@@ -641,9 +647,12 @@ function updateAmount(val){
 		location.href = url;
 		
 	};
-	
+	/*
+	 * Author : 남승현
+	 * 기능 : 장바구니 담기 기능
+	 */
 		$("#cart").on("click", function(e) {
-		e.preventDefault(); //원래 이번트 막음 / 원하는 이벤트 
+		e.preventDefault();
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
 		const mem_id = $("#mem_id").val();

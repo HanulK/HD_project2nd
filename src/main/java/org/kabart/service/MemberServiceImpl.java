@@ -69,7 +69,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int withdrawalMember(String mem_id) {
 		// member cart 비우기
-		cMapper.deleteAllCartProds(mem_id);
+		cMapper.removeCartAll(mem_id);
 		// member 탈회 날자 update
 		mMapper.registerExpireDate(mem_id);
 		// 자동 로그인 기록 지우기

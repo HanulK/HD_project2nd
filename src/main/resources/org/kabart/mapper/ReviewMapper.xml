@@ -3,14 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kabart.mapper.ReviewMapper">
-
+	<!-- 
+		Author : 남승현
+		기능 : 리뷰 작성 기능 
+	 -->	
 	<insert id="insert">
-		
 		insert into reviews (order_id, mem_id, rv_text, rv_date,prod_id)
 		values (#{vo.order_id}, #{vo.mem_id}, #{vo.rv_text}, sysdate,#{vo.prod_id})
-		
 	</insert>
-	
+
+	<!-- 
+		Author : 남승현
+		기능 : 해당 상품에 대한 리뷰 목록 가져오기
+	 -->	
 	<select id="get" resultType="org.kabart.domain.ReviewVO">
 		select * from reviews where prod_id = ${prod_id}
 	</select>

@@ -22,7 +22,10 @@
 	var prod_id = 0;
 	var order_id = 0;
 	var rv_text = "";
-	
+	/*
+	 * Author : 남승현
+	 * 기능 : 모달창을 활용한 리뷰 작성 기능
+	 */
 function registerReview(){
 	const mem_id = $("#mem_id").val();
 	var csrfHeaderName = "${_csrf.headerName}";
@@ -58,6 +61,10 @@ function registerReview(){
 		}
 	});
 };
+/*
+ * Author : 남승현
+ * 기능 : 리뷰에 필요한 모달을 띄우는 기능
+ */
 function reviewModal(ths){
 	const mem_id = $("#mem_id").val();
 	console.log(mem_id);
@@ -287,6 +294,10 @@ function reviewModal(ths){
 				deleteOrderConfirm(oid, pid);
 			})
 			
+			/*
+ 			* Author : 남승현
+ 			* 기능 : 주문내역 조회 후, 주문취소 기능 
+ 			*/
 			function deleteOrderConfirm(oid, pid) {
 				Swal.fire({
 					  title: '주문을 취소하시겠습니까?',
@@ -343,6 +354,11 @@ function reviewModal(ths){
 				dd = (dd < 10) ? '0' + dd : dd;
 				return '' + yy + '/' + mm + '/' + dd;
 			}
+			
+			/*
+			 * Author : 남승현
+			 * 기능 : 신상품 구매내역 조회 
+			 */
 			function searchNew(start_date, end_date) {
 				$
 						.ajax({
@@ -415,7 +431,11 @@ function reviewModal(ths){
 						});
 			}
 			;
-
+			
+			/*
+			 * Author : 남승현
+			 * 기능 : 중고상품 구매내역 조회 
+			 */
 			function searchUsed(start_date, end_date) {
 				$
 						.ajax({
@@ -482,13 +502,14 @@ function reviewModal(ths){
 						});
 			}
 			;
+			/*
+			 * Author : 남승현
+			 * 기능 : 상품 상세내 장바구니 혹은 바로구매에 필요한 수량 조절
+			 */
 			$("#search_period").click(function() {
 				const start_date = date_add($("#dateStart").val(), 0);
 				const end_date = date_add($("#dateEnd").val(), 1);
 
-				console.log(isUsed);
-				console.log(start_date);
-				console.log(end_date);
 				var txt = '주문날짜';
 				if (start_date >= end_date) {
 					showToast("종료일이 시작일보다 앞일 수 없습니다.", -1);
