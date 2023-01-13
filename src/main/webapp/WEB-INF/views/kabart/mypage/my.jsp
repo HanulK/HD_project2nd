@@ -159,6 +159,10 @@
 	</div>
 	</div>
 	<script>
+	/*
+	 * Author : 남승현
+	 * 기능 : 마이페이지 방문 시, 초기화면에 구매내역 및 판매내역 데이터를 집계
+	 */
 		function countAll(mem_id,end_date,csrfHeaderName,csrfTokenValue){
 			var sellTotal = 0;
 			var buyTotal = 0;

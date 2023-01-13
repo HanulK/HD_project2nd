@@ -200,6 +200,10 @@
 				dd = (dd < 10) ? '0' + dd : dd;
 				return '' + yy + '/' + mm + '/' + dd;
 			}
+			/*
+			 * Author : 남승현
+			 * 기능 : 판매 중인 중고상품 조회
+			 */
 			function searchSelling(start_date, end_date) {
 				$
 						.ajax({
@@ -265,6 +269,11 @@
 						});
 			}
 			;
+			
+			/*
+			 * Author : 남승현
+			 * 기능 : 판매완료 된 중고상품 조회
+			 */
 			function searchSelled(start_date, end_date) {
 				$
 						.ajax({
@@ -330,7 +339,10 @@
 						});
 			}
 			;
-
+			/*
+			 * Author : 남승현
+			 * 기능 : 조회 버튼 클릭 시 시작일과 종료일에 대한 유효성 검사 및 조회 실행
+			 */
 			$("#search_period").click(function() {
 				const start_date = date_add($("#dateStart").val(), 0);
 				const end_date = date_add($("#dateEnd").val(), 1);
@@ -353,6 +365,10 @@
 				}
 
 			});
+			/*
+			 * Author : 남승현
+			 * 기능 : 구매내역 조회 중, 신상품 조회탭과 중고상품 조회탭에 대한 클릭 이벤트
+			 */
 			$(".tab_item")
 					.on(
 							"click",

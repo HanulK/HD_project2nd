@@ -60,10 +60,5 @@ public class CartMapperTest {
 		log.info(mapper.removeCart("tori",42431));
 	}
 	
-	@Test
-	public void updateCart() {
-		mapper.updateQuantity("tori", 171131, 1);
-	}
-
 }
 

@@ -230,6 +230,10 @@
 		const mem_id = $("#mem_id").val();
 		const allCheck = $("#cart");
 
+		/*
+		 * Author : 남승현
+		 * 기능 : 장바구니 전체 선택 기능
+		 */
 		allCheck.on("click", function(e) {
 			e.preventDefault();
 			var list = $(".chk");
@@ -242,10 +246,14 @@
 			}
 			getCheckboxValue();
 		})
+		
+		/*
+		 * Author : 남승현
+		 * 기능 : 상품 상세내 장바구니 혹은 바로구매에 필요한 수량 조절
+		 */
 		function getCheckboxValue() {
 			var result = 0;
 			$("input[name=isCheck]:checked").each(function() {
-
 				var price = $('#src' + $(this).val()).data('value');
 				var quantity = $('#qmt' + $(this).val()).data('value');
 				result += price * quantity;
@@ -256,7 +264,10 @@
 			$(".buy_total_confirm .amount")
 					.html(result.toLocaleString('ko-KR'));
 		};
-
+		/*
+		 * Author : 남승현
+		 * 기능 : 장바구니 상품 삭제
+		 */
 		$("#cartDel").on(
 				"click",
 				function removeCarts(e) {
@@ -283,13 +294,13 @@
 					})
 
 				});
+		/*
+		 * Author : 남승현
+		 * 기능 : 장바구니 상품 수량 조절
+		 */
 		function updateAmount(val, ths) {
 			var id = $(ths).data('value');
-			console.log(id);
-			console.log(val);
 			var quan = $('#qmt' + id).data('value');
-
-			console.log(quan);
 			if (quan == 1 && val == -1) {
 				return;
 			}
@@ -297,7 +308,7 @@
 			$('#qmt' + id).html(quan + val);
 			$.ajax({
 				type : 'post',
-				url : '/kabart/mypage/update',
+				url : '/kabart/mypage/cart',
 				beforeSend : function(xhr) {
 					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
 				},
@@ -316,6 +327,10 @@
 			})
 			getCheckboxValue();
 		}
+		/*
+		 * Author : 남승현
+		 * 기능 : 장바구니 상품 목록 전체 불러오기
+		 */
 		function getAllCarts() {
 			$
 					.ajax({
@@ -372,6 +387,10 @@
 
 					})
 		}
+		/*
+		 * Author : 남승현
+		 * 기능 : 상품 구매하기
+		 */
 		$("#goOrder").on("click", function(e) {
 			e.preventDefault();
 			var valArr = [];

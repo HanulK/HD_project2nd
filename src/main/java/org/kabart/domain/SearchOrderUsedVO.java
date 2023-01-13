@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
+/* *Author : 남승현
+ * 기능 : 구매내역 및 판매내역 조회 시 중고상품에 대한 정보를 담은 VO
+ */
 @Data
 public class SearchOrderUsedVO {
 	

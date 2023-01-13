@@ -387,6 +387,11 @@
 	
 	<script type="text/javascript">
 		$(function(){
+			/*
+			 * Author : 남승현
+			 * 기능 : 결제하기 버튼 클릭 시, 동적으로 태그 생성하여 주문시킴
+			 */
+			 
 			$("#paid").on("click",function(e){
 				e.preventDefault();
 				var form = $("#sendData")[0];   	
@@ -447,7 +452,7 @@
 			
 		})
 		$(function() {
-
+	
 			var mem_id = $("#mem_id").val();
 			console.log(mem_id);
 			var csrfHeaderName = "${_csrf.headerName}";

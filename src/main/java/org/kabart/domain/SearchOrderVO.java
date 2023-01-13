@@ -8,7 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.log4j.Log4j;
 
-
+/* *Author : 남승현
+ * 기능 : 구매내역 조회 시, 신상품에 대한 정보를 담는 VO
+ */
 @Data
 @Log4j
 @AllArgsConstructor
