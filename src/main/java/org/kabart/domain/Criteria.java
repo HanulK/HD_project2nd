@@ -1,13 +1,12 @@
 package org.kabart.domain;
 
-import org.springframework.web.util.UriComponentsBuilder;
-
 import lombok.*;
 
 /**
  * 
- * @author 차민수
- * 기능 : 페이징 처리를 하기 위한 VO
+ * @author 차민수, 박정훈
+ * 기능 : 페이징 처리를 하기 위한 VO, type 와 keyword 변수추가 및 lombok을 이용하여 @Getter,@Setter 생성, 검색 조건에 배열을사용하기 위해서
+*getTypeArr()를 이용하여 동적쿼리 태그 활용하기위한 기능.
  *
  */
 

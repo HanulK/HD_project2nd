@@ -3,33 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-   <!--  정훈 -->
+<!-- 작성자 : 박정훈 
+      기능 : 동적 SQL 처리,foreach를 이용하여 조건과 검색을 처리하고, typeArr속성을 이용한다. 
+      <choose>안쪽의 동적SQL은 OR구문을 만들어내고, <trim>을 이용하여 맨 앞에 생성되는 OR를 없애주며 SQL문을 만든다.
+      또한 검색된 개수에 따라 페이징 처리를 하여 검색된 개수에 맞는 페이징 번호를 생성한다.-->
 <mapper namespace="org.kabart.mapper.ProdSearchMapper">
 
-   
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 
-   <sql id="criteria">
-      <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							(prod_name) like ( ('%'||#{keyword}||'%') )
+						</when>
+						<when test="type == 'C'.toString()">
+							lower(prod_category) like ( lower('%'||#{keyword}||'%') )
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
 
-         <foreach item='type' collection="typeArr">
-            <trim prefix="OR">
-               <choose>
-                  <when test="type == 'T'.toString()">
-                    (prod_name) like ( ('%'||#{keyword}||'%') )
-                  </when>
-                  <when test="type == 'C'.toString()">
-                      lower(prod_category) like ( lower('%'||#{keyword}||'%') )
-                  </when>
-               </choose>
-            </trim>
-         </foreach>
-      </trim>
-   </sql>
-   
-   
-
-   <select id="getListWithPaging2"
-      resultType="org.kabart.domain.ProductListVO">
+	<select id="getListWithPaging2"
+		resultType="org.kabart.domain.ProductListVO">
       <![CDATA[
       select 
          prod_id, 
@@ -52,7 +51,7 @@
          join imgs i on p.prod_id = i.prod_id
          where 
          ]]>
-         <include refid="criteria"></include> 
+		<include refid="criteria"></include> 
          <![CDATA[ 
          rownum <= #{pageNum} * #{amount} and
             img_tag='thumNail'
@@ -60,15 +59,14 @@
 		where rn > (#{pageNum} - 1) * #{amount}
 
        ]]>
-   </select>
-   
-       
-   <select id="getTotalCount" resultType="int"> 
-   select count(*) from
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from
 		products p join imgs i on (p.prod_id = i.prod_id)
 		where
-      <include refid="criteria"></include> 
-     img_tag='thumNail'
-   </select>
+		<include refid="criteria"></include>
+		img_tag='thumNail'
+	</select>
 
 </mapper>

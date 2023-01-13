@@ -1,13 +1,19 @@
 package org.kabart.domain;
 
+import javax.mail.Store;
+
 import lombok.*;
 import lombok.extern.log4j.Log4j;
 
+
+
+/*작성자 : 박정훈 
+*기능 :  ProdSearchVO에 검색에 필요한 변수를 선언.
+*/ 
 @Data
 @Log4j
 @AllArgsConstructor
 public class ProdSearchVO {
-
 	
 	private String prod_name;
 	private int prod_price;
@@ -20,10 +26,4 @@ public class ProdSearchVO {
 	private String prod_category; 
 	
 	
-//	private int prod_id;
-//	private String prod_name;
-//	private int prod_price;
-//	private String prod_category;
-//	private String img_srcs;
-//	private String img_tag;
 }
