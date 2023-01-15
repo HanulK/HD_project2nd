@@ -74,6 +74,7 @@ public class OrderController {
 		if (prod_ids.size() == result) {
 			list = oService.getProducts(prod_ids,Integer.parseInt(Used));
 		}
+		
 		model.addAttribute("products", list);
 
 	}
