@@ -42,7 +42,7 @@ public class MemberServiceTests {
 		mem.setGender('M');
 		mem.setPhone("01053559460");
 		mem.setFamily_num(3);
-	
+		
 		service.signUp(mem);
 		
 	}

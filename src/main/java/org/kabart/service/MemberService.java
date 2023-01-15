@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.kabart.domain.MemberVO;
 
+/* writer : hanul 
+ * 회원 관련 CRUD, 아이디 찾기, 비밀번호 찾기를 위한 service */
 public interface MemberService {
 	public int signUp(MemberVO member);
 	public MemberVO getInfoById(String mem_id);

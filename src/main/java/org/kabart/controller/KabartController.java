@@ -106,7 +106,8 @@ public class KabartController {
 		return service.findId(phone);
 	}
 	
-	
+	/* writer : hanul 
+	 * 회원 정보를 찾는 action */ 
 	@ResponseBody
 	@PostMapping(value="/getInfoById", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<MemberVO> getInfo(@RequestBody Map<String,Object> body){

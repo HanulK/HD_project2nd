@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.User;
 
 import lombok.Getter;
 
+/* writer : hanul 
+ * memberVO 타입으로 spring security에서 사용되는 UserDetails 생성 */
 @Getter
 public class CustomUser extends User {
 

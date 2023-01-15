@@ -268,6 +268,8 @@
 	$("#withdrawal_btn").on("click", function() {
 		$("#confirm_box").attr("style", "display: none;");
 		
+		/* writer : hanul 
+		 * 회원 탈퇴 action으로 POST */
 		$.ajax({
 			url : "${contextPath}/kabart/mypage/withdrawal.do",
 			type : "POST",

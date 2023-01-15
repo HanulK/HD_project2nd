@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/* writer : hanul 
+ * 회원 가입 및 조회 등에 필요한 데이터들을 모아놓은 VO */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
