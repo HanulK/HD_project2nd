@@ -12,11 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
 /* *Author : 남승현
  * 기능 : 주문 관련 컨트롤러   
  */
 @Controller
+@Log4j
 @RequestMapping("/kabart/order")
 public class OrderController {
 	
@@ -45,7 +47,7 @@ public class OrderController {
 			isUsed = 1;
 			List<String> pList = new ArrayList<>();
 			pList.add(up_id);
-			oList = oService.getProducts(pList, isUsed);
+			oList = oService.getProducts(pList, Integer.parseInt(up_id));
 		}
 		// 신상품 중 수량을 2개 이상으로 설정 후, 바로 구매시 진행 
 		if(!quantity.equals("1")) {
@@ -71,10 +73,14 @@ public class OrderController {
 
 		List<OrderVO> list = new ArrayList<>();
 		int result = oService.insertProducts(mem_id, address, address_detail, phone, dname, prod_ids, quantities, Used);
-		if (prod_ids.size() == result) {
-			list = oService.getProducts(prod_ids,Integer.parseInt(Used));
+		log.warn("결제하기");
+		list = oService.getProducts(prod_ids,Integer.parseInt(Used));
+		if(Integer.parseInt(Used)==0) {
+			for(int i =0;i<prod_ids.size();i++) {
+				list.get(i).setQuantity(Integer.parseInt(quantities.get(i)));
+			}
 		}
-		
+		list.forEach(item -> log.warn(item));
 		model.addAttribute("products", list);
 
 	}

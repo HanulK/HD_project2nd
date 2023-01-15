@@ -28,8 +28,8 @@
 <!--       <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property> 
          <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@edudb_high?TNS_ADMIN=C:\\dev64\\oracleWallet"></property> 
          <property name="username" value="kabart" /> <property name="password" value="Ygcha09365283" 
-         /> <property name="maximumPoolSize" value="250" /> -->
-   </bean>
+         /> <property name="maximumPoolSize" value="250" />
+ -->   </bean>
 
    <!-- HikariCP configuration -->
    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"

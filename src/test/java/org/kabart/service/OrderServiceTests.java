@@ -11,6 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+/* *Author : 남승현
+ * 기능 : 주문 기능에서 활용되는 Service Test
+ */
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
 "file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,6 +24,10 @@ public class OrderServiceTests {
 	private OrderService oService;
 	
 	
+	/* *Author : 남승현
+	 * 기능 : 주문서 내의 상품목록을 가져오는 기능 테스트
+	 * 매개변수 : 상품 아이디 리스트
+	 */
 	@Test
 	public void testGetProducts() {
 		List<String> list = new ArrayList<>();
@@ -33,9 +40,9 @@ public class OrderServiceTests {
 	}
 	
 	
-	/*
-	 * String mem_id, String addr, String addr_dt, String phone, String dname,
-	 * List<String> prod_id, List<String> quantity, String isUsed
+	/* *Author : 남승현
+	 * 기능 : 주문서 내의 상품 정보를 넣는 기능 테스트
+	 * 매개변수 : 사용자 아이디, 주소, 상세주소, 휴대폰 번호, 수령자명, 상품 아이디 리스트, 수량 리스트, 중고품 여부
 	 */
 	@Test
 	public void insertOrder() {

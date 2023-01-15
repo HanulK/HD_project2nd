@@ -34,11 +34,14 @@ public class OrderServiceImpl implements OrderService{
 	public List<OrderVO> getProducts(List<String> pids,int isUsed) {
 		List<OrderVO> result;
 		// 중고상품인 경우, 한가지의 상품만 구매하므로 List의 첫번째 요소 활용 
-		if(isUsed==1) {
-			result = oMapper.getUsedList(pids.get(0));
+		if(isUsed!=0) {
+			result = oMapper.getUsedList(String.valueOf(isUsed));
+			log.warn("중고상품 구매"+result.get(0));
 		}else {
 			result = oMapper.getNewList(pids);
 		}
+		log.warn("getProducts");
+		result.forEach(item-> log.info(item));
 		return result;
 	}
 
