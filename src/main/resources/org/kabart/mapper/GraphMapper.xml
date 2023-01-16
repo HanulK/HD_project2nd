@@ -12,7 +12,7 @@
 		grouping(prod_id))
 		*100, 1) as percent
 		from v_graphs
-		where prod_id = #{prod_id} and cancel_date is null
+		where prod_id = #{prod_id}
 		group by
 		prod_id, family_num
 		order by family_num asc
@@ -25,7 +25,7 @@
 		from(select prod_id, trunc((to_char(sysdate, 'YYYY') - substr(birth, 1, 4))/10)
 		as age
 		from v_graphs
-		where prod_id= #{prod_id} and cancel_date is null
+		where prod_id= #{prod_id}
 		group by prod_id, birth)
 		group by prod_id,age
 		order by age

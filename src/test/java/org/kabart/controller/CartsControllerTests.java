@@ -21,6 +21,9 @@ import com.google.gson.Gson;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+/* *Author : 남승현
+ * 기능 : 장바구니 기능에 활용되는 Controller Test
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
@@ -33,10 +36,17 @@ public class CartsControllerTests {
 	
 	private MockMvc mockMvc;
 	
+	
 	@Before
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
+	
+	/* *Author : 남승현
+	 * 기능 : 장바구니에 상품 담기 기능 
+	 * 매개변수 : 사용자 아이디, 상품 아이디, 상품 수량
+	 * 기타 : POST Method 활용 및 상품 존재여부에 따른 수량 변경 혹은 상품 추가 진행
+	 */
 	@Test
 	public void testInsertorUpdate() throws Exception {
 		Map<String, Object> map = new HashMap<>();
@@ -51,6 +61,11 @@ public class CartsControllerTests {
 				.andExpect(status().is(200));
 	}
 	
+	/* *Author : 남승현
+	 * 기능 : 사용자 장바구니내의 상품목록을 가져옴
+	 * 매개변수 : 사용자 아이디
+	 * 기타 : POST Method 활용
+	 */
 	@Test
 	public void testGetCarts() throws Exception {
 		Map<String, Object> map = new HashMap<>();
@@ -63,6 +78,11 @@ public class CartsControllerTests {
 				.andExpect(status().is(200));
 	}
 	
+	/* *Author : 남승현
+	 * 기능 : 장바구니 상품 삭제
+	 * 매개변수 : 사용자 아이디, 상품 아이디 리스트
+	 * 기타 : GET Method를 활용
+	 */
 	@Test
 	public void testRemove() throws Exception {
 		Map<String,Object> map = new HashMap<>();
@@ -79,19 +99,4 @@ public class CartsControllerTests {
 				.content(jsonStr))
 				.andExpect(status().is(200));
 	}
-	
-	@Test
-	public void testUpdate() throws Exception {
-		Map<String, Object> map = new HashMap<>();
-		map.put("mem_id", "dodo");
-		map.put("prod_id", 60088);
-		map.put("quantity", 1);
-		String jsonStr = new Gson().toJson(map);
-		log.info(jsonStr);
-		mockMvc.perform(MockMvcRequestBuilders.post("/kabart/mypage/update")
-				.contentType(MediaType.APPLICATION_JSON_VALUE)
-				.content(jsonStr))
-				.andExpect(status().is(200));
-	}
-	
 }

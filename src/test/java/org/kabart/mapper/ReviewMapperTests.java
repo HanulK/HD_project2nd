@@ -35,7 +35,10 @@ public class ReviewMapperTests {
 
 		log.info(mapper);
 	}
-
+	/* *Author : 남승현
+	 * 기능 : 리뷰 작성 기능
+	 * 매개변수 : 주문 번호, 사용자 아이디, 리뷰 내용, 작성일, 상품 아이디
+	 */
 	@Test
 	public void insert() {
 		int order_id = 50;
